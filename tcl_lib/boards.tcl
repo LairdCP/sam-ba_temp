@@ -123,6 +123,7 @@ array set boards {
  # Please see user guide to get more information.
 
  array set user_boards {
+    "at91sama5d3x-wb50nbt"   "at91sama5d3x-wb50nbt/at91sama5d3x-wb50nbt.tcl"
 }
 
 #example Add:
