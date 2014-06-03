@@ -49,6 +49,7 @@
 /* DDRAM type */
 #define MT47H64M16HR    0
 #define MT47H128M16RT   1
+#define LPDDR   2
 
 /* Board DDRAM size*/
 
@@ -213,19 +214,32 @@ int main(int argc, char **argv)
             BOARD_ConfigureSdram();
             pMailbox->argument.outputInit.memorySize = BOARD_SDRAM_SIZE;
         }
-        else 
+        else if ( pMailbox->argument.inputInit.ramType == 2) 
         {
+                /* Disable DDR clock. */
+                PMC->PMC_PCDR1 |= (1 << (ID_MPDDRC-32));
+                PMC->PMC_SCDR  |= PMC_SCER_DDRCK;
+                BOARD_ConfigureLpDdram();
+                pMailbox->argument.outputInit.memorySize = BOARD_DDRAM_SIZE_0;
+        }
+        else {
+            /* DDR reset */
+            MPDDRC->MPDDRC_LPR = MPDDRC_LPR_LPCB_DEEP_PWD |MPDDRC_LPR_CLK_FR_ENABLED;
+            /* Disable DDR clock. */
+            PMC->PMC_PCDR1 |= (1 << (ID_MPDDRC-32));
+            PMC->PMC_SCDR  |= PMC_SCER_DDRCK;
             //TRACE_INFO("\tExternal RAM type : %s\n\r", "DDRAM");
             BOARD_ConfigureDdram(pMailbox->argument.inputInit.ddrModel);
             if (pMailbox->argument.inputInit.ddrModel == MT47H64M16HR)
             {
-                pMailbox->argument.outputInit.memorySize = BOARD_DDRAM_SIZE_0;
+                 pMailbox->argument.outputInit.memorySize = BOARD_DDRAM_SIZE_0;
             }
             if (pMailbox->argument.inputInit.ddrModel == MT47H128M16RT)
             {
                 pMailbox->argument.outputInit.memorySize = BOARD_DDRAM_SIZE_1;
             }
-        }
+       }
+        
 
         /* Test external RAM access */
         if (ExtRAM_TestOk()) 

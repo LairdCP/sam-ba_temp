@@ -49,6 +49,8 @@ namespace eval BOARD {
     variable extDDRamModel 0
 }
 
+set target(board) at91sam3x2-ek
+
 ################################################################################
 ## PROCEDURES FOR COMPATIBILITY WITH OLDER SAM-BA VERSIONS AND USER DEFINED
 ################################################################################

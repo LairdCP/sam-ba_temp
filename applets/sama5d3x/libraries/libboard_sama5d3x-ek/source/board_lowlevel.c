@@ -76,13 +76,6 @@ extern WEAK void LowLevelInit( void )
 {
     uint32_t i;
 
-    /* DDR reset */
-    MPDDRC->MPDDRC_LPR = MPDDRC_LPR_LPCB_DEEP_PWD |MPDDRC_LPR_CLK_FR_ENABLED;
-
-    /* Disable DDR clock. */
-    PMC->PMC_PCDR1 |= (1 << (ID_MPDDRC-32));
-    PMC->PMC_SCDR  |= PMC_SCER_DDRCK;
-
     PMC_SelectExt12M_Osc();
     PMC_SwitchMck2Main();
     PMC_SetPllA( CKGR_PLLAR_STUCKTO1 | 
@@ -91,6 +84,9 @@ extern WEAK void LowLevelInit( void )
                  CKGR_PLLAR_MULA(65) | 
                  CKGR_PLLAR_DIVA(1), 
                  0);
+
+    PMC->PMC_PLLICPR = (0x3u << 8);
+
     PMC_SetMckPllaDiv(PMC_MCKR_PLLADIV2_DIV2);
     PMC_SetMckPrescaler(PMC_MCKR_PRES_CLOCK);
     PMC_SetMckDivider(PMC_MCKR_MDIV_PCK_DIV3);

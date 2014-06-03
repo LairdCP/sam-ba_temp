@@ -41,15 +41,15 @@ if { [ catch { source "$libPath(extLib)/common/generic.tcl"} errMsg] } {
 ################################################################################
 namespace eval BOARD {
     variable sramSize         $AT91C_IRAM_SIZE
-    variable maxBootSize      [expr 60 * 1024]
+    variable maxBootSize      65328
 # Default setting for DDRAM
     # Vdd Memory 1.8V = 0 / Vdd Memory 3.3V = 1
     variable extRamVdd 0
-    # External SDRAM = 0 / External DDR = 1
+    # External SDRAM = 0 / External DDR2 = 1 / LPDDR = 2
     variable extRamType 1
     # Set bus width (16 or 32)
     variable extRamDataBusWidth 16
-    # DDRAM Model (0: MT47H64M16HR, 1: MT47H128M16RT)
+    # DDRAM Model (0: MT47H64M16HR, 1: MT47H128M16RT
     variable extDDRamModel 1
 
     # Note: DEVICE/ADDRESSES (A2, A1, A0): The A2, A1 or A0 pins are device address inputs 
@@ -57,6 +57,12 @@ namespace eval BOARD {
     # Modify 'eepromDeviceAddress' to meet the hardware connection.
     variable eepromDeviceAddress 0x51
 }
+
+if {[regexp "cmp" $target(board)]} {
+    set BOARD::extRamType 2
+}
+
+set target(board) at91sama5d3x-ek
 
 # Source procedures for compatibility with older SAM-BA versions
 if { [ catch { source "$libPath(extLib)/common/functions.tcl"} errMsg] } {
@@ -131,7 +137,7 @@ array set sama5d3x_ddram {
     dftReceive  "RAM::receiveFile"
     dftScripts  "::sama5d3x_ddram_scripts"
 }
-if {$BOARD::extRamType == 1} {
+if {$BOARD::extRamType == 1 || $BOARD::extRamType == 2} {
     set sama5d3x_ddram(dftDisplay) 1
 }
 
@@ -141,7 +147,7 @@ set RAM::appletFileName      "$libPath(extLib)/$target(board)/applet-extram-sama
 puts "-I- External RAM Settings :  extRamVdd=$BOARD::extRamVdd, extRamType=$BOARD::extRamType, extRamDataBusWidth=$BOARD::extRamDataBusWidth, extDDRamModel=$BOARD::extDDRamModel"
 
 array set sama5d3x_ddram_scripts {
-    "Enable DDRAM"   "GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extRamVdd 1 16 $BOARD::extDDRamModel]"
+    "Enable DDRAM"   "GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extRamVdd $BOARD::extRamType $BOARD::extRamDataBusWidth $BOARD::extDDRamModel]"
 }
 
 
@@ -279,7 +285,6 @@ array set sama5d3x_nandflash {
 array set sama5d3x_nandflash_scripts {
     "Enable NandFlash"             "NANDFLASH::Init"
     "Pmecc configuration"          "NANDFLASH::NandHeaderValue"
-    "Enable OS PMECC parameters"   "NANDFLASH::NandHeaderValue HEADER 0xc0c00405"
     "Send Boot File"               "NANDFLASH::SendBootFilePmecc"
     "Erase All"                    "NANDFLASH::EraseAll"
     "Scrub NandFlash"              "NANDFLASH::EraseAll $NANDFLASH::scrubErase"
@@ -289,6 +294,30 @@ array set sama5d3x_nandflash_scripts {
 set NANDFLASH::appletAddr          0x20000000
 set NANDFLASH::appletMailboxAddr   0x20000004
 set NANDFLASH::appletFileName      "$libPath(extLib)/$target(board)/applet-nandflash-sama5d3x.bin"
+
+
+################################################################################
+## SDMMC
+################################################################################
+array set sama5d3x_sdmmc {
+    dftDisplay  1
+    dftDefault  0
+    dftAddress  0x0
+    dftSize     "$GENERIC::memorySize"
+    dftSend     "GENERIC::SendFile"
+    dftReceive  "GENERIC::ReceiveFile"
+    dftScripts  "::sama5d3x_sdmmc_scripts"
+}
+
+array set sama5d3x_sdmmc_scripts {
+    "Enable SDMMC(MCI0)"           "SDMMC::Init 0"
+    "Enable SDMMC(MCI1)"           "SDMMC::Init 1"
+    "Erase All"                    "SDMMC::EraseAll"
+}
+
+set SDMMC::appletAddr          0x20000000
+set SDMMC::appletMailboxAddr   0x20000004
+set SDMMC::appletFileName      "$libPath(extLib)/$target(board)/applet-sdmmc-sama5d3x.bin"
 
 ################################################################################
 ## NORFLASH
