@@ -41,16 +41,16 @@ if { [ catch { source "$libPath(extLib)/common/generic.tcl"} errMsg] } {
 ################################################################################
 namespace eval BOARD {
     variable sramSize         $AT91C_IRAM_SIZE
-    variable maxBootSize      65328
+    variable maxBootSize      [expr 60 * 1024]
 # Default setting for DDRAM
     # Vdd Memory 1.8V = 0 / Vdd Memory 3.3V = 1
     variable extRamVdd 0
-    # External SDRAM = 0 / External DDR2 = 1 / LPDDR = 2
-    variable extRamType 2
+    # External SDRAM = 0 / External DDR2 or LPDDR1 = 1 / LPDDR = 2
+    variable extRamType 1
     # Set bus width (16 or 32)
-    variable extRamDataBusWidth 16
-    # DDRAM Model (0: MT47H64M16HR, 1: MT47H128M16RT
-    variable extDDRamModel 1
+    variable extRamDataBusWidth 32
+    # DDRAM Model (0: MT47H64M16HR, 1: MT47H128M16RT 2:MT46H16M32LFB5)
+    variable extDDRamModel 2
 
     # Note: DEVICE/ADDRESSES (A2, A1, A0): The A2, A1 or A0 pins are device address inputs 
     # that are hardwired or left not connected for hardware compatibility with other AT24CXX devices.
@@ -76,19 +76,19 @@ if { [ catch { source "$libPath(extLib)/common/functions.tcl"} errMsg] } {
 }
 
 array set memoryAlgo {
-    "SRAM"                    "::sama5d3x_sram"
-    "DDRAM"                   "::sama5d3x_ddram"
-    "DataFlash AT45DB/DCB"    "::sama5d3x_dataflash"
-    "SerialFlash AT25/AT26"   "::sama5d3x_serialflash"
-    "EEPROM AT24"             "::sama5d3x_eeprom"
-    "NandFlash"               "::sama5d3x_nandflash"
-    "NorFlash"                "::sama5d3x_norflash"
-    "OTP"                     "::sama5d3x_otp"
-    "One-wire EEPROM"         "::sama5d3x_ow"
-    "DDR2 / SDRAM Map"        "::sama5d3x_ddr2_sdram_map"
-    "Peripheral"              "::sama5d3x_peripheral"
-    "ROM"                     "::sama5d3x_rom"
-    "REMAP"                   "::sama5d3x_remap"
+    "SRAM"                    "::laird_wb50nbt_sram"
+    "DDRAM"                   "::laird_wb50nbt_ddram"
+    "DataFlash AT45DB/DCB"    "::laird_wb50nbt_dataflash"
+    "SerialFlash AT25/AT26"   "::laird_wb50nbt_serialflash"
+    "EEPROM AT24"             "::laird_wb50nbt_eeprom"
+    "NandFlash"               "::laird_wb50nbt_nandflash"
+    "NorFlash"                "::laird_wb50nbt_norflash"
+    "OTP"                     "::laird_wb50nbt_otp"
+    "One-wire EEPROM"         "::laird_wb50nbt_ow"
+    "DDR2 / SDRAM Map"        "::laird_wb50nbt_ddr2_sdram_map"
+    "Peripheral"              "::laird_wb50nbt_peripheral"
+    "ROM"                     "::laird_wb50nbt_rom"
+    "REMAP"                   "::laird_wb50nbt_remap"
 }
 
 
@@ -114,7 +114,7 @@ LOWLEVEL::Init
 ################################################################################
 ## SRAM
 ################################################################################
-array set laird-wb50nbt_sram {
+array set laird_wb50nbt_sram {
     dftDisplay  1
     dftDefault  0
     dftAddress  0x00300000
@@ -128,17 +128,17 @@ array set laird-wb50nbt_sram {
 ################################################################################
 ## DDRAM
 ################################################################################
-array set laird-wb50nbt_ddram {
+array set laird_wb50nbt_ddram {
     dftDisplay  0
     dftDefault  0
     dftAddress  0x20000000
     dftSize     "$GENERIC::memorySize"
     dftSend     "RAM::sendFile"
     dftReceive  "RAM::receiveFile"
-    dftScripts  "::laird-wb50nbt_ddram_scripts"
+    dftScripts  "::laird_wb50nbt_ddram_scripts"
 }
 if {$BOARD::extRamType == 1 || $BOARD::extRamType == 2} {
-    set laird-wb50nbt_ddram(dftDisplay) 1
+    set laird_wb50nbt_ddram(dftDisplay) 1
 }
 
 set RAM::appletAddr          0x308000
@@ -146,7 +146,7 @@ set RAM::appletMailboxAddr   0x308004
 set RAM::appletFileName      "$libPath(extLib)/$target(board)/applet-extram-sama5d3x.bin"
 puts "-I- External RAM Settings :  extRamVdd=$BOARD::extRamVdd, extRamType=$BOARD::extRamType, extRamDataBusWidth=$BOARD::extRamDataBusWidth, extDDRamModel=$BOARD::extDDRamModel"
 
-array set laird-wb50nbt_ddram_scripts {
+array set laird_wb50nbt_ddram_scripts {
     "Enable DDRAM"   "GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extRamVdd $BOARD::extRamType $BOARD::extRamDataBusWidth $BOARD::extDDRamModel]"
 }
 
@@ -172,17 +172,17 @@ if {[catch {GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletF
 ################################################################################
 ## DATAFLASH
 ################################################################################
-array set laird-wb50nbt_dataflash {
+array set laird_wb50nbt_dataflash {
     dftDisplay  1
     dftDefault  1
     dftAddress  0x0
     dftSize     "$GENERIC::memorySize"
     dftSend     "GENERIC::SendFile"
     dftReceive  "GENERIC::ReceiveFile"
-    dftScripts  "::laird-wb50nbt_dataflash_scripts"
+    dftScripts  "::laird_wb50nbt_dataflash_scripts"
 }
 
-array set laird-wb50nbt_dataflash_scripts {
+array set laird_wb50nbt_dataflash_scripts {
     "Enable Dataflash (SPI0 CS0)"                        "DATAFLASH::Init 0"
     "Set DF in Power-Of-2 Page Size mode (Binary mode)"  "DATAFLASH::BinaryPage"
     "Send Boot File"                                     "GENERIC::SendBootFileGUI"
@@ -195,17 +195,17 @@ set DATAFLASH::appletFileName      "$libPath(extLib)/$target(board)/applet-dataf
 ################################################################################
 ## SERIALFLASH
 ################################################################################
-array set laird-wb50nbt_serialflash {
+array set laird_wb50nbt_serialflash {
     dftDisplay  1
     dftDefault  1
     dftAddress  0x0
     dftSize     "$GENERIC::memorySize"
     dftSend     "GENERIC::SendFile"
     dftReceive  "GENERIC::ReceiveFile"
-    dftScripts  "::laird-wb50nbt_serialflash_scripts"
+    dftScripts  "::laird_wb50nbt_serialflash_scripts"
 }
 
-array set laird-wb50nbt_serialflash_scripts {
+array set laird_wb50nbt_serialflash_scripts {
     "Enable Serialflash (SPI0 CS0)"   "SERIALFLASH::Init 0"
     "Send Boot File"                  "GENERIC::SendBootFileGUI"
     "Erase All"                       "SERIALFLASH::EraseAll"
@@ -218,17 +218,17 @@ set SERIALFLASH::appletFileName      "$libPath(extLib)/$target(board)/applet-ser
 ################################################################################
 ## EEPROM
 ################################################################################
-array set laird-wb50nbt_eeprom {
+array set laird_wb50nbt_eeprom {
     dftDisplay  1
     dftDefault  0
     dftAddress  0x0
     dftSize     "$GENERIC::memorySize"
     dftSend     "GENERIC::SendFile"
     dftReceive  "GENERIC::ReceiveFile"
-    dftScripts  "::laird-wb50nbt_eeprom_scripts"
+    dftScripts  "::laird_wb50nbt_eeprom_scripts"
 }
 
-array set laird-wb50nbt_eeprom_scripts {
+array set laird_wb50nbt_eeprom_scripts {
     "Enable EEPROM AT24C01x"          "EEPROM::Init 0 $BOARD::eepromDeviceAddress"
     "Enable EEPROM AT24C02x"          "EEPROM::Init 1 $BOARD::eepromDeviceAddress"
     "Enable EEPROM AT24C04x"          "EEPROM::Init 2 $BOARD::eepromDeviceAddress"
@@ -250,17 +250,17 @@ set EEPROM::appletFileName      "$libPath(extLib)/$target(board)/applet-eeprom-s
 ################################################################################
 ## One-Wire EEPROM
 ################################################################################
-array set laird-wb50nbt_ow {
+array set laird_wb50nbt_ow {
     dftDisplay  1
     dftDefault  0
     dftAddress  0x0
     dftSize     "$GENERIC::memorySize"
     dftSend     "GENERIC::SendFile"
     dftReceive  "GENERIC::ReceiveFile"
-    dftScripts  "::laird-wb50nbt_ow_scripts"
+    dftScripts  "::laird_wb50nbt_ow_scripts"
 }
 
-array set laird-wb50nbt_ow_scripts {
+array set laird_wb50nbt_ow_scripts {
     "Search One-Wire EEPROM"    "OW::Init"
     "Select Target One-Wire EEPROM"   "OW::SelectDevice"
 }
@@ -272,19 +272,20 @@ set OW::appletFileName      "$libPath(extLib)/$target(board)/applet-oweeprom-sam
 ################################################################################
 ## NANDFLASH
 ################################################################################
-array set laird-wb50nbt_nandflash {
+array set laird_wb50nbt_nandflash {
     dftDisplay  1
     dftDefault  0
     dftAddress  0x0
     dftSize     "$GENERIC::memorySize"
     dftSend     "GENERIC::SendFile"
     dftReceive  "GENERIC::ReceiveFile"
-    dftScripts  "::laird-wb50nbt_nandflash_scripts"
+    dftScripts  "::laird_wb50nbt_nandflash_scripts"
 }
 
-array set laird-wb50nbt_nandflash_scripts {
+array set laird_wb50nbt_nandflash_scripts {
     "Enable NandFlash"             "NANDFLASH::Init"
     "Pmecc configuration"          "NANDFLASH::NandHeaderValue"
+    "Enable OS PMECC parameters"   "NANDFLASH::NandHeaderValue HEADER 0xc0c00405"
     "Send Boot File"               "NANDFLASH::SendBootFilePmecc"
     "Erase All"                    "NANDFLASH::EraseAll"
     "Scrub NandFlash"              "NANDFLASH::EraseAll $NANDFLASH::scrubErase"
@@ -299,17 +300,17 @@ set NANDFLASH::appletFileName      "$libPath(extLib)/$target(board)/applet-nandf
 ################################################################################
 ## SDMMC
 ################################################################################
-array set laird-wb50nbt_sdmmc {
+array set laird_wb50nbt_sdmmc {
     dftDisplay  1
     dftDefault  0
     dftAddress  0x0
     dftSize     "$GENERIC::memorySize"
     dftSend     "GENERIC::SendFile"
     dftReceive  "GENERIC::ReceiveFile"
-    dftScripts  "::laird-wb50nbt_sdmmc_scripts"
+    dftScripts  "::laird_wb50nbt_sdmmc_scripts"
 }
 
-array set laird-wb50nbt_sdmmc_scripts {
+array set laird_wb50nbt_sdmmc_scripts {
     "Enable SDMMC(MCI0)"           "SDMMC::Init 0"
     "Enable SDMMC(MCI1)"           "SDMMC::Init 1"
     "Erase All"                    "SDMMC::EraseAll"
@@ -322,17 +323,17 @@ set SDMMC::appletFileName      "$libPath(extLib)/$target(board)/applet-sdmmc-sam
 ################################################################################
 ## NORFLASH
 ################################################################################
-array set laird-wb50nbt_norflash {
+array set laird_wb50nbt_norflash {
     dftDisplay  1
     dftDefault  0
     dftAddress  0x0
     dftSize     "$GENERIC::memorySize"
     dftSend     "GENERIC::SendFile"
     dftReceive  "GENERIC::ReceiveFile"
-    dftScripts  "::laird-wb50nbt_norflash_scripts"
+    dftScripts  "::laird_wb50nbt_norflash_scripts"
 }
 
-array set laird-wb50nbt_norflash_scripts {
+array set laird_wb50nbt_norflash_scripts {
     "Enable NorFlash "    "NORFLASH::Init"
     "Erase All"           "NORFLASH::EraseAll"
 }
@@ -343,17 +344,17 @@ set NORFLASH::appletFileName      "$libPath(extLib)/$target(board)/applet-norfla
 ################################################################################
 ## OTP
 ################################################################################
-array set laird-wb50nbt_otp {
+array set laird_wb50nbt_otp {
     dftDisplay  1
     dftDefault  0
     dftAddress  0x0
     dftSize     "$GENERIC::memorySize"
     dftSend     ""
     dftReceive  ""
-    dftScripts  "::laird-wb50nbt_otp_scripts"
+    dftScripts  "::laird_wb50nbt_otp_scripts"
 }
 
-array set laird-wb50nbt_otp_scripts {
+array set laird_wb50nbt_otp_scripts {
     "Enable OTP"                   "OTP::Init"
     "OTP Read all"                 "OTP::Read"
     "OTP Fuse "                    "OTP::FuseIF $OTP::otpSizeinWord $OTP::otpCfgName"
@@ -367,7 +368,7 @@ set OTP::appletFileName      "$libPath(extLib)/$target(board)/applet-otp-sama5d3
 set OTP::otpSizeinWord       8
 set OTP::otpCfgName          [list "R" "R" "R" "R" "R" "R" "R" "R"]
 
-array set laird-wb50nbt_ddr2_sdram_map {
+array set laird_wb50nbt_ddr2_sdram_map {
     dftDisplay  0
     dftDefault  0
     dftAddress  0x20000000
@@ -377,7 +378,7 @@ array set laird-wb50nbt_ddr2_sdram_map {
     dftScripts  ""
 }
 
-array set laird-wb50nbt_norflash_map {
+array set laird_wb50nbt_norflash_map {
     dftDisplay  0
     dftDefault  0
     dftAddress  0x10000000
@@ -386,7 +387,7 @@ array set laird-wb50nbt_norflash_map {
     dftReceive  ""
     dftScripts  ""
 }
-array set laird-wb50nbt_peripheral {
+array set laird_wb50nbt_peripheral {
     dftDisplay  0
     dftDefault  0
     dftAddress  0xF0000000
@@ -396,7 +397,7 @@ array set laird-wb50nbt_peripheral {
     dftScripts  ""
 }
 
-array set laird-wb50nbt_rom {
+array set laird_wb50nbt_rom {
     dftDisplay  0
     dftDefault  0
     dftAddress  0x100000
@@ -406,7 +407,7 @@ array set laird-wb50nbt_rom {
     dftScripts  ""
 }
 
-array set laird-wb50nbt_remap {
+array set laird_wb50nbt_remap {
     dftDisplay  0
     dftDefault  0
     dftAddress  0x00000000

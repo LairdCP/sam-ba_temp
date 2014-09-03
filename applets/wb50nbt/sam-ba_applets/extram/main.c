@@ -50,6 +50,7 @@
 #define MT47H64M16HR    0
 #define MT47H128M16RT   1
 #define LPDDR   2
+#define MT46H16M32LFB5 2
 
 /* Board DDRAM size*/
 
@@ -58,6 +59,15 @@
 #define BOARD_SDRAM_SIZE          (32*1024*1024)   // 32 MB
 /* Define clock timeout */
 #define CLOCK_TIMEOUT    0xFFFFFFFF
+
+#define LED0 (0x00001000)
+#define LED1 (0x01000000)
+#define LED2 (0x04000000)
+#define LED3 (0x00400000)
+#define LED4 (0x10000000)
+
+#define LED_OFF(a) PIOA->PIO_SODR = (a)
+#define LED_ON(a) PIOA->PIO_CODR = (a)
 
 /*----------------------------------------------------------------------------
  *        Local structures
@@ -133,21 +143,21 @@ static unsigned char ExtRAM_TestOk(void)
     for (i = 0; i < 10 * 1024; ++i) {
 
         if (i & 1) {
-            ptr[i] = 0x55AA55AA | (1 << i);
+            ptr[i] = 0x55AA55AAu | (1 << i);
         }
         else {
-            ptr[i] = 0xAA55AA55 | (1 << i);
+            ptr[i] = 0xAA55AA55u | (1 << i);
         }
     }
 
     for (i = 0; i < 10 * 1024; ++i) {
         if (i & 1) {
-            if (ptr[i] != (0x55AA55AA | (1 << i))) {
+            if (ptr[i] != (0x55AA55AAu | (1 << i))) {
                 return 0;
             }
         }
         else {
-            if (ptr[i] != (0xAA55AA55 | (1 << i))) {
+            if (ptr[i] != (0xAA55AA55u | (1 << i))) {
                 return 0;
             }
         }
@@ -195,7 +205,21 @@ int main(int argc, char **argv)
         }
 
 #endif
-    
+		/* Setup gpio pins */
+		PIOA->PIO_IDR = 0x15401000;  // Disable interrupts
+		PIOA->PIO_PUER = 0x15401000; // Set pull-ups
+		PIOA->PIO_OER = 0x15401000;  // Make outputs
+		PIOA->PIO_SODR = 0x15401000; // "Clear" the LEDs by setting high
+		PIOA->PIO_PER = 0x15401000;  // Enable them as GPIO
+
+		PIOA->PIO_CODR = 0x15401000; // Turn on all LEDs
+
+		LED_OFF(LED0);
+		LED_OFF(LED1);
+		LED_OFF(LED2);
+		LED_OFF(LED3);
+		LED_OFF(LED4);
+
         //TRACE_INFO("-- EXTRAM Applet %s --\n\r", SAM_BA_APPLETS_VERSION);
         //TRACE_INFO("-- %s\n\r", BOARD_NAME);
         //TRACE_INFO("-- Compiled: %s %s --\n\r", __DATE__, __TIME__);
@@ -219,24 +243,38 @@ int main(int argc, char **argv)
                 /* Disable DDR clock. */
                 PMC->PMC_PCDR1 |= (1 << (ID_MPDDRC-32));
                 PMC->PMC_SCDR  |= PMC_SCER_DDRCK;
-                BOARD_ConfigureLpDdram();
-                pMailbox->argument.outputInit.memorySize = BOARD_DDRAM_SIZE_0;
+                BOARD_ConfigureLpDdram2();
+				pMailbox->argument.outputInit.memorySize = BOARD_DDRAM_SIZE_0;
         }
         else {
-            /* DDR reset */
-            MPDDRC->MPDDRC_LPR = MPDDRC_LPR_LPCB_DEEP_PWD |MPDDRC_LPR_CLK_FR_ENABLED;
-            /* Disable DDR clock. */
-            PMC->PMC_PCDR1 |= (1 << (ID_MPDDRC-32));
-            PMC->PMC_SCDR  |= PMC_SCER_DDRCK;
-            //TRACE_INFO("\tExternal RAM type : %s\n\r", "DDRAM");
-            BOARD_ConfigureDdram(pMailbox->argument.inputInit.ddrModel);
-            if (pMailbox->argument.inputInit.ddrModel == MT47H64M16HR)
-            {
-                 pMailbox->argument.outputInit.memorySize = BOARD_DDRAM_SIZE_0;
-            }
-            if (pMailbox->argument.inputInit.ddrModel == MT47H128M16RT)
-            {
-                pMailbox->argument.outputInit.memorySize = BOARD_DDRAM_SIZE_1;
+			if (pMailbox->argument.inputInit.ddrModel == MT46H16M32LFB5)
+			{
+				/* DDR reset */
+				MPDDRC->MPDDRC_LPR = MPDDRC_LPR_LPCB_DEEP_PWD |MPDDRC_LPR_CLK_FR_ENABLED;
+				/* Disable DDR clock. */
+				PMC->PMC_PCDR1 |= (1 << (ID_MPDDRC-32));
+				PMC->PMC_SCDR  |= PMC_SCER_DDRCK;
+				//TRACE_INFO("\tExternal RAM type : %s\n\r", "DDRAM");
+				BOARD_ConfigureLpDdram1(pMailbox->argument.inputInit.ddrModel);
+				pMailbox->argument.outputInit.memorySize = BOARD_DDRAM_SIZE_0;
+			}
+			else
+			{
+				/* DDR reset */
+				MPDDRC->MPDDRC_LPR = MPDDRC_LPR_LPCB_DEEP_PWD |MPDDRC_LPR_CLK_FR_ENABLED;
+				/* Disable DDR clock. */
+				PMC->PMC_PCDR1 |= (1 << (ID_MPDDRC-32));
+				PMC->PMC_SCDR  |= PMC_SCER_DDRCK;
+				//TRACE_INFO("\tExternal RAM type : %s\n\r", "DDRAM");
+				BOARD_ConfigureDdram(pMailbox->argument.inputInit.ddrModel);
+				if (pMailbox->argument.inputInit.ddrModel == MT47H64M16HR)
+				{
+					 pMailbox->argument.outputInit.memorySize = BOARD_DDRAM_SIZE_0;
+				}
+				else if (pMailbox->argument.inputInit.ddrModel == MT47H128M16RT)
+				{
+					pMailbox->argument.outputInit.memorySize = BOARD_DDRAM_SIZE_1;
+				}
             }
        }
         

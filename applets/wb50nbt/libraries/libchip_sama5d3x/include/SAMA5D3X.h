@@ -8484,7 +8484,9 @@ typedef struct {
 #ifndef __ASSEMBLY__
 /** \brief Sfr hardware registers */
 typedef struct {
-  RoReg Reserved1[4];
+  RoReg Reserved1[1];
+  RwReg SFR_DDRCFG;    /**< \brief (Sfr Offset: 0x04) DDR Configuration Register */
+  RoReg Reserved4[2];
   RwReg SFR_OHCIICR;    /**< \brief (Sfr Offset: 0x10) OHCI Interrupt Configuration Register */
   RoReg SFR_OHCIISR;    /**< \brief (Sfr Offset: 0x14) OHCI Interrupt Status Register */
   RoReg Reserved2[2];
@@ -8499,6 +8501,9 @@ typedef struct {
   RwReg SFR_EBICFG;     /**< \brief (Sfr Offset: 0x40) EBI Configuration Register */
 } Sfr;
 #endif /* __ASSEMBLY__ */
+/* -------- SFR_DDRCFG : (SFR Offset: 0x04) DDR Configuration Register -------- */
+#define SFR_DDRCFG_FDQIEN (0x1u << 16) /**< \brief  DDR_DQ Input buffer always on */
+#define SFR_DDRCFG_FDQSIEN (0x1u << 17) /**< \brief DDR_DQS Input buffer always on */
 /* -------- SFR_OHCIICR : (SFR Offset: 0x10) OHCI Interrupt Configuration Register -------- */
 #define SFR_OHCIICR_RES0 (0x1u << 0) /**< \brief (SFR_OHCIICR) USB PORTx RESET */
 #define SFR_OHCIICR_RES1 (0x1u << 1) /**< \brief (SFR_OHCIICR) USB PORTx RESET */

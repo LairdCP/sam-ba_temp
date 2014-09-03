@@ -155,9 +155,19 @@ void BOARD_RemapRam( void )
 void BOARD_ConfigureVddMemSel( uint8_t VddMemSel )
 {
 }
- 
+
+#define LED0 (0x00001000)
+#define LED1 (0x01000000)
+#define LED2 (0x04000000)
+#define LED3 (0x00400000)
+#define LED4 (0x10000000)
+
+#define LED_OFF(a) PIOA->PIO_SODR = (a)
+#define LED_ON(a) PIOA->PIO_CODR = (a)
+
 #define MT47H64M16HR    0
 #define MT47H128M16RT   1
+#define MT46H16M32LFB5  2
 
 #define DDR2_BA0(r) (1 << (25 + r))
 #define DDR2_BA1(r) (1 << (26 + r))
@@ -416,10 +426,230 @@ void BOARD_ConfigureDdram( uint8_t device )
 
 
 /**
- * \brief Configures LPDDR
+ * \brief Configures LPDDR1
  */
+void BOARD_ConfigureLpDdram1( uint8_t device )
+{
+    volatile uint8_t *pDdr = (uint8_t *) DDR_CS_ADDR;
+    volatile uint32_t i;
+    volatile uint32_t cr = 0;
+    volatile uint32_t dummy_value;
+    int ba_offset = 0;
 
-void BOARD_ConfigureLpDdram( void)
+	SFR->SFR_DDRCFG = SFR_DDRCFG_FDQIEN | SFR_DDRCFG_FDQSIEN;
+
+    dummy_value = 0x00000000;
+
+    /* Enable DDR2 clock x2 in PMC */
+    PMC->PMC_PCER1 = (1 << (ID_MPDDRC-32));
+    PMC->PMC_SCER  |= PMC_SCER_DDRCK;
+    MPDDRC->MPDDRC_LPR = 0;
+    *(uint32_t *)0xFFFFEA24 |= (1 << 5);  // DDRSDRC High Speed Register (MPDDRC_HS)  : hidden option -> calibration during autorefresh
+    *(uint32_t *)0xF0038004 |= (0x3 << 16);   // SFR_DDRCFG  DDR Configuration  Force DDR_DQ and DDR_DQS input buffer always on
+
+    MPDDRC->MPDDRC_DLL_SOR = MPDDRC_DLL_SOR_S0_OFF(0x1) | MPDDRC_DLL_SOR_S1_OFF(0x0) | MPDDRC_DLL_SOR_S2_OFF(0x1) | MPDDRC_DLL_SOR_S3_OFF(0x1);
+    MPDDRC->MPDDRC_DLL_MOR = (0xC5000000) | MPDDRC_DLL_MOR_MOFF(7) | MPDDRC_DLL_MOR_CLK90OFF(0x1F)  | MPDDRC_DLL_MOR_SELOFF;  // Key = 0xc5000000 
+    dummy_value  =  MPDDRC->MPDDRC_IO_CALIBR;
+    dummy_value &= ~MPDDRC_IO_CALIBR_RDIV_Msk;
+    dummy_value &= ~MPDDRC_IO_CALIBR_TZQIO_Msk;
+    dummy_value |= MPDDRC_IO_CALIBR_RDIV_RZQ_48;
+    dummy_value |= MPDDRC_IO_CALIBR_TZQIO(3);
+    MPDDRC->MPDDRC_IO_CALIBR = dummy_value;
+
+   *(uint32_t *)0xF0038004 = (0x3 << 16);   // SFR_DDRCFG  DDR Configuration  Force DDR_DQ and DDR_DQS input buffer always on
+
+/* Step 1: Program the memory device type */
+    /* DBW = 0 (32 bits bus wide); Memory Device = 6 = DDR2-SDRAM = 0x00000006*/
+	MPDDRC->MPDDRC_MD = MPDDRC_MD_MD_LPDDR_SDRAM;
+
+/*                   Initialization sequence STEP 2
+    Program the features of Low-power DDR2-SDRAM device into the Timing Register
+    (asynchronous timing, trc, tras, etc.) and into the Configuration Register (number of
+    columns, rows, banks, CAS latency and output drive strength) (see Section 8.3 on
+    page 35, Section 8.4 on page 39 and Section 80.5 on page 41). */
+	MPDDRC->MPDDRC_CR = MPDDRC_CR_NR_13 | 			// 13 row bits    (8K)
+						MPDDRC_CR_NC_9 | 			// 9 column bits (512)
+						MPDDRC_CR_CAS(3)| 			// CAS Latency 3
+						MPDDRC_CR_NB_4 |            // 4 bank
+						MPDDRC_CR_DLL_RESET_DISABLED |
+						MPDDRC_CR_DQMS_NOT_SHARED |
+						MPDDRC_CR_ENRDM_OFF |
+						MPDDRC_CR_UNAL_UNSUPPORTED |
+						MPDDRC_CR_NDQS_DISABLED |
+						MPDDRC_CR_OCD(0x0);
+
+	MPDDRC->MPDDRC_TPR0 = MPDDRC_TPR0_TRAS(6) |   //  6 * 7.5 = 45 ns (45 ~ 70000)
+						  MPDDRC_TPR0_TRCD(3) |   //  3 * 7.5 = 22.5 ns (18 ~ )
+						  MPDDRC_TPR0_TWR(2)  |   //  2 * 7.5 = 15 ns (15 ~ )
+						  MPDDRC_TPR0_TRC(8)  |   //  8 * 7.5 = 60 ns (60 ~ )
+						  MPDDRC_TPR0_TRP(3)  |   //  3 * 7.5 = 22.5 ns (18 ~ )
+						  MPDDRC_TPR0_TRRD(2) |   //  2 * 7.5 = 15 ns (12 ~ )
+						  MPDDRC_TPR0_TWTR(2) |   //  2 clock cycle
+						  MPDDRC_TPR0_TMRD(2);   //  2 clock cycles ( 2 ~ )
+
+	MPDDRC->MPDDRC_TPR1 = MPDDRC_TPR1_TRFC(14) |   // 18 * 7.5 = 135 ns (80 ~ )
+						  MPDDRC_TPR1_TXSNR(16) |  // 20 * 7.5 > 142.5ns TXSNR: Exit self refresh delay to non read command
+						  MPDDRC_TPR1_TXSRD(208) | // min 200 clock cycles, TXSRD: Exit self refresh delay to Read command
+						  MPDDRC_TPR1_TXP(2);      //  2 * 7.5 = 15 ns
+
+	MPDDRC->MPDDRC_TPR2 = MPDDRC_TPR2_TXARD(7) |  //  min 2 clock cycles
+						  MPDDRC_TPR2_TXARDS(7) | //  min 7 clock cycles
+						  MPDDRC_TPR2_TRPA(2) |   //  min 18ns
+						  MPDDRC_TPR2_TRTP(2) |   //  2 * 7.5 = 15 ns (min 7.5ns)
+						  MPDDRC_TPR2_TFAW(10);
+	ba_offset = -1;
+
+
+/*  Initialization sequence STEP 3
+	Program Temperature Compensated Self-refresh (TCR), Partial Array Self-refresh (PASR)
+	and Drive Strength (DS) parameters in the MPDDRC Low-power Register.  */
+    /* We're not using LP modes during samba, so not programming this. */
+
+/*  Initialization sequence STEP 4
+    A minimum pause of 200 us provided to precede any signal toggle
+*/
+    for (i = 0; i < 13300; i++) {
+        asm("    nop");
+    }                                                        // Delay loop (at least 200 us)
+
+/*  Initialization sequence STEP 5
+    An NOP command is issued to the Low-power DDR1-SDRAM. Program the NOP
+    command into the Mode Register, the application must set MODE to 1 in the Mode
+    Register (see Section 8.1 on page 32). Perform a write access to any Low-power
+    DDR1-SDRAM address to acknowledge this command. Clocks are now enabled.
+*/
+    MPDDRC->MPDDRC_MR = MPDDRC_MR_MODE_NOP_CMD;
+    /* Perform a write access to any DDR2-SDRAM address to acknowledge this command */
+    *pDdr = 0;  /* Now clocks which drive DDR2-SDRAM device are enabled.*/
+
+    /* A minimum pause of 200 us is provided to precede any signal toggle. (6 core cycles per iteration, core is at 396MHz: min 13200 loops) */
+    for (i = 0; i < 13300; i++) {
+        asm("nop");
+    }
+
+/*  Initialization sequence STEP 6
+	A NOP command is issued to the low-power DDR1-SDRAM. Program the NOP command in the
+	MPDDRC_MR. The application must write a one to the MODE field in the MPDDRC_MR.
+	Perform a write access to any low-power DDR1-SDRAM address to acknowledge this command.
+	A calibration request is now made to the I/O pad.
+*/
+    MPDDRC->MPDDRC_MR = MPDDRC_MR_MODE_NOP_CMD;
+    /* Perform a write access to any DDR2-SDRAM address to acknowledge this command.*/
+    *pDdr = 0; /* Now CKE is driven high.*/
+    /* wait 400 ns min = 100*/
+    for (i = 0; i < 13300; i++) {
+        asm("nop");
+    }
+
+/*  Initialization sequence STEP 7
+	An All Banks Precharge command is issued to the low-power DDR1-SDRAM. Program All
+	Banks Precharge command in the MPDDRC_MR. The application must write a two to the
+	MODE field in the MPDDRC_MR. Perform a write access to any low-power DDR1-SDRAM
+	address to acknowledge this command.
+*/
+    MPDDRC->MPDDRC_MR = MPDDRC_MR_MODE_PRCGALL_CMD;
+    /* Perform a write access to any DDR2-SDRAM address to acknowledge this command.*/
+    *pDdr = 0;
+    /* wait 400 ns min */
+    for (i = 0; i < 100; i++) {
+        asm("nop");
+    }
+
+/*  Initialization sequence STEP 8
+	Two auto-refresh (CBR) cycles are provided. Program the Auto Refresh command (CBR) in
+	the MPDDRC_MR. The application must write a four to the MODE field in the MPDDRC_MR.
+	Perform a write access to any low-power DDR1-SDRAM location twice to acknowledge these
+	commands.
+*/
+    MPDDRC->MPDDRC_MR = MPDDRC_MR_MODE_RFSH_CMD;
+    *(pDdr) = 0;  /* Perform a write access to any DDR2-SDRAM address to acknowledge this command */
+    /* wait 2 cycles min */
+    for (i = 0; i < 100; i++) {
+        asm("nop");
+    }
+    /* Configure 2nd CBR. */
+    MPDDRC->MPDDRC_MR = MPDDRC_MR_MODE_RFSH_CMD;
+    *(pDdr) = 0;  /* Perform a write access to any DDR2-SDRAM address to acknowledge this command */
+    /* wait 2 cycles min */
+    for (i = 0; i < 100; i++) {
+        asm("nop");
+    }
+
+/*  Initialization sequence STEP 9
+	An Extended Mode Register set (EMRS) cycle is issued to program the low-power
+	DDR1-SDRAM parameters (TCSR, PASR, DS). The application must write a five to the MODE
+	field in the MPDDRC_MR and perform a write access to the SDRAM to acknowledge this
+	command. The write address must be chosen so that signal BA[1] is set to 1 and BA[0]
+	is set to 0. For example, with a 16-bit 128 Mbits SDRAM (12 rows, 9 columns, 4 banks),
+	the SDRAM write access should be done at the address: BASE_ADDRESS_DDR + 0x00800000.
+	For example, with a 32-bit 1 Gbit SDRAM (14 rows, 10 columns, 4 banks), the SDRAM write
+	access should be done at the address: BASE_ADDRESS_DDR + 0x08000000.
+		Note: This address is given as an example only. The real address depends on
+		implementation in the product.
+*/
+    MPDDRC->MPDDRC_MR             = MPDDRC_MR_MODE_EXT_LMR_CMD;
+    *((uint8_t *)(pDdr + 0x02000000)) = 0;  /* The write address must be chosen so that BA[1] is set to 1 and BA[0] is set to 0.*/
+    for (i = 0; i < 100; i++) {
+        asm("    nop");
+    }                                                        // Delay loop (at least 400 ns)
+
+
+/*  Initialization sequence STEP 10
+	A Mode Register set (MRS) cycle is issued to program parameters of the DDR1-SDRAM
+	devices, in particular CAS latency and burst length. The application must write a
+	three to the MODE field in the MPDDRC_MR and per- form a write access to the low-power
+	DDR1-SDRAM to acknowledge this command. The write address must be chosen so that
+	signals BA[1:0] are set to 0. For example, the SDRAM write access should be done at
+	the address: BASE_ADDRESS_DDR.
+*/
+    MPDDRC->MPDDRC_MR = MPDDRC_MR_MODE_LMR_CMD;
+    *(pDdr) = 0;  /* The write address must be chosen so that BA[1:0] are set to 0. */
+    /* wait 2 cycles min */
+    for (i = 0; i < 100; i++) {
+        asm("nop");
+    }
+
+/*  Initialization sequence STEP 11
+	The application must enter Normal mode, write a zero to the MODE field in the
+	MPDDRC_MR and perform a write access at any location in the low-power DDR1-SDRAM to
+	acknowledge this command.
+*/
+    MPDDRC->MPDDRC_MR = MPDDRC_MR_MODE_NORMAL_CMD;
+    *(pDdr) = 0;
+    for (i = 0; i < 100; i++) {
+        asm("nop");
+    }
+
+/*  Initialization sequence STEP 12
+	Perform a write access to any low-power DDR1-SDRAM address.
+*/
+    *(pDdr) = 0;
+    for (i = 0; i < 100; i++) {
+        asm("nop");
+    }
+
+/*  Initialization sequence STEP 13
+	Write the refresh rate into the COUNT field in the MPDDRC Refresh Timer Register
+	(MPDDRC_RTR): refresh rate = delay between refresh cycles. The low-power DDR1-SDRAM
+	device requires a refresh every 15.625 us or 7.81 us. With a 100 MHz frequency,
+	MPDDRC_RTR must be set with (15.625 * 100 MHz) = 1562 i.e., 0x061A or (7.81 * 100 MHz)
+	= 781 i.e., 0x030D.
+*/
+    /* ((64 x 10(^-3))/8192) x133 x (10^6) */
+    MPDDRC->MPDDRC_RTR = MPDDRC_RTR_COUNT(1041); /* Set Refresh timer 7.8125 us*/
+    /* OK now we are ready to work on the DDRSDR */
+    /* wait for end of calibration */
+    for (i = 0; i < 500; i++) {
+        asm("    nop");
+    }
+
+	LED_ON(LED0);
+}
+
+/**
+ * \brief Configures LPDDR2
+ */
+void BOARD_ConfigureLpDdram2( void )
 {
     volatile uint32_t i;
     volatile uint32_t dummy_value;
