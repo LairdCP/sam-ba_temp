@@ -288,7 +288,7 @@ void BOARD_ConfigureDdram( uint8_t device )
     /* Perform a write access to any DDR2-SDRAM address to acknowledge this command */
     *pDdr = 0;  /* Now clocks which drive DDR2-SDRAM device are enabled.*/
    
-    /* A minimum pause of 200 ¦Ìs is provided to precede any signal toggle. (6 core cycles per iteration, core is at 396MHz: min 13200 loops) */
+    /* A minimum pause of 200 us is provided to precede any signal toggle. (6 core cycles per iteration, core is at 396MHz: min 13200 loops) */
     for (i = 0; i < 13300; i++) {
         asm("nop");
     } 
@@ -410,10 +410,10 @@ void BOARD_ConfigureDdram( uint8_t device )
     MPDDRC->MPDDRC_MR = MPDDRC_MR_MODE_NORMAL_CMD;
     *(pDdr) = 0;
 
-/* Step 21: Write the refresh rate into the count field in the Refresh Timer register. The DDR2-SDRAM device requires a refresh every 15.625 ¦Ìs or 7.81 ¦Ìs. 
+/* Step 21: Write the refresh rate into the count field in the Refresh Timer register. The DDR2-SDRAM device requires a refresh every 15.625 us or 7.81 us. 
    With a 100MHz frequency, the refresh timer count register must to be set with (15.625 /100 MHz) = 1562 i.e. 0x061A or (7.81 /100MHz) = 781 i.e. 0x030d. */
     /* For MT47H64M16HR, The refresh period is 64ms (commercial), This equates to an average
-       refresh rate of 7.8125¦Ìs (commercial), To ensure all rows of all banks are properly 
+       refresh rate of 7.8125us (commercial), To ensure all rows of all banks are properly
        refreshed, 8192 REFRESH commands must be issued every 64ms (commercial) */
     /* ((64 x 10(^-3))/8192) x133 x (10^6) */
     MPDDRC->MPDDRC_RTR = MPDDRC_RTR_COUNT(300); /* Set Refresh timer 7.8125 us*/
@@ -769,9 +769,9 @@ void BOARD_ConfigureLpDdram2( void )
 /*  Initialization sequence STEP 7
     A calibration command is issued to the Low-power DDR2-SDRAM. Program the type
     of calibration into the Configuration Register, ZQ field, RESET value (see Section 8.3
-    ”MPDDRC Configuration Register?on page 37). In the Mode Register, program the
+    MPDDRC Configuration Register on page 37). In the Mode Register, program the
     MODE field to LPDDR2_CMD value, and the MRS field; the application must set
-    MODE to 7 and MRS to 10 (see Section 8.1 LPDDRC Mode Register?on page 34).
+    MODE to 7 and MRS to 10 (see Section 8.1 LPDDRC Mode Register on page 34).
     Perform a write access to any Low-power DDR2-SDRAM address to acknowledge
     this command. Now, the ZQ Calibration command is issued. Program the type of calibration
     into the Configuration Register, ZQ field */
@@ -848,7 +848,7 @@ void BOARD_ConfigureLpDdram2( void )
 /*  Initialization sequence STEP 12
     Write the refresh rate into the COUNT field in the Refresh Timer register (see page
     33). (Refresh rate = delay between refresh cycles). The Low-power DDR2-SDRAM
-    device requires a refresh every 7.81 ìs. With a 100 MHz frequency, the refresh timer
+    device requires a refresh every 7.81 us. With a 100 MHz frequency, the refresh timer
     count register must to be set with (7.81/100 MHz) = 781 i.e. 0x030d. */
     MPDDRC->MPDDRC_RTR           &= ~MPDDRC_RTR_COUNT_Msk;
     MPDDRC->MPDDRC_RTR           |=  MPDDRC_RTR_COUNT(1030);
