@@ -4,7 +4,7 @@ NUL
 */gcc/debug_*
 */gcc/release_*
 tags
-
+*~
 
 applets/sama5d3x/libraries/libboard_sama5d3x-ek/lib/
 applets/sama5d3x/libraries/libchip_sama5d3x/lib/
