@@ -73,10 +73,8 @@
 #include "../common/applet.h"
 
 #include <string.h>
-#include <nvm.h>
+#include "nvm.h"
 #include "status_codes.h"
-#include <system.h>
-#include <system_interrupt.h>
 
 
 /*----------------------------------------------------------------------------
@@ -417,7 +415,6 @@ static volatile uint16_t row;
 int applet_main(int argc, char **argv)
 {
 	struct _Mailbox *pMailbox = (struct _Mailbox *) argv;
-	struct nvm_config config;
 	enum status_code status;
 
 	uint32_t bytesToWrite, bufferAddr, memoryOffset;
@@ -425,8 +422,7 @@ int applet_main(int argc, char **argv)
 	// Save info of communication link
 	comType = pMailbox->argument.inputInit.comType;
 
-	nvm_get_config_defaults(&config);
-	nvm_set_config(&config);
+	nvm_set_config();
 
 	//Applet vars are cleared on every load
 	flashBaseAddr       = FLASH_ADDR;
@@ -586,7 +582,7 @@ int applet_main(int argc, char **argv)
 	 * ERASE APP SECTION :
 	 *-----------------------------------------------------------*/
 	else if (pMailbox->command == APPLET_CMD_ERASE_APP) {
-		row = pMailbox->argument.inputEraseApp.start_row - 1;
+		row = pMailbox->argument.inputEraseApp.start_row;
 		TRACE_INFO("ERASE APP command \n\r");
 
 		do {
@@ -681,6 +677,7 @@ exit:
 				(uint32_t)pMailbox->status);
 	/* Notify the host application of the end of the command processing */
 	pMailbox->command = ~(pMailbox->command);
+	SERCOM3->USART.DATA.reg = 0x6;
 	return 0;
 }
 

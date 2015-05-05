@@ -28,38 +28,6 @@
 // File Name           : AT91SAM9RL64.h
 // Object              : AT91SAM9RL64 definitions
 // Generated           : AT91 SW Application Group  01/23/2009 (11:54:52)
-// 
-// CVS Reference       : /AT91SAM9RL64.pl/1.25/Wed Jan 21 10:52:47 2009//
-// CVS Reference       : /SYS_SAM9RL64.pl/1.3/Thu Jan 18 10:40:41 2007//
-// CVS Reference       : /HMATRIX1_SAM9RL64.pl/1.1/Wed Sep 13 16:29:30 2006//
-// CVS Reference       : /CCR_SAM9RL64.pl/1.1/Wed Sep 13 16:29:30 2006//
-// CVS Reference       : /PMC_CAP9.pl/1.4/Fri Sep 12 09:18:56 2008//
-// CVS Reference       : /EBI_SAM9260.pl/1.1/Fri Sep 30 12:12:14 2005//
-// CVS Reference       : /HSDRAMC1_6100A.pl/1.2/Mon Aug  9 10:52:25 2004//
-// CVS Reference       : /HSMC3_6105A.pl/1.5/Thu Jun  5 15:27:27 2008//
-// CVS Reference       : /HECC_6143A.pl/1.1/Wed Feb  9 17:16:57 2005//
-// CVS Reference       : /AIC_6075A.pl/1.1/Mon Jul 12 17:04:01 2004//
-// CVS Reference       : /PDC_6074C.pl/1.2/Thu Feb  3 09:02:11 2005//
-// CVS Reference       : /DBGU_6059D.pl/1.1/Mon Jan 31 13:54:41 2005//
-// CVS Reference       : /PIO_6057A.pl/1.2/Thu Feb  3 10:29:42 2005//
-// CVS Reference       : /RSTC_6098A.pl/1.4/Fri Oct 17 13:27:55 2008//
-// CVS Reference       : /SHDWC_6122A.pl/1.3/Wed Oct  6 14:16:58 2004//
-// CVS Reference       : /RTTC_6081A.pl/1.2/Thu Nov  4 13:57:22 2004//
-// CVS Reference       : /PITC_6079A.pl/1.2/Thu Nov  4 13:56:22 2004//
-// CVS Reference       : /WDTC_6080A.pl/1.3/Thu Nov  4 13:58:52 2004//
-// CVS Reference       : /TC_6082A.pl/1.8/Fri Oct 17 13:27:58 2008//
-// CVS Reference       : /MCI_6101E.pl/1.2/Thu Jan 22 10:02:48 2009//
-// CVS Reference       : /TWI_6061B.pl/1.3/Fri Oct 17 13:27:59 2008//
-// CVS Reference       : /US_6089J.pl/1.3/Fri Oct 17 13:27:59 2008//
-// CVS Reference       : /SSC_6078B.pl/1.3/Fri Oct 17 13:27:57 2008//
-// CVS Reference       : /SPI_6088D.pl/1.3/Fri May 20 14:23:02 2005//
-// CVS Reference       : /AC97C_XXXX.pl/1.3/Tue Feb 22 17:08:27 2005//
-// CVS Reference       : /PWM_6044D.pl/1.2/Tue May 10 12:39:09 2005//
-// CVS Reference       : /LCDC_6063A.pl/1.6/Tue Jan 20 16:29:59 2009//
-// CVS Reference       : /HDMA_SAM9RL64.pl/1.2/Wed Sep  6 16:25:21 2006//
-// CVS Reference       : /UDPHS_SAM9_7ept6dma4iso.pl/1.4/Tue Jun 24 13:05:14 2008//
-// CVS Reference       : /TSC_XXXX.pl/1.2/Thu Jan 18 10:40:41 2007//
-// CVS Reference       : /RTC_1245D.pl/1.3/Fri Sep 17 14:01:31 2004//
 //  ----------------------------------------------------------------------------
 
 #ifndef AT91SAM9RL64_H

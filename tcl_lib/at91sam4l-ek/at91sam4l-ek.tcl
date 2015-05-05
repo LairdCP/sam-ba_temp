@@ -1,7 +1,7 @@
 #  ----------------------------------------------------------------------------
 #          SAM Software Package License
 #  ----------------------------------------------------------------------------
-#  Copyright (c) 2011, Atmel Corporation
+#  Copyright (c) 2014, Atmel Corporation
 #
 #  All rights reserved.
 #
@@ -25,13 +25,38 @@
 #  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 #  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #  ----------------------------------------------------------------------------
-if { [ catch { source "$libPath(extLib)/common/generic.tcl"} errMsg] } {
-    if {$commandLineMode == 0} {
-        tk_messageBox -title "File not found" -message "Common library file not found:\n$errMsg" -type ok -icon error
+
+set cidr_addr 0x400E0740
+# *****************************************************************************
+#                       CHIP NAME   CHIPID_CIDR
+# *****************************************************************************
+array set devicesList { at91sam4l_0 0xab0a09e0
+                        at91sam4l_1 0xab0a07e0
+                      }
+global target
+global commandLineMode
+set isValidChipOfBoard 0
+set version_mask 0xFFFFFFE0
+set chipname_list [array names ::devicesList]
+set chip_id [format "0x%08x" [TCL_Read_Int $target(handle) $cidr_addr err_code]]
+puts "Read device Chip ID at $cidr_addr --- get $chip_id"
+set proc_id_masked [format "0x%08x" [expr $chip_id & $version_mask]]
+foreach {key value} [array get devicesList] {
+   set masked_chipId_Cidr [format "0x%08x" [expr $value & $version_mask]]
+   if {[regexp $proc_id_masked $masked_chipId_Cidr] != 0} {
+       puts "-I- Found chip : $key (Chip ID : $chip_id)"
+       set isValidChipOfBoard 1
+       break
+   }
+} 
+
+if { $isValidChipOfBoard == 0 } {
+    if { $commandLineMode == 1 } {
+        puts "-E- Invalid device or board!"
     } else {
-        puts "-E- Common library file not found:\n$errMsg"
-        puts "-E- Connection abort"
+        tk_messageBox -title "Invalid chip ID" -message "Can't connect $target(board)\n" -icon error -type ok
     }
+    TCL_Close $target(handle)
     exit
 }
 
@@ -50,32 +75,32 @@ namespace eval BOARD {
 
 # Standard applet commands + some SAM4L specific commands
 array set appletCmdSam4l {
-	init            0x00
-	fullErase       0x01
-	write           0x02
-	read            0x03
-	lock            0x04
-	unlock          0x05
-	gpnvm           0x06
-	security        0x07
-	erasebuffer     0x08
-	binarypage      0x09
-	otpRead         0x0a
-	otpWrite        0x0b
-	listbadblocks   0x10
-	tagBlock        0x11
-	readUniqueID    0x12
-	eraseBlocks     0x13
-	batchErase      0x14
-	pmeccParam      0x15
-	pmeccBoot       0x16
-	switchEccMode   0x17
-	trimffsMode     0x18
-	rwFuses		    0x40
-	writeUserPage	0x41
-	readUserPage	0x42	
-	readUniqueSN    0x43		
-	erasePage     0x44	
+    init            0x00
+    fullErase       0x01
+    write           0x02
+    read            0x03
+    lock            0x04
+    unlock          0x05
+    gpnvm           0x06
+    security        0x07
+    erasebuffer     0x08
+    binarypage      0x09
+    otpRead         0x0a
+    otpWrite        0x0b
+    listbadblocks   0x10
+    tagBlock        0x11
+    readUniqueID    0x12
+    eraseBlocks     0x13
+    batchErase      0x14
+    pmeccParam      0x15
+    pmeccBoot       0x16
+    switchEccMode   0x17
+    trimffsMode     0x18
+    rwFuses            0x40
+    writeUserPage    0x41
+    readUserPage    0x42    
+    readUniqueSN    0x43        
+    erasePage     0x44    
 }
 
 
@@ -133,7 +158,7 @@ array set at91sam4l_flash {
 array set at91sam4l_flash_scripts {
         "Read Unique Serial Number"            "FLASH::ReadUniqueSerialNumber"
         "Read Lock Fuses"                      "FLASH::ReadLocks"
-        "Unlock All"                           "FLASH::UnlockAll"		
+        "Unlock All"                           "FLASH::UnlockAll"        
         "Set Lock Bit 00"                      "FLASH::SetLock 0"
         "Set Lock Bit 01"                      "FLASH::SetLock 1"
         "Set Lock Bit 02"                      "FLASH::SetLock 2"
@@ -150,8 +175,8 @@ array set at91sam4l_flash_scripts {
         "Set Lock Bit 13"                      "FLASH::SetLock 13"
         "Set Lock Bit 14"                      "FLASH::SetLock 14"
         "Set Lock Bit 15"                      "FLASH::SetLock 15"
-        "Invalidate application"               "FLASH::ErasePage 32"		
-        "Erase application area [0x4000 - ...]" "FLASH::ErasePage -1"		
+        "Invalidate application"               "FLASH::ErasePage 32"        
+        "Erase application area [0x4000 - ...]" "FLASH::ErasePage -1"        
         "Read General Purpose Fuses"           "FLASH::ReadFuses"
         "Read Security Bit"                    "FLASH::ReadSecurity"
         "Set Security Bit"                     "FLASH::SetSecurity"
@@ -172,20 +197,20 @@ if {[catch {FLASH::Init} dummy_err]} {
     # Close link
     TCL_Close $target(handle)
     exit
-	} else {
-		#retrieve additionnal parameters from the Init function (SAM4L specific)
-		set appletAddrArgvps     [expr $FLASH::appletMailboxAddr + 0x18]
-		set appletAddrArgvnp    [expr $FLASH::appletMailboxAddr + 0x1c]
-		set appletAddrArgvasp     [expr $FLASH::appletMailboxAddr + 0x20]	
-		
-		set flashPageSize 		[TCL_Read_Int $target(handle) $appletAddrArgvps]
-		set flashNbPage 		[TCL_Read_Int $target(handle) $appletAddrArgvnp]
-		set flashAppStartPage 	[TCL_Read_Int $target(handle) $appletAddrArgvasp]
+    } else {
+        #retrieve additionnal parameters from the Init function (SAM4L specific)
+        set appletAddrArgvps     [expr $FLASH::appletMailboxAddr + 0x18]
+        set appletAddrArgvnp    [expr $FLASH::appletMailboxAddr + 0x1c]
+        set appletAddrArgvasp     [expr $FLASH::appletMailboxAddr + 0x20]    
+        
+        set flashPageSize         [TCL_Read_Int $target(handle) $appletAddrArgvps]
+        set flashNbPage         [TCL_Read_Int $target(handle) $appletAddrArgvnp]
+        set flashAppStartPage     [TCL_Read_Int $target(handle) $appletAddrArgvasp]
 
-		puts "flashPageSize 	[format "0x%08x" $flashPageSize]"
-		puts "flashNbPage 		[format "%d" $flashNbPage]"
-		puts "flashAppStartPage [format "%d" $flashAppStartPage]"	
-		puts "-I- FLASH initialized"
+        puts "flashPageSize     [format "0x%08x" $flashPageSize]"
+        puts "flashNbPage         [format "%d" $flashNbPage]"
+        puts "flashAppStartPage [format "%d" $flashAppStartPage]"    
+        puts "-I- FLASH initialized"
 }
 
 ################################################################################
@@ -289,14 +314,14 @@ proc FLASH::ReadFuses { } {
     set      dummy_err 0
 
     # Mailbox is 32 word long (add variable here if you need read/write more data)
-    set appletAddrCmd       		[expr $appletMailboxAddr]
-    set appletAddrStatus    		[expr $appletMailboxAddr + 0x04]
-    set appletAddrArg_value_l     	[expr $appletMailboxAddr + 0x08]
-    set appletAddrArg_value_h     	[expr $appletMailboxAddr + 0x0c]
+    set appletAddrCmd               [expr $appletMailboxAddr]
+    set appletAddrStatus            [expr $appletMailboxAddr + 0x04]
+    set appletAddrArg_value_l         [expr $appletMailboxAddr + 0x08]
+    set appletAddrArg_value_h         [expr $appletMailboxAddr + 0x0c]
     set appletAddrArg_writemask_l   [expr $appletMailboxAddr + 0x10]
     set appletAddrArg_writemask_h   [expr $appletMailboxAddr + 0x14]
-    set appletAddrArg_errors_l     	[expr $appletMailboxAddr + 0x18]
-    set appletAddrArg_errors_h     	[expr $appletMailboxAddr + 0x1c]
+    set appletAddrArg_errors_l         [expr $appletMailboxAddr + 0x18]
+    set appletAddrArg_errors_h         [expr $appletMailboxAddr + 0x1c]
 
     # Write the Cmd op code in the argument area
     if {[catch {TCL_Write_Int $target(handle) $::appletCmdSam4l(rwFuses) $appletAddrCmd} dummy_err] } {
@@ -350,14 +375,14 @@ proc FLASH::ReadLocks { } {
     set      dummy_err 0
 
     # Mailbox is 32 word long (add variable here if you need read/write more data)
-    set appletAddrCmd       		[expr $appletMailboxAddr]
-    set appletAddrStatus    		[expr $appletMailboxAddr + 0x04]
-    set appletAddrArg_value_l     	[expr $appletMailboxAddr + 0x08]
-    set appletAddrArg_value_h     	[expr $appletMailboxAddr + 0x0c]
+    set appletAddrCmd               [expr $appletMailboxAddr]
+    set appletAddrStatus            [expr $appletMailboxAddr + 0x04]
+    set appletAddrArg_value_l         [expr $appletMailboxAddr + 0x08]
+    set appletAddrArg_value_h         [expr $appletMailboxAddr + 0x0c]
     set appletAddrArg_writemask_l   [expr $appletMailboxAddr + 0x10]
     set appletAddrArg_writemask_h   [expr $appletMailboxAddr + 0x14]
-    set appletAddrArg_errors_l     	[expr $appletMailboxAddr + 0x18]
-    set appletAddrArg_errors_h     	[expr $appletMailboxAddr + 0x1c]
+    set appletAddrArg_errors_l         [expr $appletMailboxAddr + 0x18]
+    set appletAddrArg_errors_h         [expr $appletMailboxAddr + 0x1c]
 
     # Write the Cmd op code in the argument area
     if {[catch {TCL_Write_Int $target(handle) $::appletCmdSam4l(rwFuses) $appletAddrCmd} dummy_err] } {
@@ -411,21 +436,21 @@ proc FLASH::SetLock { lockbit } {
     set      dummy_err 0
 
     # Mailbox is 32 word long (add variable here if you need read/write more data)
-    set appletAddrCmd       		[expr $appletMailboxAddr]
-    set appletAddrStatus    		[expr $appletMailboxAddr + 0x04]
-    set appletAddrArg_value_l     	[expr $appletMailboxAddr + 0x08]
-    set appletAddrArg_value_h     	[expr $appletMailboxAddr + 0x0c]
+    set appletAddrCmd               [expr $appletMailboxAddr]
+    set appletAddrStatus            [expr $appletMailboxAddr + 0x04]
+    set appletAddrArg_value_l         [expr $appletMailboxAddr + 0x08]
+    set appletAddrArg_value_h         [expr $appletMailboxAddr + 0x0c]
     set appletAddrArg_writemask_l   [expr $appletMailboxAddr + 0x10]
     set appletAddrArg_writemask_h   [expr $appletMailboxAddr + 0x14]
-    set appletAddrArg_errors_l     	[expr $appletMailboxAddr + 0x18]
-    set appletAddrArg_errors_h     	[expr $appletMailboxAddr + 0x1c]
+    set appletAddrArg_errors_l         [expr $appletMailboxAddr + 0x18]
+    set appletAddrArg_errors_h         [expr $appletMailboxAddr + 0x1c]
 
-	if {$lockbit > [expr 16]} {
-		error "Wrong lock bit number"
-	}
+    if {$lockbit > [expr 16]} {
+        error "Wrong lock bit number"
+    }
 
-	set writemask [expr 1 << $lockbit ]
-	
+    set writemask [expr 1 << $lockbit ]
+    
     # Write the Cmd op code in the argument area
     if {[catch {TCL_Write_Int $target(handle) $::appletCmdSam4l(rwFuses) $appletAddrCmd} dummy_err] } {
         error "Error Writing Applet command ($dummy_err)"
@@ -481,15 +506,15 @@ proc FLASH::UnlockAll { } {
     set      dummy_err 0
 
     # Mailbox is 32 word long (add variable here if you need read/write more data)
-    set appletAddrCmd       		[expr $appletMailboxAddr]
-    set appletAddrStatus    		[expr $appletMailboxAddr + 0x04]
-    set appletAddrArg_value_l     	[expr $appletMailboxAddr + 0x08]
-    set appletAddrArg_value_h     	[expr $appletMailboxAddr + 0x0c]
+    set appletAddrCmd               [expr $appletMailboxAddr]
+    set appletAddrStatus            [expr $appletMailboxAddr + 0x04]
+    set appletAddrArg_value_l         [expr $appletMailboxAddr + 0x08]
+    set appletAddrArg_value_h         [expr $appletMailboxAddr + 0x0c]
     set appletAddrArg_writemask_l   [expr $appletMailboxAddr + 0x10]
     set appletAddrArg_writemask_h   [expr $appletMailboxAddr + 0x14]
-    set appletAddrArg_errors_l     	[expr $appletMailboxAddr + 0x18]
-    set appletAddrArg_errors_h     	[expr $appletMailboxAddr + 0x1c]
-	
+    set appletAddrArg_errors_l         [expr $appletMailboxAddr + 0x18]
+    set appletAddrArg_errors_h         [expr $appletMailboxAddr + 0x1c]
+    
     # Write the Cmd op code in the argument area
     if {[catch {TCL_Write_Int $target(handle) $::appletCmdSam4l(rwFuses) $appletAddrCmd} dummy_err] } {
         error "Error Writing Applet command ($dummy_err)"
@@ -542,9 +567,9 @@ proc FLASH::ReadSecurity { } {
     set      dummy_err 0
 
     # Mailbox is 32 word long (add variable here if you need read/write more data)
-    set appletAddrCmd       		[expr $appletMailboxAddr]
-    set appletAddrStatus    		[expr $appletMailboxAddr + 0x04]
-    set appletAddrArg_param     	[expr $appletMailboxAddr + 0x08]
+    set appletAddrCmd               [expr $appletMailboxAddr]
+    set appletAddrStatus            [expr $appletMailboxAddr + 0x04]
+    set appletAddrArg_param         [expr $appletMailboxAddr + 0x08]
 
     # Write the Cmd op code in the argument area
     if {[catch {TCL_Write_Int $target(handle) $::appletCmdSam4l(security) $appletAddrCmd} dummy_err] } {
@@ -559,18 +584,18 @@ proc FLASH::ReadSecurity { } {
         error "Applet security command has not been launched ($dummy_err)"
     }
 
-	
+    
     # Read the value of security bit in applet struct
-	# Return the error code returned by the applet
-	if {[catch {set data [TCL_Read_Int $target(handle) $appletAddrArg_param]} dummy_err] } {
-		error "Error reading the buffer containing fuses"
-	}
-	
-	if {$data >0} {
-		puts "Security bit is set."
-	} else {
-		puts "Security bit is NOT set."
-	}
+    # Return the error code returned by the applet
+    if {[catch {set data [TCL_Read_Int $target(handle) $appletAddrArg_param]} dummy_err] } {
+        error "Error reading the buffer containing fuses"
+    }
+    
+    if {$data >0} {
+        puts "Security bit is set."
+    } else {
+        puts "Security bit is NOT set."
+    }
 }
 
 #===============================================================================
@@ -582,9 +607,9 @@ proc FLASH::SetSecurity { } {
     set      dummy_err 0
 
     # Mailbox is 32 word long (add variable here if you need read/write more data)
-    set appletAddrCmd       		[expr $appletMailboxAddr]
-    set appletAddrStatus    		[expr $appletMailboxAddr + 0x04]
-    set appletAddrArg_param     	[expr $appletMailboxAddr + 0x08]
+    set appletAddrCmd               [expr $appletMailboxAddr]
+    set appletAddrStatus            [expr $appletMailboxAddr + 0x04]
+    set appletAddrArg_param         [expr $appletMailboxAddr + 0x08]
 
     # Write the Cmd op code in the argument area
     if {[catch {TCL_Write_Int $target(handle) $::appletCmdSam4l(security) $appletAddrCmd} dummy_err] } {
@@ -595,15 +620,15 @@ proc FLASH::SetSecurity { } {
         error "[format "0x%08x" $dummy_err]"
     }
 
-	puts "About to launch set security bit procedure ..."
-	
-	
+    puts "About to launch set security bit procedure ..."
+    
+    
     # Launch the applet Jumping to the appletAddr
     if {[catch {set result [GENERIC::Run $::appletCmdSam4l(security)]} dummy_err]} {
         error "Applet security command has not been launched ($dummy_err)"
     } else {
-		puts "Part is secured"	
-	}
+        puts "Part is secured"    
+    }
 }
 
 #===============================================================================
@@ -615,7 +640,7 @@ proc FLASH::SendFileNoLock { name addr } {
     variable flashNumbersLockBits 
     variable appletBufferAddress
     global   commandLineMode
-	
+    
     if { [catch {set f [open $name r]}] } {
         puts "-E- Can't open file $name"
         return -1
@@ -628,24 +653,24 @@ proc FLASH::SendFileNoLock { name addr } {
     set size [file size $name]
     
     set dest [expr $addr & [expr  $flashSize - 1]]    
-   	
+       
     set first_page [expr $dest / $::flashPageSize]
-	
-	if { $first_page < $::flashAppStartPage } {
-	
-		if {$commandLineMode == 0} {
-			set answer [tk_messageBox -title "Attempt to write monitor area"\
-			-message " Writing to the monitor area (0x0 .. 0x4000) is forbidden, write operation aborted "\
-			-icon error \
-			-type ok]
-		}
-		return -1
-	}
+    
+    if { $first_page < $::flashAppStartPage } {
+    
+        if {$commandLineMode == 0} {
+            set answer [tk_messageBox -title "Attempt to write monitor area"\
+            -message " Writing to the monitor area (0x0 .. 0x4000) is forbidden, write operation aborted "\
+            -icon error \
+            -type ok]
+        }
+        return -1
+    }
     
     if {[catch {GENERIC::Write $dest $size $f 0} dummy_err] } {
-		puts "-E- Generic::Write returned error ($dummy_err)"
-		close $f
-		return -1
+        puts "-E- Generic::Write returned error ($dummy_err)"
+        close $f
+        return -1
     }
     close $f
 }
@@ -670,16 +695,16 @@ proc USERPAGE::ReceiveFile { name addr size } {
 
     variable userpageSize  
     set dummy_err 0
-	
-	#override read command value to access userpage instead of flash
-	set GENERIC::appletCmd(read) [expr $::appletCmdSam4l(readUserPage)]
-	
+    
+    #override read command value to access userpage instead of flash
+    set GENERIC::appletCmd(read) [expr $::appletCmdSam4l(readUserPage)]
+    
     if {[catch {GENERIC::ReceiveFile $name $addr $size} dummy_err] } {
         puts "-E- Generic:: receiveFile returned error ($dummy_err)"
     }
-	
-	#replace standard read command value to access flash
-	set GENERIC::appletCmd(read) $::appletCmdSam4l(read)
+    
+    #replace standard read command value to access flash
+    set GENERIC::appletCmd(read) $::appletCmdSam4l(read)
 }
 
 #===============================================================================
@@ -692,8 +717,8 @@ proc USERPAGE::SendFile { name addr } {
     variable appletBufferAddress
     variable retval
 
-	set retval 0
-	
+    set retval 0
+    
     if { [catch {set f [open $name r]}] } {
         puts "-E- Can't open file $name"
         return -1
@@ -702,19 +727,19 @@ proc USERPAGE::SendFile { name addr } {
     
     set size [file size $name]
 
-	#override write command value to access userpage instead of flash
-	set GENERIC::appletCmd(write) [expr $::appletCmdSam4l(writeUserPage)]
+    #override write command value to access userpage instead of flash
+    set GENERIC::appletCmd(write) [expr $::appletCmdSam4l(writeUserPage)]
 
-	if {[catch {GENERIC::Write $addr $size $f 0} dummy_err] } {
-		puts "-E- Generic::Write returned error ($dummy_err)"
-		set retval -1
-	}
+    if {[catch {GENERIC::Write $addr $size $f 0} dummy_err] } {
+        puts "-E- Generic::Write returned error ($dummy_err)"
+        set retval -1
+    }
     close $f
 
-	#replace standard write command value to access flash
-	set GENERIC::appletCmd(write) [expr $::appletCmdSam4l(write)]
-	
-	return $retval
+    #replace standard write command value to access flash
+    set GENERIC::appletCmd(write) [expr $::appletCmdSam4l(write)]
+    
+    return $retval
 }
 
 
@@ -730,9 +755,9 @@ proc FLASH::EraseAll { } {
     set      dummy_err 0
 
     # Mailbox is 32 word long (add variable here if you need read/write more data)
-    set appletAddrCmd       		[expr $appletMailboxAddr]
-    set appletAddrStatus    		[expr $appletMailboxAddr + 0x04]
-    set appletAddrArg_param     	[expr $appletMailboxAddr + 0x08]
+    set appletAddrCmd               [expr $appletMailboxAddr]
+    set appletAddrStatus            [expr $appletMailboxAddr + 0x04]
+    set appletAddrArg_param         [expr $appletMailboxAddr + 0x08]
 
     # Write the Cmd op code in the argument area
     if {[catch {TCL_Write_Int $target(handle) $::appletCmdSam4l(fullErase) $appletAddrCmd} dummy_err] } {
@@ -742,12 +767,12 @@ proc FLASH::EraseAll { } {
     if {[catch {TCL_Write_Int $target(handle) 1 $appletAddrArg_param} dummy_err] } {
         error "[format "0x%08x" $dummy_err]"
     }
-	
+    
     # Launch the applet Jumping to the appletAddr
     if {[catch {set result [GENERIC::Run $::appletCmdSam4l(fullErase)]} dummy_err]} {
         error "Applet fullErase command has not been launched ($dummy_err)"
     }
-	puts "Flash memory erased."
+    puts "Flash memory erased."
 }
 
 #===============================================================================
@@ -759,45 +784,45 @@ proc FLASH::ErasePage { flashpage } {
     set      dummy_err 0
 
     # Mailbox is 32 word long (add variable here if you need read/write more data)
-    set appletAddrCmd       		[expr $appletMailboxAddr]
-    set appletAddrStatus    		[expr $appletMailboxAddr + 0x04]
-    set appletAddrArg_param     	[expr $appletMailboxAddr + 0x08]
+    set appletAddrCmd               [expr $appletMailboxAddr]
+    set appletAddrStatus            [expr $appletMailboxAddr + 0x04]
+    set appletAddrArg_param         [expr $appletMailboxAddr + 0x08]
 
-	if {$flashpage > [expr 512]} {
-		error "Wrong flash region number"
-	}
+    if {$flashpage > [expr 512]} {
+        error "Wrong flash region number"
+    }
 
-	if {$flashpage == [expr -1]} {
-	   for {set page $::flashAppStartPage} {$page < [expr $::flashNbPage]} {incr page 1} {
-			puts "-I- \tErasing page N° [format "%04d" $page] ..."			
-			# Write the Cmd op code in the argument area
-			if {[catch {TCL_Write_Int $target(handle) $::appletCmdSam4l(erasePage) $appletAddrCmd} dummy_err] } {
-				error "Error Writing Applet command ($dummy_err)"
-			}
-			# Write the param value in the argument area
-			if {[catch {TCL_Write_Int $target(handle) [expr $page] $appletAddrArg_param} dummy_err] } {
-				error "[format "0x%08x" $dummy_err]"
-			}
-			
-			# Launch the applet Jumping to the appletAddr
-			if {[catch {set result [GENERIC::Run $::appletCmdSam4l(erasePage)]} dummy_err]} {
-				error "Applet erasePage command has not been launched ($dummy_err)"
-			}
-		}
-	} else {
-		# Write the Cmd op code in the argument area
-		if {[catch {TCL_Write_Int $target(handle) $::appletCmdSam4l(erasePage) $appletAddrCmd} dummy_err] } {
-			error "Error Writing Applet command ($dummy_err)"
-		}
-		# Write the param value in the argument area
-		if {[catch {TCL_Write_Int $target(handle) [expr $flashpage] $appletAddrArg_param} dummy_err] } {
-			error "[format "0x%08x" $dummy_err]"
-		}
-		
-		# Launch the applet Jumping to the appletAddr
-		if {[catch {set result [GENERIC::Run $::appletCmdSam4l(erasePage)]} dummy_err]} {
-			error "Applet erasePage command has not been launched ($dummy_err)"
-		}
-		puts "Flash memory page erased."
-	}
+    if {$flashpage == [expr -1]} {
+       for {set page $::flashAppStartPage} {$page < [expr $::flashNbPage]} {incr page 1} {
+            puts "-I- \tErasing page N° [format "%04d" $page] ..."            
+            # Write the Cmd op code in the argument area
+            if {[catch {TCL_Write_Int $target(handle) $::appletCmdSam4l(erasePage) $appletAddrCmd} dummy_err] } {
+                error "Error Writing Applet command ($dummy_err)"
+            }
+            # Write the param value in the argument area
+            if {[catch {TCL_Write_Int $target(handle) [expr $page] $appletAddrArg_param} dummy_err] } {
+                error "[format "0x%08x" $dummy_err]"
+            }
+            
+            # Launch the applet Jumping to the appletAddr
+            if {[catch {set result [GENERIC::Run $::appletCmdSam4l(erasePage)]} dummy_err]} {
+                error "Applet erasePage command has not been launched ($dummy_err)"
+            }
+        }
+    } else {
+        # Write the Cmd op code in the argument area
+        if {[catch {TCL_Write_Int $target(handle) $::appletCmdSam4l(erasePage) $appletAddrCmd} dummy_err] } {
+            error "Error Writing Applet command ($dummy_err)"
+        }
+        # Write the param value in the argument area
+        if {[catch {TCL_Write_Int $target(handle) [expr $flashpage] $appletAddrArg_param} dummy_err] } {
+            error "[format "0x%08x" $dummy_err]"
+        }
+        
+        # Launch the applet Jumping to the appletAddr
+        if {[catch {set result [GENERIC::Run $::appletCmdSam4l(erasePage)]} dummy_err]} {
+            error "Applet erasePage command has not been launched ($dummy_err)"
+        }
+        puts "Flash memory page erased."
+    }
 }

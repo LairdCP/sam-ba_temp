@@ -26,6 +26,10 @@ Compile applets for sam4c
 (cd flash && make CHIP=sam4c16 -f Makefile clean all)
 (cd flash && make CHIP=sam4c32 -f Makefile clean all)
 
+Compile applets for samv7
+(cd lowlevelinit && make CHIP=samv7 -f Makefile clean all)
+(cd flash && make CHIP=samv7 -f Makefile clean all)
+
 Compile applets for sam3n
 (cd lowlevelinit && make CHIP=sam3n4 -f Makefile clean all)
 (cd lowlevelinit && make CHIP=sam3n2 -f Makefile clean all)
@@ -55,9 +59,13 @@ Compile applets for sam3x
 
 Compile applets for sam4e
 (cd lowlevelinit && make CHIP=sam4e16 -f Makefile clean all)
+(cd lowlevelinit && make CHIP=sam4e8 -f Makefile clean all)
 (cd flash && make CHIP=sam4e16 -f Makefile clean all)
+(cd flash && make CHIP=sam4e8 -f Makefile clean all)
 (cd serialflash && make CHIP=sam4e16 -f Makefile clean all)
+(cd serialflash && make CHIP=sam4e8 -f Makefile clean all)
 (cd nandflash && make CHIP=sam4e16 -f Makefile clean all)
+(cd nandflash && make CHIP=sam4e8 -f Makefile clean all)
 
 Compile applets for legacy
 (cd dataflash && make BOARD=at91sam7a3-ek CHIP=at91sam7a3 MEMORIES=sram -f Makefile clean all)
@@ -226,6 +234,23 @@ Compile applets for legacy
 (cd serialflash && make BOARD=at91sam9xe-ek CHIP=at91sam9xe256 MEMORIES=sdram -f Makefile clean all) 
 (cd serialflash && make BOARD=at91sam9xe-ek CHIP=at91sam9xe512 MEMORIES=sdram -f Makefile clean all) 
 (cd serialflash && make BOARD=at91cap9-dk CHIP=at91cap9 MEMORIES=sdram -f Makefile clean all) 
+
+Compile applets for sama5d4x
+(cd ../libraries/libboard_sama5d4x-ek/build/gcc && make DYN=ON -f Makefile clean all)
+debug.mk debug_sama5d4x_ek gcc.mk linux.mk Makefile NUL readme.txt release.mk sama5d4x_ek.mk win.mk
+debug.mk debug_sama5d4x_ek gcc.mk linux.mk Makefile NUL readme.txt release.mk release_sama5d4x_ek sama5d4x_ek.mk win.mk
+(cd ../libraries/libchip_sama5d4x/build/gcc && make DYN=ON -f Makefile clean all)
+debug.mk debug_sama5d4x gcc.mk iar.mk linux.mk Makefile mdk.mk NUL readme.txt release.mk sama5d4x.mk win.mk
+debug.mk debug_sama5d4x gcc.mk iar.mk linux.mk Makefile mdk.mk NUL readme.txt release.mk release_sama5d4x sama5d4x.mk win.mk
+(cd ../libraries/libnandflash/build/gcc && make DYN=ON -f Makefile clean all)
+(cd ../libraries/liboweeprom/build/gcc && make DYN=ON -f Makefile clean all)
+(cd ../libraries/libpmecc/build/gcc && make DYN=ON -f Makefile clean all)
+(cd ../libraries/libspiflash/build/gcc && make DYN=ON -f Makefile clean all)
+(cd lowlevelinit && make DYN=ON -f Makefile clean all)
+(cd oweeprom && make DYN=ON -f Makefile clean all)
+(cd extram && make DYN=ON -f Makefile clean all) 
+(cd nandflash && make DYN=ON -f Makefile clean all) 
+(cd serialflash && make DYN=ON -f Makefile clean all) 
 
 Compile applets for sam3s8
 (cd lowlevelinit && make CHIP=sam3s8 -f Makefile clean all)

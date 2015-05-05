@@ -165,10 +165,5 @@ void LowLevelInit(unsigned int clockConfigEnable)
     //------
     BOARD_RemapRam();
 
-    // Disable RTT and PIT interrupts (potential problem when program A
-    // configures RTT, then program B wants to use PIT only, interrupts
-    // from the RTT will still occur since they both use AT91C_ID_SYS)
-    AT91C_BASE_RTTC->RTTC_RTMR &= ~(AT91C_RTTC_ALMIEN | AT91C_RTTC_RTTINCIEN);
-    AT91C_BASE_PITC->PITC_PIMR &= ~AT91C_PITC_PITIEN;
 }
 

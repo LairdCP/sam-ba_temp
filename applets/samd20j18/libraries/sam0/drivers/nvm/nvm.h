@@ -237,8 +237,8 @@
  * @{
  */
 
-#include <compiler.h>
-#include <status_codes.h>
+#include "samd20.h"
+#include "status_codes.h"
 #include <stdbool.h>
 
 #ifdef __cplusplus
@@ -252,6 +252,34 @@ extern "C" {
 #  define NVM_ERRORS_MASK (NVMCTRL_STATUS_PROGE | \
                            NVMCTRL_STATUS_LOCKE | \
                            NVMCTRL_STATUS_NVME)
+#endif
+
+static inline void system_interrupt_enter_critical_section(void)
+{
+	__disable_irq();                       
+	__DMB();
+}
+static inline void system_interrupt_leave_critical_section(void)
+{
+	__DMB();                               
+	__enable_irq();
+}
+static inline uint32_t system_get_device_id(void)
+{
+	return DSU->DID.reg;
+}
+#if defined(_ASSERT_ENABLE_)
+#  if defined(TEST_SUITE_DEFINE_ASSERT_MACRO)
+#    include "unit_test/suite.h"
+#  else
+#    undef TEST_SUITE_DEFINE_ASSERT_MACRO
+#    define Assert(expr) \
+{\
+	if (!(expr)) asm("BKPT #0");\
+}
+#  endif
+#else
+#  define Assert(expr) ((void) 0)
 #endif
 
 /**
@@ -553,8 +581,7 @@ static inline void nvm_get_config_defaults(
 	config->wait_states       = NVMCTRL->CTRLB.bit.RWS;
 }
 
-enum status_code nvm_set_config(
-		const struct nvm_config *const config);
+enum status_code nvm_set_config(void);
 
 /**
  * \brief Checks if the NVM controller is ready to accept a new command.

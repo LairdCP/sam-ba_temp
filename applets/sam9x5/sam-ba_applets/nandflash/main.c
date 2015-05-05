@@ -508,7 +508,6 @@ int main(int argc, char **argv)
     
         TRACE_INFO("-- NandFlash SAM-BA applet %s --\n\r", SAM_BA_APPLETS_VERSION);
         TRACE_INFO("-- %s\n\r", BOARD_NAME);
-        TRACE_INFO("-- Compiled: %s %s --\n\r", __DATE__, __TIME__);
         TRACE_INFO("INIT command\n\r");
 
         /* Configure SMC for Nandflash accesses (done each time applet is launched because of old ROM codes) */
@@ -597,7 +596,7 @@ int main(int argc, char **argv)
         currentPmeccHeader.nbSectorPerPage = pmeccDesc.pageSize >> 8;
         currentPmeccHeader.spareSize = spareSize;
         currentPmeccHeader.eccBitReq = pmeccDesc.errBitNbrCapability;
-        currentPmeccHeader.sectorSize = pmeccDesc.sectorSize;
+        currentPmeccHeader.sectorSize = pmeccDesc.sectorSize>> 4;
         currentPmeccHeader.eccOffset = pmeccDesc.eccStartAddr;
         currentPmeccHeader.reserved = 0;
         currentPmeccHeader.key = 12;

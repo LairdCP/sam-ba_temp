@@ -1,7 +1,7 @@
 #  ----------------------------------------------------------------------------
 #          ATMEL Microcontroller Software Support
 #  ----------------------------------------------------------------------------
-#  Copyright (c) 2011, Atmel Corporation
+#  Copyright (c) 2014, Atmel Corporation
 #
 #  All rights reserved.
 #
@@ -26,13 +26,116 @@
 #  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #  ----------------------------------------------------------------------------
 
-if { [ catch { source "$libPath(extLib)/common/generic.tcl"} errMsg] } {
-    if {$commandLineMode == 0} {
-        tk_messageBox -title "File not found" -message "Common library file not found:\n$errMsg" -type ok -icon error
-    } else {
-        puts "-E- Common library file not found:\n$errMsg"
-        puts "-E- Connection abort"
+################################################################################
+# Fix is only for ROM Code v2.0 to deal with USB read issue.
+
+global target
+
+if { $target(comType) == 0 } {
+
+    puts "-I- Check to apply SAM7SE Rev.B silicon USB workaround"
+
+    if {[catch {TCL_Close $target(handle)} errMsg] } {
+            puts "-E- Cannot close the COM port $target(connection) ($errMsg)"
     }
+
+    if {[catch {TCL_Scan} errMsg] } {
+            puts "-E- Cannot scan available COM Ports ($errMsg)"
+    }
+
+    puts "-I- Open connection $target(connection)"
+
+    if {$samba_os == "linux"} {
+        set fd [open "$target(connection)" w+]
+    } else {
+        set comNum [string range $target(connection) 11 20]
+        set fd [open "\\\\.\\$comNum" w+]
+    }
+
+    fconfigure $fd -mode "115200,n,8,1"
+    fconfigure $fd -blocking true 
+    fconfigure $fd -translation binary
+
+    puts $fd "V#"
+    flush $fd
+
+    fconfigure $fd -blocking true 
+    after 100
+    set dummy [read $fd 2]
+    set version [read $fd 4]
+
+    puts $fd "#"
+    flush $fd
+
+    puts "-I- Close connection $target(connection)"
+    catch {close $fd}
+
+    if {[catch {TCL_Scan} errMsg] } {
+            puts "-E- Cannot scan available COM Ports ($errMsg)"
+    }
+
+    # Reopen the COM Port
+    if {[catch {set target(handle) [TCL_Open $target(connection)]} errMsg] } {
+            puts "-E- Cannot open $target(connection) ($errMsg)"
+    }
+
+
+    if { [regexp "v2.0" $version] } {
+
+        puts "-I- ROM Code v2.0. Workaround applied"
+
+        # load the new monitor in internal SRAM
+        GENERIC::LoadApplet 0x200000 "$libPath(extLib)/$target(board)/monitor.bin"
+
+        # run the new monitor
+        go 0x200000
+
+        if {[catch {TCL_Close $target(handle)} errMsg] } {
+                puts "-E- Cannot close the COM port $target(connection) ($errMsg)"
+        }
+
+        if {[catch {TCL_Scan} errMsg] } {
+                puts "-E- Cannot scan available COM Ports ($errMsg)"
+        }
+
+        # Reopen the COM Port
+        if {[catch {set target(handle) [TCL_Open $target(connection)]} errMsg] } {
+                puts "-E- Cannot open $target(connection) ($errMsg)"
+        }
+    } else {
+        puts "-I- ROM Code v1.4. No workaround needed."
+    }
+}
+################################################################################
+
+#                       CHIP NAME     CHIPID_CIDR
+array set devicesList { at91sam7se256 0x272a0940
+                      }
+set cidr_addr 0xFFFFF240
+global target
+global commandLineMode
+set isValidChipOfBoard 0
+set version_mask 0xFFFFFFE0
+set chipname_list [array names ::devicesList]
+set chip_id [format "0x%08x" [TCL_Read_Int $target(handle) $cidr_addr err_code]]
+puts "-I- Read device Chip ID at $cidr_addr --- get $chip_id"
+set proc_id_masked [format "0x%08x" [expr $chip_id & $version_mask]]
+foreach {key value} [array get devicesList] {
+   set masked_chipId_Cidr [format "0x%08x" [expr $value & $version_mask]]
+   if {[regexp $proc_id_masked $masked_chipId_Cidr] != 0} {
+       puts "-I- Found chip : $key (Chip ID : $chip_id)"
+       set isValidChipOfBoard 1
+       break
+   }
+} 
+
+if { $isValidChipOfBoard == 0 } {
+    if { $commandLineMode == 1 } {
+        puts "-E- Invalid device or board!"
+    } else {
+        tk_messageBox -title "Invalid chip ID" -message "Can't connect $target(board)\n" -icon error -type ok
+    }
+    TCL_Close $target(handle)
     exit
 }
 
@@ -66,7 +169,6 @@ if { [ catch { source "$libPath(extLib)/common/functions.tcl"} errMsg] } {
 
 array set memoryAlgo {
     "SRAM"                    "::at91sam7se256_sram"
-    "SDRAM"                   "::at91sam7se256_sdram"
     "Flash"                   "::at91sam7se256_flash"
     "DataFlash AT45DB/DCB"    "::at91sam7se256_dataflash"
     "SerialFlash AT25/AT26"   "::at91sam7se256_serialflash"
@@ -142,45 +244,45 @@ array set at91sam7se256_flash_scripts {
 ################################################################################
 ## SDRAM
 ################################################################################
-array set at91sam7se256_sdram {
-    dftDisplay  1
-    dftDefault  0
-    dftAddress  0x20000000
-    dftSize     "$GENERIC::memorySize"
-    dftSend     "RAM::sendFile"
-    dftReceive  "RAM::receiveFile"
-    dftScripts  "::at91sam7se256_sdram_scripts"
-}
-
-puts "-I- External RAM Settings :  extRamVdd=$BOARD::extRamVdd, extRamType=$BOARD::extRamType, extRamDataBusWidth=$BOARD::extRamDataBusWidth, extDDRamModel=$BOARD::extDDRamModel"
-
-set RAM::appletAddr          0x202000
-set RAM::appletMailboxAddr   0x202004
-set RAM::appletFileName      "$libPath(extLib)/$target(board)/applet-extram-at91sam7se256.bin"
-
-array set at91sam7se256_sdram_scripts {
-    "Enable SDRAM"   "GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extRamVdd $BOARD::extRamType $BOARD::extRamDataBusWidth $BOARD::extDDRamModel]"
-}
-
-
+#array set at91sam7se256_sdram {
+#    dftDisplay  1
+#    dftDefault  0
+#    dftAddress  0x20000000
+#    dftSize     "$GENERIC::memorySize"
+#    dftSend     "RAM::sendFile"
+#    dftReceive  "RAM::receiveFile"
+#    dftScripts  "::at91sam7se256_sdram_scripts"
+#}
+#
+#puts "-I- External RAM Settings :  extRamVdd=$BOARD::extRamVdd, extRamType=$BOARD::extRamType, extRamDataBusWidth=$BOARD::extRamDataBusWidth, extDDRamModel=$BOARD::extDDRamModel"
+#
+#set RAM::appletAddr          0x202000
+#set RAM::appletMailboxAddr   0x202004
+#set RAM::appletFileName      "$libPath(extLib)/$target(board)/applet-extram-at91sam7se256.bin"
+#
+#array set at91sam7se256_sdram_scripts {
+#    "Enable SDRAM"   "GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extRamVdd $BOARD::extRamType $BOARD::extRamDataBusWidth $BOARD::extDDRamModel]"
+#}
+#
+#
 # Initialize SDRAMC
-if {[catch {GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extRamVdd $BOARD::extRamType $BOARD::extRamDataBusWidth $BOARD::extDDRamModel]} dummy_err] } {
-    set continue no
-    if {$commandLineMode == 0} {
-        set continue [tk_messageBox -title "External RAM init" -message "External RAM initialization failed.\nExternal RAM access is required to run applets.\nContinue anyway ?" -icon warning -type yesno]
-    } else {
-        puts "-E- Error during external RAM initialization."
-        puts "-E- External RAM access is required to run applets."
-        puts "-E- Connection abort"
-    }
-    # Close link
-    if {$continue == no} {
-        TCL_Close $target(handle)
-        exit
-    }
-} else {
-        puts "-I- External RAM initialized"
-}
+#if {[catch {GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extRamVdd $BOARD::extRamType $BOARD::extRamDataBusWidth $BOARD::extDDRamModel]} dummy_err] } {
+#    set continue no
+#    if {$commandLineMode == 0} {
+#        set continue [tk_messageBox -title "External RAM init" -message "External RAM initialization failed.\nExternal RAM access is required to run applets.\nContinue anyway ?" -icon warning -type yesno]
+#    } else {
+#        puts "-E- Error during external RAM initialization."
+#        puts "-E- External RAM access is required to run applets."
+#        puts "-E- Connection abort"
+#    }
+#    # Close link
+#    if {$continue == no} {
+#        TCL_Close $target(handle)
+#        exit
+#    }
+#} else {
+#        puts "-I- External RAM initialized"
+#}
 
 # Initialize FLASH after external memory
 if {[catch {FLASH::Init } dummy_err] } {

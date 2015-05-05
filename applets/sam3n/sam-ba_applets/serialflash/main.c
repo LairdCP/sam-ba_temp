@@ -233,7 +233,6 @@ int main(int argc, char **argv)
 
         TRACE_INFO("-- SerialFlash AT25/AT25 applet %s --\n\r", SAM_BA_APPLETS_VERSION);
         TRACE_INFO("-- %s\n\r", BOARD_NAME);
-        TRACE_INFO("-- Compiled: %s %s --\n\r", __DATE__, __TIME__);
 
         /* Configure pins */
         PIO_Configure(pins, PIO_LISTSIZE(pins));

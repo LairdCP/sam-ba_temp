@@ -82,7 +82,7 @@ OBJ = obj
 SAMBA = ..
 INSTALLDIR = "../../../../tcl_lib/$(BOARD_DIR)/"
 #APPLET_LINKER_SCRIPT = "$(PATH_RESOURCES)/$(CHIP)/$$@_samba.lds"
-APPLET_LINKER_SCRIPT = "..\linker_script\sram_samba.lds"
+APPLET_LINKER_SCRIPT = "../linker_script/sram_samba.lds"
 
 #-------------------------------------------------------------------------------
 # Tools

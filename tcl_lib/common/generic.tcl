@@ -1,7 +1,7 @@
 #  ----------------------------------------------------------------------------
 #          ATMEL Microcontroller Software Support
 #  ----------------------------------------------------------------------------
-#  Copyright (c) 2011, Atmel Corporation
+#  Copyright (c) 2014, Atmel Corporation
 #
 #  All rights reserved.
 #
@@ -1436,14 +1436,16 @@ proc NANDFLASH::NandHeaderValue {args} {
     set curParamHeader $GENERIC::nandflashCurParam
     set usePmecc 0
     set dummy_err 0
-    if {$commandLineMode == 0} {
-        if { [llength $args] == 2 } {
+    set pmeccIF   0
+    if { [llength $args] == 2 } {
             set paramIndex [lindex $args 0]
             set paramValue [lindex $args 1]
             if { $paramIndex == "HEADER"} {
                 set curParamHeader $paramValue
+                set pmeccIF 1
             }
-       }
+    }
+    if {$commandLineMode == 0 && $pmeccIF != 1} {
        set bootHeaderValue(eccType) $GENERIC::nandflashEccStatus
        set bootHeaderValue(usePmecc) [expr $curParamHeader & 0x1]
        set bootHeaderValue(nbSectorPerPage) [expr [expr $curParamHeader & 0xe] >> 1]
@@ -1663,7 +1665,7 @@ proc NANDFLASH::NandHeaderValue {args} {
     if { $result == 0 } {
        puts "-I- Pmecc header configration successful"
        set  curParamHeader [TCL_Read_Int $target(handle) $appletAddrArgv0]
-       puts "-I- PMECC configure [format "%x" $curParamHeader]"
+       puts "-I- PMECC configure [format "%x" [expr $curParamHeader & 0xffffffff]]"
        set GENERIC::nandflashCurParam $curParamHeader
        return 1
     } else {
@@ -2719,13 +2721,18 @@ proc OTP::Write { wordAddr data } {
 
 #===============================================================================
 #  proc SDMMC::Init
-#-------------------------------------------------------------------------------
-proc SDMMC::Init {Id} {
+#===============================================================================
+
+proc SDMMC::Init {} {
     global target
-    puts "-I- SDMMC::Init $Id (trace level : $target(traceLevel))"
-    
+    puts "-I- Load messStorage binary"
     # Load the applet to the target
-    if {[catch {GENERIC::Init $SDMMC::appletAddr $SDMMC::appletMailboxAddr $SDMMC::appletFileName [list $target(comType) $target(traceLevel) $Id ]} dummy_err] } {
-        error "Error Initializing SDMMC Applet ($dummy_err)"
+    if {[catch {GENERIC::LoadApplet $SDMMC::appletAddr $SDMMC::appletFileName} dummy_err]} {
+        error "Applet $appletFileName can not be loaded"
     }
+    if {[catch {TCL_Go $target(handle) $SDMMC::appletAddr} dummy_err] } {
+        error "Error Running the applet"
+    }
+    TCL_Close $target(handle)
+    exit
 }

@@ -1,7 +1,8 @@
-Release Notes ¡V SAM-BA
------------------------
-Release version: 2.12
-Release date: 2012
+SAM-BA Release Notes 
+---------------------
+Release version: 2.15
+Release date: 2015
+
 
 1 Overview
 
@@ -11,19 +12,19 @@ dynamic linked library (DLL), the sam-ba.dll. SAM-BA use the DLL to
 communicate with the target board.
 
 You are strongly recommended to read through the following release notes 
-before completing the installation of SAM-BA v2.12.
+before completing the installation of SAM-BA v2.15.
 
 ----------
 2 Downloading and Installing
 ----------------------------
 The software can be found and downloaded from ATMEL's website at 
-http://www.atmel.com/dyn/products/tools_card_v2.asp?tool_id=3883
+http://www.atmel.com/tools/atmelsam-bain-systemprogrammer.aspx
   
-- sam-ba_2.12.exe (current release) for Windows
+- sam-ba_2.15.exe (current release) for Windows
   Install files for the SAM-BA package. 
-  Execute sam-ba_2.12.exe to install. 
+  Execute sam-ba_2.15.exe to install. 
   
-- sam-ba_2.12.zip (current release) for Linux
+- sam-ba_2.15.zip (current release) for Linux
   Install files for the SAM-BA package only. Uses standard CDC driver
   Unzip the package zip file under a local folder on your PC.
 
@@ -33,7 +34,7 @@ http://www.atmel.com/dyn/products/tools_card_v2.asp?tool_id=3883
 - sam-ba.dll v1.002 (A dynamic linked library connects AT91SAM-based targets 
   through a USB, JTAG or COM port).
 
-- Segger JLINKARM.DLL V4.46f (DLL for using J-Link / J-Trace with third-party 
+- Segger JLINKARM.DLL 4.91.2.0 (DLL for using J-Link / J-Trace with third-party 
   programs JTAG driver)
 
 - TCL Toolchain including tclsh can be downloaded from the following URL:
@@ -46,13 +47,13 @@ http://www.atmel.com/dyn/products/tools_card_v2.asp?tool_id=3883
   - usb_notice.html
 
 - New features.
-  - at91sam4s4 at91sam4s8 at91sam4s16 at91sam4sd32 support
-  - at91sam9cn11-ek at91sam9n11-ek support  
-  - at91sama5d3x support
-  - at91sam4s-xpld board support
-  - rf231usb-rd board support
+  - JLINKARM.DLL update to 4.91.2.0
+  - J-Link support SWD target interface
+  - J-Link SWD target interface support in command line with "_SWD"
+  - Add support for at91samv71-xplained board
+  - Add support for sama5d3x_cmp board
 
-- SAMBA 2.12 supports the following AT91SAM based microcontrollers:
+- SAMBA 2.15 supports the following AT91SAM based microcontrollers:
   - at91sam3s16 at91sam3s8 at91sam3s4 at91sam3s2 at91sam3s1 rf231usb-rd
   - at91sam3u4 at91sam3u2 at91sam3u1
   - at91sam3n4 at91sam3n2 at91sam3n1
@@ -79,14 +80,99 @@ http://www.atmel.com/dyn/products/tools_card_v2.asp?tool_id=3883
   - at91sam9xe256
   - at91sam9xe512
   - at91sama5d3x
+  - at91sama5d3x-cmp
+  - at91sama5d3-xplained
+  - at91sama5d4x
+  - at91samv71-xplained
+  - at91sam4cp
+  - at91sam4cm8, at91sam4cm16, at91sam4cm32
+  - at91sam4e8, at91sam4e16
+  - at91sam4c8, at91sam4c16, at91sam4c32
+  - at91sam3n0 at91sam3n00
+  - at91sam4l
+  - samd20e15,samd20e16,samd20e17,samd20e18,samd20g15,samd20g16,samd20g17,samd20g18,
+    samd20j15,samd20j16,samd20j17
+  - samd21
+  - at91sam4n8-xpro, at91sam4n16-xpro
   - at91cap9
+  
 
 4 Bug Fixes and Improvements
 ----------------------------
-Improvements:
+Improvements
 ------------
-    - Sam-ba works in Windows7 64bit.
-    - Adjust communication timeout parameters for COM port connection.
+  - Fix connection issues on sam7se256 and sam7se512 new silicon revision (B) 
+  - Add ScriptSetSecurityBit & ScriptGPNMV for sam7s32/321
+
+Bug Fixes
+---------
+  - Add 0x27080340 device ID for sam7s321.
+  - Fix a JLINK SAM-ICE connection issue in samba.dll
+  - Add COM port ACK in samd20/1_xplained_pro applet
+
+Known Issues
+------------
+    - Some boards cannot connect though USB CDC to a chip (with USB Full Speed) on AMD 
+      based computers.
+    - Some boards cannot work properly through USB/COM port connection without reseting 
+      ( or, power off / power on) the board.
+    - samd20/1_xplained_pro EDBG COM port is not stable
+----------------------------------------------------------------------------------------------------------------------------------
+
+5 History 
+---------------------
+
+v2.14:
+Improvements
+------------
+  - License agreement update
+  - add at91sam4cm8, at91sam4m32 board support
+
+Bug Fixes
+---------
+    - Fixed sam9x5 NAND flash programming issue while SD inserted in slot 0
+    - Fixed SDMMC mass storage format issue for sama5d3.  
+
+Known Issues
+---------
+    - Some boards cannot connect though USB CDC to a chip (with USB Full Speed) on AMD 
+      based computers.
+    - Some boards cannot work properly through USB/COM port connection without reseting 
+      ( or, power off / power on) the board.
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+v2.13:
+Improvements
+------------
+  - Added atm6124 USB CDC signed driver for Windows(R) 7 and Windows(R) 8
+  - New programmable board detection algorithm
+  - Allows the user to select a specific J-Link to connect to by passing the units serial number
+  - Be able to change J-Link speed during SAM-BA operation
+  - Add SD/MMC support for sama5d3x and sama5d4x
+  - 'Enable OS PMECC parameters' script behaviour improvement
+  - Serial flash 4-bytes address mode support for at91sam9n12, at91sam9x5 and at91sama5d3x
+  - NAND flash non-onfi auto detection.
+
+  - fix NAND FLASH erase all script hangs issue 
+  - fix Error with custom board using custom lowlevel init 
+  - fix 'EraseBlocks wrong block calculation' 
+  - fix "Start Recording" function issue in the Linux OS 
+  - fix "Start Recording" function issue in the WIN7
+  - Fix sama5d3x max boot size to 64k.
+  - Force disable NAND internal ECC for sam9n12,sam9x5,sama5d3x.
+  - fix sam9g20 NAND flash usb timeout issue.
+  - fix sam3n1 applet stack overflow.
+  - fix sam3n2 COM port connection issue.
+  - sam3x8 remove the lowlevel init and SDRAM/Nandflash support.
+  - move PMECC_Correction_Algo() function in the applet for sama5d3x.
+  - Update NAND flash driver for sama5d3x to fix non-onfi NAND flash accessing issue.
+    
+----------------------------------------------------------------------------------------------------------------------------------
+v2.12:
+Improvements
+------------
+ - Adjust communication timeout parameters for COM port connection.
     - Support devices multiple programming task management.
         - New samba_multiple_programming example.
     - New feature for JLINK timeout parameter configuration.
@@ -137,19 +223,9 @@ Bug Fixes
     - SAM-BA task management do not work under win7 64 bit.
     - COM port could only send ACK character in case of INIT command in some applets.
 
-Known Issues
----------
-    - Some boards cannot connect though USB CDC to a chip (with USB Full Speed) on AMD 
-      based computers.
-    - Some boards cannot work properly through USB/COM port connection without reseting 
-      ( or, power off / power on) the board.
-----------------------------------------------------------------------------------------------------------------------------------
-
-5 History 
----------------------
 ----------------------------------------------------------------------------------------------------------------------------------
 v2.11:
-Improvements:
+Improvements
 ------------
     - Support USB CDC, JLINK and COM port connection for Vista (32/64) and Windows 7 (32/64)
     - Upgrade to Tcl8.5.9 / Tk8.5.9  (samba 2.10 Tcl8.4.13 / Tk8.4.13)
@@ -197,7 +273,7 @@ Bug Fixes
     - Nandflash applet debug incorrect info of SEND BOOT FILE
     - Incorrect board name displayed in main window (some board re-target)
     - SAM9G15-ES2 : Cannot be launched twice without cpu reset
-    - Name of sam9x25 / x35 tcl files (devices) shall be lowercase
+    - Name of sam9x25 / x35 tcl files (devices) shall be lower-case
     - TCL scan crash in some case for linux sam-ba
     - After a TCL_Go, If the applet does not return, SAM-BA is frozen.
     - Incorrect board name displayed in main window (some board re-target)
@@ -209,7 +285,7 @@ Known Issues
     - Some boards can't work properly through USB/COM port connection without reseting the board
 
 ----------------------------------------------------------------------------------------------------------------------------------
-v2.10:
+v2.10
     - Fixed Jtag issue when the chip has booted on a program from an external memory (Nand, DF ...) and if that program has initialized the PLL and MCK. 
     - Fixed Jtag issue if customers not running the chips with the same XTAL or external oscillator as on our EK boards.
     - Add new at25 device AT25DF512B-SSH-B,AT25DF021-SSH-B,AT25DF021-MH-T,AT25DF161-SSH-B,AT25DF161-SH-B,AT25DF641-S3H-B.
@@ -248,7 +324,7 @@ v2.10:
     - Connect/disconnect functionality support.
 
 ----------------------------------------------------------------------------------------------------------------------------------
-v2.9:
+v2.9
     - Added support for AT91SAM9M10, AT91SAM9G45, AT91SAM9G10, AT91SAM7SL.
     - Added support for AT91SAM3U, with USB and COM port connection only (no SAM-ICE).
     - Fixed Dataflash access on AT91SAM9G20 CU-A.
@@ -261,14 +337,14 @@ v2.9:
     - Added a document to help user to customize SAM-BA and applets for a custom board.
 
 ----------------------------------------------------------------------------------------------------------------------------------
-v2.8:
+v2.8
     - Added support for DataFlash in Binary mode (Power of 2 page size),
-    - Improved programing speed with applets running at higher CPU and MCK clock frequency,
+    - Improved programming speed with applets running at higher CPU and MCK clock frequency,
     - Fixed AT91SAM7L64/128 support,
     - Fixed AT91SAM7XC support.
 
 ----------------------------------------------------------------------------------------------------------------------------------
-v2.7:
+v2.7
     - New flash programming applets :
         - NandFlash, DataFlash, SerialFlash, NorFlash,
         - GCC code,
@@ -278,7 +354,7 @@ v2.7:
     - Fixed AT91SAM9RL64 support.
 
 ----------------------------------------------------------------------------------------------------------------------------------
-v2.6:
+v2.6
     - Fixed AT91SAM9263 DataFlash script bug.
     - Fixed AT91SAM7S512/SE512/X512 Flash programming bug.
     - Fixed AT91SAM7SE/X/XC GPNVM accesses with JTAG.
@@ -290,7 +366,7 @@ v2.6:
     - JTAG support for AT91SAM926x.
 
 ----------------------------------------------------------------------------------------------------------------------------------
-v2.5:
+v2.5
     - Bypass of Connection Message Box when launching SAM-BA with port
        and board name in command line parameter.
     - Support for AT91SAM9XE family.
@@ -298,14 +374,14 @@ v2.5:
        open and save file dialog boxes displays now correctly.
 
 ----------------------------------------------------------------------------------------------------------------------------------
-v2.4:
+v2.4
     - J-Link support improved for AT91SAM7A3
     - AT91SAM9263 NandFlash block programming support
     - Added SDRAM config for 48, 100 and 133 MHz MCK on SAM926x boards
     - Minor GUI bug fixes
 
 ----------------------------------------------------------------------------------------------------------------------------------
-v2.3:
+v2.3
     Supports:
     - SAM7S32/321/64/128/256/512
     - SAM7X(C)128/256/512
@@ -320,35 +396,5 @@ v2.3:
 
 6 Contact Information
 ---------------------
-For support on the AT91 Software Package please send request to at91@atmel.com
+For support on AT91 Tools please visit www.atmel.com
 
----------------------
-6 Copyright (c) 2011, Atmel Corporation All rights reserved.
-
- * ----------------------------------------------------------------------------
- *         ATMEL Microcontroller Software Support
- * ----------------------------------------------------------------------------
- * Copyright (c) 2011, Atmel Corporation
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- * - Redistributions of source code must retain the above copyright notice,
- * this list of conditions and the disclaimer below.
- *
- * Atmel's name may not be used to endorse or promote products derived from
- * this software without specific prior written permission.
- *
- * DISCLAIMER: THIS SOFTWARE IS PROVIDED BY ATMEL "AS IS" AND ANY EXPRESS OR
- * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT ARE
- * DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR ANY DIRECT, INDIRECT,
- * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
- * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- * ----------------------------------------------------------------------------

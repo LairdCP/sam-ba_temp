@@ -80,8 +80,8 @@
 void LowLevelInit(unsigned int clockConfigEnable)
 {
     pllConfiguration pll;
-    mckrConfiguration mckr;
- unsigned int timeout = 0;
+    //mckrConfiguration mckr;
+    unsigned int timeout = 0;
     /* Enable NRST reset
      ************************************/
     AT91C_BASE_RSTC->RSTC_RMR |= (0xA5 << 24) | AT91C_RSTC_URSTEN;
@@ -143,7 +143,7 @@ void LowLevelInit(unsigned int clockConfigEnable)
         timeout = 0;
         while (!(AT91C_BASE_PMC->PMC_SR & AT91C_PMC_MOSCRCS) && (timeout++ < CLOCK_TIMEOUT));
         timeout = 0;
-        while ((!AT91C_BASE_PMC->PMC_SR & AT91C_PMC_MOSCSELS) && (timeout++ < 1000));
+        while (!(AT91C_BASE_PMC->PMC_SR & AT91C_PMC_MOSCSELS) && (timeout++ < 1000));
 
         // Disable Main oscillator
         AT91C_BASE_PMC->PMC_MOR = (0x37 << 16) | AT91C_CKGR_MOSCRCEN | (AT91C_CKGR_MOSCRCF & (0x2 << 4));

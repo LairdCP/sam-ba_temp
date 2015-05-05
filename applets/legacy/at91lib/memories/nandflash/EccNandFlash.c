@@ -130,11 +130,11 @@ unsigned char EccNandFlash_ReadPage(
 #ifndef HARDWARE_ECC    
     unsigned char tmpData[NandCommon_MAXPAGEDATASIZE];
     unsigned char hamming[NandCommon_MAXSPAREECCBYTES];
+    unsigned char tmpNoEcc;
 #else    
     unsigned char hsiaoInSpare[NandCommon_MAXSPAREECCBYTES];
     unsigned char hsiao[NandCommon_MAXSPAREECCBYTES];
 #endif
-    unsigned char tmpNoEcc;
 
     unsigned short pageDataSize = NandFlashModel_GetPageDataSize(MODEL(ecc));
     unsigned char pageSpareSize = NandFlashModel_GetPageSpareSize(MODEL(ecc));
@@ -163,6 +163,12 @@ unsigned char EccNandFlash_ReadPage(
         NandSpareScheme_ReadEcc(NandFlashModel_GetScheme(MODEL(ecc)), tmpSpare, hamming);
         error = Hamming_Verify256x(tmpData, pageDataSize, hamming);
     }
+    if (error && (error != Hamming_ERROR_SINGLEBIT) && (!tmpNoEcc)) {
+
+        TRACE_ERROR("EccNandFlash_ReadPage: at B%d.P%d Unrecoverable data\n\r",
+                    block, page);
+        return NandCommon_ERROR_CORRUPTEDDATA;
+    }
 #else
     // Start by reading the spare area
     // Note: Can't read data and spare at the same time, otherwise, the ECC parity generation will be incorrect.
@@ -190,13 +196,14 @@ unsigned char EccNandFlash_ReadPage(
                               hsiaoInSpare,
                               hsiao,
                               NandFlashModel_GetDataBusWidth(MODEL(ecc)));
-#endif    
-    if (error && (error != Hamming_ERROR_SINGLEBIT) && (!tmpNoEcc)) {
+   if (error && (error != Hamming_ERROR_SINGLEBIT)) {
 
         TRACE_ERROR("EccNandFlash_ReadPage: at B%d.P%d Unrecoverable data\n\r",
                     block, page);
         return NandCommon_ERROR_CORRUPTEDDATA;
     }
+#endif    
+    
 #ifndef HARDWARE_ECC
     // Copy data and/or spare into final buffers
     if (data) {
@@ -240,9 +247,10 @@ unsigned char EccNandFlash_WritePage(
     unsigned char tmpSpare[NandCommon_MAXPAGESPARESIZE];
     unsigned short pageDataSize = NandFlashModel_GetPageDataSize(MODEL(ecc));
     unsigned short pageSpareSize = NandFlashModel_GetPageSpareSize(MODEL(ecc));
-    unsigned char tmpNoEcc;
+    
 #ifndef HARDWARE_ECC    
     unsigned char hamming[NandCommon_MAXSPAREECCBYTES];
+    unsigned char tmpNoEcc;
 #else    
     unsigned char hsiao[NandCommon_MAXSPAREECCBYTES];
 #endif    

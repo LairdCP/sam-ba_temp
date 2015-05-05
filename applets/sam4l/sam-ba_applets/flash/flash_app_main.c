@@ -710,6 +710,10 @@ exit:
               (uint32_t)pMailbox->status);
     /* Notify the host application of the end of the command processing */
     pMailbox->command = ~(pMailbox->command);
+
+ 		while (!(USART2->US_CSR & US_CSR_TXRDY)) {
+		}
+	   USART2->US_THR = US_THR_TXCHR(0x06);
     return 0;
 }
 

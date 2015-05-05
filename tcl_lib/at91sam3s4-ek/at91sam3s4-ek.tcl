@@ -1,7 +1,7 @@
 #  ----------------------------------------------------------------------------
 #          ATMEL Microcontroller Software Support
 #  ----------------------------------------------------------------------------
-#  Copyright (c) 2012, Atmel Corporation
+#  Copyright (c) 2014, Atmel Corporation
 #
 #  All rights reserved.
 #
@@ -25,14 +25,41 @@
 #  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 #  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #  ----------------------------------------------------------------------------
+set cidr_addr 0x400E0740
+# *****************************************************************************
+#                       CHIP NAME   CHIPID_CIDR
+# *****************************************************************************
+array set devicesList { at91sam3s4_0 0x29540960
+                        at91sam3s4_1 0x29440960
+                        at91sam3s4_2 0x29340960
+                        at91sam3s4_3 0x28800960
+                        at91sam3s4_4 0x28900960
+                        at91sam3s4_5 0x28a00960
+                      }
+global target
+global commandLineMode
+set isValidChipOfBoard 0
+set version_mask 0xFFFFFFE0
+set chipname_list [array names ::devicesList]
+set chip_id [format "0x%08x" [TCL_Read_Int $target(handle) $cidr_addr err_code]]
+puts "Read device Chip ID at $cidr_addr --- get $chip_id"
+set proc_id_masked [format "0x%08x" [expr $chip_id & $version_mask]]
+foreach {key value} [array get devicesList] {
+   set masked_chipId_Cidr [format "0x%08x" [expr $value & $version_mask]]
+   if {[regexp $proc_id_masked $masked_chipId_Cidr] != 0} {
+       puts "-I- Found chip : $key (Chip ID : $chip_id)"
+       set isValidChipOfBoard 1
+       break
+   }
+} 
 
-if { [ catch { source "$libPath(extLib)/common/generic.tcl"} errMsg] } {
-    if {$commandLineMode == 0} {
-        tk_messageBox -title "File not found" -message "Common library file not found:\n$errMsg" -type ok -icon error
+if { $isValidChipOfBoard == 0 } {
+    if { $commandLineMode == 1 } {
+        puts "-E- Invalid device or board!"
     } else {
-        puts "-E- Common library file not found:\n$errMsg"
-        puts "-E- Connection abort"
+        tk_messageBox -title "Invalid chip ID" -message "Can't connect $target(board)\n" -icon error -type ok
     }
+    TCL_Close $target(handle)
     exit
 }
 

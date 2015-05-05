@@ -296,7 +296,6 @@ int main(int argc, char **argv)
 
         TRACE_INFO("-- Internal Flash Applet %s --\n\r", SAM_BA_APPLETS_VERSION);
         TRACE_INFO("-- %s\n\r", BOARD_NAME);
-        TRACE_INFO("-- Compiled: %s %s --\n\r", __DATE__, __TIME__);
 
         // Initialize flash driver
         FLASHD_Initialize(BOARD_MCK);
@@ -316,7 +315,7 @@ int main(int argc, char **argv)
         // operation is : buffersize -= bufferSize % flashPageSize
         // modulo can be done with a mask since flashpagesize is a power  of two integer
         bufferSize -= (bufferSize & (flashPageSize - 1));
-		if (bufferSize > MAX_BUF_SIZE && (comType == DBGU_COM_TYPE)) bufferSize = MAX_BUF_SIZE; 
+        if (bufferSize > MAX_BUF_SIZE && (comType == DBGU_COM_TYPE)) bufferSize = MAX_BUF_SIZE; 
         pMailbox->argument.outputInit.bufferSize = bufferSize;
 
         pMailbox->argument.outputInit.memorySize = flashSize;
@@ -535,7 +534,7 @@ int main(int argc, char **argv)
     // ----------------------------------------------------------
     // GPNVM :
     // ----------------------------------------------------------
-#if !defined (at91sam7a3) && !defined (at91sam7s321) && !defined (at91sam7s32)   
+#if !defined (at91sam7a3) 
     else if (pMailbox->command == APPLET_CMD_GPNVM) {
         if( pMailbox->argument.inputGPNVM.action == 0) {
             TRACE_INFO("DEACTIVATES GPNVM command \n\r");
@@ -560,7 +559,7 @@ int main(int argc, char **argv)
     // ----------------------------------------------------------
     // SET SECURITY :
     // ----------------------------------------------------------
-#if defined(CHIP_FLASH_EFC) && !defined (at91sam7a3) && !defined (at91sam7s321) && !defined (at91sam7s32)
+#if defined(CHIP_FLASH_EFC) && !defined (at91sam7a3)
     else if (pMailbox->command == APPLET_CMD_SECURITY) {
         TRACE_INFO("SET SECURITY BIT command \n\r");
 

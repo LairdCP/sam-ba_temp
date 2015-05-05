@@ -41,8 +41,6 @@
  *
  */
 #include "nvm.h"
-#include <system.h>
-#include <system_interrupt.h>
 #include <string.h>
 
 
@@ -98,41 +96,15 @@ static struct _nvm_module _nvm_dev;
  *                        EEPROM and/or auxiliary space configuration from being
  *                        altered
  */
-enum status_code nvm_set_config(
-		const struct nvm_config *const config)
+enum status_code nvm_set_config(void)
 {
-	/* Sanity check argument */
-	Assert(config);
-
 	/* Get a pointer to the module hardware instance */
 	Nvmctrl *const nvm_module = NVMCTRL;
-
-	/* Turn on the digital interface clock */
-	system_apb_clock_set_mask(SYSTEM_CLOCK_APB_APBB, PM_APBBMASK_NVMCTRL);
-
-	/* Clear error flags */
-	nvm_module->STATUS.reg &= ~NVMCTRL_STATUS_MASK;
-
-	/* Check if the module is busy */
-	if (!nvm_is_ready()) {
-		return STATUS_BUSY;
-	}
-
-	/* Writing configuration to the CTRLB register */
-	nvm_module->CTRLB.reg =
-			(config->sleep_power_mode  << NVMCTRL_CTRLB_SLEEPPRM_Pos) |
-			(config->manual_page_write << NVMCTRL_CTRLB_MANW_Pos) |
-			(config->wait_states       << NVMCTRL_CTRLB_RWS_Pos);
 
 	/* Initialize the internal device struct */
 	_nvm_dev.page_size         = (8 << nvm_module->PARAM.bit.PSZ);
 	_nvm_dev.number_of_pages   = nvm_module->PARAM.bit.NVMP;
-	_nvm_dev.manual_page_write = config->manual_page_write;
-
-	/* If the security bit is set, the auxiliary space cannot be written */
-	if (nvm_module->STATUS.reg & NVMCTRL_STATUS_SB) {
-		return STATUS_ERR_IO;
-	}
+	_nvm_dev.manual_page_write = false;
 
 	return STATUS_OK;
 }
@@ -170,11 +142,6 @@ enum status_code nvm_execute_command(
 		const uint32_t address,
 		const uint32_t parameter)
 {
-	/* Check that the address given is valid  */
-	if (address > ((uint32_t)_nvm_dev.page_size * _nvm_dev.number_of_pages)){
-		return STATUS_ERR_BAD_ADDRESS;
-	}
-
 	/* Get a pointer to the module hardware instance */
 	Nvmctrl *const nvm_module = NVMCTRL;
 
@@ -185,41 +152,18 @@ enum status_code nvm_execute_command(
 	if (!nvm_is_ready()) {
 		return STATUS_BUSY;
 	}
-
-	switch (command) {
-
-		/* Commands requiring address (protected) */
-		case NVM_COMMAND_ERASE_AUX_ROW:
-		case NVM_COMMAND_WRITE_AUX_ROW:
-
-			/* Auxiliary space cannot be accessed if the security bit is set */
-			if(nvm_module->STATUS.reg & NVMCTRL_STATUS_SB) {
-				return STATUS_ERR_IO;
-			}
-
-			/* Set address, command will be issued elsewhere */
-			nvm_module->ADDR.reg = (uintptr_t)&NVM_MEMORY[address / 4];
-			break;
-
-		/* Commands requiring address (unprotected) */
-		case NVM_COMMAND_ERASE_ROW:
-		case NVM_COMMAND_WRITE_PAGE:
-		case NVM_COMMAND_LOCK_REGION:
-		case NVM_COMMAND_UNLOCK_REGION:
-
-			/* Set address, command will be issued elsewhere */
-			nvm_module->ADDR.reg = (uintptr_t)&NVM_MEMORY[address / 4];
-			break;
-
-		/* Commands not requiring address */
-		case NVM_COMMAND_PAGE_BUFFER_CLEAR:
-		case NVM_COMMAND_SET_SECURITY_BIT:
-		case NVM_COMMAND_ENTER_LOW_POWER_MODE:
-		case NVM_COMMAND_EXIT_LOW_POWER_MODE:
-			break;
-
-		default:
-			return STATUS_ERR_INVALID_ARG;
+	
+	if(command == NVM_COMMAND_LOCK_REGION || command == NVM_COMMAND_UNLOCK_REGION)
+	{
+		nvm_module->ADDR.reg = (uintptr_t)&NVM_MEMORY[address / 4];
+	}
+	else if(command == NVM_COMMAND_SET_SECURITY_BIT)
+	{
+		;
+	}
+	else
+	{
+		return STATUS_ERR_INVALID_ARG;
 	}
 
 	/* Set command */
@@ -359,22 +303,6 @@ enum status_code nvm_write_buffer(
 		const uint8_t *buffer,
 		uint16_t length)
 {
-	/* Check if the destination address is valid */
-	if (destination_address >
-			((uint32_t)_nvm_dev.page_size * _nvm_dev.number_of_pages)) {
-		return STATUS_ERR_BAD_ADDRESS;
-	}
-
-	/* Check if the write address not aligned to the start of a page */
-	if (destination_address & (_nvm_dev.page_size - 1)) {
-		return STATUS_ERR_BAD_ADDRESS;
-	}
-
-	/* Check if the write length is longer than a NVM page */
-	if (length > _nvm_dev.page_size) {
-		return STATUS_ERR_INVALID_ARG;
-	}
-
 	/* Get a pointer to the module hardware instance */
 	Nvmctrl *const nvm_module = NVMCTRL;
 
@@ -444,22 +372,6 @@ enum status_code nvm_read_buffer(
 		uint8_t *const buffer,
 		uint16_t length)
 {
-	/* Check if the source address is valid */
-	if (source_address >
-			((uint32_t)_nvm_dev.page_size * _nvm_dev.number_of_pages)) {
-		return STATUS_ERR_BAD_ADDRESS;
-	}
-
-	/* Check if the read address is not aligned to the start of a page */
-	if (source_address & (_nvm_dev.page_size - 1)) {
-		return STATUS_ERR_BAD_ADDRESS;
-	}
-
-	/* Check if the write length is longer than a NVM page */
-	if (length > _nvm_dev.page_size) {
-		return STATUS_ERR_INVALID_ARG;
-	}
-
 	/* Get a pointer to the module hardware instance */
 	Nvmctrl *const nvm_module = NVMCTRL;
 
@@ -512,17 +424,9 @@ enum status_code nvm_read_buffer(
 enum status_code nvm_erase_row(
 		const uint32_t row_address)
 {
-	/* Check if the row address is valid */
-	if (row_address >
-			((uint32_t)_nvm_dev.page_size * _nvm_dev.number_of_pages)) {
-		return STATUS_ERR_BAD_ADDRESS;
-	}
-
-	/* Check if the address to erase is not aligned to the start of a row */
-	if (row_address & ((_nvm_dev.page_size * NVMCTRL_ROW_PAGES) - 1)) {
-		return STATUS_ERR_BAD_ADDRESS;
-	}
-
+	if (row_address < 0x00000800)
+		return STATUS_ERR_INVALID_ARG;
+		
 	/* Get a pointer to the module hardware instance */
 	Nvmctrl *const nvm_module = NVMCTRL;
 
@@ -625,83 +529,12 @@ bool nvm_is_page_locked(uint16_t page_number)
 	Nvmctrl *const nvm_module = NVMCTRL;
 
 	/* Get number of pages in a region */
-	pages_in_region = _nvm_dev.number_of_pages / 16;
+	pages_in_region = _nvm_dev.number_of_pages /16;
 
 	/* Get region for given page */
 	region_number = page_number / pages_in_region;
 
 	return !(nvm_module->LOCK.reg & (1 << region_number));
-}
-
-///@cond INTERNAL
-
-/**
- * \internal
- *
- * \brief Translate fusebit words into struct content. 
- *
- */
-static void _nvm_translate_raw_fusebits_to_struct (
-		uint32_t *raw_user_row,
-		struct nvm_fusebits *fusebits)
-{
-
-	fusebits->bootloader_size = (enum nvm_bootloader_size)
-			((raw_user_row[0] & NVMCTRL_FUSES_BOOTPROT_Msk)
-			>> NVMCTRL_FUSES_BOOTPROT_Pos);
-
-	fusebits->eeprom_size = (enum nvm_eeprom_emulator_size)
-			((raw_user_row[0] & NVMCTRL_FUSES_EEPROM_SIZE_Msk)
-			>> NVMCTRL_FUSES_EEPROM_SIZE_Pos);
-
-	fusebits->bod33_level = (uint8_t)
-			((raw_user_row[0] & SYSCTRL_FUSES_BOD33USERLEVEL_Msk)
-			>> SYSCTRL_FUSES_BOD33USERLEVEL_Pos);
-
-	fusebits->bod33_enable = (bool)
-			((raw_user_row[0] & SYSCTRL_FUSES_BOD33_EN_Msk)
-			>> SYSCTRL_FUSES_BOD33_EN_Pos);
-
-	fusebits->bod33_action = (enum nvm_bod33_action)
-			((raw_user_row[0] & SYSCTRL_FUSES_BOD33_ACTION_Msk)
-			>> SYSCTRL_FUSES_BOD33_ACTION_Pos);
-
-	fusebits->bod12_level = (uint8_t)
-			((raw_user_row[0] & SYSCTRL_FUSES_BOD12USERLEVEL_Msk)
-			>> SYSCTRL_FUSES_BOD12USERLEVEL_Pos);
-
-	fusebits->bod12_enable = (bool)
-			((raw_user_row[0] & SYSCTRL_FUSES_BOD12_EN_Msk) >> SYSCTRL_FUSES_BOD12_EN_Pos);
-
-	fusebits->bod12_action = (enum nvm_bod12_action)
-			((raw_user_row[0] & SYSCTRL_FUSES_BOD12_ACTION_Msk)
-			>> SYSCTRL_FUSES_BOD12_ACTION_Pos);
-
-	fusebits->wdt_enable = (bool)
-			((raw_user_row[0] & WDT_FUSES_ENABLE_Msk) >> WDT_FUSES_ENABLE_Pos);
-
-	fusebits->wdt_always_on = (bool)
-			((raw_user_row[0] & WDT_FUSES_ALWAYSON_Msk) >> WDT_FUSES_ALWAYSON_Pos);
-
-	fusebits->wdt_timeout_period = (uint8_t)
-			((raw_user_row[0] & WDT_FUSES_PER_Msk) >> WDT_FUSES_PER_Pos);
-
-	/* WDT Windows timout lay between two 32-bit words in the user row. Because only one bit lays in word[0],
-	   bits in word[1] must be left sifted by one to make the correct number */
-	fusebits->wdt_window_timeout = (enum nvm_wdt_window_timeout)
-			((raw_user_row[0] & WDT_FUSES_WINDOW_0_Msk) >> WDT_FUSES_WINDOW_0_Pos) |
-			((raw_user_row[1] & WDT_FUSES_WINDOW_1_Msk) << 1);
-
-	fusebits->wdt_early_warning_offset = (enum nvm_wdt_early_warning_offset)
-			((raw_user_row[1] & WDT_FUSES_EWOFFSET_Msk) >> WDT_FUSES_EWOFFSET_Pos);
-
-	fusebits->wdt_window_mode_enable_at_poweron = (bool)
-			((raw_user_row[1] & WDT_FUSES_WEN_Msk) >> WDT_FUSES_WEN_Pos);
-
-	fusebits->lockbits = (uint16_t)
-			((raw_user_row[1] & NVMCTRL_FUSES_REGION_LOCKS_Msk)
-			>> NVMCTRL_FUSES_REGION_LOCKS_Pos);
-
 }
 
 /**
@@ -721,57 +554,6 @@ static void _nvm_translate_raw_fusebits_to_struct (
 	WDT_FUSES_WEN_Msk | NVMCTRL_FUSES_REGION_LOCKS_Msk)
 
 /** @} */
-
-/**
- * \internal
- *
- * \brief Translate struct content into a 2*32bit word bit pattern.
- *
- */
-static void _nvm_translate_struct_to_raw_fusebits (
-		struct nvm_fusebits *fusebits,
-		uint32_t *raw_fusebits)
-{
-
-	/* Generating 32-bit word 1 */
-			/* Setting EEPROM emulator area size and bootloader size */
-	raw_fusebits[0] = (NVMCTRL_FUSES_BOOTPROT((uint8_t)(fusebits->bootloader_size))         |
-			    NVMCTRL_FUSES_EEPROM_SIZE((uint8_t)(fusebits->eeprom_size))         |
-
-			/* Reserved bits should be 1 */
-			    _NVM_FUSEBITS_0_RESERVED_BITS                                       |
-
-			/* Setting BOD33 fuses */
-			    SYSCTRL_FUSES_BOD33USERLEVEL(fusebits->bod33_level)                 |
-			    ((uint32_t)(fusebits->bod33_enable)) << SYSCTRL_FUSES_BOD33_EN_Pos  |
-			    SYSCTRL_FUSES_BOD33_ACTION((uint8_t)(fusebits->bod33_action))       |
-
-			/* Setting BOD12 fuses */
-			    SYSCTRL_FUSES_BOD12USERLEVEL(fusebits->bod12_level)                 |
-			    ((uint32_t)(fusebits->bod33_enable)) << SYSCTRL_FUSES_BOD12_EN_Pos  |
-			    SYSCTRL_FUSES_BOD12_ACTION((uint8_t)(fusebits->bod12_action))       |
-
-			/* Setting WDT fuses */
-			    ((uint32_t)(fusebits->wdt_enable)) << WDT_FUSES_ENABLE_Pos          |
-			    ((uint32_t)(fusebits->wdt_always_on)) << WDT_FUSES_ALWAYSON_Pos     |
-			    WDT_FUSES_PER(fusebits->wdt_timeout_period)                         |
-			    (((uint32_t)(fusebits->wdt_window_timeout)) & 0x01) << WDT_FUSES_WINDOW_0_Pos);
-
-	/* Generating 32-bit word 2 */
-			/* WDT fuse settings continued */
-	raw_fusebits[1] = ((((uint32_t)(fusebits->wdt_window_timeout)) & 0x0E) >> 1                      |
-			  WDT_FUSES_EWOFFSET((uint32_t)(fusebits->wdt_early_warning_offset))             |
-			  ((uint32_t)(fusebits->wdt_window_mode_enable_at_poweron)) << WDT_FUSES_WEN_Pos |
-
-			/* Reserved bits should be 1 */
-			  _NVM_FUSEBITS_1_RESERVED_BITS                                                   |
-
-			/* Setting flash region lock bits */
-			  NVMCTRL_FUSES_REGION_LOCKS(fusebits->lockbits));
-
-}
-
-///@endcond
 
 /**
  * \brief Get fuses from user row

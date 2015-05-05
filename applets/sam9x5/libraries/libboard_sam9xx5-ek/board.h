@@ -1,7 +1,7 @@
 /* ----------------------------------------------------------------------------
  *         ATMEL Microcontroller Software Support
  * ----------------------------------------------------------------------------
- * Copyright (c) 2009, Atmel Corporation
+ * Copyright (c) 2014, Atmel Corporation
  *
  * All rights reserved.
  *
@@ -551,8 +551,10 @@
 #define BOARD_NF_CE_PIN         {PIO_PD4, PIOD, ID_PIOD, PIO_PERIPH_A, PIO_PULLUP}
 /** Nandflash ready/busy pin definition.*/
 #define BOARD_NF_RB_PIN         {PIO_PD5, PIOD, ID_PIOD, PIO_INPUT, PIO_PULLUP}
+/* Workaourd for MCI NAND pin conflict */
+#define BOARD_MCI0_PIN_CD_PIO   {PIO_PD15, PIOD, ID_PIOD, PIO_INPUT, PIO_PULLUP}
 /** Nandflash controller peripheral pins definition. */
-#define PINS_NANDFLASH          BOARD_NF_IO_PINS, BOARD_NF_CE_PIN, BOARD_NF_RB_PIN
+#define PINS_NANDFLASH          BOARD_NF_IO_PINS, BOARD_NF_CE_PIN, BOARD_NF_RB_PIN, BOARD_MCI0_PIN_CD_PIO
 #endif
 
 /** Address for transferring command bytes to the nandflash, CLE A22*/

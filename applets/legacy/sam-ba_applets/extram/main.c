@@ -212,7 +212,6 @@ int main(int argc, char **argv)
 
         TRACE_INFO("-- EXTRAM Applet %s --\n\r", SAM_BA_APPLETS_VERSION);
         TRACE_INFO("-- %s\n\r", BOARD_NAME);
-        TRACE_INFO("-- Compiled: %s %s --\n\r", __DATE__, __TIME__);
         TRACE_INFO("INIT command:\n\r");
 
         TRACE_INFO("\tCommunication link type : %d\n\r", pMailbox->argument.inputInit.comType);

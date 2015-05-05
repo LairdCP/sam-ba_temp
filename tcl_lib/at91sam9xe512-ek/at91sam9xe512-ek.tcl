@@ -1,7 +1,7 @@
 #  ----------------------------------------------------------------------------
 #          ATMEL Microcontroller Software Support  -  ROUSSET  -
 #  ----------------------------------------------------------------------------
-#  Copyright (c) 2011, Atmel Corporation
+#  Copyright (c) 2014, Atmel Corporation
 #
 #  All rights reserved. 
 #
@@ -30,17 +30,43 @@
 #  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #  ----------------------------------------------------------------------------
 
-if { [ catch { source "$libPath(extLib)/common/generic.tcl"} errMsg] } {
-    if {$commandLineMode == 0} {
-        tk_messageBox -title "File not found" -message "Common library file not found:\n$errMsg" -type ok -icon error
+set cidr_addr 0xFFFFF240
+# *****************************************************************************
+#                       CHIP NAME       CHIPID_CIDR
+# *****************************************************************************
+array set devicesList { at91sam9xe512_0 0x329a73a0
+                        at91sam9xe512_1 0x329a53a0
+                        at91sam9xe512_1 0x329aa3a0
+                        at91sam9xe512_1 0x329953a0
+                      }
+global target
+global commandLineMode
+set isValidChipOfBoard 0
+set version_mask 0xFFFFFFE0
+set chipname_list [array names ::devicesList]
+set chip_id [format "0x%08x" [TCL_Read_Int $target(handle) $cidr_addr err_code]]
+puts "Read device Chip ID at $cidr_addr --- get $chip_id"
+set proc_id_masked [format "0x%08x" [expr $chip_id & $version_mask]]
+foreach {key value} [array get devicesList] {
+   set masked_chipId_Cidr [format "0x%08x" [expr $value & $version_mask]]
+   if {[regexp $proc_id_masked $masked_chipId_Cidr] != 0} {
+       puts "-I- Found chip : $key (Chip ID : $chip_id)"
+       set isValidChipOfBoard 1
+       break
+   }
+} 
+
+if { $isValidChipOfBoard == 0 } {
+    if { $commandLineMode == 1 } {
+        puts "-E- Invalid device or board!"
     } else {
-        puts "-E- Common library file not found:\n$errMsg"
-        puts "-E- Connection abort"
+        tk_messageBox -title "Invalid chip ID" -message "Can't connect $target(board)\n" -icon error -type ok
     }
+    TCL_Close $target(handle)
     exit
 }
 
-set AT91C_IRAM_SIZE	 0x00008000
+set AT91C_IRAM_SIZE 0x00008000
 
 ################################################################################
 ## BOARD SPECIFIC PARAMETERS

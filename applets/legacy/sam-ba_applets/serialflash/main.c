@@ -334,7 +334,6 @@ int main(int argc, char **argv)
 
         TRACE_INFO("-- SerialFlash AT25/AT26 applet %s --\n\r", SAM_BA_APPLETS_VERSION);
         TRACE_INFO("-- %s\n\r", BOARD_NAME);
-        TRACE_INFO("-- Compiled: %s %s --\n\r", __DATE__, __TIME__);
 
         if (at26Select[at26Index].pSpiHw == 0) {
             pMailbox->status = APPLET_NO_DEV;

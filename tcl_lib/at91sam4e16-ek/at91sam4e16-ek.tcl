@@ -1,7 +1,7 @@
 #  ----------------------------------------------------------------------------
 #          SAM Software Package License
 #  ----------------------------------------------------------------------------
-#  Copyright (c) 2012, Atmel Corporation
+#  Copyright (c) 2014, Atmel Corporation
 #
 #  All rights reserved.
 #
@@ -26,13 +26,53 @@
 #  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #  ----------------------------------------------------------------------------
 
-if { [ catch { source "$libPath(extLib)/common/generic.tcl"} errMsg] } {
-    if {$commandLineMode == 0} {
-        tk_messageBox -title "File not found" -message "Common library file not found:\n$errMsg" -type ok -icon error
-    } else {
-        puts "-E- Common library file not found:\n$errMsg"
-        puts "-E- Connection abort"
+set cidr_addr 0x400E0740
+set cidr_exid 0x400E0744
+
+# *****************************************************************************
+#                       CHIP NAME   CHIPID_CIDR
+# *****************************************************************************
+array set devicesList { at91sam4e16 0xa3cc0ce0
+                      }
+
+array set exidList { at91sam4e16_0 0x00120200
+                     at91sam4e16_1 0x00120201
+                   }
+global target
+global commandLineMode
+set isSam4e 0
+set isValidChipOfBoard 0
+
+set version_mask 0xFFFFFFE0
+set chipname_list [array names ::devicesList]
+set chip_id [format "0x%08x" [TCL_Read_Int $target(handle) $cidr_addr err_code]]
+puts "Read device Chip ID at $cidr_addr --- get $chip_id"
+set proc_id_masked [format "0x%08x" [expr $chip_id & $version_mask]]
+foreach {key value} [array get devicesList] {
+   set masked_chipId_Cidr [format "0x%08x" [expr $value & $version_mask]]
+   if {[regexp $proc_id_masked $masked_chipId_Cidr] != 0} {
+       puts "-I- Found chip : $key (Chip ID : $chip_id)"
+       set isSam4e 1
+       break
+   }
+}
+if { $isSam4e == 1 } {
+    set exid [format "0x%08x" [TCL_Read_Int $target(handle) $cidr_exid err_code]]
+    foreach {key value} [array get exidList] {
+        if {[regexp $exid $value] != 0} {
+            set isValidChipOfBoard 1
+            break
+        }
     }
+}
+
+if { $isValidChipOfBoard == 0 } {
+    if { $commandLineMode == 1 } {
+        puts "-E- Invalid device or board!"
+    } else {
+        tk_messageBox -title "Invalid chip ID" -message "Can't connect $target(board)\n" -icon error -type ok
+    }
+    TCL_Close $target(handle)
     exit
 }
 

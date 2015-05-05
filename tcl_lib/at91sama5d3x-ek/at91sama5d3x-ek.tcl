@@ -1,7 +1,7 @@
 #  ----------------------------------------------------------------------------
 #          ATMEL Microcontroller Software Support
 #  ----------------------------------------------------------------------------
-#  Copyright (c) 2012, Atmel Corporation
+#  Copyright (c) 2014, Atmel Corporation
 #
 #  All rights reserved.
 #
@@ -25,14 +25,38 @@
 #  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 #  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #  ----------------------------------------------------------------------------
+set cidr_addr 0xFFFFEE40
 
-if { [ catch { source "$libPath(extLib)/common/generic.tcl"} errMsg] } {
-    if {$commandLineMode == 0} {
-        tk_messageBox -title "File not found" -message "Common library file not found:\n$errMsg" -type ok -icon error
+# *****************************************************************************
+#                      CHIP NAME    CHIPID_CIDR
+# *****************************************************************************
+array set devicesList {  
+                        at91sama5d3x 0x8a5c07c1
+                      }
+global target
+global commandLineMode
+set isValidChipOfBoard 0
+set version_mask 0xFFFFFFE0
+set chipname_list [array names ::devicesList]
+set chip_id [format "0x%08x" [TCL_Read_Int $target(handle) $cidr_addr err_code]]
+puts "Read device Chip ID at $cidr_addr --- get $chip_id"
+set proc_id_masked [format "0x%08x" [expr $chip_id & $version_mask]]
+foreach {key value} [array get devicesList] {
+   set masked_chipId_Cidr [format "0x%08x" [expr $value & $version_mask]]
+   if {[regexp $proc_id_masked $masked_chipId_Cidr] != 0} {
+       puts "-I- Found chip : $key (Chip ID : $chip_id)"
+       set isValidChipOfBoard 1
+       break
+   }
+} 
+
+if { $isValidChipOfBoard == 0 } {
+    if { $commandLineMode == 1 } {
+        puts "-E- Invalid device or board!"
     } else {
-        puts "-E- Common library file not found:\n$errMsg"
-        puts "-E- Connection abort"
+        tk_messageBox -title "Invalid chip ID" -message "Can't connect $target(board)\n" -icon error -type ok
     }
+    TCL_Close $target(handle)
     exit
 }
 
@@ -40,13 +64,19 @@ if { [ catch { source "$libPath(extLib)/common/generic.tcl"} errMsg] } {
 ## BOARD SPECIFIC PARAMETERS
 ################################################################################
 namespace eval BOARD {
-    variable sramSize         $AT91C_IRAM_SIZE
+    variable sramSize         0x20000
     variable maxBootSize      65328
 # Default setting for DDRAM
     # Vdd Memory 1.8V = 0 / Vdd Memory 3.3V = 1
     variable extRamVdd 0
     # External SDRAM = 0 / External DDR2 = 1 / LPDDR = 2
+
     variable extRamType 1
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#For LPDDR change me here
+#variable extRamType 2
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
     # Set bus width (16 or 32)
     variable extRamDataBusWidth 16
     # DDRAM Model (0: MT47H64M16HR, 1: MT47H128M16RT
@@ -56,10 +86,6 @@ namespace eval BOARD {
     # that are hardwired or left not connected for hardware compatibility with other AT24CXX devices.
     # Modify 'eepromDeviceAddress' to meet the hardware connection.
     variable eepromDeviceAddress 0x51
-}
-
-if {[regexp "cmp" $target(board)]} {
-    set BOARD::extRamType 2
 }
 
 set target(board) at91sama5d3x-ek
@@ -78,6 +104,7 @@ if { [ catch { source "$libPath(extLib)/common/functions.tcl"} errMsg] } {
 array set memoryAlgo {
     "SRAM"                    "::sama5d3x_sram"
     "DDRAM"                   "::sama5d3x_ddram"
+    "SDMMC"                   "::sama5d3x_sdmmc"
     "DataFlash AT45DB/DCB"    "::sama5d3x_dataflash"
     "SerialFlash AT25/AT26"   "::sama5d3x_serialflash"
     "EEPROM AT24"             "::sama5d3x_eeprom"
@@ -147,9 +174,9 @@ set RAM::appletFileName      "$libPath(extLib)/$target(board)/applet-extram-sama
 puts "-I- External RAM Settings :  extRamVdd=$BOARD::extRamVdd, extRamType=$BOARD::extRamType, extRamDataBusWidth=$BOARD::extRamDataBusWidth, extDDRamModel=$BOARD::extDDRamModel"
 
 array set sama5d3x_ddram_scripts {
-    "Enable DDRAM"   "GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extRamVdd $BOARD::extRamType $BOARD::extRamDataBusWidth $BOARD::extDDRamModel]"
+    "Enable DDR2"   "GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extRamVdd 1 $BOARD::extRamDataBusWidth $BOARD::extDDRamModel]"
+    "Enable LPDDR2" "GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extRamVdd 2 $BOARD::extRamDataBusWidth $BOARD::extDDRamModel]"
 }
-
 
 # Initialize SDRAM/DDRAM
 if {[catch {GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extRamVdd $BOARD::extRamType $BOARD::extRamDataBusWidth $BOARD::extDDRamModel]} dummy_err] } {
@@ -285,6 +312,7 @@ array set sama5d3x_nandflash {
 array set sama5d3x_nandflash_scripts {
     "Enable NandFlash"             "NANDFLASH::Init"
     "Pmecc configuration"          "NANDFLASH::NandHeaderValue"
+    "Enable OS PMECC parameters"   "NANDFLASH::NandHeaderValue HEADER 0xc0902405"
     "Send Boot File"               "NANDFLASH::SendBootFilePmecc"
     "Erase All"                    "NANDFLASH::EraseAll"
     "Scrub NandFlash"              "NANDFLASH::EraseAll $NANDFLASH::scrubErase"
@@ -310,14 +338,11 @@ array set sama5d3x_sdmmc {
 }
 
 array set sama5d3x_sdmmc_scripts {
-    "Enable SDMMC(MCI0)"           "SDMMC::Init 0"
-    "Enable SDMMC(MCI1)"           "SDMMC::Init 1"
-    "Erase All"                    "SDMMC::EraseAll"
+    "Lanuch SDMMC MassStorage "           "SDMMC::Init"
 }
 
 set SDMMC::appletAddr          0x20000000
-set SDMMC::appletMailboxAddr   0x20000004
-set SDMMC::appletFileName      "$libPath(extLib)/$target(board)/applet-sdmmc-sama5d3x.bin"
+set SDMMC::appletFileName      "$libPath(extLib)/$target(board)/sdmmc-massstorage.bin"
 
 ################################################################################
 ## NORFLASH

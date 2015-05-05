@@ -1,7 +1,7 @@
 #  ----------------------------------------------------------------------------
 #          SAM Software Package License
 #  ----------------------------------------------------------------------------
-#  Copyright (c) 2013, Atmel Corporation
+#  Copyright (c) 2014, Atmel Corporation
 #
 #  All rights reserved.
 #
@@ -25,13 +25,49 @@
 #  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 #  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #  ----------------------------------------------------------------------------
-if { [ catch { source "$libPath(extLib)/common/generic.tcl"} errMsg] } {
-    if {$commandLineMode == 0} {
-        tk_messageBox -title "File not found" -message "Common library file not found:\n$errMsg" -type ok -icon error
+
+set cidr_addr 0x41002018
+# *****************************************************************************
+#                       CHIP NAME   CHIPID_CIDR
+# *****************************************************************************
+array set devicesList { samd20e15 0x1000000D
+                        samd20e16 0x1000000C
+                        samd20e17 0x1000000B
+                        samd20e18 0x1000000A
+                        samd20g15 0x10000008
+                        samd20g16 0x10000007
+                        samd20g17 0x10000006
+                        samd20g18 0x10000005
+                        samd20j15 0x10000003
+                        samd20j16 0x10000002
+                        samd20j17 0x10000001
+                        samd20j18 0x10000000
+                      }
+global target
+global commandLineMode
+set isValidChipOfBoard 0
+set version_mask 0xFFBF00FF
+                 
+set chipname_list [array names ::devicesList]
+set chip_id [format "0x%08x" [TCL_Read_Int $target(handle) $cidr_addr err_code]]
+puts "Read device Chip ID at $cidr_addr --- get $chip_id"
+set proc_id_masked [format "0x%08x" [expr $chip_id & $version_mask]]
+foreach {key value} [array get devicesList] {
+   set masked_chipId_Cidr [format "0x%08x" [expr $value & $version_mask]]
+   if {[regexp $proc_id_masked $masked_chipId_Cidr] != 0} {
+       puts "-I- Found chip : $key (Chip ID : $chip_id)"
+       set isValidChipOfBoard 1
+       break
+   }
+} 
+
+if { $isValidChipOfBoard == 0 } {
+    if { $commandLineMode == 1 } {
+        puts "-E- Invalid device or board!"
     } else {
-        puts "-E- Common library file not found:\n$errMsg"
-        puts "-E- Connection abort"
+        tk_messageBox -title "Invalid chip ID" -message "Can't connect $target(board)\n" -icon error -type ok
     }
+    TCL_Close $target(handle)
     exit
 }
 
@@ -50,32 +86,32 @@ namespace eval BOARD {
 
 # Standard applet commands + some SAMD20 specific commands
 array set appletCmdSamd20 {
-	init            0x00
-	fullErase       0x01
-	write           0x02
-	read            0x03
-	lock            0x04
-	unlock          0x05
-	gpnvm           0x06
-	security        0x07
-	erasebuffer     0x08
-	binarypage      0x09
-	otpRead         0x0a
-	otpWrite        0x0b
-	listbadblocks   0x10
-	tagBlock        0x11
-	readUniqueID    0x12
-	eraseBlocks     0x13
-	batchErase      0x14
-	pmeccParam      0x15
-	pmeccBoot       0x16
-	switchEccMode   0x17
-	trimffsMode     0x18
-	eraseRow        0x40
-	readDeviceID    0x41
-	readLocks       0x42
-	readFuses       0x43
-	eraseApp        0x44
+    init            0x00
+    fullErase       0x01
+    write           0x02
+    read            0x03
+    lock            0x04
+    unlock          0x05
+    gpnvm           0x06
+    security        0x07
+    erasebuffer     0x08
+    binarypage      0x09
+    otpRead         0x0a
+    otpWrite        0x0b
+    listbadblocks   0x10
+    tagBlock        0x11
+    readUniqueID    0x12
+    eraseBlocks     0x13
+    batchErase      0x14
+    pmeccParam      0x15
+    pmeccBoot       0x16
+    switchEccMode   0x17
+    trimffsMode     0x18
+    eraseRow        0x40
+    readDeviceID    0x41
+    readLocks       0x42
+    readFuses       0x43
+    eraseApp        0x44
 }
 
 
@@ -150,13 +186,13 @@ array set atsamd20_flash_scripts {
         "Set Lock Bit 14"                       "FLASH::SetLock 14"
         "Set Lock Bit 15"                       "FLASH::SetLock 15"
         "Invalidate application"                "FLASH::EraseRow 32"
-        "Erase application area [0x2000 - ...]" "FLASH::EraseApp"
+        "Erase application area [0x800 - ...]"  "FLASH::EraseApp"
         "Read Fuses"                            "FLASH::ReadFuses"
         "Set Security Bit"                      "FLASH::SetSecurity"
 }
 
-set FLASH::appletAddr             0x20003000
-set FLASH::appletMailboxAddr      0x20003040
+set FLASH::appletAddr             0x20000100
+set FLASH::appletMailboxAddr      0x20000140
 set FLASH::appletFileName         "$libPath(extLib)/$target(board)/applet-flash-samd20j18.bin"
 
 # Initialize FLASH
@@ -176,12 +212,12 @@ if {[catch {FLASH::Init} dummy_err]} {
         set appletAddrArgvnp      [expr $FLASH::appletMailboxAddr + 0x1c]
         set appletAddrArgvasp     [expr $FLASH::appletMailboxAddr + 0x20]
 
-        set flashPageSize 		[TCL_Read_Int $target(handle) $appletAddrArgvps]
-        set flashNbPage 		[TCL_Read_Int $target(handle) $appletAddrArgvnp]
-        set flashAppStartPage 	[TCL_Read_Int $target(handle) $appletAddrArgvasp]
+        set flashPageSize         [TCL_Read_Int $target(handle) $appletAddrArgvps]
+        set flashNbPage         [TCL_Read_Int $target(handle) $appletAddrArgvnp]
+        set flashAppStartPage     [TCL_Read_Int $target(handle) $appletAddrArgvasp]
 
-        puts "flashPageSize 	[format "0x%08x" $flashPageSize]"
-        puts "flashNbPage 		[format "%d" $flashNbPage]"
+        puts "flashPageSize     [format "0x%08x" $flashPageSize]"
+        puts "flashNbPage         [format "%d" $flashNbPage]"
         puts "flashAppStartPage [format "%d" $flashAppStartPage]"
         puts "-I- FLASH initialized"
 }
@@ -477,7 +513,7 @@ proc FLASH::SendFileNoLock { name addr } {
     if { $first_page < $::flashAppStartPage } {
         if {$commandLineMode == 0} {
             set answer [tk_messageBox -title "Attempt to write monitor area"\
-            -message " Writing to the monitor area (0x0 .. 0x2000) is forbidden, write operation aborted "\
+            -message " Writing to the monitor area (0x0 .. 0x800) is forbidden, write operation aborted "\
             -icon error \
             -type ok]
         }
@@ -501,9 +537,9 @@ proc FLASH::EraseRow { flashrow } {
     set      dummy_err 0
 
     # Mailbox is 32 word long (add variable here if you need read/write more data)
-    set appletAddrCmd       		[expr $appletMailboxAddr]
-    set appletAddrStatus    		[expr $appletMailboxAddr + 0x04]
-    set appletAddrArg_param     	[expr $appletMailboxAddr + 0x08]
+    set appletAddrCmd               [expr $appletMailboxAddr]
+    set appletAddrStatus            [expr $appletMailboxAddr + 0x04]
+    set appletAddrArg_param         [expr $appletMailboxAddr + 0x08]
 
     if {$flashrow > [expr 1024]} {
         error "Wrong flash region number"

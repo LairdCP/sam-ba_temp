@@ -83,7 +83,7 @@
  *        Definitions
  *----------------------------------------------------------------------------*/
 /** stack size for flash applet */
-#define STACK_SIZE (0x100)
+#define STACK_SIZE (0x500)
 //Typical monitor size when compiled (rounded to 8kb upper bound)
 #define MONITOR_SIZE (0x2000)
 
@@ -419,6 +419,8 @@ int applet_main(int argc, char **argv)
 	struct _Mailbox *pMailbox = (struct _Mailbox *) argv;
 	struct nvm_config config;
 	enum status_code status;
+	uint32_t *monitor,i;
+	monitor = (uint32_t *)0x20000000;
 
 	uint32_t bytesToWrite, bufferAddr, memoryOffset;
 
@@ -452,17 +454,17 @@ int applet_main(int argc, char **argv)
 		/* integer number of pages can be contained in each buffer.
 		 * operation is : buffersize -= bufferSize % flashPageSize */
 		/* modulo can be done with a mask since flashpagesize is a power of two integer */
-		bufferSize = bufferSize > (128 * flashPageSize) ? (128 * flashPageSize): bufferSize;
+		bufferSize = bufferSize > (4 * flashPageSize) ? (4 * flashPageSize): bufferSize;
 		//Timeout issue
 		//bufferSize = (bufferSize/flashPageSize)*flashPageSize;
-		//bufferSize = 128 * flashPageSize;
+		//bufferSize = 8 * flashPageSize;
 		pMailbox->argument.outputInit.bufferSize = bufferSize;
 		pMailbox->argument.outputInit.memorySize = flashSize;
 		pMailbox->argument.outputInit.memoryInfo.lockRegionSize = flashLockRegionSize;
 		pMailbox->argument.outputInit.memoryInfo.numbersLockBits = flashNbLockBits;
 		pMailbox->argument.outputInit.pageSize = flashPageSize;
 		pMailbox->argument.outputInit.nbPages = flashSize/flashPageSize;
-		pMailbox->argument.outputInit.appStartPage = MONITOR_SIZE/flashPageSize;
+		pMailbox->argument.outputInit.appStartPage = MONITOR_SIZE /flashPageSize;
 
 		TRACE_INFO("bufferSize : %d  bufferAddr: 0x%x \n\r",
 				(int)pMailbox->argument.outputInit.bufferSize,
@@ -484,7 +486,7 @@ int applet_main(int argc, char **argv)
 		memoryOffset  = pMailbox->argument.inputWrite.memoryOffset;
 		bufferAddr    = pMailbox->argument.inputWrite.bufferAddr;
 		bytesToWrite  = pMailbox->argument.inputWrite.bufferSize;
-
+ 	
 		TRACE_INFO("WRITE at offset: 0x%x buffer at : 0x%x of: 0x%x Bytes (flash base addr : 0x%x)\n\r",
 				(uint32_t)memoryOffset, (uint32_t)bufferAddr,
 				(uint32_t)bytesToWrite, (uint32_t)flashBaseAddr);
@@ -503,18 +505,20 @@ int applet_main(int argc, char **argv)
 			pMailbox->status = APPLET_WRITE_FAIL;
 			goto exit;
 		}
-
+		
 		TRACE_INFO("Write <%x> bytes from <#%x> \n\r", (uint32_t )writeSize, (uint32_t )memoryOffset );
+		
 		if (applet_nvm_memcpy(flashBaseAddr + memoryOffset, (uint8_t *const)bufferAddr, bytesToWrite, (((flashBaseAddr + memoryOffset) & 0xFF) == 0)) != STATUS_OK) {
 			TRACE_INFO("Error in write operation\n\r");
 			pMailbox->argument.outputWrite.bytesWritten = bytesToWrite;
 			pMailbox->status = APPLET_WRITE_FAIL;
 			goto exit;
 		}
-
+		
 		TRACE_INFO("Write achieved\n\r");
 		pMailbox->argument.outputWrite.bytesWritten = bytesToWrite;
 		pMailbox->status = APPLET_SUCCESS;
+	
 	}
 
 	/*----------------------------------------------------------
@@ -681,6 +685,8 @@ exit:
 				(uint32_t)pMailbox->status);
 	/* Notify the host application of the end of the command processing */
 	pMailbox->command = ~(pMailbox->command);
+
+	SERCOM3->USART.DATA.reg = 0x6;
 	return 0;
 }
 
