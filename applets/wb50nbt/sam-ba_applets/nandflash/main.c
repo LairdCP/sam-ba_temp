@@ -90,6 +90,16 @@
 #define ECC_DISABLE_PMECC    3
 #define ECC_ENABLE_INTEECC   4
 
+#define LED0 (0x00001000)
+#define LED1 (0x01000000)
+#define LED2 (0x04000000)
+#define LED3 (0x00400000)
+#define LED4 (0x10000000)
+
+#define LED_OFF(a) PIOA->PIO_SODR = (a)
+#define LED_ON(a) PIOA->PIO_CODR = (a)
+
+
 /*----------------------------------------------------------------------------
  *        Local structures
  *----------------------------------------------------------------------------*/
@@ -510,9 +520,16 @@ int main(int argc, char **argv)
 #if (DYN_TRACES == 1)
         dwTraceLevel = pMailbox->argument.inputInit.traceLevel;
 #endif
+
         TRACE_INFO("-- NandFlash SAM-BA applet %s --\n\r", SAM_BA_APPLETS_VERSION);
         TRACE_INFO("-- %s\n\r", BOARD_NAME);
         TRACE_INFO("INIT command\n\r");
+
+        #define PE14   (1 << 14)
+        #define PE14_PINS     {PE14, PIOE, ID_PIOE, PIO_OUTPUT_1, PIO_DEFAULT}
+
+        static Pin pins[] = {PE14_PINS};
+        PIO_Configure(pins, PIO_LISTSIZE(pins));
 
         /* Configure SMC for Nandflash accesses (done each time applet is launched because of old ROM codes) */
         TRACE_INFO("BOARD_ConfigureNandFlash\n\r");
@@ -526,6 +543,7 @@ int main(int argc, char **argv)
             goto exit;
         }
         memset(&skipBlockNf, 0, sizeof(skipBlockNf));
+		memset(&OnfiPageParameter, 0, sizeof(OnfiPageParameter));
         if (NandGetOnfiPageParam (&OnfiPageParameter)){
             TRACE_INFO("\tOpen NAND Flash Interface (ONFI)-compliant\n\r");
             modelListfromOnfi.deviceId = OnfiPageParameter.manufacturerId;

@@ -184,28 +184,9 @@ int main(int argc, char **argv)
     if (pMailbox->command == APPLET_CMD_INIT) 
     {
         /* Save communication link type */
-        WDT->WDT_MR = WDT_MR_WDDIS;
-#if (DYN_TRACES == 1)
-        //dwTraceLevel = 0;
-#endif
+        WDT->WDT_MR = WDT_MR_WDDIS; /* Disable the WDT */
 
-#if (TRACE_LEVEL==0) && (DYN_TRACES==1) 
-        if (comType == DBGU_COM_TYPE)
-        {
-            /* Function TRACE_CONFIGURE_ISP wiil be bypass due to the 0 TRACE_LEVEL. We shall reconfigure the baut rate. */
-             DBGU->DBGU_MR = DBGU_MR_CHMODE_NORM | DBGU_MR_PAR_NONE;
-            /* Reset and disable receiver & transmitter */
-            DBGU->DBGU_CR = DBGU_CR_RSTRX | DBGU_CR_RSTTX;
-            DBGU->DBGU_IDR = 0xFFFFFFFF;
-            DBGU->DBGU_CR = DBGU_CR_RSTRX | DBGU_CR_RSTTX | DBGU_CR_RXDIS | DBGU_CR_TXDIS;
-            /* Configure baudrate */
-            DBGU->DBGU_BRGR = (BOARD_MCK / 115200) / 16;
-            /* Enable receiver and transmitter */
-            DBGU->DBGU_CR = DBGU_CR_RXEN | DBGU_CR_TXEN;
-        }
-
-#endif
-		/* Setup gpio pins */
+		/* Setup gpio pins to enable our debugging LEDs */
 		PIOA->PIO_IDR = 0x15401000;  // Disable interrupts
 		PIOA->PIO_PUER = 0x15401000; // Set pull-ups
 		PIOA->PIO_OER = 0x15401000;  // Make outputs
@@ -219,6 +200,27 @@ int main(int argc, char **argv)
 		LED_OFF(LED2);
 		LED_OFF(LED3);
 		LED_OFF(LED4);
+
+#if (DYN_TRACES == 1)
+        //dwTraceLevel = 0;
+#endif
+
+#if (TRACE_LEVEL==0) && (DYN_TRACES==1)
+		comType = DBGU_COM_TYPE;
+        if (comType == DBGU_COM_TYPE)
+        {
+            /* Function TRACE_CONFIGURE_ISP wiil be bypass due to the 0 TRACE_LEVEL. We shall reconfigure the baut rate. */
+            DBGU->DBGU_MR = DBGU_MR_CHMODE_NORM | DBGU_MR_PAR_NONE;
+            /* Reset and disable receiver & transmitter */
+            DBGU->DBGU_CR = DBGU_CR_RSTRX | DBGU_CR_RSTTX;
+            DBGU->DBGU_IDR = 0xFFFFFFFF;
+            DBGU->DBGU_CR = DBGU_CR_RSTRX | DBGU_CR_RSTTX | DBGU_CR_RXDIS | DBGU_CR_TXDIS;
+            /* Configure baudrate */
+            DBGU->DBGU_BRGR = (BOARD_MCK / 115200) / 16;
+            /* Enable receiver and transmitter */
+            DBGU->DBGU_CR = DBGU_CR_RXEN | DBGU_CR_TXEN;
+        }
+#endif
 
         //TRACE_INFO("-- EXTRAM Applet %s --\n\r", SAM_BA_APPLETS_VERSION);
         //TRACE_INFO("-- %s\n\r", BOARD_NAME);
