@@ -25,14 +25,38 @@
 #  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 #  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #  ----------------------------------------------------------------------------
+set cidr_addr 0xFFFFEE40
 
-if { [ catch { source "$libPath(extLib)/common/generic.tcl"} errMsg] } {
-    if {$commandLineMode == 0} {
-        tk_messageBox -title "File not found" -message "Common library file not found:\n$errMsg" -type ok -icon error
+# *****************************************************************************
+#                      CHIP NAME    CHIPID_CIDR
+# *****************************************************************************
+array set devicesList {
+                        at91sama5d3x 0x8a5c07c1
+                      }
+global target
+global commandLineMode
+set isValidChipOfBoard 0
+set version_mask 0xFFFFFFE0
+set chipname_list [array names ::devicesList]
+set chip_id [format "0x%08x" [TCL_Read_Int $target(handle) $cidr_addr err_code]]
+puts "Read device Chip ID at $cidr_addr --- get $chip_id"
+set proc_id_masked [format "0x%08x" [expr $chip_id & $version_mask]]
+foreach {key value} [array get devicesList] {
+   set masked_chipId_Cidr [format "0x%08x" [expr $value & $version_mask]]
+   if {[regexp $proc_id_masked $masked_chipId_Cidr] != 0} {
+       puts "-I- Found chip : $key (Chip ID : $chip_id)"
+       set isValidChipOfBoard 1
+       break
+   }
+}
+
+if { $isValidChipOfBoard == 0 } {
+    if { $commandLineMode == 1 } {
+        puts "-E- Invalid device or board!"
     } else {
-        puts "-E- Common library file not found:\n$errMsg"
-        puts "-E- Connection abort"
+        tk_messageBox -title "Invalid chip ID" -message "Can't connect $target(board)\n" -icon error -type ok
     }
+    TCL_Close $target(handle)
     exit
 }
 
@@ -40,8 +64,8 @@ if { [ catch { source "$libPath(extLib)/common/generic.tcl"} errMsg] } {
 ## BOARD SPECIFIC PARAMETERS
 ################################################################################
 namespace eval BOARD {
-    variable sramSize         $AT91C_IRAM_SIZE
-    variable maxBootSize      [expr 60 * 1024]
+    variable sramSize         0x20000
+    variable maxBootSize      65328
 # Default setting for DDRAM
     # Vdd Memory 1.8V = 0 / Vdd Memory 3.3V = 1
     variable extRamVdd 0
@@ -56,10 +80,6 @@ namespace eval BOARD {
     # that are hardwired or left not connected for hardware compatibility with other AT24CXX devices.
     # Modify 'eepromDeviceAddress' to meet the hardware connection.
     variable eepromDeviceAddress 0x51
-}
-
-if {[regexp "cmp" $target(board)]} {
-    set BOARD::extRamType 2
 }
 
 set target(board) at91sama5d3x-wb50nbt
@@ -78,6 +98,7 @@ if { [ catch { source "$libPath(extLib)/common/functions.tcl"} errMsg] } {
 array set memoryAlgo {
     "SRAM"                    "::laird_wb50nbt_sram"
     "DDRAM"                   "::laird_wb50nbt_ddram"
+    "SDMMC"                   "::laird_wb50nbt_sdmmc"
     "DataFlash AT45DB/DCB"    "::laird_wb50nbt_dataflash"
     "SerialFlash AT25/AT26"   "::laird_wb50nbt_serialflash"
     "EEPROM AT24"             "::laird_wb50nbt_eeprom"
@@ -148,8 +169,9 @@ puts "-I- External RAM Settings :  extRamVdd=$BOARD::extRamVdd, extRamType=$BOAR
 
 array set laird_wb50nbt_ddram_scripts {
     "Enable DDRAM"   "GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extRamVdd $BOARD::extRamType $BOARD::extRamDataBusWidth $BOARD::extDDRamModel]"
+    "Enable DDR2"   "GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extRamVdd 1 $BOARD::extRamDataBusWidth $BOARD::extDDRamModel]"
+    "Enable LPDDR2" "GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extRamVdd 2 $BOARD::extRamDataBusWidth $BOARD::extDDRamModel]"
 }
-
 
 # Initialize SDRAM/DDRAM
 if {[catch {GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extRamVdd $BOARD::extRamType $BOARD::extRamDataBusWidth $BOARD::extDDRamModel]} dummy_err] } {
@@ -285,7 +307,7 @@ array set laird_wb50nbt_nandflash {
 array set laird_wb50nbt_nandflash_scripts {
     "Enable NandFlash"             "NANDFLASH::Init"
     "Pmecc configuration"          "NANDFLASH::NandHeaderValue"
-    "Enable OS PMECC parameters"   "NANDFLASH::NandHeaderValue HEADER 0xc0c00405"
+    "Enable OS PMECC parameters"   "NANDFLASH::NandHeaderValue HEADER 0xc0902405"
     "Send Boot File"               "NANDFLASH::SendBootFilePmecc"
     "Erase All"                    "NANDFLASH::EraseAll"
     "Scrub NandFlash"              "NANDFLASH::EraseAll $NANDFLASH::scrubErase"
@@ -311,14 +333,11 @@ array set laird_wb50nbt_sdmmc {
 }
 
 array set laird_wb50nbt_sdmmc_scripts {
-    "Enable SDMMC(MCI0)"           "SDMMC::Init 0"
-    "Enable SDMMC(MCI1)"           "SDMMC::Init 1"
-    "Erase All"                    "SDMMC::EraseAll"
+    "Lanuch SDMMC MassStorage "           "SDMMC::Init"
 }
 
 set SDMMC::appletAddr          0x20000000
-set SDMMC::appletMailboxAddr   0x20000004
-set SDMMC::appletFileName      "$libPath(extLib)/$target(board)/applet-sdmmc-sama5d3x.bin"
+set SDMMC::appletFileName      "$libPath(extLib)/$target(board)/sdmmc-massstorage.bin"
 
 ################################################################################
 ## NORFLASH
