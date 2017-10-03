@@ -1,0 +1,205 @@
+
+board_lowlevel.o:
+00000000 W LowLevelInit
+         U PMC_SelectExt12M_Osc
+         U PMC_SetMckDivider
+         U PMC_SetMckPllaDiv
+         U PMC_SetMckPrescaler
+         U PMC_SetPllA
+         U PMC_SwitchMck2Main
+         U PMC_SwitchMck2Pll
+00000000 T defaultFiqHandler
+00000000 T defaultIrqHandler
+00000000 T defaultSpuriousHandler
+
+board_memories.o:
+00000000 T BOARD_ConfigureDdram
+00000000 T BOARD_ConfigureLpDdram1
+00000000 T BOARD_ConfigureLpDdram2
+00000000 T BOARD_ConfigureNandFlash
+00000000 T BOARD_ConfigureNorFlash
+00000000 T BOARD_ConfigureSdram
+00000000 T BOARD_ConfigureVddMemSel
+00000000 T BOARD_RemapRam
+00000000 T BOARD_RemapRom
+         U PMC_EnablePeripheral
+
+dbgu_console.o:
+00000000 T DBGU_Configure
+00000000 T DBGU_ConsoleUseDBGU
+00000000 T DBGU_ConsoleUseUSART0
+00000000 T DBGU_DumpFrame
+00000000 T DBGU_DumpMemory
+00000000 T DBGU_GetChar
+00000000 T DBGU_GetHexa32
+00000000 T DBGU_GetInteger
+00000000 T DBGU_GetIntegerMinMax
+00000000 T DBGU_IsRxReady
+00000000 T DBGU_PutChar
+         U PIO_Configure
+         U PMC_EnablePeripheral
+         U __aeabi_uidiv
+00000000 B _bConsoleIsInitialized
+         U _impure_ptr
+00000010 d dbgpDbgu
+00000004 d dbgpUs0
+         U iprintf
+00000000 d pDbgPort
+00000018 r pinsDbgu
+00000000 r pinsUs0
+         U setvbuf
+
+dmad.o:
+         U DMAC_DisableAutoMode
+         U DMAC_DisableChannel
+         U DMAC_DisableIt
+         U DMAC_Enable
+         U DMAC_EnableChannel
+         U DMAC_EnableChannels
+         U DMAC_EnableIt
+         U DMAC_GetChannelStatus
+         U DMAC_GetStatus
+         U DMAC_RestoreChannel
+         U DMAC_SetCFG
+         U DMAC_SetControlA
+         U DMAC_SetControlB
+         U DMAC_SetDescriptorAddr
+         U DMAC_SetDestinationAddr
+         U DMAC_SetPipMode
+         U DMAC_SetSourceAddr
+         U DMAC_SuspendChannel
+00000000 T DMAD_AllocateChannel
+00000000 T DMAD_ClearAuto
+00000000 T DMAD_ConfigurePIP
+00000000 T DMAD_FreeChannel
+00000000 T DMAD_Handler
+00000000 T DMAD_Initialize
+00000000 T DMAD_IsTransferDone
+00000000 T DMAD_PrepareChannel
+00000000 T DMAD_PrepareMultiTransfer
+00000000 T DMAD_PrepareSingleTransfer
+00000000 T DMAD_SetCallback
+00000000 T DMAD_StartTransfer
+00000000 T DMAD_StartTransfers
+00000000 T DMAD_StopTransfer
+         U DMAIF_Get_ChannelNumber
+         U DMAIF_IsValidatedPeripherOnDma
+         U PMC_EnablePeripheral
+         U PMC_IsPeriphEnabled
+00000000 r __FUNCTION__.7101
+00000010 r __FUNCTION__.7118
+0000001d r __FUNCTION__.7143
+0000002e r __FUNCTION__.7155
+0000003f r __FUNCTION__.7164
+00000051 r __FUNCTION__.7174
+00000065 r __FUNCTION__.7182
+00000079 r __FUNCTION__.7190
+00000088 r __FUNCTION__.7197
+0000009b r __FUNCTION__.7207
+000000af r __FUNCTION__.7220
+000000c1 r __FUNCTION__.7242
+         U __assert_func
+
+dma_hardware_interface.o:
+00000000 T DMAIF_Get_ChannelNumber
+00000000 T DMAIF_IsValidatedPeripherOnDma
+00000000 r dmaHwIf
+
+hamming.o:
+00000000 t Compute256
+00000000 t CountBitsInByte
+00000000 T Hamming_Compute256x
+00000000 T Hamming_Verify256x
+         U dwTraceLevel
+         U iprintf
+
+math.o:
+00000000 T absv
+00000000 T min
+00000000 T power
+
+mcid_dma.o:
+00000038 r CSWTCH.33
+         U DMAC_EnableChannel
+         U DMAC_EnableIt
+         U DMAD_AllocateChannel
+         U DMAD_FreeChannel
+         U DMAD_PrepareChannel
+         U DMAD_PrepareSingleTransfer
+         U DMAD_SetCallback
+         U DMAIF_Get_ChannelNumber
+         U HSMCI_Configure
+         U HSMCI_ConfigureCompletionTO
+         U HSMCI_ConfigureDataTO
+         U HSMCI_ConfigureMode
+         U HSMCI_ConfigureTransfer
+         U HSMCI_Disable
+         U HSMCI_DisableIt
+         U HSMCI_DivCtrl
+         U HSMCI_Enable
+         U HSMCI_EnableDma
+         U HSMCI_EnableIt
+         U HSMCI_GetItMask
+         U HSMCI_GetMode
+         U HSMCI_GetResponse
+         U HSMCI_GetStatus
+         U HSMCI_HsEnable
+         U HSMCI_IsFByteEnabled
+         U HSMCI_IsHsEnabled
+         U HSMCI_Reset
+         U HSMCI_SetBusWidth
+00000000 T MCID_CancelCmd
+00000000 T MCID_Handler
+00000000 T MCID_IOCtrl
+00000000 T MCID_Init
+00000000 T MCID_IsCmdCompleted
+00000000 T MCID_Lock
+00000000 T MCID_Release
+00000000 T MCID_Reset
+00000000 T MCID_SendCmd
+00000000 t MCI_Reset.constprop.4
+         U PMC_DisablePeripheral
+         U PMC_EnablePeripheral
+         U PMC_IsPeriphEnabled
+         U SDD_Initialize
+00000000 W SDD_InitializeSdmmcMode
+00000000 t _FinishCmd
+00000000 t _MciDMA
+00000000 t _PeripheralEnable
+00000017 r __FUNCTION__.7389
+0000004b r __FUNCTION__.7397
+00000021 r __FUNCTION__.7413
+0000000d r __FUNCTION__.7420
+00000000 r __FUNCTION__.7424
+00000058 r __FUNCTION__.7435
+0000002b r __FUNCTION__.7463
+0000003f r __FUNCTION__.7498
+         U __aeabi_uidiv
+         U __assert_func
+00000000 b bWrBusy
+         U dwTraceLevel
+         U iprintf
+00000000 d sdHal
+
+syscalls.o:
+         U DBGU_PutChar
+00000000 T _close
+00000000 T _exit
+00000000 T _fstat
+00000000 T _getpid
+         U _heap
+00000000 T _isatty
+00000000 T _kill
+00000000 T _lseek
+00000000 T _read
+00000000 T _sbrk
+00000000 T _write
+00000000 b heap.7088
+         U iprintf
+00000000 T link
+
+trace.o:
+         U DBGU_Configure
+         U PIO_Configure
+00000000 T TRACE_CONFIGURE
+00000000 D dwTraceLevel

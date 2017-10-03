@@ -1,0 +1,1933 @@
+Archive member included because of file (symbol)
+
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-atexit.o)
+                              /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o (atexit)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-exit.o)
+                              /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o (exit)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fini.o)
+                              /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o (__libc_fini_array)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-impure.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-exit.o) (_global_impure_ptr)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-init.o)
+                              /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o (__libc_init_array)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-iprintf.o)
+                              obj/sram_main.o (iprintf)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memset.o)
+                              /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o (memset)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-iprintf.o) (_vfiprintf_r)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wsetup.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o) (__swsetup_r)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__atexit.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-atexit.o) (__register_exitproc)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__call_atexit.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-exit.o) (__call_exitprocs)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fflush.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o) (_fflush_r)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o) (__sinit)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o) (_fputwc_r)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wsetup.o) (_free_r)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o) (__sfvwrite_r)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fwalk.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o) (_fwalk)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o) (__locale_mb_cur_max)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-makebuf.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wsetup.o) (__smakebuf_r)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o) (_malloc_r)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memchr-stub.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o) (memchr)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memcpy-stub.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o) (memcpy)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memmove.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o) (memmove)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mlock.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o) (__malloc_lock)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reallocr.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o) (_realloc_r)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-sbrkr.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o) (_sbrk_r)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o) (__sread)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strcmp.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o) (strcmp)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strlen.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o) (strlen)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strncpy.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o) (strncpy)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wbuf.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o) (__swbuf_r)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wcrtomb.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o) (_wcrtomb_r)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wctomb_r.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wcrtomb.o) (__wctomb)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-writer.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o) (_write_r)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-closer.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o) (_close_r)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fclose.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o) (fclose)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fstatr.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-makebuf.o) (_fstat_r)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-isattyr.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-makebuf.o) (_isatty_r)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-lseekr.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o) (_lseek_r)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-readr.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o) (_read_r)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reent.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-sbrkr.o) (errno)
+../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(fuse.o)
+                              obj/sram_main.o (FUSE_Read)
+../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-sbrkr.o) (_sbrk)
+../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(trace.o)
+                              obj/sram_main.o (dwTraceLevel)
+../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+                              ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(trace.o) (DBGU_Configure)
+/usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+                              ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o) (__aeabi_uidiv)
+/usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_dvmd_tls.o)
+                              /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o) (__aeabi_idiv0)
+/usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_aeabi_uldivmod.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o) (__aeabi_uldivmod)
+/usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(bpabi.o)
+                              /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_aeabi_uldivmod.o) (__gnu_uldivmod_helper)
+/usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+                              /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(bpabi.o) (__divdi3)
+/usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+                              /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(bpabi.o) (__udivdi3)
+/usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+                              /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o) (__aeabi_unwind_cpp_pr0)
+/usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+                              /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o) (restore_core_regs)
+/usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+                              /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o) (__gnu_unwind_execute)
+/usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_clzsi2.o)
+                              /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o) (__clzsi2)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-abort.o)
+                              /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o) (abort)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-setvbuf.o)
+                              ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o) (setvbuf)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-abort.o) (raise)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signalr.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o) (_kill_r)
+/usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-malloc.o)
+                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-setvbuf.o) (malloc)
+../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+                              ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(trace.o) (PIO_Configure)
+../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+                              ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o) (PMC_EnablePeripheral)
+
+Allocating common symbols
+Common symbol       size              file
+
+errno               0x4               /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reent.o)
+
+Discarded input sections
+
+ .text          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crti.o
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crti.o
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crti.o
+ .data          0x0000000000000000        0x4 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtbegin.o
+ .text          0x0000000000000000      0x104 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+ .ARM.extab     0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+ .ARM.exidx     0x0000000000000000        0x8 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+ .ARM.attributes
+                0x0000000000000000       0x16 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+ .debug_line    0x0000000000000000       0xdb /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+ .debug_info    0x0000000000000000      0x110 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+ .debug_abbrev  0x0000000000000000       0x14 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+ .text          0x0000000000000000        0x0 obj/sram_applet_cstartup.o
+ .data          0x0000000000000000        0x0 obj/sram_applet_cstartup.o
+ .bss           0x0000000000000000        0x0 obj/sram_applet_cstartup.o
+ .text          0x0000000000000000        0x0 obj/sram_main.o
+ .data          0x0000000000000000        0x0 obj/sram_main.o
+ .text          0x0000000000000000       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-atexit.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-atexit.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-atexit.o)
+ .debug_info    0x0000000000000000      0x10f /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-atexit.o)
+ .debug_abbrev  0x0000000000000000       0xb3 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-atexit.o)
+ .debug_loc     0x0000000000000000       0x4c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-atexit.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-atexit.o)
+ .debug_line    0x0000000000000000      0x129 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-atexit.o)
+ .debug_str     0x0000000000000000      0x15c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-atexit.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-atexit.o)
+ .ARM.attributes
+                0x0000000000000000       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-atexit.o)
+ .debug_frame   0x0000000000000000       0x28 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-atexit.o)
+ .text          0x0000000000000000       0x34 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-exit.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-exit.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-exit.o)
+ .debug_info    0x0000000000000000      0x9bc /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-exit.o)
+ .debug_abbrev  0x0000000000000000      0x1c6 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-exit.o)
+ .debug_loc     0x0000000000000000       0x3e /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-exit.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-exit.o)
+ .debug_line    0x0000000000000000      0x253 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-exit.o)
+ .debug_str     0x0000000000000000      0x4f2 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-exit.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-exit.o)
+ .ARM.attributes
+                0x0000000000000000       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-exit.o)
+ .debug_frame   0x0000000000000000       0x28 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-exit.o)
+ .text          0x0000000000000000       0x50 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fini.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fini.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fini.o)
+ .debug_info    0x0000000000000000       0xf6 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fini.o)
+ .debug_abbrev  0x0000000000000000       0xb8 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fini.o)
+ .debug_loc     0x0000000000000000       0x33 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fini.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fini.o)
+ .debug_line    0x0000000000000000      0x142 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fini.o)
+ .debug_str     0x0000000000000000      0x156 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fini.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fini.o)
+ .ARM.attributes
+                0x0000000000000000       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fini.o)
+ .debug_frame   0x0000000000000000       0x2c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fini.o)
+ .text          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-impure.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-impure.o)
+ .text          0x0000000000000000       0x88 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-init.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-init.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-init.o)
+ .debug_info    0x0000000000000000      0x112 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-init.o)
+ .debug_abbrev  0x0000000000000000       0xb8 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-init.o)
+ .debug_loc     0x0000000000000000       0x74 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-init.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-init.o)
+ .debug_line    0x0000000000000000      0x158 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-init.o)
+ .debug_str     0x0000000000000000      0x180 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-init.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-init.o)
+ .ARM.attributes
+                0x0000000000000000       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-init.o)
+ .debug_frame   0x0000000000000000       0x2c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-init.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-iprintf.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-iprintf.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memset.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memset.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wsetup.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wsetup.o)
+ .text          0x0000000000000000       0xe0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__atexit.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__atexit.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__atexit.o)
+ .debug_info    0x0000000000000000      0xa15 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__atexit.o)
+ .debug_abbrev  0x0000000000000000      0x1fe /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__atexit.o)
+ .debug_loc     0x0000000000000000      0x120 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__atexit.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__atexit.o)
+ .debug_line    0x0000000000000000      0x271 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__atexit.o)
+ .debug_str     0x0000000000000000      0x53f /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__atexit.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__atexit.o)
+ .ARM.attributes
+                0x0000000000000000       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__atexit.o)
+ .debug_frame   0x0000000000000000       0x34 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__atexit.o)
+ .text          0x0000000000000000      0x154 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__call_atexit.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__call_atexit.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__call_atexit.o)
+ .debug_info    0x0000000000000000      0xa1f /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__call_atexit.o)
+ .debug_abbrev  0x0000000000000000      0x20e /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__call_atexit.o)
+ .debug_loc     0x0000000000000000      0x102 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__call_atexit.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__call_atexit.o)
+ .debug_ranges  0x0000000000000000       0x28 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__call_atexit.o)
+ .debug_line    0x0000000000000000      0x2af /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__call_atexit.o)
+ .debug_str     0x0000000000000000      0x508 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__call_atexit.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__call_atexit.o)
+ .ARM.attributes
+                0x0000000000000000       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__call_atexit.o)
+ .debug_frame   0x0000000000000000       0x3c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__call_atexit.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fflush.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fflush.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fwalk.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fwalk.o)
+ .bss           0x0000000000000000        0xc /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-makebuf.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-makebuf.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memchr-stub.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memchr-stub.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memcpy-stub.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memcpy-stub.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memmove.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memmove.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mlock.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mlock.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reallocr.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reallocr.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-sbrkr.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-sbrkr.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strcmp.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strcmp.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strlen.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strlen.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strncpy.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strncpy.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wbuf.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wbuf.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wcrtomb.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wcrtomb.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wctomb_r.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-writer.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-writer.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-closer.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-closer.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fclose.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fclose.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fstatr.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fstatr.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-isattyr.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-isattyr.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-lseekr.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-lseekr.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-readr.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-readr.o)
+ .text          0x0000000000000000      0x188 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reent.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reent.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reent.o)
+ .text          0x0000000000000000        0x0 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(fuse.o)
+ .data          0x0000000000000000        0x0 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(fuse.o)
+ .bss           0x0000000000000000        0x0 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(fuse.o)
+ .text          0x0000000000000000        0x0 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+ .data          0x0000000000000000        0x0 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+ .text.link     0x0000000000000000        0x8 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+ .text          0x0000000000000000        0x0 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(trace.o)
+ .bss           0x0000000000000000        0x0 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(trace.o)
+ .text.TRACE_CONFIGURE
+                0x0000000000000000       0x60 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(trace.o)
+ .rodata        0x0000000000000000        0xc ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(trace.o)
+ .text          0x0000000000000000        0x0 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+ .text.DBGU_ConsoleUseUSART0
+                0x0000000000000000       0x24 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+ .text.DBGU_ConsoleUseDBGU
+                0x0000000000000000       0x24 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+ .text.DBGU_GetChar
+                0x0000000000000000       0x5c ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+ .text.DBGU_IsRxReady
+                0x0000000000000000       0x1c ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+ .text.DBGU_DumpFrame
+                0x0000000000000000       0x50 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+ .text.DBGU_DumpMemory
+                0x0000000000000000      0x1a8 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+ .text.DBGU_GetInteger
+                0x0000000000000000       0xd0 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+ .text.DBGU_GetIntegerMinMax
+                0x0000000000000000       0x94 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+ .text.DBGU_GetHexa32
+                0x0000000000000000       0xc0 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+ .rodata.str1.1
+                0x0000000000000000       0xbe ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_dvmd_tls.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_dvmd_tls.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_aeabi_uldivmod.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_aeabi_uldivmod.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(bpabi.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(bpabi.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+ .ARM.extab     0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+ .ARM.extab     0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+ .debug_info    0x0000000000000000     0x1d38 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+ .debug_abbrev  0x0000000000000000      0x48f /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+ .debug_loc     0x0000000000000000     0x18e6 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+ .debug_ranges  0x0000000000000000      0x140 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+ .debug_line    0x0000000000000000      0x5ae /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+ .debug_str     0x0000000000000000      0xbd8 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+ .ARM.attributes
+                0x0000000000000000       0x32 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+ .debug_frame   0x0000000000000000      0x290 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+ .ARM.attributes
+                0x0000000000000000       0x1e /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+ .debug_line    0x0000000000000000       0xef /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+ .debug_info    0x0000000000000000      0x114 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+ .debug_abbrev  0x0000000000000000       0x14 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+ .debug_info    0x0000000000000000      0xa57 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+ .debug_abbrev  0x0000000000000000      0x26a /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+ .debug_loc     0x0000000000000000      0x652 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+ .debug_ranges  0x0000000000000000       0x48 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+ .debug_line    0x0000000000000000      0x241 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+ .debug_str     0x0000000000000000      0x4de /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+ .ARM.attributes
+                0x0000000000000000       0x32 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+ .debug_frame   0x0000000000000000       0xe4 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_clzsi2.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_clzsi2.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-abort.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-abort.o)
+ .debug_info    0x0000000000000000       0xdb /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-abort.o)
+ .debug_abbrev  0x0000000000000000       0x93 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-abort.o)
+ .debug_loc     0x0000000000000000       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-abort.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-abort.o)
+ .debug_line    0x0000000000000000      0x1a1 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-abort.o)
+ .debug_str     0x0000000000000000      0x122 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-abort.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-abort.o)
+ .ARM.attributes
+                0x0000000000000000       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-abort.o)
+ .debug_frame   0x0000000000000000       0x28 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-abort.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-setvbuf.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-setvbuf.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+ .debug_info    0x0000000000000000      0xc6e /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+ .debug_abbrev  0x0000000000000000      0x2a8 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+ .debug_loc     0x0000000000000000      0x3c0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+ .debug_line    0x0000000000000000      0x2d2 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+ .debug_str     0x0000000000000000      0x55f /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+ .ARM.attributes
+                0x0000000000000000       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+ .debug_frame   0x0000000000000000       0xc0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signalr.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signalr.o)
+ .debug_info    0x0000000000000000      0xa37 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signalr.o)
+ .debug_abbrev  0x0000000000000000      0x1da /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signalr.o)
+ .debug_loc     0x0000000000000000       0xcc /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signalr.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signalr.o)
+ .debug_line    0x0000000000000000      0x24d /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signalr.o)
+ .debug_str     0x0000000000000000      0x4e6 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signalr.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signalr.o)
+ .ARM.attributes
+                0x0000000000000000       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signalr.o)
+ .debug_frame   0x0000000000000000       0x44 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signalr.o)
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-malloc.o)
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-malloc.o)
+ .text          0x0000000000000000        0x0 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+ .data          0x0000000000000000        0x0 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+ .bss           0x0000000000000000        0x0 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+ .text.PIO_Set  0x0000000000000000        0xc ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+ .text.PIO_Clear
+                0x0000000000000000        0xc ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+ .text.PIO_Get  0x0000000000000000       0x2c ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+ .text.PIO_GetOutputDataStatus
+                0x0000000000000000       0x1c ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+ .text.PIO_SetDebounceFilter
+                0x0000000000000000       0x54 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+ .text.PIO_EnableWriteProtect
+                0x0000000000000000       0x14 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+ .text.PIO_DisableWriteProtect
+                0x0000000000000000       0x14 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+ .text.PIO_GetWriteProtectViolationInfo
+                0x0000000000000000        0xc ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+ .text          0x0000000000000000        0x0 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+ .data          0x0000000000000000        0x0 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+ .bss           0x0000000000000000        0x0 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+ .text.PMC_DisablePeripheral
+                0x0000000000000000       0x84 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+ .text.PMC_EnableAllPeripherals
+                0x0000000000000000       0x70 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+ .text.PMC_DisableAllPeripherals
+                0x0000000000000000       0x74 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+ .text.PMC_IsPeriphEnabled
+                0x0000000000000000       0x20 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+ .text.PMC_SelectExt32KCrystal
+                0x0000000000000000       0x5c ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+ .text.PMC_SelectInt32kCrystal
+                0x0000000000000000       0x50 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+ .text.PMC_SelectExt12M_Osc
+                0x0000000000000000       0x7c ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+ .text.PMC_SelectInt12M_Osc
+                0x0000000000000000       0x48 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+ .text.PMC_SwitchMck2Pll
+                0x0000000000000000       0x24 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+ .text.PMC_SwitchMck2Main
+                0x0000000000000000       0x24 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+ .text.PMC_SwitchMck2Slck
+                0x0000000000000000       0x20 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+ .text.PMC_SetMckPrescaler
+                0x0000000000000000       0x24 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+ .text.PMC_SetMckPllaDiv
+                0x0000000000000000       0x58 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+ .text.PMC_SetMckDivider
+                0x0000000000000000       0x24 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+ .text.PMC_SetPllA
+                0x0000000000000000       0x1c ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+ .rodata.str1.1
+                0x0000000000000000       0x82 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+ .text          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtend.o
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtend.o
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtend.o
+ .eh_frame      0x0000000000000000        0x4 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtend.o
+ .jcr           0x0000000000000000        0x4 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtend.o
+ .text          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtn.o
+ .data          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtn.o
+ .bss           0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+romcodesram      0x0000000000306000 0x0000000000002000 w !xr
+sram             0x0000000000308000 0x0000000000018000 w !xr
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crti.o
+LOAD /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtbegin.o
+LOAD /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+LOAD obj/sram_applet_cstartup.o
+LOAD obj/sram_main.o
+START GROUP
+LOAD /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a
+LOAD /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a
+LOAD ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a
+LOAD ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a
+END GROUP
+START GROUP
+LOAD /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a
+LOAD /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a
+END GROUP
+LOAD /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtend.o
+LOAD /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtn.o
+
+.fixed0         0x0000000000308000     0x6de0
+                0x0000000000308000                . = ALIGN (0x4)
+                0x0000000000308000                _sfixed = .
+ *(.textisp .textisp.*)
+ .textisp       0x0000000000308000       0xf0 obj/sram_applet_cstartup.o
+                0x0000000000308000                entry
+ *(.text .text.* .gnu.linkonce.t.*)
+ .text          0x00000000003080f0      0x128 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtbegin.o
+ .text.startup.main
+                0x0000000000308218      0x170 obj/sram_main.o
+                0x0000000000308218                main
+ .text          0x0000000000308388       0x5c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-iprintf.o)
+                0x0000000000308388                iprintf
+                0x00000000003083bc                _iprintf_r
+ .text          0x00000000003083e4       0x1c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memset.o)
+                0x00000000003083e4                memset
+ .text          0x0000000000308400     0x1004 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+                0x0000000000308400                __sprint_r
+                0x00000000003084b0                _vfiprintf_r
+                0x00000000003093d8                vfiprintf
+ .text          0x0000000000309404      0x128 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wsetup.o)
+                0x0000000000309404                __swsetup_r
+ .text          0x000000000030952c      0x284 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fflush.o)
+                0x000000000030952c                __sflush_r
+                0x000000000030972c                _fflush_r
+                0x000000000030976c                fflush
+ .text          0x00000000003097b0      0x2a4 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+                0x00000000003097c0                _cleanup_r
+                0x0000000000309854                __sfmoreglue
+                0x0000000000309898                _cleanup
+                0x00000000003098a8                __sinit
+                0x0000000000309920                __sfp
+                0x00000000003099fc                __sfp_lock_acquire
+                0x0000000000309a00                __sfp_lock_release
+                0x0000000000309a04                __sinit_lock_acquire
+                0x0000000000309a08                __sinit_lock_release
+                0x0000000000309a0c                __fp_lock_all
+                0x0000000000309a30                __fp_unlock_all
+ .text          0x0000000000309a54      0x17c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o)
+                0x0000000000309a54                _fputwc_r
+                0x0000000000309b8c                fputwc
+ .text          0x0000000000309bd0      0x340 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+                0x0000000000309bd0                _malloc_trim_r
+                0x0000000000309ccc                _free_r
+ .text          0x0000000000309f10      0x454 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o)
+                0x0000000000309f10                __sfvwrite_r
+ .text          0x000000000030a364       0xf0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fwalk.o)
+                0x000000000030a364                _fwalk
+                0x000000000030a3d8                _fwalk_reent
+ .text          0x000000000030a454       0xd0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+                0x000000000030a454                _setlocale_r
+                0x000000000030a4c0                __locale_charset
+                0x000000000030a4cc                __locale_mb_cur_max
+                0x000000000030a4dc                __locale_msgcharset
+                0x000000000030a4e8                __locale_cjk_lang
+                0x000000000030a4f0                _localeconv_r
+                0x000000000030a4fc                setlocale
+                0x000000000030a518                localeconv
+ .text          0x000000000030a524      0x140 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-makebuf.o)
+                0x000000000030a524                __smakebuf_r
+ .text          0x000000000030a664      0x618 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+                0x000000000030a664                _malloc_r
+ .text          0x000000000030ac7c       0x34 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memchr-stub.o)
+                0x000000000030ac7c                memchr
+ .text          0x000000000030acb0       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memcpy-stub.o)
+                0x000000000030acb0                memcpy
+ .text          0x000000000030acd0       0x5c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memmove.o)
+                0x000000000030acd0                memmove
+ .text          0x000000000030ad2c        0x8 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mlock.o)
+                0x000000000030ad2c                __malloc_lock
+                0x000000000030ad30                __malloc_unlock
+ .text          0x000000000030ad34      0x454 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reallocr.o)
+                0x000000000030ad34                _realloc_r
+ .text          0x000000000030b188       0x3c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-sbrkr.o)
+                0x000000000030b188                _sbrk_r
+ .text          0x000000000030b1c4       0xd8 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o)
+                0x000000000030b1c4                __sread
+                0x000000000030b1f8                __seofread
+                0x000000000030b200                __swrite
+                0x000000000030b254                __sseek
+                0x000000000030b288                __sclose
+ .text          0x000000000030b29c       0x1c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strcmp.o)
+                0x000000000030b29c                strcmp
+ .text          0x000000000030b2b8       0x1c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strlen.o)
+                0x000000000030b2b8                strlen
+ .text          0x000000000030b2d4       0x58 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strncpy.o)
+                0x000000000030b2d4                strncpy
+ .text          0x000000000030b32c      0x128 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wbuf.o)
+                0x000000000030b32c                __swbuf_r
+                0x000000000030b438                __swbuf
+ .text          0x000000000030b454       0xb0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wcrtomb.o)
+                0x000000000030b454                _wcrtomb_r
+                0x000000000030b4d8                wcrtomb
+ .text          0x000000000030b504       0x74 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wctomb_r.o)
+                0x000000000030b504                __ascii_wctomb
+                0x000000000030b530                _wctomb_r
+ .text          0x000000000030b578       0x44 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-writer.o)
+                0x000000000030b578                _write_r
+ .text          0x000000000030b5bc       0x3c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-closer.o)
+                0x000000000030b5bc                _close_r
+ .text          0x000000000030b5f8       0xf0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fclose.o)
+                0x000000000030b5f8                _fclose_r
+                0x000000000030b6d4                fclose
+ .text          0x000000000030b6e8       0x40 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fstatr.o)
+                0x000000000030b6e8                _fstat_r
+ .text          0x000000000030b728       0x3c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-isattyr.o)
+                0x000000000030b728                _isatty_r
+ .text          0x000000000030b764       0x44 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-lseekr.o)
+                0x000000000030b764                _lseek_r
+ .text          0x000000000030b7a8       0x44 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-readr.o)
+                0x000000000030b7a8                _read_r
+ .text.FUSE_Read
+                0x000000000030b7ec       0x4c ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(fuse.o)
+                0x000000000030b7ec                FUSE_Read
+ .text.FUSE_Write
+                0x000000000030b838       0x5c ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(fuse.o)
+                0x000000000030b838                FUSE_Write
+ .text._sbrk    0x000000000030b894       0x30 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+                0x000000000030b894                _sbrk
+ .text._close   0x000000000030b8c4        0x8 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+                0x000000000030b8c4                _close
+ .text._fstat   0x000000000030b8cc       0x10 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+                0x000000000030b8cc                _fstat
+ .text._isatty  0x000000000030b8dc        0x8 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+                0x000000000030b8dc                _isatty
+ .text._lseek   0x000000000030b8e4        0x8 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+                0x000000000030b8e4                _lseek
+ .text._read    0x000000000030b8ec        0x8 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+                0x000000000030b8ec                _read
+ .text._write   0x000000000030b8f4       0x40 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+                0x000000000030b8f4                _write
+ .text._exit    0x000000000030b934       0x24 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+                0x000000000030b934                _exit
+ .text._kill    0x000000000030b958        0x4 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+                0x000000000030b958                _kill
+ .text._getpid  0x000000000030b95c        0x8 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+                0x000000000030b95c                _getpid
+ .text.DBGU_Configure
+                0x000000000030b964       0xe0 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+                0x000000000030b964                DBGU_Configure
+ .text.DBGU_PutChar
+                0x000000000030ba44       0x60 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+                0x000000000030ba44                DBGU_PutChar
+ .text          0x000000000030baa4      0x114 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+                0x000000000030baa4                __udivsi3
+                0x000000000030baa4                __aeabi_uidiv
+                0x000000000030bb98                __aeabi_uidivmod
+ .text          0x000000000030bbb8        0x4 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_dvmd_tls.o)
+                0x000000000030bbb8                __aeabi_ldiv0
+                0x000000000030bbb8                __aeabi_idiv0
+ .text          0x000000000030bbbc       0x3c /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_aeabi_uldivmod.o)
+                0x000000000030bbbc                __aeabi_uldivmod
+ .text          0x000000000030bbf8       0x84 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(bpabi.o)
+                0x000000000030bbf8                __gnu_ldivmod_helper
+                0x000000000030bc3c                __gnu_uldivmod_helper
+ .text          0x000000000030bc7c      0x4f8 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+                0x000000000030bc7c                __divdi3
+ .text          0x000000000030c174      0x498 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+                0x000000000030c174                __udivdi3
+ .text          0x000000000030c60c      0xfb0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+                0x000000000030ca94                _Unwind_GetCFA
+                0x000000000030ca9c                __gnu_Unwind_RaiseException
+                0x000000000030cb48                __gnu_Unwind_ForcedUnwind
+                0x000000000030cb6c                __gnu_Unwind_Resume
+                0x000000000030cbe4                __gnu_Unwind_Resume_or_Rethrow
+                0x000000000030cc04                _Unwind_Complete
+                0x000000000030cc08                _Unwind_DeleteException
+                0x000000000030cc2c                _Unwind_VRS_Get
+                0x000000000030cca0                _Unwind_VRS_Set
+                0x000000000030d144                __aeabi_unwind_cpp_pr2
+                0x000000000030d14c                __aeabi_unwind_cpp_pr1
+                0x000000000030d154                __aeabi_unwind_cpp_pr0
+                0x000000000030d15c                __gnu_Unwind_Backtrace
+                0x000000000030d228                _Unwind_VRS_Pop
+ .text          0x000000000030d5bc      0x1b0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+                0x000000000030d5bc                __restore_core_regs
+                0x000000000030d5bc                restore_core_regs
+                0x000000000030d5d8                __gnu_Unwind_Restore_VFP
+                0x000000000030d5e0                __gnu_Unwind_Save_VFP
+                0x000000000030d5e8                __gnu_Unwind_Restore_VFP_D
+                0x000000000030d5f0                __gnu_Unwind_Save_VFP_D
+                0x000000000030d5f8                __gnu_Unwind_Restore_VFP_D_16_to_31
+                0x000000000030d600                __gnu_Unwind_Save_VFP_D_16_to_31
+                0x000000000030d608                __gnu_Unwind_Restore_WMMXD
+                0x000000000030d64c                __gnu_Unwind_Save_WMMXD
+                0x000000000030d690                __gnu_Unwind_Restore_WMMXC
+                0x000000000030d6a4                __gnu_Unwind_Save_WMMXC
+                0x000000000030d6b8                ___Unwind_RaiseException
+                0x000000000030d6b8                _Unwind_RaiseException
+                0x000000000030d6dc                ___Unwind_Resume
+                0x000000000030d6dc                _Unwind_Resume
+                0x000000000030d700                _Unwind_Resume_or_Rethrow
+                0x000000000030d700                ___Unwind_Resume_or_Rethrow
+                0x000000000030d724                ___Unwind_ForcedUnwind
+                0x000000000030d724                _Unwind_ForcedUnwind
+                0x000000000030d748                _Unwind_Backtrace
+                0x000000000030d748                ___Unwind_Backtrace
+ .text          0x000000000030d76c      0x53c /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+                0x000000000030d800                __gnu_unwind_execute
+                0x000000000030dc1c                __gnu_unwind_frame
+                0x000000000030dc64                _Unwind_GetRegionStart
+                0x000000000030dc78                _Unwind_GetLanguageSpecificData
+                0x000000000030dc98                _Unwind_GetDataRelBase
+                0x000000000030dca0                _Unwind_GetTextRelBase
+ .text          0x000000000030dca8       0x48 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_clzsi2.o)
+                0x000000000030dca8                __clzsi2
+ .text          0x000000000030dcf0       0x14 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-abort.o)
+                0x000000000030dcf0                abort
+ .text          0x000000000030dd04      0x164 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-setvbuf.o)
+                0x000000000030dd04                setvbuf
+ .text          0x000000000030de68      0x22c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+                0x000000000030de68                _init_signal_r
+                0x000000000030dec4                _signal_r
+                0x000000000030df18                _raise_r
+                0x000000000030dfb0                __sigtramp_r
+                0x000000000030e040                raise
+                0x000000000030e054                signal
+                0x000000000030e070                _init_signal
+                0x000000000030e080                __sigtramp
+ .text          0x000000000030e094       0x50 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signalr.o)
+                0x000000000030e094                _kill_r
+                0x000000000030e0d4                _getpid_r
+ .text          0x000000000030e0e4       0x40 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-malloc.o)
+                0x000000000030e0e4                malloc
+                0x000000000030e104                free
+ .text.PIO_Configure
+                0x000000000030e124      0x200 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+                0x000000000030e124                PIO_Configure
+ .text.PMC_EnablePeripheral
+                0x000000000030e324       0x44 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+                0x000000000030e324                PMC_EnablePeripheral
+ *(.glue_7t)
+ .glue_7t       0x0000000000000000        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x0000000000000000        0x0 linker stubs
+ *(.CP15_*)
+ *(.rodata .rodata* .gnu.linkonce.r.*)
+ .rodata.str1.1
+                0x000000000030e368       0x99 obj/sram_main.o
+ *fill*         0x000000000030e401        0x3 00
+ .rodata        0x000000000030e404        0x4 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-impure.o)
+                0x000000000030e404                _global_impure_ptr
+ .rodata.str1.1
+                0x000000000030e408        0x2 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-impure.o)
+ .rodata        0x000000000030e40a       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+ .rodata.str1.1
+                0x000000000030e42a       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+ .rodata.str1.1
+                0x000000000030e44c        0x8 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+                                          0xb (size before relaxing)
+ .rodata.str1.1
+                0x000000000030e454       0x19 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+ *fill*         0x000000000030e46d        0x3 00
+ .rodata        0x000000000030e470       0x24 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+ .ARM.extab     0x000000000030e494       0x18 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+ .ARM.extab     0x000000000030e4ac       0x18 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+                0x000000000030e4c4                . = ALIGN (0x4)
+ *(.init)
+ .init          0x000000000030e4c4        0xc /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crti.o
+                0x000000000030e4c4                _init
+ .init          0x000000000030e4d0        0xc /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtn.o
+                0x000000000030e4dc                . = ALIGN (0x4)
+                0x000000000030e4dc                __preinit_array_start = .
+ *(.preinit_array)
+                0x000000000030e4dc                __preinit_array_end = .
+                0x000000000030e4dc                . = ALIGN (0x4)
+                0x000000000030e4dc                __init_array_start = .
+ *(SORT(.init_array.*))
+ *(.init_array)
+ .init_array    0x000000000030e4dc        0x4 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtbegin.o
+                0x000000000030e4e0                __init_array_end = .
+                0x000000000030e4e0                . = ALIGN (0x4)
+ *crtbegin.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *crtend.o(.ctors)
+                0x000000000030e4e0                . = ALIGN (0x4)
+ *(.fini)
+ .fini          0x000000000030e4e0        0xc /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crti.o
+                0x000000000030e4e0                _fini
+ .fini          0x000000000030e4ec        0xc /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtn.o
+                0x000000000030e4f8                . = ALIGN (0x4)
+                0x000000000030e4f8                __fini_array_start = .
+ *(.fini_array)
+ .fini_array    0x000000000030e4f8        0x4 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtbegin.o
+ *(SORT(.fini_array.*))
+                0x000000000030e4fc                __fini_array_end = .
+ *crtbegin.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *crtend.o(.dtors)
+ *(.data .data.*)
+ *fill*         0x000000000030e4fc        0x4 00
+ .data          0x000000000030e500      0x430 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-impure.o)
+                0x000000000030e500                _impure_ptr
+ .data          0x000000000030e930       0x7c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+                0x000000000030e950                __mb_cur_max
+ .data          0x000000000030e9ac      0x410 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+                0x000000000030e9ac                __malloc_av_
+                0x000000000030edb4                __malloc_sbrk_base
+                0x000000000030edb8                __malloc_trim_threshold
+ .data          0x000000000030edbc        0x4 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wctomb_r.o)
+                0x000000000030edbc                __wctomb
+ .data          0x000000000030edc0        0x4 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(trace.o)
+                0x000000000030edc0                dwTraceLevel
+ .data          0x000000000030edc4       0x1c ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+                0x000000000030ede0                . = ALIGN (0x4)
+                0x000000000030ede0                _efixed = .
+
+.vfp11_veneer   0x000000000030ede0        0x0
+ .vfp11_veneer  0x0000000000000000        0x0 linker stubs
+
+.v4_bx          0x000000000030ede0        0x0
+ .v4_bx         0x0000000000000000        0x0 linker stubs
+
+.iplt           0x000000000030ede0        0x0
+ .iplt          0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtbegin.o
+
+.rel.dyn        0x000000000030ede0        0x0
+ .rel.iplt      0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtbegin.o
+                0x000000000030ede0                . = ALIGN (0x4)
+                0x000000000030ede0                _etext = .
+
+.relocate       0x000000000030ede0        0x0
+                0x000000000030ede0                . = ALIGN (0x4)
+                0x000000000030ede0                _srelocate = .
+                0x000000000030ede0                . = ALIGN (0x4)
+                0x000000000030ede0                _erelocate = .
+
+.bss            0x000000000030ede0       0x60
+                0x000000000030ede0                . = ALIGN (0x4)
+                0x000000000030ede0                _sbss = .
+                0x000000000030ede0                _szero = .
+ *(.bss .bss.*)
+ .bss           0x000000000030ede0       0x1c /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtbegin.o
+ .bss           0x000000000030edfc        0x4 obj/sram_main.o
+ .bss           0x000000000030ee00       0x34 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+                0x000000000030ee00                __malloc_top_pad
+                0x000000000030ee04                __malloc_current_mallinfo
+                0x000000000030ee2c                __malloc_max_sbrked_mem
+                0x000000000030ee30                __malloc_max_total_mem
+ .bss           0x000000000030ee34        0x4 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+ .bss           0x000000000030ee38        0x1 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+                0x000000000030ee38                _bConsoleIsInitialized
+ *(COMMON)
+ *fill*         0x000000000030ee39        0x3 00
+ COMMON         0x000000000030ee3c        0x4 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reent.o)
+                0x000000000030ee3c                errno
+                0x000000000030ee40                . = ALIGN (0x4)
+                0x000000000030ee40                _ebss = .
+                0x000000000030ee40                _ezero = .
+                0x000000000030ee40                PROVIDE (__exidx_start, .)
+
+.ARM.exidx      0x000000000030ee40       0xd0
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+ .ARM.exidx     0x000000000030ee40        0x8 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+ .ARM.exidx     0x000000000030ee48        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+                                          0x8 (size before relaxing)
+ .ARM.exidx     0x000000000030ee48       0x90 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+                                         0xd8 (size before relaxing)
+ .ARM.exidx     0x000000000030eed8       0x38 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+                                         0x48 (size before relaxing)
+                0x000000000030ef10                PROVIDE (__exidx_end, .)
+                0x000000000031e000                PROVIDE (_heap, 0x31e000)
+                0x0000000000320000                _sstack = 0x320000
+                0x000000000030ef10                . = ALIGN (0x4)
+                0x000000000030ef10                _end = .
+                0x000000000030ef10                end = .
+OUTPUT(bin/applet-otp-sama5d3x.elf elf32-littlearm)
+
+.eh_frame       0x000000000030ef10        0x0
+ .eh_frame      0x000000000030ef10        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtbegin.o
+
+.jcr            0x000000000030ef10        0x0
+ .jcr           0x000000000030ef10        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtbegin.o
+
+.tm_clone_table
+                0x000000000030ef10        0x0
+ .tm_clone_table
+                0x000000000030ef10        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtbegin.o
+ .tm_clone_table
+                0x000000000030ef10        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtend.o
+
+.igot.plt       0x000000000030ef10        0x0
+ .igot.plt      0x0000000000000000        0x0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtbegin.o
+
+.ARM.attributes
+                0x0000000000000000       0x2e
+ .ARM.attributes
+                0x0000000000000000       0x18 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crti.o
+ .ARM.attributes
+                0x0000000000000018       0x32 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtbegin.o
+ .ARM.attributes
+                0x000000000000004a       0x18 obj/sram_applet_cstartup.o
+ .ARM.attributes
+                0x0000000000000062       0x32 obj/sram_main.o
+ .ARM.attributes
+                0x0000000000000094       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-impure.o)
+ .ARM.attributes
+                0x00000000000000c6       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-iprintf.o)
+ .ARM.attributes
+                0x00000000000000f8       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memset.o)
+ .ARM.attributes
+                0x000000000000012a       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+ .ARM.attributes
+                0x000000000000015c       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wsetup.o)
+ .ARM.attributes
+                0x000000000000018e       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fflush.o)
+ .ARM.attributes
+                0x00000000000001c0       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+ .ARM.attributes
+                0x00000000000001f2       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o)
+ .ARM.attributes
+                0x0000000000000224       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+ .ARM.attributes
+                0x0000000000000256       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o)
+ .ARM.attributes
+                0x0000000000000288       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fwalk.o)
+ .ARM.attributes
+                0x00000000000002ba       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+ .ARM.attributes
+                0x00000000000002ec       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-makebuf.o)
+ .ARM.attributes
+                0x000000000000031e       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+ .ARM.attributes
+                0x0000000000000350       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memchr-stub.o)
+ .ARM.attributes
+                0x0000000000000382       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memcpy-stub.o)
+ .ARM.attributes
+                0x00000000000003b4       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memmove.o)
+ .ARM.attributes
+                0x00000000000003e6       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mlock.o)
+ .ARM.attributes
+                0x0000000000000418       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reallocr.o)
+ .ARM.attributes
+                0x000000000000044a       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-sbrkr.o)
+ .ARM.attributes
+                0x000000000000047c       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o)
+ .ARM.attributes
+                0x00000000000004ae       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strcmp.o)
+ .ARM.attributes
+                0x00000000000004e0       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strlen.o)
+ .ARM.attributes
+                0x0000000000000512       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strncpy.o)
+ .ARM.attributes
+                0x0000000000000544       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wbuf.o)
+ .ARM.attributes
+                0x0000000000000576       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wcrtomb.o)
+ .ARM.attributes
+                0x00000000000005a8       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wctomb_r.o)
+ .ARM.attributes
+                0x00000000000005da       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-writer.o)
+ .ARM.attributes
+                0x000000000000060c       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-closer.o)
+ .ARM.attributes
+                0x000000000000063e       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fclose.o)
+ .ARM.attributes
+                0x0000000000000670       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fstatr.o)
+ .ARM.attributes
+                0x00000000000006a2       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-isattyr.o)
+ .ARM.attributes
+                0x00000000000006d4       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-lseekr.o)
+ .ARM.attributes
+                0x0000000000000706       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-readr.o)
+ .ARM.attributes
+                0x0000000000000738       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reent.o)
+ .ARM.attributes
+                0x000000000000076a       0x32 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(fuse.o)
+ .ARM.attributes
+                0x000000000000079c       0x32 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+ .ARM.attributes
+                0x00000000000007ce       0x32 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(trace.o)
+ .ARM.attributes
+                0x0000000000000800       0x32 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+ .ARM.attributes
+                0x0000000000000832       0x1a /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+ .ARM.attributes
+                0x000000000000084c       0x18 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x0000000000000864       0x1a /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_aeabi_uldivmod.o)
+ .ARM.attributes
+                0x000000000000087e       0x32 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(bpabi.o)
+ .ARM.attributes
+                0x00000000000008b0       0x32 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+ .ARM.attributes
+                0x00000000000008e2       0x32 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+ .ARM.attributes
+                0x0000000000000914       0x1a /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_clzsi2.o)
+ .ARM.attributes
+                0x000000000000092e       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-setvbuf.o)
+ .ARM.attributes
+                0x0000000000000960       0x32 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-malloc.o)
+ .ARM.attributes
+                0x0000000000000992       0x32 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+ .ARM.attributes
+                0x00000000000009c4       0x32 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+ .ARM.attributes
+                0x00000000000009f6       0x32 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtend.o
+ .ARM.attributes
+                0x0000000000000a28       0x1a /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtn.o
+
+.comment        0x0000000000000000       0x21
+ .comment       0x0000000000000000       0x21 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtbegin.o
+                                         0x22 (size before relaxing)
+ .comment       0x0000000000000000       0x22 obj/sram_main.o
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-impure.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-iprintf.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memset.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wsetup.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fflush.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fwalk.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-makebuf.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memchr-stub.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memcpy-stub.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memmove.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mlock.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reallocr.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-sbrkr.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strcmp.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strlen.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strncpy.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wbuf.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wcrtomb.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wctomb_r.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-writer.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-closer.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fclose.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fstatr.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-isattyr.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-lseekr.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-readr.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reent.o)
+ .comment       0x0000000000000000       0x22 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(fuse.o)
+ .comment       0x0000000000000000       0x22 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+ .comment       0x0000000000000000       0x22 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(trace.o)
+ .comment       0x0000000000000000       0x22 ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(bpabi.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-setvbuf.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-malloc.o)
+ .comment       0x0000000000000000       0x22 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+ .comment       0x0000000000000000       0x22 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+ .comment       0x0000000000000000       0x22 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtend.o
+
+.debug_line     0x0000000000000000     0x61c8
+ .debug_line    0x0000000000000000       0x71 obj/sram_applet_cstartup.o
+ .debug_line    0x0000000000000071      0x13e obj/sram_main.o
+ .debug_line    0x00000000000001af      0x1b0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-impure.o)
+ .debug_line    0x000000000000035f      0x25e /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-iprintf.o)
+ .debug_line    0x00000000000005bd      0x1bb /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memset.o)
+ .debug_line    0x0000000000000778      0x65f /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+ .debug_line    0x0000000000000dd7      0x28a /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wsetup.o)
+ .debug_line    0x0000000000001061      0x2fa /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fflush.o)
+ .debug_line    0x000000000000135b      0x2f9 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+ .debug_line    0x0000000000001654      0x287 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o)
+ .debug_line    0x00000000000018db      0x2e3 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+ .debug_line    0x0000000000001bbe      0x322 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o)
+ .debug_line    0x0000000000001ee0      0x285 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fwalk.o)
+ .debug_line    0x0000000000002165      0x27a /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+ .debug_line    0x00000000000023df      0x2b0 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-makebuf.o)
+ .debug_line    0x000000000000268f      0x39b /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+ .debug_line    0x0000000000002a2a      0x1ce /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memchr-stub.o)
+ .debug_line    0x0000000000002bf8      0x1c3 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memcpy-stub.o)
+ .debug_line    0x0000000000002dbb      0x1da /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memmove.o)
+ .debug_line    0x0000000000002f95      0x1c2 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mlock.o)
+ .debug_line    0x0000000000003157      0x28e /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reallocr.o)
+ .debug_line    0x00000000000033e5      0x246 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-sbrkr.o)
+ .debug_line    0x000000000000362b      0x269 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o)
+ .debug_line    0x0000000000003894      0x11f /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strcmp.o)
+ .debug_line    0x00000000000039b3      0x1b1 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strlen.o)
+ .debug_line    0x0000000000003b64      0x1d8 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strncpy.o)
+ .debug_line    0x0000000000003d3c      0x28d /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wbuf.o)
+ .debug_line    0x0000000000003fc9      0x25e /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wcrtomb.o)
+ .debug_line    0x0000000000004227      0x264 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wctomb_r.o)
+ .debug_line    0x000000000000448b      0x246 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-writer.o)
+ .debug_line    0x00000000000046d1      0x247 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-closer.o)
+ .debug_line    0x0000000000004918      0x28b /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fclose.o)
+ .debug_line    0x0000000000004ba3      0x25c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fstatr.o)
+ .debug_line    0x0000000000004dff      0x248 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-isattyr.o)
+ .debug_line    0x0000000000005047      0x246 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-lseekr.o)
+ .debug_line    0x000000000000528d      0x245 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-readr.o)
+ .debug_line    0x00000000000054d2      0x289 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reent.o)
+ .debug_line    0x000000000000575b       0xca /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+ .debug_line    0x0000000000005825       0xa1 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_dvmd_tls.o)
+ .debug_line    0x00000000000058c6       0xa6 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_aeabi_uldivmod.o)
+ .debug_line    0x000000000000596c       0xa7 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(bpabi.o)
+ .debug_line    0x0000000000005a13      0x11b /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+ .debug_line    0x0000000000005b2e      0x10e /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+ .debug_line    0x0000000000005c3c       0xae /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_clzsi2.o)
+ .debug_line    0x0000000000005cea      0x29d /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-setvbuf.o)
+ .debug_line    0x0000000000005f87      0x241 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-malloc.o)
+
+.debug_info     0x0000000000000000    0x17506
+ .debug_info    0x0000000000000000       0x8b obj/sram_applet_cstartup.o
+ .debug_info    0x000000000000008b      0x4a6 obj/sram_main.o
+ .debug_info    0x0000000000000531      0x961 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-impure.o)
+ .debug_info    0x0000000000000e92      0xa8d /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-iprintf.o)
+ .debug_info    0x000000000000191f       0xd3 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memset.o)
+ .debug_info    0x00000000000019f2     0x1545 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+ .debug_info    0x0000000000002f37      0xa01 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wsetup.o)
+ .debug_info    0x0000000000003938      0xb89 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fflush.o)
+ .debug_info    0x00000000000044c1      0xdbc /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+ .debug_info    0x000000000000527d      0xb7f /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o)
+ .debug_info    0x0000000000005dfc      0xd0e /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+ .debug_info    0x0000000000006b0a      0xd7f /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o)
+ .debug_info    0x0000000000007889      0xa75 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fwalk.o)
+ .debug_info    0x00000000000082fe      0xd0f /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+ .debug_info    0x000000000000900d      0xbea /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-makebuf.o)
+ .debug_info    0x0000000000009bf7      0xe25 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+ .debug_info    0x000000000000aa1c       0xf8 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memchr-stub.o)
+ .debug_info    0x000000000000ab14      0x102 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memcpy-stub.o)
+ .debug_info    0x000000000000ac16      0x102 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memmove.o)
+ .debug_info    0x000000000000ad18      0x985 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mlock.o)
+ .debug_info    0x000000000000b69d      0xd86 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reallocr.o)
+ .debug_info    0x000000000000c423      0x9cc /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-sbrkr.o)
+ .debug_info    0x000000000000cdef      0xc7c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o)
+ .debug_info    0x000000000000da6b       0xb5 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strcmp.o)
+ .debug_info    0x000000000000db20       0xcd /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strlen.o)
+ .debug_info    0x000000000000dbed       0xf6 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strncpy.o)
+ .debug_info    0x000000000000dce3      0xaa2 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wbuf.o)
+ .debug_info    0x000000000000e785      0xaa9 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wcrtomb.o)
+ .debug_info    0x000000000000f22e      0xa92 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wctomb_r.o)
+ .debug_info    0x000000000000fcc0      0x9ff /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-writer.o)
+ .debug_info    0x00000000000106bf      0x9b6 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-closer.o)
+ .debug_info    0x0000000000011075      0xac3 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fclose.o)
+ .debug_info    0x0000000000011b38      0xb61 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fstatr.o)
+ .debug_info    0x0000000000012699      0x9b6 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-isattyr.o)
+ .debug_info    0x000000000001304f      0x9ed /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-lseekr.o)
+ .debug_info    0x0000000000013a3c      0x9f8 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-readr.o)
+ .debug_info    0x0000000000014434      0xb22 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reent.o)
+ .debug_info    0x0000000000014f56      0x114 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+ .debug_info    0x000000000001506a      0x114 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_dvmd_tls.o)
+ .debug_info    0x000000000001517e      0x110 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_aeabi_uldivmod.o)
+ .debug_info    0x000000000001528e      0x170 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(bpabi.o)
+ .debug_info    0x00000000000153fe      0x5e5 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+ .debug_info    0x00000000000159e3      0x5a4 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+ .debug_info    0x0000000000015f87      0x114 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_clzsi2.o)
+ .debug_info    0x000000000001609b      0xa79 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-setvbuf.o)
+ .debug_info    0x0000000000016b14      0x9f2 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-malloc.o)
+
+.debug_abbrev   0x0000000000000000     0x4901
+ .debug_abbrev  0x0000000000000000       0x14 obj/sram_applet_cstartup.o
+ .debug_abbrev  0x0000000000000014      0x1ad obj/sram_main.o
+ .debug_abbrev  0x00000000000001c1      0x160 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-impure.o)
+ .debug_abbrev  0x0000000000000321      0x1ed /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-iprintf.o)
+ .debug_abbrev  0x000000000000050e       0x8c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memset.o)
+ .debug_abbrev  0x000000000000059a      0x3df /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+ .debug_abbrev  0x0000000000000979      0x1d5 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wsetup.o)
+ .debug_abbrev  0x0000000000000b4e      0x259 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fflush.o)
+ .debug_abbrev  0x0000000000000da7      0x317 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+ .debug_abbrev  0x00000000000010be      0x27c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o)
+ .debug_abbrev  0x000000000000133a      0x23a /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+ .debug_abbrev  0x0000000000001574      0x22b /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o)
+ .debug_abbrev  0x000000000000179f      0x1b3 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fwalk.o)
+ .debug_abbrev  0x0000000000001952      0x2a1 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+ .debug_abbrev  0x0000000000001bf3      0x1e8 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-makebuf.o)
+ .debug_abbrev  0x0000000000001ddb      0x286 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+ .debug_abbrev  0x0000000000002061       0xa9 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memchr-stub.o)
+ .debug_abbrev  0x000000000000210a       0xa2 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memcpy-stub.o)
+ .debug_abbrev  0x00000000000021ac       0x9a /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memmove.o)
+ .debug_abbrev  0x0000000000002246      0x17a /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mlock.o)
+ .debug_abbrev  0x00000000000023c0      0x23d /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reallocr.o)
+ .debug_abbrev  0x00000000000025fd      0x1dd /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-sbrkr.o)
+ .debug_abbrev  0x00000000000027da      0x229 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o)
+ .debug_abbrev  0x0000000000002a03       0x70 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strcmp.o)
+ .debug_abbrev  0x0000000000002a73       0x8a /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strlen.o)
+ .debug_abbrev  0x0000000000002afd       0x8c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strncpy.o)
+ .debug_abbrev  0x0000000000002b89      0x21a /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wbuf.o)
+ .debug_abbrev  0x0000000000002da3      0x205 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wcrtomb.o)
+ .debug_abbrev  0x0000000000002fa8      0x210 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wctomb_r.o)
+ .debug_abbrev  0x00000000000031b8      0x1d4 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-writer.o)
+ .debug_abbrev  0x000000000000338c      0x1cf /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-closer.o)
+ .debug_abbrev  0x000000000000355b      0x232 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fclose.o)
+ .debug_abbrev  0x000000000000378d      0x1de /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fstatr.o)
+ .debug_abbrev  0x000000000000396b      0x1cf /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-isattyr.o)
+ .debug_abbrev  0x0000000000003b3a      0x1de /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-lseekr.o)
+ .debug_abbrev  0x0000000000003d18      0x1cf /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-readr.o)
+ .debug_abbrev  0x0000000000003ee7      0x26e /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reent.o)
+ .debug_abbrev  0x0000000000004155       0x14 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+ .debug_abbrev  0x0000000000004169       0x14 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_dvmd_tls.o)
+ .debug_abbrev  0x000000000000417d       0x14 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_aeabi_uldivmod.o)
+ .debug_abbrev  0x0000000000004191       0xb5 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(bpabi.o)
+ .debug_abbrev  0x0000000000004246      0x165 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+ .debug_abbrev  0x00000000000043ab      0x154 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+ .debug_abbrev  0x00000000000044ff       0x14 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_clzsi2.o)
+ .debug_abbrev  0x0000000000004513      0x217 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-setvbuf.o)
+ .debug_abbrev  0x000000000000472a      0x1d7 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-malloc.o)
+
+.debug_aranges  0x0000000000000000      0x5b8
+ .debug_aranges
+                0x0000000000000000       0x20 obj/sram_applet_cstartup.o
+ .debug_aranges
+                0x0000000000000020       0x20 obj/sram_main.o
+ .debug_aranges
+                0x0000000000000040       0x18 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-impure.o)
+ .debug_aranges
+                0x0000000000000058       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-iprintf.o)
+ .debug_aranges
+                0x0000000000000078       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memset.o)
+ .debug_aranges
+                0x0000000000000098       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+ .debug_aranges
+                0x00000000000000b8       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wsetup.o)
+ .debug_aranges
+                0x00000000000000d8       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fflush.o)
+ .debug_aranges
+                0x00000000000000f8       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+ .debug_aranges
+                0x0000000000000118       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o)
+ .debug_aranges
+                0x0000000000000138       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+ .debug_aranges
+                0x0000000000000158       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o)
+ .debug_aranges
+                0x0000000000000178       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fwalk.o)
+ .debug_aranges
+                0x0000000000000198       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+ .debug_aranges
+                0x00000000000001b8       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-makebuf.o)
+ .debug_aranges
+                0x00000000000001d8       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+ .debug_aranges
+                0x00000000000001f8       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memchr-stub.o)
+ .debug_aranges
+                0x0000000000000218       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memcpy-stub.o)
+ .debug_aranges
+                0x0000000000000238       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memmove.o)
+ .debug_aranges
+                0x0000000000000258       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mlock.o)
+ .debug_aranges
+                0x0000000000000278       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reallocr.o)
+ .debug_aranges
+                0x0000000000000298       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-sbrkr.o)
+ .debug_aranges
+                0x00000000000002b8       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o)
+ .debug_aranges
+                0x00000000000002d8       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strcmp.o)
+ .debug_aranges
+                0x00000000000002f8       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strlen.o)
+ .debug_aranges
+                0x0000000000000318       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strncpy.o)
+ .debug_aranges
+                0x0000000000000338       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wbuf.o)
+ .debug_aranges
+                0x0000000000000358       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wcrtomb.o)
+ .debug_aranges
+                0x0000000000000378       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wctomb_r.o)
+ .debug_aranges
+                0x0000000000000398       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-writer.o)
+ .debug_aranges
+                0x00000000000003b8       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-closer.o)
+ .debug_aranges
+                0x00000000000003d8       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fclose.o)
+ .debug_aranges
+                0x00000000000003f8       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fstatr.o)
+ .debug_aranges
+                0x0000000000000418       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-isattyr.o)
+ .debug_aranges
+                0x0000000000000438       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-lseekr.o)
+ .debug_aranges
+                0x0000000000000458       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-readr.o)
+ .debug_aranges
+                0x0000000000000478       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reent.o)
+ .debug_aranges
+                0x0000000000000498       0x20 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+ .debug_aranges
+                0x00000000000004b8       0x20 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_dvmd_tls.o)
+ .debug_aranges
+                0x00000000000004d8       0x20 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_aeabi_uldivmod.o)
+ .debug_aranges
+                0x00000000000004f8       0x20 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(bpabi.o)
+ .debug_aranges
+                0x0000000000000518       0x20 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+ .debug_aranges
+                0x0000000000000538       0x20 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+ .debug_aranges
+                0x0000000000000558       0x20 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_clzsi2.o)
+ .debug_aranges
+                0x0000000000000578       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-setvbuf.o)
+ .debug_aranges
+                0x0000000000000598       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-malloc.o)
+
+.debug_loc      0x0000000000000000     0x62cc
+ .debug_loc     0x0000000000000000       0xff obj/sram_main.o
+ .debug_loc     0x00000000000000ff       0x8c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-iprintf.o)
+ .debug_loc     0x000000000000018b       0x3f /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memset.o)
+ .debug_loc     0x00000000000001ca     0x109c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+ .debug_loc     0x0000000000001266       0x5c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wsetup.o)
+ .debug_loc     0x00000000000012c2      0x258 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fflush.o)
+ .debug_loc     0x000000000000151a      0x2bb /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+ .debug_loc     0x00000000000017d5      0x1a5 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o)
+ .debug_loc     0x000000000000197a      0x3bf /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+ .debug_loc     0x0000000000001d39      0x4e9 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o)
+ .debug_loc     0x0000000000002222      0x175 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fwalk.o)
+ .debug_loc     0x0000000000002397      0x141 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+ .debug_loc     0x00000000000024d8      0x10a /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-makebuf.o)
+ .debug_loc     0x00000000000025e2      0x7fa /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+ .debug_loc     0x0000000000002ddc       0x81 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memchr-stub.o)
+ .debug_loc     0x0000000000002e5d       0x39 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memcpy-stub.o)
+ .debug_loc     0x0000000000002e96       0xd2 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memmove.o)
+ .debug_loc     0x0000000000002f68      0xb12 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reallocr.o)
+ .debug_loc     0x0000000000003a7a       0x5f /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-sbrkr.o)
+ .debug_loc     0x0000000000003ad9      0x25d /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o)
+ .debug_loc     0x0000000000003d36       0x21 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strcmp.o)
+ .debug_loc     0x0000000000003d57       0x21 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strlen.o)
+ .debug_loc     0x0000000000003d78      0x102 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strncpy.o)
+ .debug_loc     0x0000000000003e7a      0x125 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wbuf.o)
+ .debug_loc     0x0000000000003f9f      0x19b /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wcrtomb.o)
+ .debug_loc     0x000000000000413a       0xfe /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wctomb_r.o)
+ .debug_loc     0x0000000000004238       0xb7 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-writer.o)
+ .debug_loc     0x00000000000042ef       0x5f /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-closer.o)
+ .debug_loc     0x000000000000434e       0xd2 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fclose.o)
+ .debug_loc     0x0000000000004420       0x8b /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fstatr.o)
+ .debug_loc     0x00000000000044ab       0x5f /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-isattyr.o)
+ .debug_loc     0x000000000000450a       0xb7 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-lseekr.o)
+ .debug_loc     0x00000000000045c1       0xb7 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-readr.o)
+ .debug_loc     0x0000000000004678      0x165 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reent.o)
+ .debug_loc     0x00000000000047dd       0xe0 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(bpabi.o)
+ .debug_loc     0x00000000000048bd      0xb77 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+ .debug_loc     0x0000000000005434      0xc8c /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+ .debug_loc     0x00000000000060c0      0x174 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-setvbuf.o)
+ .debug_loc     0x0000000000006234       0x98 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-malloc.o)
+
+.debug_ranges   0x0000000000000000      0x1e8
+ .debug_ranges  0x0000000000000000       0x10 obj/sram_main.o
+ .debug_ranges  0x0000000000000010       0x38 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+ .debug_ranges  0x0000000000000048       0xc8 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+ .debug_ranges  0x0000000000000110       0xd8 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+
+.debug_str      0x0000000000000000     0x233c
+ .debug_str     0x0000000000000000      0x251 obj/sram_main.o
+                                        0x29c (size before relaxing)
+ .debug_str     0x0000000000000251      0x3ff /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-impure.o)
+                                        0x4ea (size before relaxing)
+ .debug_str     0x0000000000000650      0x12d /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-iprintf.o)
+                                        0x59b (size before relaxing)
+ .debug_str     0x000000000000077d       0x7a /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memset.o)
+                                        0x11f (size before relaxing)
+ .debug_str     0x00000000000007f7      0x2ea /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+                                        0x8bc (size before relaxing)
+ .debug_str     0x0000000000000ae1       0x87 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wsetup.o)
+                                        0x57d (size before relaxing)
+ .debug_str     0x0000000000000b68       0xa2 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fflush.o)
+                                        0x5b8 (size before relaxing)
+ .debug_str     0x0000000000000c0a      0x143 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+                                        0x667 (size before relaxing)
+ .debug_str     0x0000000000000d4d       0xa4 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o)
+                                        0x5b8 (size before relaxing)
+ .debug_str     0x0000000000000df1      0x240 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+                                        0x6c7 (size before relaxing)
+ .debug_str     0x0000000000001031       0xab /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o)
+                                        0x600 (size before relaxing)
+ .debug_str     0x00000000000010dc       0x80 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fwalk.o)
+                                        0x573 (size before relaxing)
+ .debug_str     0x000000000000115c      0x1cb /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+                                        0x7cb (size before relaxing)
+ .debug_str     0x0000000000001327      0x161 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-makebuf.o)
+                                        0x677 (size before relaxing)
+ .debug_str     0x0000000000001488       0xdf /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+                                        0x77d (size before relaxing)
+ .debug_str     0x0000000000001567       0x8d /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memchr-stub.o)
+                                        0x139 (size before relaxing)
+ .debug_str     0x00000000000015f4       0x91 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memcpy-stub.o)
+                                        0x13d (size before relaxing)
+ .debug_str     0x0000000000001685       0x7d /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memmove.o)
+                                        0x13a (size before relaxing)
+ .debug_str     0x0000000000001702       0x87 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mlock.o)
+                                        0x4f2 (size before relaxing)
+ .debug_str     0x0000000000001789       0x4e /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reallocr.o)
+                                        0x64f (size before relaxing)
+ .debug_str     0x00000000000017d7       0x7c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-sbrkr.o)
+                                        0x4e1 (size before relaxing)
+ .debug_str     0x0000000000001853       0xd1 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o)
+                                        0x5c8 (size before relaxing)
+ .debug_str     0x0000000000001924       0x78 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strcmp.o)
+                                        0x11d (size before relaxing)
+ .debug_str     0x000000000000199c       0x80 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strlen.o)
+                                        0x12c (size before relaxing)
+ .debug_str     0x0000000000001a1c       0x80 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strncpy.o)
+                                        0x13d (size before relaxing)
+ .debug_str     0x0000000000001a9c       0x78 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wbuf.o)
+                                        0x582 (size before relaxing)
+ .debug_str     0x0000000000001b14       0x8c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wcrtomb.o)
+                                        0x59f (size before relaxing)
+ .debug_str     0x0000000000001ba0       0x95 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wctomb_r.o)
+                                        0x5ae (size before relaxing)
+ .debug_str     0x0000000000001c35       0x72 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-writer.o)
+                                        0x4de (size before relaxing)
+ .debug_str     0x0000000000001ca7       0x72 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-closer.o)
+                                        0x4ce (size before relaxing)
+ .debug_str     0x0000000000001d19       0x83 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fclose.o)
+                                        0x5aa (size before relaxing)
+ .debug_str     0x0000000000001d9c       0x7f /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fstatr.o)
+                                        0x5c8 (size before relaxing)
+ .debug_str     0x0000000000001e1b       0x7b /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-isattyr.o)
+                                        0x4d8 (size before relaxing)
+ .debug_str     0x0000000000001e96       0x79 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-lseekr.o)
+                                        0x4e3 (size before relaxing)
+ .debug_str     0x0000000000001f0f       0x71 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-readr.o)
+                                        0x4dc (size before relaxing)
+ .debug_str     0x0000000000001f80       0xab /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reent.o)
+                                        0x517 (size before relaxing)
+ .debug_str     0x000000000000202b       0xb4 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(bpabi.o)
+                                         0xef (size before relaxing)
+ .debug_str     0x00000000000020df      0x15e /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+                                        0x217 (size before relaxing)
+ .debug_str     0x0000000000000000      0x218 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+ .debug_str     0x000000000000223d       0x7b /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-setvbuf.o)
+                                        0x58f (size before relaxing)
+ .debug_str     0x00000000000022b8       0x84 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-malloc.o)
+                                        0x4fd (size before relaxing)
+
+.debug_frame    0x0000000000000000      0xabc
+ .debug_frame   0x0000000000000000       0x28 obj/sram_main.o
+ .debug_frame   0x0000000000000028       0x5c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-iprintf.o)
+ .debug_frame   0x0000000000000084       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memset.o)
+ .debug_frame   0x00000000000000a4       0x7c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+ .debug_frame   0x0000000000000120       0x2c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wsetup.o)
+ .debug_frame   0x000000000000014c       0x64 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fflush.o)
+ .debug_frame   0x00000000000001b0      0x138 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+ .debug_frame   0x00000000000002e8       0x50 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o)
+ .debug_frame   0x0000000000000338       0x4c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+ .debug_frame   0x0000000000000384       0x38 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o)
+ .debug_frame   0x00000000000003bc       0x54 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fwalk.o)
+ .debug_frame   0x0000000000000410       0x98 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+ .debug_frame   0x00000000000004a8       0x30 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-makebuf.o)
+ .debug_frame   0x00000000000004d8       0x34 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+ .debug_frame   0x000000000000050c       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memchr-stub.o)
+ .debug_frame   0x000000000000052c       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x000000000000054c       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memmove.o)
+ .debug_frame   0x000000000000056c       0x30 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mlock.o)
+ .debug_frame   0x000000000000059c       0x38 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reallocr.o)
+ .debug_frame   0x00000000000005d4       0x2c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-sbrkr.o)
+ .debug_frame   0x0000000000000600       0x88 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o)
+ .debug_frame   0x0000000000000688       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strcmp.o)
+ .debug_frame   0x00000000000006a8       0x20 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strlen.o)
+ .debug_frame   0x00000000000006c8       0x28 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strncpy.o)
+ .debug_frame   0x00000000000006f0       0x3c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wbuf.o)
+ .debug_frame   0x000000000000072c       0x4c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wcrtomb.o)
+ .debug_frame   0x0000000000000778       0x44 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wctomb_r.o)
+ .debug_frame   0x00000000000007bc       0x2c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-writer.o)
+ .debug_frame   0x00000000000007e8       0x2c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-closer.o)
+ .debug_frame   0x0000000000000814       0x3c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fclose.o)
+ .debug_frame   0x0000000000000850       0x2c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fstatr.o)
+ .debug_frame   0x000000000000087c       0x2c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-isattyr.o)
+ .debug_frame   0x00000000000008a8       0x2c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-lseekr.o)
+ .debug_frame   0x00000000000008d4       0x2c /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-readr.o)
+ .debug_frame   0x0000000000000900       0x64 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reent.o)
+ .debug_frame   0x0000000000000964       0x20 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+ .debug_frame   0x0000000000000984       0x54 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(bpabi.o)
+ .debug_frame   0x00000000000009d8       0x38 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+ .debug_frame   0x0000000000000a10       0x38 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+ .debug_frame   0x0000000000000a48       0x34 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-setvbuf.o)
+ .debug_frame   0x0000000000000a7c       0x40 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-malloc.o)
+
+Cross Reference Table
+
+Symbol                                            File
+DBGU_Configure                                    ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+                                                  ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(trace.o)
+DBGU_ConsoleUseDBGU                               ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+DBGU_ConsoleUseUSART0                             ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+DBGU_DumpFrame                                    ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+DBGU_DumpMemory                                   ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+DBGU_GetChar                                      ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+DBGU_GetHexa32                                    ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+DBGU_GetInteger                                   ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+DBGU_GetIntegerMinMax                             ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+DBGU_IsRxReady                                    ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+DBGU_PutChar                                      ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+                                                  ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+FUSE_Read                                         ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(fuse.o)
+                                                  obj/sram_main.o
+FUSE_Write                                        ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(fuse.o)
+                                                  obj/sram_main.o
+PIO_Clear                                         ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+PIO_Configure                                     ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+                                                  ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+                                                  ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(trace.o)
+PIO_DisableWriteProtect                           ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+PIO_EnableWriteProtect                            ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+PIO_Get                                           ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+PIO_GetOutputDataStatus                           ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+PIO_GetWriteProtectViolationInfo                  ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+PIO_Set                                           ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+PIO_SetDebounceFilter                             ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+PMC_DisableAllPeripherals                         ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+PMC_DisablePeripheral                             ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+PMC_EnableAllPeripherals                          ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+PMC_EnablePeripheral                              ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+                                                  ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+                                                  ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+PMC_IsPeriphEnabled                               ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+PMC_SelectExt12M_Osc                              ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+PMC_SelectExt32KCrystal                           ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+PMC_SelectInt12M_Osc                              ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+PMC_SelectInt32kCrystal                           ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+PMC_SetMckDivider                                 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+PMC_SetMckPllaDiv                                 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+PMC_SetMckPrescaler                               ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+PMC_SetPllA                                       ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+PMC_SwitchMck2Main                                ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+PMC_SwitchMck2Pll                                 ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+PMC_SwitchMck2Slck                                ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+TRACE_CONFIGURE                                   ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(trace.o)
+_ITM_deregisterTMCloneTable                       /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtbegin.o
+_ITM_registerTMCloneTable                         /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtbegin.o
+_Jv_RegisterClasses                               /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtbegin.o
+_PathLocale                                       /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+_Unwind_Backtrace                                 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+_Unwind_Complete                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+_Unwind_DeleteException                           /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+_Unwind_ForcedUnwind                              /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+_Unwind_GetCFA                                    /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+_Unwind_GetDataRelBase                            /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+_Unwind_GetLanguageSpecificData                   /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+_Unwind_GetRegionStart                            /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+_Unwind_GetTextRelBase                            /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+_Unwind_RaiseException                            /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+_Unwind_Resume                                    /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+_Unwind_Resume_or_Rethrow                         /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+_Unwind_VRS_Get                                   /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+_Unwind_VRS_Pop                                   /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+_Unwind_VRS_Set                                   /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+__TMC_END__                                       /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtend.o
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtbegin.o
+___Unwind_Backtrace                               /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+___Unwind_ForcedUnwind                            /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+___Unwind_RaiseException                          /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+___Unwind_Resume                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+___Unwind_Resume_or_Rethrow                       /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+__aeabi_idiv0                                     /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_dvmd_tls.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+__aeabi_ldiv0                                     /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_dvmd_tls.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_aeabi_uldivmod.o)
+__aeabi_uidiv                                     /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+                                                  ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pio.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+                                                  ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+__aeabi_uidivmod                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+__aeabi_uldivmod                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_aeabi_uldivmod.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+__aeabi_unwind_cpp_pr0                            /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+__aeabi_unwind_cpp_pr1                            /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+__aeabi_unwind_cpp_pr2                            /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+__ascii_wctomb                                    /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wctomb_r.o)
+__bss_end__                                       /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+__bss_start__                                     /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+__call_exitprocs                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__call_atexit.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-exit.o)
+__clzsi2                                          /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_clzsi2.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+__cxa_begin_cleanup                               /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+__cxa_call_unexpected                             /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+__cxa_type_match                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+__deregister_frame_info                           /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtbegin.o
+__divdi3                                          /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(bpabi.o)
+__dso_handle                                      /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtbegin.o
+__exidx_end                                       /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+__exidx_start                                     /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+__fini_array_end                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fini.o)
+__fini_array_start                                /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fini.o)
+__fp_lock_all                                     /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+__fp_unlock_all                                   /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+__gnu_Unwind_Backtrace                            /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+__gnu_Unwind_Find_exidx                           /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+__gnu_Unwind_ForcedUnwind                         /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+__gnu_Unwind_RaiseException                       /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+__gnu_Unwind_Restore_VFP                          /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+__gnu_Unwind_Restore_VFP_D                        /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+__gnu_Unwind_Restore_VFP_D_16_to_31               /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+__gnu_Unwind_Restore_WMMXC                        /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+__gnu_Unwind_Restore_WMMXD                        /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+__gnu_Unwind_Resume                               /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+__gnu_Unwind_Resume_or_Rethrow                    /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+__gnu_Unwind_Save_VFP                             /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+__gnu_Unwind_Save_VFP_D                           /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+__gnu_Unwind_Save_VFP_D_16_to_31                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+__gnu_Unwind_Save_WMMXC                           /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+__gnu_Unwind_Save_WMMXD                           /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+__gnu_ldivmod_helper                              /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(bpabi.o)
+__gnu_uldivmod_helper                             /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(bpabi.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_aeabi_uldivmod.o)
+__gnu_unwind_execute                              /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+__gnu_unwind_frame                                /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+__init_array_end                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-init.o)
+__init_array_start                                /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-init.o)
+__libc_fini_array                                 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fini.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+__libc_init_array                                 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-init.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+__locale_charset                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wctomb_r.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wcrtomb.o)
+__locale_cjk_lang                                 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+__locale_mb_cur_max                               /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o)
+__locale_msgcharset                               /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+__malloc_av_                                      /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reallocr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+__malloc_current_mallinfo                         /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+__malloc_lock                                     /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mlock.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reallocr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+__malloc_max_sbrked_mem                           /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+__malloc_max_total_mem                            /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+__malloc_sbrk_base                                /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+__malloc_top_pad                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+__malloc_trim_threshold                           /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+__malloc_unlock                                   /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mlock.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reallocr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+__mb_cur_max                                      /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+__mlocale_changed                                 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+__nlocale_changed                                 /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+__preinit_array_end                               /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-init.o)
+__preinit_array_start                             /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-init.o)
+__register_exitproc                               /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__atexit.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-atexit.o)
+__register_frame_info                             /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crtbegin.o
+__restore_core_regs                               /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+__sclose                                          /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+__seofread                                        /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o)
+__sflush_r                                        /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fflush.o)
+__sfmoreglue                                      /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+__sfp                                             /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+__sfp_lock_acquire                                /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fclose.o)
+__sfp_lock_release                                /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fclose.o)
+__sfvwrite_r                                      /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+__sigtramp                                        /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+__sigtramp_r                                      /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+__sinit                                           /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-setvbuf.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fclose.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wbuf.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fflush.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wsetup.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+__sinit_lock_acquire                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+__sinit_lock_release                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+__smakebuf_r                                      /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-makebuf.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wsetup.o)
+__sprint_r                                        /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+__sread                                           /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+__sseek                                           /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-makebuf.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+__stack                                           /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+__swbuf                                           /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wbuf.o)
+__swbuf_r                                         /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wbuf.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o)
+__swrite                                          /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+__swsetup_r                                       /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wsetup.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wbuf.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+__udivdi3                                         /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(bpabi.o)
+__udivsi3                                         /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+__wctomb                                          /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wctomb_r.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wcrtomb.o)
+_bConsoleIsInitialized                            ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+_cleanup                                          /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+_cleanup_r                                        /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-setvbuf.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-makebuf.o)
+_close                                            ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-closer.o)
+_close_r                                          /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-closer.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o)
+_end                                              obj/sram_main.o
+_exit                                             ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-abort.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-exit.o)
+_ezero                                            obj/sram_applet_cstartup.o
+_fclose_r                                         /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fclose.o)
+_fflush_r                                         /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fflush.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-setvbuf.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fclose.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wbuf.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+_fini                                             /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crti.o
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fini.o)
+_fputwc_r                                         /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+_free_r                                           /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-malloc.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-setvbuf.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reent.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fclose.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reallocr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fflush.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wsetup.o)
+_fstat                                            ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fstatr.o)
+_fstat_r                                          /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fstatr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-makebuf.o)
+_fwalk                                            /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fwalk.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+_fwalk_reent                                      /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fwalk.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fflush.o)
+_getpid                                           ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signalr.o)
+_getpid_r                                         /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signalr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+_global_impure_ptr                                /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-impure.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fflush.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__call_atexit.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__atexit.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-exit.o)
+_heap                                             ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+_impure_ptr                                       /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-impure.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-malloc.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-setvbuf.o)
+                                                  ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reent.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fclose.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wcrtomb.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wbuf.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fflush.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wsetup.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-iprintf.o)
+_init                                             /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/crti.o
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-init.o)
+_init_signal                                      /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+_init_signal_r                                    /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+_iprintf_r                                        /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-iprintf.o)
+_isatty                                           ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-isattyr.o)
+_isatty_r                                         /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-isattyr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-makebuf.o)
+_kill                                             ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signalr.o)
+_kill_r                                           /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signalr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+_localeconv_r                                     /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+_lseek                                            ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-lseekr.o)
+_lseek_r                                          /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-lseekr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o)
+_mainCRTStartup                                   /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+_malloc_r                                         /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-malloc.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reallocr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-makebuf.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+_malloc_trim_r                                    /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+_raise_r                                          /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+_read                                             ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-readr.o)
+_read_r                                           /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-readr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o)
+_realloc_r                                        /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reallocr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o)
+_reclaim_reent                                    /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reent.o)
+_sbrk                                             ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-sbrkr.o)
+_sbrk_r                                           /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-sbrkr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-mallocr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-freer.o)
+_setlocale_r                                      /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+_signal_r                                         /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+_sstack                                           obj/sram_applet_cstartup.o
+_start                                            /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+_szero                                            obj/sram_applet_cstartup.o
+_vfiprintf_r                                      /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-iprintf.o)
+_wcrtomb_r                                        /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wcrtomb.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o)
+_wctomb_r                                         /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wctomb_r.o)
+_wrapup_reent                                     /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reent.o)
+_write                                            ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-writer.o)
+_write_r                                          /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-writer.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-stdio.o)
+abort                                             /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-abort.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(pr-support.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+atexit                                            /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-atexit.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+cleanup_glue                                      /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reent.o)
+dwTraceLevel                                      ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(trace.o)
+                                                  ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+                                                  obj/sram_main.o
+entry                                             obj/sram_applet_cstartup.o
+errno                                             /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signalr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reent.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-readr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-lseekr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-isattyr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fstatr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-closer.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-writer.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-sbrkr.o)
+exit                                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-exit.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+fclose                                            /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fclose.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+fflush                                            /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fflush.o)
+fputwc                                            /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fputwc.o)
+free                                              /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-malloc.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__call_atexit.o)
+hardware_init_hook                                /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+iprintf                                           /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-iprintf.o)
+                                                  ../../libraries/libchip_sama5d3x/lib/libchip_sama5d3x_gcc_rel.a(pmc.o)
+                                                  ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+                                                  ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+                                                  obj/sram_main.o
+link                                              ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(syscalls.o)
+localeconv                                        /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+main                                              obj/sram_main.o
+                                                  obj/sram_applet_cstartup.o
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+malloc                                            /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-malloc.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-setvbuf.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-__atexit.o)
+memchr                                            /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memchr-stub.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+memcpy                                            /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memcpy-stub.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o)
+memmove                                           /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memmove.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-reallocr.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-fvwrite.o)
+memset                                            /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-memset.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-findfp.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+raise                                             /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-abort.o)
+restore_core_regs                                 /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(libunwind.o)
+                                                  /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/libgcc.a(unwind-arm.o)
+setlocale                                         /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+setvbuf                                           /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-setvbuf.o)
+                                                  ../../libraries/libboard_sama5d3x-ek/lib/libboard_sama5d3x_ek_gcc_rel.a(dbgu_console.o)
+signal                                            /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-signal.o)
+software_init_hook                                /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+start                                             /usr/local/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/crt0.o
+strcmp                                            /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strcmp.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-locale.o)
+strlen                                            /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strlen.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+strncpy                                           /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-strncpy.o)
+                                                  /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+vfiprintf                                         /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-vfiprintf.o)
+wcrtomb                                           /usr/local/arm-none-eabi/bin/../arm-none-eabi/sysroot/lib/libc.a(lib_a-wcrtomb.o)
