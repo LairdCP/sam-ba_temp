@@ -36,7 +36,7 @@
 # (can be overriden by adding CHIP=chip and BOARD=board to the command-line)
 CHIP  = sama5d3x
 BOARD = sama5d3x_ek
-BOARD_DIR = at91sama5d3x-wb50nbt
+BOARD_DIR = at91sama5d3x-som60
 DYN = OFF
 
 # Defines which are the available memory targets for the AT91sama5d3x-EK board.

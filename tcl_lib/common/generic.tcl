@@ -1124,6 +1124,7 @@ proc NANDFLASH::Init {} {
         ($target(board) == "at91sam9x25-ek") ||
         ($target(board) == "at91sama5d3x-ek") ||
         ($target(board) == "at91sama5d3x-wb50nbt") ||
+        ($target(board) == "at91sama5d3x-som60") ||
         ($target(board) == "at91sam9x35-ek")} {
         puts " - By default PMECC is activated, 
     - By default, The pmecc computation is based on a sector of 512 bytes,
