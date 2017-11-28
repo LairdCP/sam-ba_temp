@@ -51,6 +51,7 @@
 #define MT47H128M16RT   1
 #define LPDDR   2
 #define MT46H16M32LFB5 2
+#define MT29C2G24MAAAAKAMD5IT 3
 
 /* Board DDRAM size*/
 
@@ -259,6 +260,17 @@ int main(int argc, char **argv)
 				//TRACE_INFO("\tExternal RAM type : %s\n\r", "DDRAM");
 				BOARD_ConfigureLpDdram1(pMailbox->argument.inputInit.ddrModel);
 				pMailbox->argument.outputInit.memorySize = BOARD_DDRAM_SIZE_0;
+			}
+			else if (pMailbox->argument.inputInit.ddrModel == MT29C2G24MAAAAKAMD5IT)
+			{
+				/* DDR reset */
+				MPDDRC->MPDDRC_LPR = MPDDRC_LPR_LPCB_DEEP_PWD |MPDDRC_LPR_CLK_FR_ENABLED;
+				/* Disable DDR clock. */
+				PMC->PMC_PCDR1 |= (1 << (ID_MPDDRC-32));
+				PMC->PMC_SCDR  |= PMC_SCER_DDRCK;
+				//TRACE_INFO("\tExternal RAM type : %s\n\r", "DDRAM");
+				BOARD_ConfigureLpDdram1(pMailbox->argument.inputInit.ddrModel);
+				pMailbox->argument.outputInit.memorySize = BOARD_DDRAM_SIZE_1;
 			}
 			else
 			{

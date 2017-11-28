@@ -73,8 +73,8 @@ namespace eval BOARD {
     variable extRamType 1
     # Set bus width (16 or 32)
     variable extRamDataBusWidth 32
-    # DDRAM Model (0: MT47H64M16HR, 1: MT47H128M16RT 2:MT46H16M32LFB5)
-    variable extDDRamModel 2
+    # DDRAM Model (0: MT47H64M16HR, 1: MT47H128M16RT 2:MT46H16M32LFB5 3:MT29C2G24MAAAAKAMD5IT)
+    variable extDDRamModel 3
 
     # Note: DEVICE/ADDRESSES (A2, A1, A0): The A2, A1 or A0 pins are device address inputs 
     # that are hardwired or left not connected for hardware compatibility with other AT24CXX devices.

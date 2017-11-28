@@ -168,6 +168,7 @@ void BOARD_ConfigureVddMemSel( uint8_t VddMemSel )
 #define MT47H64M16HR    0
 #define MT47H128M16RT   1
 #define MT46H16M32LFB5  2
+#define MT29C2G24MAAAAKAMD5IT 3
 
 #define DDR2_BA0(r) (1 << (25 + r))
 #define DDR2_BA1(r) (1 << (26 + r))
