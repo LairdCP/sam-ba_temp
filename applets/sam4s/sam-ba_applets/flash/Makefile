@@ -38,6 +38,12 @@ SERIE = sam4s
 CHIP  = $(SERIE)16
 BOARD = $(SERIE)_ek
 
+
+ifeq (sam4s2,$(CHIP))
+BOARD_DIR = at91sam4s2-ek
+CHIP_NAME  = __SAM4S2C__
+endif
+
 ifeq (sam4s4,$(CHIP))
 BOARD_DIR = at91sam4s4-ek
 CHIP_NAME  = __SAM4S4C__

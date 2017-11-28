@@ -43,6 +43,14 @@
 /*----------------------------------------------------------------------------
  *        Exported functions
  *----------------------------------------------------------------------------*/
+/* Clock Settings (500MHz PLL VDDIO 3.3V and VDDCORE 1.2V) */
+/* Clock Settings (300MHz HCLK, 150MHz MCK)=> PRESC = 1, MDIV = 2 */
+#define SYS_BOARD_OSCOUNT   (CKGR_MOR_MOSCXTST(0x8U))
+#define SYS_BOARD_PLLAR     (CKGR_PLLAR_ONE | CKGR_PLLAR_MULA(0x18U) | \
+				CKGR_PLLAR_PLLACOUNT(0x3fU) | CKGR_PLLAR_DIVA(0x1U))
+
+#define SYS_BOARD_MCKR      (PMC_MCKR_PRES_CLK_1 | PMC_MCKR_CSS_PLLA_CLK \
+				| PMC_MCKR_MDIV_PCK_DIV2)
 
 /**
  * \brief Performs the low-level initialization of the chip.
@@ -51,22 +59,70 @@
  */
 extern WEAK void LowLevelInit( void )
 {
-    /* Set 6 FWS for Embedded Flash Access */
-    EFC->EEFC_FMR = EEFC_FMR_FWS(6);
-    if (!(PMC->CKGR_MOR & CKGR_MOR_MOSCSEL) )  /* Main Oscillator Selection */
-    {
-        SUPC_SelectExtCrystal32K();
-        PMC_DisableAllClocks();
-        PMC_SetMckSelection(PMC_MCKR_CSS_SLOW_CLK, PMC_MCKR_PRES_CLK_1);
-        /* Then, enable Main XTAL oscillator */
-        PMC_EnableExtOsc();
-        PMC_SelectExtOsc();
-        PMC_SetMckSelection(PMC_MCKR_CSS_MAIN_CLK, PMC_MCKR_PRES_CLK_1);
-        /* wait Main CLK Ready */
-        while(!(PMC->CKGR_MCFR & CKGR_MCFR_MAINFRDY)); 
-        /* Then, cofigure PLLA and switch clock */
-        PMC_ConfigureMckWithPlla(0x16, 0x1, PMC_MCKR_PRES_CLK_1);
-        PMC->PMC_MCKR |= 1 << 8; 
-        while( !(PMC->PMC_SR & PMC_SR_MCKRDY) );
-    }
+    uint32_t read_MOR;
+	/* Set FWS according to SYS_BOARD_MCKR configuration */
+	EFC->EEFC_FMR = EEFC_FMR_FWS(5);
+	
+	 /* Before switching MAIN OSC on external crystal : enable it and don't 
+	 * disable at the same time RC OSC in case of if MAIN OSC is still using RC
+	 * OSC
+	 */
+	
+	read_MOR = PMC->CKGR_MOR;
+	 /* enable external crystal - enable RC OSC */
+	read_MOR |= (CKGR_MOR_KEY_PASSWD |CKGR_MOR_XT32KFME); 
+	PMC->CKGR_MOR = read_MOR;
+#if 0
+	/* Select XTAL 32k instead of internal slow RC 32k for slow clock */
+	if ( (SUPC->SUPC_SR & SUPC_SR_OSCSEL) != SUPC_SR_OSCSEL_CRYST )
+	{
+		SUPC->SUPC_CR = SUPC_CR_KEY_PASSWD | SUPC_CR_XTALSEL_CRYSTAL_SEL;
+	
+		while( !(SUPC->SUPC_SR & SUPC_SR_OSCSEL) );
+	}
+#endif
+	/* Initialize main oscillator */
+	if ( !(PMC->CKGR_MOR & CKGR_MOR_MOSCSEL) )
+	{
+	  PMC->CKGR_MOR = CKGR_MOR_KEY_PASSWD | SYS_BOARD_OSCOUNT
+					| CKGR_MOR_MOSCRCEN | CKGR_MOR_MOSCXTEN;
+	
+	  while ( !(PMC->PMC_SR & PMC_SR_MOSCXTS) )
+	  {
+	  }
+	}
+	
+	/* Switch to 3-20MHz Xtal oscillator */
+	PMC->CKGR_MOR = CKGR_MOR_KEY_PASSWD | SYS_BOARD_OSCOUNT 
+					| CKGR_MOR_MOSCRCEN | CKGR_MOR_MOSCXTEN | CKGR_MOR_MOSCSEL;
+	
+	while ( !(PMC->PMC_SR & PMC_SR_MOSCSELS) )
+	{
+	}
+	
+	PMC->PMC_MCKR = (PMC->PMC_MCKR & ~(uint32_t)PMC_MCKR_CSS_Msk)
+					| PMC_MCKR_CSS_MAIN_CLK;
+
+	while ( !(PMC->PMC_SR & PMC_SR_MCKRDY) )
+	{
+	}
+   
+	/* Initialize PLLA */
+	PMC->CKGR_PLLAR = SYS_BOARD_PLLAR;
+	while ( !(PMC->PMC_SR & PMC_SR_LOCKA) )
+	{
+	}
+   
+	/* Switch to main clock */
+	PMC->PMC_MCKR = (SYS_BOARD_MCKR & ~PMC_MCKR_CSS_Msk) | PMC_MCKR_CSS_MAIN_CLK;
+	while ( !(PMC->PMC_SR & PMC_SR_MCKRDY) )
+	{
+	}
+   
+	/* Switch to PLLA */
+	PMC->PMC_MCKR = SYS_BOARD_MCKR;
+	while ( !(PMC->PMC_SR & PMC_SR_MCKRDY) )
+	{
+	}
+   
 }

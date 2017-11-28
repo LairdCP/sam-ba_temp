@@ -53,6 +53,11 @@ BOARD_DIR = at91sam4c8-ek
 CHIP_NAME  = __SAM4C8C__
 endif
 
+ifeq (sam4c4,$(CHIP))
+BOARD_DIR = at91sam4c4-ek
+CHIP_NAME  = __SAM4C4C__
+endif
+
 MEMORIES = sram
 
 # Trace level used for compilation

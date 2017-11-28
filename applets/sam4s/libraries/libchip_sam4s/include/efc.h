@@ -61,7 +61,7 @@
  *        Definitions
  *----------------------------------------------------------------------------*/
 /* TODO: Temporary definition for missing symbol in header file */
-#if ((defined __SAM4S4A__) || (defined __SAM4S4B__) || (defined __SAM4S4C__))
+#if ((defined __SAM4S4A__) || (defined __SAM4S4B__) || (defined __SAM4S4C__)|| (defined __SAM4S2C__))
   #define IFLASH_PAGE_SIZE        512u
   #define IFLASH_SECTOR_SIZE      65536u
   #define IFLASH_LOCK_REGION_SIZE 8192u

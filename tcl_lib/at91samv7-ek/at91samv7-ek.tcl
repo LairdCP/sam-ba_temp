@@ -103,6 +103,7 @@ if { [ catch { source "$libPath(extLib)/common/functions.tcl"} errMsg] } {
 array set memoryAlgo {
     "SRAM"         "::at91samv7_sram"
     "Flash"        "::at91samv7_flash"
+    "QspiFlash"    "::at91samv7_qspiflash"
     "Peripheral"   "::at91samv7_peripheral"
     "REMAP"        "::at91samv7_remap"
 }
@@ -164,6 +165,7 @@ set FLASH::appletAddr             0x20401000
 set FLASH::appletMailboxAddr      0x20401040
 set FLASH::appletFileName         "$libPath(extLib)/$target(board)/applet-flash-samv7.bin"
 
+
 # Initialize FLASH
 if {[catch {FLASH::Init} dummy_err]} {
     if {$commandLineMode == 0} {
@@ -178,6 +180,29 @@ if {[catch {FLASH::Init} dummy_err]} {
 } else {
     puts "-I- FLASH initialized"
 }
+
+################################################################################
+## QSPI FLASH
+################################################################################
+array set at91samv7_qspiflash {
+    dftDisplay  1
+    dftDefault  1
+    dftAddress  0
+    dftSize     "$GENERIC::memorySize"
+    dftSend     "GENERIC::SendFile"
+    dftReceive  "GENERIC::ReceiveFile"
+    dftScripts  "::at91samv7_qspi_scripts"
+}
+array set at91samv7_qspi_scripts {
+    "Enable Qspi S25fl116K flash"     "SERIALFLASH::Init 0"
+    "Erase All"                       "SERIALFLASH::EraseAll"
+    "Enter XIP mode and execute from QSPI flash" "SERIALFLASH::Xip"
+}
+
+set SERIALFLASH::appletAddr             0x20401000
+set SERIALFLASH::appletMailboxAddr      0x20401040
+set SERIALFLASH::appletFileName         "$libPath(extLib)/$target(board)/applet-qspi-samv7.bin"
+
 
 ################################################################################
 array set at91samv7_peripheral {

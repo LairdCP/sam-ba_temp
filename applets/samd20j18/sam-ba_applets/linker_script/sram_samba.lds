@@ -37,8 +37,8 @@ OUTPUT_ARCH(arm)
 /* Memory Spaces Definitions */
 MEMORY
 {
-    romcodesram (W!RX) : ORIGIN = 0x20000100, LENGTH = 0x800
-    sram (W!RX) : ORIGIN = 0x20000100, LENGTH = 0x00000800 /* sram, 32K - sizeof(romcodesram) */
+    romcodesram (W!RX) : ORIGIN = 0x20000000, LENGTH = 0x1000
+    sram (W!RX) : ORIGIN = 0x20001000, LENGTH = 0x000001000 /* sram, 32K - sizeof(romcodesram) */
 }
 
 SECTIONS
@@ -83,7 +83,7 @@ SECTIONS
     } >sram
 
     /* Stack in SRAM */
-    _sstack = 0x20000EFF;
+    _sstack = 0x20001FFF;
     /DISCARD/ : { *(.note.gnu.*) }
 }
 . = ALIGN(4);

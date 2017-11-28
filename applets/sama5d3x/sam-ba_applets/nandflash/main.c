@@ -661,19 +661,20 @@ int main(int argc, char **argv)
                 backupPmeccHeader.usePmecc = nValue;
                 break;
             case ECCHEADER_SECTORS:
-                TRACE_INFO("\tConfigure 'nbSectorPerPage' to %x.\n\r", (unsigned int)nValue);
+                TRACE_INFO("\tConfigure 'nbSectorPerPage' to %x \n\r", (unsigned int)nValue);
                 backupPmeccHeader.nbSectorPerPage = nValue;
                 break;
             case ECCHEADER_SPARE:
-                TRACE_INFO("\tConfigure 'spareSize' to %x.\n\r", (unsigned int)nValue);
+                TRACE_INFO("\tConfigure 'spareSize' to %x \n\r", (unsigned int)nValue);
                 backupPmeccHeader.spareSize = nValue;
                 break;
             case ECCHEADER_ECCBIT:
-                TRACE_INFO("\tConfigure 'eccBitReq' to %x.\n\r", (unsigned int)nValue);
+                TRACE_INFO("\tConfigure 'eccBitReq' to [%x, %d-bit ECC] \n\r", (unsigned int)nValue, eccBitReq2TT[nValue]);
                 backupPmeccHeader.eccBitReq = nValue;
                 break;
             case ECCHEADER_SECTORSIZE:
-                TRACE_INFO("\tConfigure 'sectorSize' to %x.\n\r", (unsigned int)nValue);
+                TRACE_INFO("\tConfigure 'sectorSize' to  [%x,%d bytes] \n\r", (unsigned int)nValue,
+                           ((nValue == 0) ? 512 : 1024));
                 backupPmeccHeader.sectorSize = nValue;
                 break;
             case ECCHEADER_ECCOFFSET:

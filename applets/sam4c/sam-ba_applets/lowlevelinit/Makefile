@@ -35,7 +35,7 @@
 # Chip & board used for compilation
 # (can be overriden by adding CHIP=chip and BOARD=board to the command-line)
 SERIE = sam4c
-CHIP  = $(SERIE)16
+CHIP  = $(SERIE)4
 BOARD = $(SERIE)_ek
 
 ifeq (sam4c32,$(CHIP))
@@ -51,6 +51,11 @@ endif
 ifeq (sam4c8,$(CHIP))
 BOARD_DIR = at91sam4c8-ek
 CHIP_NAME  = __SAM4C8C__
+endif
+
+ifeq (sam4c4,$(CHIP))
+BOARD_DIR = at91sam4c4-ek
+CHIP_NAME  = __SAM4C4C__
 endif
 
 MEMORIES = sram

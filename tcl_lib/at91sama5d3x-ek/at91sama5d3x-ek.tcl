@@ -66,26 +66,63 @@ if { $isValidChipOfBoard == 0 } {
 namespace eval BOARD {
     variable sramSize         0x20000
     variable maxBootSize      65328
-# Default setting for DDRAM
-    # Vdd Memory 1.8V = 0 / Vdd Memory 3.3V = 1
-    variable extRamVdd 0
-    # External SDRAM = 0 / External DDR2 = 1 / LPDDR = 2
 
-    variable extRamType 1
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-#For LPDDR change me here
-#variable extRamType 2
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    #default DDR model for sama5d3-ek board
+    variable extDDRamModel 3
 
-    # Set bus width (16 or 32)
-    variable extRamDataBusWidth 16
-    # DDRAM Model (0: MT47H64M16HR, 1: MT47H128M16RT
-    variable extDDRamModel 1
+    if {[regexp "xplained" $target(board)]} {
+        # DDR2 (MT47H64M16-25 X 2) for sama5d3-xplained 
+        set extDDRamModel 4
+    }
+    if {[regexp "cmp" $target(board)]} {
+        # LPDDR2 (MT42L128M32D1GU-25 X 2) for sama5d3-cmp 
+        set extDDRamModel 5
+    }
 
+    # All supported DDR devices:
+
+    # 1：LPDDR1 (MT46H128M16LFCK_5 X 2)
+    # 2: DDR2 (MT47H128M8CF-25E X 4)
+    # 3：DDR2 (MT47H128M16-25E X 2):
+    # 4：DDR2 (MT47H64M16-25 X 2):
+    # 5：LPDDR2 (MT42L128M32D1GU-25 X 2): 
+    # 6：LPDDR2 (MT42L128M16D1KL-25 X 4): 
+
+    # 1：LPDDR1 (MT46H128M16LFCK_5)
+    #    * 1.8V
+    #    * 32 Meg x 16 x 4 Banks
+    #    * 256MB x 2 chip = 512MB
+
+    # 2: DDR2 (MT47H128M8CF-25E)
+    #    * 1.8V
+    #    * 128 Meg x 8 (16 Meg x 8 x 8 banks)
+    #    * 128MB x 4 chip = 512MB
+
+    # 3：DDR2 (MT47H128M16-25E X 2):
+    #    * 1.8V
+    #    * 128 Meg x 16 (16 Meg x 16 x 8 banks) 
+    #    * 256MB x 2 chip = 512MB
+
+    # 4：DDR2 (MT47H64M16-25 X 2): For sama5d3 Xplained board
+    #    * 1.8V
+    #    * 64 Meg x 16 (8 Meg x 16 x 8 banks) 
+    #    * 128MB x 2 chip = 256MB
+
+    # 5：LPDDR2 (MT42L128M32D1GU-25): For sama5d3 CMP board
+    #    * 1.2V
+    #    * 8 Meg x 32 x 8 banks x 2 die 
+    #    * 512MB x 2 chip = 1G
+
+    # 6：LPDDR2 (MT42L128M16D1KL-25): 
+    #    * 1.2V
+    #    * 8 Meg x 16 x 8 banks x 2 die 
+    #    * 256MB x 4 chip = 1G
+
+    variable eepromDeviceAddress 0x51
     # Note: DEVICE/ADDRESSES (A2, A1, A0): The A2, A1 or A0 pins are device address inputs 
     # that are hardwired or left not connected for hardware compatibility with other AT24CXX devices.
     # Modify 'eepromDeviceAddress' to meet the hardware connection.
-    variable eepromDeviceAddress 0x51
+    
 }
 
 set target(board) at91sama5d3x-ek
@@ -156,7 +193,7 @@ array set sama5d3x_sram {
 ## DDRAM
 ################################################################################
 array set sama5d3x_ddram {
-    dftDisplay  0
+    dftDisplay  1
     dftDefault  0
     dftAddress  0x20000000
     dftSize     "$GENERIC::memorySize"
@@ -164,22 +201,17 @@ array set sama5d3x_ddram {
     dftReceive  "RAM::receiveFile"
     dftScripts  "::sama5d3x_ddram_scripts"
 }
-if {$BOARD::extRamType == 1 || $BOARD::extRamType == 2} {
-    set sama5d3x_ddram(dftDisplay) 1
-}
 
 set RAM::appletAddr          0x308000
 set RAM::appletMailboxAddr   0x308004
 set RAM::appletFileName      "$libPath(extLib)/$target(board)/applet-extram-sama5d3x.bin"
-puts "-I- External RAM Settings :  extRamVdd=$BOARD::extRamVdd, extRamType=$BOARD::extRamType, extRamDataBusWidth=$BOARD::extRamDataBusWidth, extDDRamModel=$BOARD::extDDRamModel"
 
 array set sama5d3x_ddram_scripts {
-    "Enable DDR2"   "GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extRamVdd 1 $BOARD::extRamDataBusWidth $BOARD::extDDRamModel]"
-    "Enable LPDDR2" "GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extRamVdd 2 $BOARD::extRamDataBusWidth $BOARD::extDDRamModel]"
+    "Enable DDR"   "GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extDDRamModel]"
 }
 
 # Initialize SDRAM/DDRAM
-if {[catch {GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extRamVdd $BOARD::extRamType $BOARD::extRamDataBusWidth $BOARD::extDDRamModel]} dummy_err] } {
+if {[catch {GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extDDRamModel]} dummy_err] } {
     set continue no
     if {$commandLineMode == 0} {
         set continue [tk_messageBox -title "External RAM init" -message "External RAM initialization failed.\nExternal RAM access is required to run applets.\nContinue anyway ?" -icon warning -type yesno]
@@ -194,8 +226,9 @@ if {[catch {GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletF
         exit
     }
 } else {
-        puts "-I- External RAM initialized"
+    puts "-I- External RAM initialized"
 }
+
 ################################################################################
 ## DATAFLASH
 ################################################################################

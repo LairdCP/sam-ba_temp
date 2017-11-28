@@ -249,6 +249,8 @@ static uint32_t flashNbLockBits;
 static uint32_t flashLockRegionSize;
 /* Address in sector which has been written */
 static uint32_t lastWrittenAddr = 0;
+
+static uint8_t isNewData= 1;
 /*----------------------------------------------------------------------------
  *        Global functions
  *----------------------------------------------------------------------------*/
@@ -267,7 +269,7 @@ int main(int argc, char **argv)
     uint32_t *pActualStart = NULL;
     uint32_t *pActualEnd = NULL;
     uint8_t error ;
-    uint32_t writeSize;
+    uint32_t writeSize, size;
     /* Save info of communication link */
     comType = pMailbox->argument.inputInit.comType;
 
@@ -280,11 +282,10 @@ int main(int argc, char **argv)
 
         /* Set 6 WS for internal Flash writing (refer to errata) */
         EFC_SetWaitState(EFC, 6);
-
+   
 #if (DYN_TRACES == 1)
         dwTraceLevel = pMailbox->argument.inputInit.traceLevel;
 #endif
-
         flashBaseAddr       = IFLASH_ADDR;
         flashBaseAddrInit   = IFLASH_ADDR;
         flashSize           = IFLASH_SIZE;
@@ -298,7 +299,6 @@ int main(int argc, char **argv)
 
         /* Initialize flash driver */
         FLASHD_Initialize(BOARD_MCK, 1);
-
         /* flash accesses must be 4 bytes aligned */
         pMailbox->argument.outputInit.bufferAddress = ((uint32_t) &end);
 
@@ -308,7 +308,7 @@ int main(int argc, char **argv)
         /* integer number of pages can be contained in each buffer */
         /* operation is : buffersize -= bufferSize % flashPageSize */
         /* modulo can be done with a mask since flashpagesize is a power of two integer */
-        bufferSize = bufferSize > SECTOR_SIZE ? SECTOR_SIZE: bufferSize;
+        bufferSize = (32 * flashPageSize);
         pMailbox->argument.outputInit.bufferSize = bufferSize;
 
         pMailbox->argument.outputInit.memorySize = flashSize;
@@ -320,9 +320,9 @@ int main(int argc, char **argv)
                (unsigned int) &end );
 
         TRACE_INFO("memorySize : %d lockRegionSize : 0x%x numbersLockBits : 0x%x \n\r",
-               (int)pMailbox->argument.outputInit.memorySize,
-               (unsigned int)pMailbox->argument.outputInit.memoryInfo.lockRegionSize,
-               (unsigned int)pMailbox->argument.outputInit.memoryInfo.numbersLockBits);
+               (unsigned)pMailbox->argument.outputInit.memorySize,
+               (unsigned )pMailbox->argument.outputInit.memoryInfo.lockRegionSize,
+               (unsigned )pMailbox->argument.outputInit.memoryInfo.numbersLockBits);
 
         pMailbox->status = APPLET_SUCCESS;
     }
@@ -335,12 +335,12 @@ int main(int argc, char **argv)
         memoryOffset  = pMailbox->argument.inputWrite.memoryOffset;
         bufferAddr    = pMailbox->argument.inputWrite.bufferAddr;
         bytesToWrite  = pMailbox->argument.inputWrite.bufferSize;
-
+        size = bytesToWrite;
         TRACE_INFO("WRITE at offset: 0x%x buffer at : 0x%x of: 0x%x Bytes (flash base addr : 0x%x)\n\r",
                    (unsigned int)memoryOffset, (unsigned int)bufferAddr,
                    (unsigned int)bytesToWrite, (unsigned int)flashBaseAddr);
-
-        /* Check the giving sector have been locked before. */
+  
+         /* Check the giving sector have been locked before. */
         if (FLASHD_IsLocked(flashBaseAddr + memoryOffset, flashBaseAddr + memoryOffset + bytesToWrite) != 0) {
 
             TRACE_INFO("Error page locked\n\r");
@@ -349,42 +349,42 @@ int main(int argc, char **argv)
             goto exit;
         }
 
-        if (memoryOffset % SECTOR_SIZE) {
-            writeSize = SECTOR_SIZE - memoryOffset % SECTOR_SIZE;
-            writeSize = writeSize > bufferSize ? bufferSize : writeSize;
-        } else {
-            writeSize = bytesToWrite;
-        }
-        TRACE_INFO("Write <%x> bytes from <#%x> \n\r", (unsigned int )writeSize, (unsigned int )memoryOffset );
-        
-        l_start = memoryOffset / SECTOR_SIZE;
-        if ((memoryOffset % SECTOR_SIZE == 0) || 
-              ((memoryOffset % SECTOR_SIZE != 0) && ( memoryOffset != (lastWrittenAddr + 1)))) 
-        {
-            TRACE_INFO("Erase sector <#%d> \n\r", (unsigned int )l_start );
-            TRACE_INFO("Unlock from <#%x> to <#%x> for sector erasing \n\r", 
-                (unsigned int )(l_start * SECTOR_SIZE), (unsigned int)((l_start + 1) * SECTOR_SIZE -1));
-            FLASHD_Unlock(flashBaseAddr + l_start * SECTOR_SIZE, flashBaseAddr + (l_start + 1) * SECTOR_SIZE -1 , pActualStart, pActualEnd);
-            if (memoryOffset < SECTOR_SIZE) {
-                FLASHD_EraseSector(IFLASH_ADDR);             /* Small sector 0: 8K */
-                FLASHD_EraseSector(IFLASH_ADDR + 1024 * 8);  /* Small sector 1: 8K */
-                FLASHD_EraseSector(IFLASH_ADDR + 1024 * 16); /* Large sector  : 112K */
+        while (bytesToWrite) {
+            if ((memoryOffset + bytesToWrite) > 
+                    (memoryOffset / SECTOR_SIZE + 1) * SECTOR_SIZE) {
+                writeSize = SECTOR_SIZE - (memoryOffset % SECTOR_SIZE);
             } else {
-                /* Common erase Other sectors */
-                FLASHD_EraseSector(flashBaseAddr + memoryOffset);
+                writeSize = bytesToWrite;
             }
+            
+            /* Erase sector */
+            if (isNewData || (memoryOffset % SECTOR_SIZE == 0)) {
+                TRACE_INFO("Erase %x\n\r", (unsigned)memoryOffset);
+                if (memoryOffset < SECTOR_SIZE) {
+                    FLASHD_EraseSector(IFLASH_ADDR);             /* Small sector 0: 8K */
+                    FLASHD_EraseSector(IFLASH_ADDR + 1024 * 8);  /* Small sector 1: 8K */
+                    FLASHD_EraseSector(IFLASH_ADDR + 1024 * 16); /* Large sector  : 112K */
+                } else {
+                /* Common erase Other sectors */
+                    FLASHD_EraseSector(flashBaseAddr + memoryOffset);
+                }
+                isNewData = 0;
+            }
+            if (FLASHD_Write(flashBaseAddr + memoryOffset, (const void *)bufferAddr, writeSize) != 0) {
+                TRACE_INFO("Error write operation\n\r");
+                pMailbox->argument.outputWrite.bytesWritten = writeSize ;
+                pMailbox->status = APPLET_WRITE_FAIL;
+                goto exit;
+            }
+            if (writeSize  < bufferSize) 
+                isNewData = 1;
+            
+            memoryOffset += writeSize;
+            bytesToWrite -= writeSize;
+            bufferAddr += writeSize;
         }
-        /* Write data */
-        if (FLASHD_Write(flashBaseAddr + memoryOffset, (const void *)bufferAddr, writeSize) != 0) {
-
-            TRACE_INFO("Error write operation\n\r");
-            pMailbox->argument.outputWrite.bytesWritten = writeSize ;
-            pMailbox->status = APPLET_WRITE_FAIL;
-            goto exit;
-        }
-        lastWrittenAddr = memoryOffset + writeSize - 1;
         TRACE_INFO("Write achieved\n\r");
-        pMailbox->argument.outputWrite.bytesWritten = writeSize;
+        pMailbox->argument.outputWrite.bytesWritten = size;
         pMailbox->status = APPLET_SUCCESS;
     }
 

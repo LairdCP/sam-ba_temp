@@ -113,6 +113,7 @@ array set appletCmdSamd21 {
     eraseApp        0x44
 }
 
+set target(board) "samd21_xplained_pro"
 
 ################################################################################
 ## PROCEDURES FOR COMPATIBILITY WITH OLDER SAM-BA VERSIONS AND USER DEFINED
@@ -190,8 +191,8 @@ array set atsamd21_flash_scripts {
         "Set Security Bit"                      "FLASH::SetSecurity"
 }
 
-set FLASH::appletAddr             0x20000470
-set FLASH::appletMailboxAddr      0x200004B0
+set FLASH::appletAddr             0x20002000
+set FLASH::appletMailboxAddr      0x20002040
 set FLASH::appletFileName         "$libPath(extLib)/$target(board)/applet-flash-samd21j18a.bin"
 
 # Initialize FLASH

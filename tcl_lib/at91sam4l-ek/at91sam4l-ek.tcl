@@ -103,6 +103,7 @@ array set appletCmdSam4l {
     erasePage     0x44    
 }
 
+set target(board) "at91sam4l-ek"
 
 ################################################################################
 ## PROCEDURES FOR COMPATIBILITY WITH OLDER SAM-BA VERSIONS AND USER DEFINED

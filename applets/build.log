@@ -19,9 +19,11 @@ debug.mk debug_sam9xx5 gcc.mk iar.mk linux.mk Makefile mdk.mk NUL readme.txt rel
 (cd dataflash && make CHIP=sam9g15 DYN=ON -f Makefile clean all) 
 
 Compile applets for sam4c
+(cd lowlevelinit && make CHIP=sam4c4 -f Makefile clean all)
 (cd lowlevelinit && make CHIP=sam4c8 -f Makefile clean all)
 (cd lowlevelinit && make CHIP=sam4c16 -f Makefile clean all)
 (cd lowlevelinit && make CHIP=sam4c32 -f Makefile clean all)
+(cd flash && make CHIP=sam4c4 -f Makefile clean all)
 (cd flash && make CHIP=sam4c8 -f Makefile clean all)
 (cd flash && make CHIP=sam4c16 -f Makefile clean all)
 (cd flash && make CHIP=sam4c32 -f Makefile clean all)
@@ -263,25 +265,28 @@ Compile applets for sam3s8
 (cd nandflash && make CHIP=sam3sd8 -f Makefile clean all)
 (cd nandflash && make CHIP=sam3s16 -f Makefile clean all)
 
-Compile applets for sam4s
-(cd lowlevelinit && make CHIP=sam4s4 -f Makefile clean all)
-(cd lowlevelinit && make CHIP=sam4s8 -f Makefile clean all)
-(cd lowlevelinit && make CHIP=sam4s16 -f Makefile clean all)
-(cd lowlevelinit && make CHIP=sam4sd32 -f Makefile clean all)
-(cd flash && make CHIP=sam4s4 -f Makefile clean all)
-(cd flash && make CHIP=sam4s8 -f Makefile clean all)
-(cd flash && make CHIP=sam4s16 -f Makefile clean all)
-(cd flash && make CHIP=sam4sd32 -f Makefile clean all)
-(cd nandflash && make CHIP=sam4s4 -f Makefile clean all)
-(cd nandflash && make CHIP=sam4s8 -f Makefile clean all)
-(cd nandflash && make CHIP=sam4s16 -f Makefile clean all)
-(cd nandflash && make CHIP=sam4sd32 -f Makefile clean all)
-
 Compile applets for sam4n
 (cd lowlevelinit && make CHIP=sam4n8 -f Makefile clean all)
 (cd lowlevelinit && make CHIP=sam4n16 -f Makefile clean all)
 (cd flash && make CHIP=sam4n8 -f Makefile clean all)
 (cd flash && make CHIP=sam4n16 -f Makefile clean all)
+
+Compile applets for sam4s
+(cd lowlevelinit && make CHIP=sam4s2 -f Makefile clean all)
+(cd lowlevelinit && make CHIP=sam4s4 -f Makefile clean all)
+(cd lowlevelinit && make CHIP=sam4s8 -f Makefile clean all)
+(cd lowlevelinit && make CHIP=sam4s16 -f Makefile clean all)
+(cd lowlevelinit && make CHIP=sam4sd32 -f Makefile clean all)
+(cd flash && make CHIP=sam4s2 -f Makefile clean all)
+(cd flash && make CHIP=sam4s4 -f Makefile clean all)
+(cd flash && make CHIP=sam4s8 -f Makefile clean all)
+(cd flash && make CHIP=sam4s16 -f Makefile clean all)
+(cd flash && make CHIP=sam4sd32 -f Makefile clean all)
+(cd nandflash && make CHIP=sam4s2 -f Makefile clean all)
+(cd nandflash && make CHIP=sam4s4 -f Makefile clean all)
+(cd nandflash && make CHIP=sam4s8 -f Makefile clean all)
+(cd nandflash && make CHIP=sam4s16 -f Makefile clean all)
+(cd nandflash && make CHIP=sam4sd32 -f Makefile clean all)
 
 Compile applets for sam9n12
 (cd ../libraries/libboard_sam9n12-ek/build/gcc && make DYN=ON -f Makefile clean all)

@@ -25,6 +25,8 @@
   #include "SAM4SD32B.h"
 #elif defined __SAM4SD32C__
   #include "SAM4SD32C.h"
+#elif defined __SAM4S2C__
+  #include "SAM4S2C.h"
 #else
   #error Library does not support the specified device.
 #endif

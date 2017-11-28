@@ -94,6 +94,7 @@ volatile uint32_t isInitialized = 0;
 void ResetException(void)
 {
     uint32_t *pSrc, *pDest;
+
     { asm volatile ("cpsid i"); }
 
     /* Initialize data */

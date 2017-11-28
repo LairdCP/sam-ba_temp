@@ -435,8 +435,19 @@ uint8_t EccNandFlash_WritePage(
     void *spare)
 {
     uint8_t eccStatus;
+    uint16_t pageDataSize = NandFlashModel_GetPageDataSize(MODEL(ecc));
+    uint16_t i;
+    uint8_t *pTemp;
+
     eccStatus = getSmcOpEccType();
+
     TRACE_DEBUG("EccNandFlash_WritePage(B#%d:P#%d)\n\r", block, page);
+    pTemp = (uint8_t* ) data;
+    for (i = 0; i < pageDataSize; i++) {
+        if (*pTemp++ != 0xff) break;
+    }
+    if (i == pageDataSize)
+        return 0;
     if ((eccStatus == SMC_ECC_NOECC) || (eccStatus == SMC_ECC_INTERNAL)) {
         return RawNandFlash_WritePage(RAW(ecc), block, page, data, spare);
     }

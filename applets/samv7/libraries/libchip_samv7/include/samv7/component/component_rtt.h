@@ -27,13 +27,13 @@
 /* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                           */
 /* ---------------------------------------------------------------------------- */
 
-#ifndef _SAM_RTT_COMPONENT_
-#define _SAM_RTT_COMPONENT_
+#ifndef _SAMV71_RTT_COMPONENT_
+#define _SAMV71_RTT_COMPONENT_
 
 /* ============================================================================= */
 /**  SOFTWARE API DEFINITION FOR Real-time Timer */
 /* ============================================================================= */
-/** \addtogroup SAM_RTT Real-time Timer */
+/** \addtogroup SAMV71_RTT Real-time Timer */
 /*@{*/
 
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
@@ -53,7 +53,7 @@ typedef struct {
 #define RTT_MR_RTTINCIEN (0x1u << 17) /**< \brief (RTT_MR) Real-time Timer Increment Interrupt Enable */
 #define RTT_MR_RTTRST (0x1u << 18) /**< \brief (RTT_MR) Real-time Timer Restart */
 #define RTT_MR_RTTDIS (0x1u << 20) /**< \brief (RTT_MR) Real-time Timer Disable */
-#define RTT_MR_RTC1HZ (0x1u << 24) /**< \brief (RTT_MR) Real-Time Clock 1 Hz Clock Selection */
+#define RTT_MR_RTC1HZ (0x1u << 24) /**< \brief (RTT_MR) Real-Time Clock 1Hz Clock Selection */
 /* -------- RTT_AR : (RTT Offset: 0x04) Alarm Register -------- */
 #define RTT_AR_ALMV_Pos 0
 #define RTT_AR_ALMV_Msk (0xffffffffu << RTT_AR_ALMV_Pos) /**< \brief (RTT_AR) Alarm Value */
@@ -62,10 +62,10 @@ typedef struct {
 #define RTT_VR_CRTV_Pos 0
 #define RTT_VR_CRTV_Msk (0xffffffffu << RTT_VR_CRTV_Pos) /**< \brief (RTT_VR) Current Real-time Value */
 /* -------- RTT_SR : (RTT Offset: 0x0C) Status Register -------- */
-#define RTT_SR_ALMS (0x1u << 0) /**< \brief (RTT_SR) Real-time Alarm Status */
-#define RTT_SR_RTTINC (0x1u << 1) /**< \brief (RTT_SR) Prescaler Roll-over Status */
+#define RTT_SR_ALMS (0x1u << 0) /**< \brief (RTT_SR) Real-time Alarm Status (cleared on read) */
+#define RTT_SR_RTTINC (0x1u << 1) /**< \brief (RTT_SR) Prescaler Roll-over Status (cleared on read) */
 
 /*@}*/
 
 
-#endif /* _SAM_RTT_COMPONENT_ */
+#endif /* _SAMV71_RTT_COMPONENT_ */

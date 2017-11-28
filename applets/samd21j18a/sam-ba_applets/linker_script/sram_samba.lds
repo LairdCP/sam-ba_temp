@@ -28,7 +28,7 @@
  */
 
 /*------------------------------------------------------------------------------
- *      Linker script for running in internal SRAM on the SAMD20J18
+ *      Linker script for running in internal SRAM on the SAMD21J18
  *----------------------------------------------------------------------------*/
 
 OUTPUT_FORMAT("elf32-littlearm", "elf32-littlearm", "elf32-littlearm")
@@ -37,8 +37,8 @@ OUTPUT_ARCH(arm)
 /* Memory Spaces Definitions */
 MEMORY
 {
-    romcodesram (W!RX) : ORIGIN = 0x20000000, LENGTH = 0x470
-    sram (W!RX) : ORIGIN = 0x20000470, LENGTH = 0x00001B90 /* sram, 4K - sizeof(romcodesram) */
+    romcodesram (W!RX) : ORIGIN = 0x20000000, LENGTH = 0x2000
+    sram (W!RX) : ORIGIN = 0x20002000, LENGTH = 0x00002000 /* sram, 4K - sizeof(romcodesram) */
 }
 
 SECTIONS
@@ -83,7 +83,7 @@ SECTIONS
     } >sram
 
     /* Stack in SRAM */
-    _sstack = 0x20001FF0;
+    _sstack = 0x20003FF0;
     /DISCARD/ : { *(.note.gnu.*) }
 }
 . = ALIGN(4);

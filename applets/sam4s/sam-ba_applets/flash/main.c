@@ -315,7 +315,7 @@ int main(int argc, char **argv)
         /* integer number of pages can be contained in each buffer */
         /* operation is : buffersize -= bufferSize % flashPageSize */
         /* modulo can be done with a mask since flashpagesize is a power of two integer */
-        bufferSize = bufferSize > SECTOR_SIZE ? SECTOR_SIZE: bufferSize;
+        bufferSize = bufferSize > SECTOR_SIZE ? SECTOR_SIZE: (bufferSize - (bufferSize%IFLASH_PAGE_SIZE));
         pMailbox->argument.outputInit.bufferSize = bufferSize;
 
         pMailbox->argument.outputInit.memorySize = flashSize;

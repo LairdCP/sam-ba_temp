@@ -29,10 +29,12 @@
 all: applets
 
 applets:
+	(cd lowlevelinit && $(MAKE) CHIP=sam4c4 -f Makefile clean all)
 	(cd lowlevelinit && $(MAKE) CHIP=sam4c8 -f Makefile clean all)
 	(cd lowlevelinit && $(MAKE) CHIP=sam4c16 -f Makefile clean all)
 	(cd lowlevelinit && $(MAKE) CHIP=sam4c32 -f Makefile clean all)
 
+	(cd flash && $(MAKE) CHIP=sam4c4 -f Makefile clean all)
 	(cd flash && $(MAKE) CHIP=sam4c8 -f Makefile clean all)
 	(cd flash && $(MAKE) CHIP=sam4c16 -f Makefile clean all)
 	(cd flash && $(MAKE) CHIP=sam4c32 -f Makefile clean all)

@@ -37,12 +37,20 @@ ifeq ($(CHIP),)
 $(error CHIP not defined)
 endif
 
+ifeq (sam4cm4,$(CHIP))
+CHIP_NAME  = __SAM4C4C__
+endif
+
 ifeq (sam4cm8,$(CHIP))
 CHIP_NAME  = __SAM4C8C__
 endif
 
 ifeq (sam4cm16,$(CHIP))
 CHIP_NAME  = __SAM4C16C__
+endif
+
+ifeq (sam4cm32,$(CHIP))
+CHIP_NAME  = __SAM4C32C__
 endif
 
 #-------------------------------------------------------------------------------

@@ -61,7 +61,7 @@ if { $isValidChipOfBoard == 0 } {
 }
 
 namespace eval BOARD {
-    variable sramSize         0x00020000
+    variable sramSize         0x00040000
     variable maxBootSize      0
     # Vdd Memory 1.8V = 0 / Vdd Memory 3.3V = 1
     variable extRamVdd 1
@@ -121,7 +121,7 @@ array set at91sam4cm32_sram {
     dftDisplay  1
     dftDefault  0
     dftAddress  0x20000000
-    dftSize     0x20000
+    dftSize     0x40000
     dftSend     "RAM::sendFile"
     dftReceive  "RAM::receiveFile"
     dftScripts  ""
@@ -134,7 +134,7 @@ array set at91sam4cm32_flash {
     dftDisplay  1
     dftDefault  1
     dftAddress  0x1000000
-    dftSize     0x100000
+    dftSize     0x200000
     dftSend     "FLASH::SendFile"
     dftReceive  "FLASH::ReceiveFile"
     dftScripts  "::at91sam4cm32_flash_scripts"
@@ -143,6 +143,8 @@ array set at91sam4cm32_flash_scripts {
         "Enable Security Bit (GPNVM0)"         "FLASH::ScriptGPNMV 0"
         "Boot from Flash (GPNVM1)"             "FLASH::ScriptGPNMV 2"
         "Boot from ROM (GPNVM1)"               "FLASH::ScriptGPNMV 3"
+        "Boot from Flash Plane 0 (GPNVM2)"     "FLASH::ScriptGPNMV 5"
+        "Boot from Flash Plane 1 (GPNVM2)"     "FLASH::ScriptGPNMV 4"
         "Erase All Flash"                      "FLASH::EraseAll"
         "Enable Flash access"                  "FLASH::Init "
         "Read unique ID"                       "FLASH::ReadUniqueID"

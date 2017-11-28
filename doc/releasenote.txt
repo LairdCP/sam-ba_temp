@@ -1,7 +1,7 @@
 SAM-BA Release Notes 
 ---------------------
-Release version: 2.15
-Release date: 2015
+Release version: 2.17
+Release date: 2.17
 
 
 1 Overview
@@ -12,7 +12,7 @@ dynamic linked library (DLL), the sam-ba.dll. SAM-BA use the DLL to
 communicate with the target board.
 
 You are strongly recommended to read through the following release notes 
-before completing the installation of SAM-BA v2.15.
+before completing the installation of SAM-BA v2.17.
 
 ----------
 2 Downloading and Installing
@@ -20,11 +20,11 @@ before completing the installation of SAM-BA v2.15.
 The software can be found and downloaded from ATMEL's website at 
 http://www.atmel.com/tools/atmelsam-bain-systemprogrammer.aspx
   
-- sam-ba_2.15.exe (current release) for Windows
+- sam-ba_2.17.exe (current release) for Windows
   Install files for the SAM-BA package. 
-  Execute sam-ba_2.15.exe to install. 
+  Execute sam-ba_2.17.exe to install. 
   
-- sam-ba_2.15.zip (current release) for Linux
+- sam-ba_2.17.zip (current release) for Linux
   Install files for the SAM-BA package only. Uses standard CDC driver
   Unzip the package zip file under a local folder on your PC.
 
@@ -45,20 +45,27 @@ http://www.atmel.com/tools/atmelsam-bain-systemprogrammer.aspx
   - Releasenote.txt
   - readme.txt
   - usb_notice.html
+  - Note for "not factory programmed" devices:
+    SAM-BA needs a monitor running if use USB or COM port. 
+    "not factory programmed" means that parts are shipped without monitor code.
+    To make Sam-BA works for such chips with USB or COM port, we need a proper monitor code running. 
+    ASF will include such monitor code as bootloader, Exact feature, such as: USB and/or COM port support, 
+    OS support like Windows/Linux, are the feature of the monitor, please check with the monitor code you are using.
+    For more information please visit product page at ATMEL's website.
 
-- New features.
-  - JLINKARM.DLL update to 4.91.2.0
-  - J-Link support SWD target interface
-  - J-Link SWD target interface support in command line with "_SWD"
-  - Add support for at91samv71-xplained board
-  - Add support for sama5d3x_cmp board
+   - Note for EDGB users:
+    Sam-BA need to work with EDBG firmware version >= 2.11 or later. 
+    You can download, install, and perform a firmware upgrade via
+    https://gallery.atmel.com/Products/Details/6b4ba34d-d257-4ebb-9936-43952e724047.
+    You can also use Atmel Studio 7.0 or above. Please follow the associated document. 
 
-- SAMBA 2.15 supports the following AT91SAM based microcontrollers:
+
+- SAMBA 2.17 supports the following AT91SAM based microcontrollers:
   - at91sam3s16 at91sam3s8 at91sam3s4 at91sam3s2 at91sam3s1 rf231usb-rd
   - at91sam3u4 at91sam3u2 at91sam3u1
   - at91sam3n4 at91sam3n2 at91sam3n1
   - at91sam3x8 at91sam3x4 at91sam3x2
-  - at91sam4s4 at91sam4s8 at91sam4s16 at91sam4sd32 sam4s-xpid
+  - at91sam4s2 at91sam4s4 at91sam4s8 at91sam4s16 at91sam4sd32 sam4s-xpid
   - at91sam7a3
   - at91sam7l64 at91sam7l128
   - at91sam7s161 at91sam7s321 at91sam7s32 at91sam7s64 at91sam7s128 at91sam7s256 at91sam7s512
@@ -84,23 +91,85 @@ http://www.atmel.com/tools/atmelsam-bain-systemprogrammer.aspx
   - at91sama5d3-xplained
   - at91sama5d4x
   - at91samv71-xplained
-  - at91sam4cp
-  - at91sam4cm8, at91sam4cm16, at91sam4cm32
-  - at91sam4e8, at91sam4e16
-  - at91sam4c8, at91sam4c16, at91sam4c32
+  - at91same70-xplained
+  - at91sam4cp16
+  - at91sam4cm4 at91sam4cm8 at91sam4cm16 at91sam4cm32
+  - at91sam4n8 at91sam4n16
+  - at91sam4e8 at91sam4e16
+  - at91sam4c8 at91sam4c16 at91sam4c32
   - at91sam3n0 at91sam3n00
-  - at91sam4l
-  - samd20e15,samd20e16,samd20e17,samd20e18,samd20g15,samd20g16,samd20g17,samd20g18,
-    samd20j15,samd20j16,samd20j17
-  - samd21
-  - at91sam4n8-xpro, at91sam4n16-xpro
   - at91cap9
-  
+  - sam4l[not factory programmed] 
+  - samd20e15 samd20e16 samd20e17 samd20e18 samd20g15 samd20g16 samd20g17 samd20g18
+    samd20j15 samd20j16 samd20j17[not factory programmed]
+  - saml21[not factory programmed] 
+  - saml22[not factory programmed] 
+  - samd21[not factory programmed] 
+  - samda1[not factory programmed]
+  - samc21[not factory programmed]
+  - [not factory programmed] parts need proper monitor code running, available from ASF.
+  - ASF 3.30 monitor code does not support Linux COM port connection. 
 
 4 Bug Fixes and Improvements
 ----------------------------
+   - Add un-packaged applet binary files.
+     - sam4c8
+     - sam4c16
+     - sam4c32
+     - sam4s4
+     - sam4s8
+     - sam4s16
+     - sam4sd32
+   - Fixlsam21 “erase application area” issue
+   - Add return value of function compare_file()
+   
+Known Issues
+------------
+    - Some boards cannot connect though USB CDC to a chip (with USB Full Speed) on AMD 
+      based computers.
+    - Some boards cannot work properly through USB/COM port connection without reseting 
+      ( or, power off / power on) the board.
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+5 History 
+---------------------
+
+v2.16:
+
+- Add support for same70-xplained-pro board
+  - Add Qspi support for samv71
+  - Add support for sam4s2-ek
+  - Add support for sam4c4-ek
+  - Add support for sam4cm4-db
+  - Add support for sam4cp16-mb
+  - Add support for samda1_xplained_pro[not factory programmed]
+  - Add support for saml22_xplained_pro[not factory programmed]
+  - Add support for samc21_xplained_pro[not factory programmed]
+
+Bug Fixes
+---------
+    - Optional DDR configuration for sama5d3 and sama5d4
+         LPDDR1 (MT46H128M16LFCK_5 X 2)
+         DDR2 (MT47H128M8CF-25E X 4)
+         DDR2 (MT47H128M16-25E X 2):
+         DDR2 (MT47H64M16-25 X 2):
+         LPDDR2 (MT42L128M32D1GU-25 X 2): 
+         LPDDR2 (MT42L128M16D1KL-25 X 4): 
+
+    - Add trimffs support for sama5d4x NAND applet.
+    - samv7 flash programming issue on Linux.
+    - Add support for samv/same7 qspiflash programming.
+    - sdmmc-massstorage.bin" applet doesn't work with SAMA5D3_Xplained board 
+    - SAMA5D3_Xplained board uses SAMA5D3X-EK TCL script verbatim 
+    - Fix un-aligned buffer size issue in sam4s2B flash applet .
+
+v2.15:
 Improvements
 ------------
+  - JLINKARM.DLL update to 4.91.2.0
+  - J-Link support SWD target interface
+  - J-Link SWD target interface support in command line with "_SWD"
   - Fix connection issues on sam7se256 and sam7se512 new silicon revision (B) 
   - Add ScriptSetSecurityBit & ScriptGPNMV for sam7s32/321
 
@@ -109,18 +178,6 @@ Bug Fixes
   - Add 0x27080340 device ID for sam7s321.
   - Fix a JLINK SAM-ICE connection issue in samba.dll
   - Add COM port ACK in samd20/1_xplained_pro applet
-
-Known Issues
-------------
-    - Some boards cannot connect though USB CDC to a chip (with USB Full Speed) on AMD 
-      based computers.
-    - Some boards cannot work properly through USB/COM port connection without reseting 
-      ( or, power off / power on) the board.
-    - samd20/1_xplained_pro EDBG COM port is not stable
-----------------------------------------------------------------------------------------------------------------------------------
-
-5 History 
----------------------
 
 v2.14:
 Improvements

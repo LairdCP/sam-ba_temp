@@ -67,21 +67,64 @@ if { $isValidChipOfBoard == 0 } {
 namespace eval BOARD {
     variable sramSize         0x20000
     variable maxBootSize      [expr 60 * 1024]
-# Default setting for DDRAM
-    # Vdd Memory 1.8V = 0 / Vdd Memory 3.3V = 1
-    variable extRamVdd 0
-    # External SDRAM = 0 / External DDR = 1
-    variable extRamType 1
-    # Set bus width (16 or 32)
-    variable extRamDataBusWidth 16
-    # DDRAM Model (0: MT47H64M16HR, 1: MT47H128M16RT)
-    variable extDDRamModel 1
 
+# Supported setting for DRAM
+  
+    #default DDR model for sama5d4-ek board
+    variable extDDRamModel 2
+
+    if {[regexp "xplained" $target(board)]} {
+        # DDR2 (MT47H128M16-25E X 2) for sama5d4-xplained 
+        set extDDRamModel 3
+    }
+   
+    # All supported DDR devices:
+
+    # 1：LPDDR1 (MT46H128M16LFCK_5 X 2)
+    # 2: DDR2 (MT47H128M8CF-25E X 4)
+    # 3：DDR2 (MT47H128M16-25E X 2):
+    # 4：DDR2 (MT47H64M16-25 X 2):
+    # 5：LPDDR2 (MT42L128M32D1GU-25 X 2): 
+    # 6：LPDDR2 (MT42L128M16D1KL-25 X 4): 
+
+    # 1：LPDDR1 (MT46H128M16LFCK_5)
+    #    * 1.8V
+    #    * 32 Meg x 16 x 4 Banks
+    #    * 256MB x 2 chip = 512MB
+
+    # 2: DDR2 (MT47H128M8CF-25E)
+    #    * 1.8V
+    #    * 128 Meg x 8 (16 Meg x 8 x 8 banks)
+    #    * 128MB x 4 chip = 512MB
+
+    # 3：DDR2 (MT47H128M16-25E X 2):
+    #    * 1.8V
+    #    * 128 Meg x 16 (16 Meg x 16 x 8 banks) 
+    #    * 256MB x 2 chip = 512MB
+
+    # 4：DDR2 (MT47H64M16-25 X 2):
+    #    * 1.8V
+    #    * 64 Meg x 16 (8 Meg x 16 x 8 banks) 
+    #    * 128MB x 2 chip = 256MB
+
+    # 5：LPDDR2 (MT42L128M32D1GU-25): 
+    #    * 1.2V
+    #    * 8 Meg x 32 x 8 banks x 2 die 
+    #    * 512MB x 2 chip = 1G
+
+    # 6：LPDDR2 (MT42L128M16D1KL-25): 
+    #    * 1.2V
+    #    * 8 Meg x 16 x 8 banks x 2 die 
+    #    * 256MB x 4 chip = 1G
+
+    variable eepromDeviceAddress 0x51
     # Note: DEVICE/ADDRESSES (A2, A1, A0): The A2, A1 or A0 pins are device address inputs 
     # that are hardwired or left not connected for hardware compatibility with other AT24CXX devices.
     # Modify 'eepromDeviceAddress' to meet the hardware connection.
-    variable eepromDeviceAddress 0x51
+   
 }
+
+set target(board) at91sama5d4x-ek
 
 # Source procedures for compatibility with older SAM-BA versions
 if { [ catch { source "$libPath(extLib)/common/functions.tcl"} errMsg] } {
@@ -145,7 +188,7 @@ array set sama5d4x_sram {
 ## DDRAM
 ################################################################################
 array set sama5d4x_ddram {
-    dftDisplay  0
+    dftDisplay  1
     dftDefault  0
     dftAddress  0x20000000
     dftSize     "$GENERIC::memorySize"
@@ -153,22 +196,18 @@ array set sama5d4x_ddram {
     dftReceive  "RAM::receiveFile"
     dftScripts  "::sama5d4x_ddram_scripts"
 }
-if {$BOARD::extRamType == 1} {
-    set sama5d4x_ddram(dftDisplay) 1
-}
 
 set RAM::appletAddr          0x200000
 set RAM::appletMailboxAddr   0x200004
 set RAM::appletFileName      "$libPath(extLib)/$target(board)/applet-extram-sama5d4x.bin"
-puts "-I- External RAM Settings :  extRamVdd=$BOARD::extRamVdd, extRamType=$BOARD::extRamType, extRamDataBusWidth=$BOARD::extRamDataBusWidth, extDDRamModel=$BOARD::extDDRamModel"
 
 array set sama5d4x_ddram_scripts {
-    "Enable DDRAM"   "GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extRamVdd 1 16 $BOARD::extDDRamModel]"
+    "Enable DDRAM"   "GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extDDRamModel]"
 }
 
 
 # Initialize SDRAM/DDRAM
-if {[catch {GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extRamVdd $BOARD::extRamType $BOARD::extRamDataBusWidth $BOARD::extDDRamModel]} dummy_err] } {
+if {[catch {GENERIC::Init $RAM::appletAddr $RAM::appletMailboxAddr $RAM::appletFileName [list $::target(comType) $::target(traceLevel) $BOARD::extDDRamModel]} dummy_err] } {
     set continue no
     if {$commandLineMode == 0} {
         set continue [tk_messageBox -title "External RAM init" -message "External RAM initialization failed.\nExternal RAM access is required to run applets.\nContinue anyway ?" -icon warning -type yesno]

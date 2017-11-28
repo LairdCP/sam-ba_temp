@@ -525,6 +525,7 @@ int main(int argc, char **argv)
                 case 512: modelListfromOnfi.scheme = &nandSpareScheme512; break;
                 case 2048: modelListfromOnfi.scheme = &nandSpareScheme2048; break;
                 case 4096: modelListfromOnfi.scheme = &nandSpareScheme4096; break;
+                case 8192: modelListfromOnfi.scheme = &nandSpareScheme8192; break;
             }
             onficompatible = 1;
         }
@@ -554,20 +555,17 @@ int main(int argc, char **argv)
             /* Get device parameters */
             memSize = NandFlashModel_GetDeviceSizeInBytes(&skipBlockNf.ecc.raw.model);
             if (NandFlashModel_GetDeviceSizeInMBytes(&skipBlockNf.ecc.raw.model) >= 0x1000) {
-                memSize = 0xFFFFFFFF - (0xFFFFFFFF % pageSize);
+                memSize = 0xFFFFFFFF ;
             }
             blockSize = NandFlashModel_GetBlockSizeInBytes(&skipBlockNf.ecc.raw.model);
             numBlocks = NandFlashModel_GetDeviceSizeInBlocks(&skipBlockNf.ecc.raw.model);
             pageSize = NandFlashModel_GetPageDataSize(&skipBlockNf.ecc.raw.model);
             spareSize = NandFlashModel_GetPageSpareSize(&skipBlockNf.ecc.raw.model);
             numPagesPerBlock = NandFlashModel_GetBlockSizeInPages(&skipBlockNf.ecc.raw.model);
-
             pMailbox->status = APPLET_SUCCESS;
             pMailbox->argument.outputInit.bufferSize = blockSize;
             pMailbox->argument.outputInit.memorySize = memSize;
             pMailbox->argument.outputInit.pmeccParamHeader = 0;
-            TRACE_INFO("\tpageSize : 0x%x blockSize : 0x%x blockNb : 0x%x spareSize :0x%x numPagesPerBlock :0x%x\n\r",
-                        (unsigned int)pageSize, (unsigned int)blockSize, (unsigned int)numBlocks,(unsigned int)spareSize,(unsigned int)numPagesPerBlock);
         }
         /* By default, we use pmecc, except MICRON MLC nand with internal ECC controller */
         eccOffset = 2;
@@ -640,11 +638,12 @@ int main(int argc, char **argv)
                 backupPmeccHeader.spareSize = nValue;
                 break;
             case ECCHEADER_ECCBIT:
-                TRACE_INFO("\tConfigure 'eccBitReq' to %x.\n\r", (unsigned int)nValue);
+                TRACE_INFO("\tConfigure 'eccBitReq' to [%x, %d-bit ECC] \n\r", (unsigned int)nValue, eccBitReq2TT[nValue]);
                 backupPmeccHeader.eccBitReq = nValue;
                 break;
             case ECCHEADER_SECTORSIZE:
-                TRACE_INFO("\tConfigure 'sectorSize' to %x.\n\r", (unsigned int)nValue);
+                TRACE_INFO("\tConfigure 'sectorSize' to  [%x,%d bytes] \n\r", (unsigned int)nValue,
+                           ((nValue == 0) ? 512 : 1024));
                 backupPmeccHeader.sectorSize = nValue;
                 break;
             case ECCHEADER_ECCOFFSET:

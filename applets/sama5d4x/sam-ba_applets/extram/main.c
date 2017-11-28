@@ -47,16 +47,20 @@
  *        Definitions
  *----------------------------------------------------------------------------*/
 /* DDRAM type */
-#define MT47H64M16HR    0
-#define MT47H128M16RT   1
+#define MT46H128M16LFCK        1        //LPDDR1
+#define MT47H128M8CF           2        //DDR2
+#define MT47H128M16            3        //DDR2
+#define MT47H64M16             4        //DDR2
+#define MT42L128M32D1GU        5        //LPDDR2
+#define MT42L128M16D1KL        6        //LPDDR2
 
 /* Board DDRAM size*/
-
-#define BOARD_DDRAM_SIZE_0        (512*1024*1024)   // 64 MB
-#define BOARD_DDRAM_SIZE_1        (128*1024*1024)  // 128 MB
-#define BOARD_SDRAM_SIZE          (32*1024*1024)   // 32 MB
-/* Define clock timeout */
-#define CLOCK_TIMEOUT    0xFFFFFFFF
+#define BOARD_MT46H128M16LFCK_SIZE      (256 * 1024 * 1024 * 2)      //512MB
+#define BOARD_MT47H64M16_SIZE           (128 * 1024 * 1024 * 2)    //256MB
+#define BOARD_MT47H128M8CF_SIZE         (256 * 1024 * 1024 * 2)    //512MB
+#define BOARD_MT47H128M16_SIZE          (256 * 1024 * 1024 * 2)    //512MB
+#define BOARD_MT42L128M32D1GU_SIZE      (512 * 1024 * 1024 * 2)    //1GB
+#define BOARD_MT42L128M16D1KL_SIZE      (256 * 1024 * 1024 * 4)    //1GB
 
 /*----------------------------------------------------------------------------
  *        Local structures
@@ -82,14 +86,8 @@ struct _Mailbox {
             uint32_t comType;
             /** Trace level.*/
             uint32_t traceLevel;
-            /** External memory voltage selection.*/
-            uint32_t VddMemSel;
-            /** External RAM type.*/
-            uint32_t ramType;
-            /** External RAM bus width.*/
-            uint32_t dataBusWidth;
-            /** External DDRAM Model.*/
-            uint32_t ddrModel;
+            /** External DRAM Model.*/
+            uint32_t model;
 
         } inputInit;
 
@@ -169,6 +167,8 @@ int main(int argc, char **argv)
 {
     struct _Mailbox *pMailbox = (struct _Mailbox *) argv;
     uint32_t comType = pMailbox->argument.inputInit.comType;
+    uint8_t model;
+
     /* INIT: */
     if (pMailbox->command == APPLET_CMD_INIT) 
     {
@@ -192,50 +192,45 @@ int main(int argc, char **argv)
             /* Enable receiver and transmitter */
             DBGU->DBGU_CR = DBGU_CR_RXEN | DBGU_CR_TXEN;
         }
-
 #endif
-    
-        //TRACE_INFO("-- EXTRAM Applet %s --\n\r", SAM_BA_APPLETS_VERSION);
-        //TRACE_INFO("-- %s\n\r", BOARD_NAME);
-        //TRACE_INFO("-- Compiled: %s %s --\n\r", __DATE__, __TIME__);
-        //TRACE_INFO("INIT command:\n\r");
-
-        //TRACE_INFO("\tCommunication link type : %lu\n\r", pMailbox->argument.inputInit.comType);
-        
-        //TRACE_INFO("\tInit EBI Vdd : %s\n\r", (pMailbox->argument.inputInit.VddMemSel)?"3.3V":"1.8V");
-        //BOARD_ConfigureVddMemSel(pMailbox->argument.inputInit.VddMemSel);
-
+        model = pMailbox->argument.inputInit.model;
         /* Configure DDRAM controller */
+        switch (model) {
 
-        if ( pMailbox->argument.inputInit.ramType == 0) 
-        {
-            //TRACE_INFO("\tExternal RAM type : %s\n\r", "SDRAM");
-            BOARD_ConfigureSdram();
-            pMailbox->argument.outputInit.memorySize = BOARD_SDRAM_SIZE;
-        }
-        else 
-        {
-            //TRACE_INFO("\tExternal RAM type : %s\n\r", "DDRAM");
-            BOARD_ConfigureDdram();
-            pMailbox->argument.outputInit.memorySize = BOARD_DDRAM_SIZE_0;
-        }
+        case MT46H128M16LFCK:
+             BOARD_Configure_LPDDR1();
+             pMailbox->argument.outputInit.memorySize = BOARD_MT46H128M16LFCK_SIZE;
+             break;
 
+        case MT47H128M8CF:
+        case MT47H128M16:
+        case MT47H64M16: 
+             BOARD_Configure_DDR2(model);
+             if (model == BOARD_MT47H64M16_SIZE) 
+                pMailbox->argument.outputInit.memorySize = BOARD_MT47H64M16_SIZE; 
+             else
+                pMailbox->argument.outputInit.memorySize = BOARD_MT47H128M8CF_SIZE;
+             break;
+
+        case MT42L128M32D1GU:
+        case MT42L128M16D1KL:
+             MPDDRC->MPDDRC_LPR = MPDDRC_LPR_LPDDR2_PWOFF;
+            /* Disable DDR2 clock. */
+             PMC->PMC_PCDR1 |= (1 << (ID_MPDDRC-32));
+             PMC->PMC_SCDR  |= PMC_SCER_DDRCK;
+             BOARD_Configure_LPDDR2();
+             pMailbox->argument.outputInit.memorySize = BOARD_MT42L128M32D1GU_SIZE;
+             break;
+        }
+        
         /* Test external RAM access */
         if (ExtRAM_TestOk()) 
-        {
-
             pMailbox->status = APPLET_SUCCESS;
-        }
-        else {
+        else 
             pMailbox->status = APPLET_FAIL;
-        }
         pMailbox->argument.outputInit.bufferAddress = ((uint32_t) &_end);
         pMailbox->argument.outputInit.bufferSize = 0;
-        //TRACE_INFO("\tInit successful.\n\r");
     }
-
-    /* Acknowledge the end of command */
-    //TRACE_INFO("\tEnd of applet (command : %lx --- status : %lx)\n\r", pMailbox->command, pMailbox->status);
 
     /* Notify the host application of the end of the command processing */
     pMailbox->command = ~(pMailbox->command);

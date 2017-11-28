@@ -49,7 +49,7 @@
  */
 /* Default startup count for 4/8/12MHz fast RC (startup time: 10us ) */
 #define DEFAUTL_FAST_RC_COUNT    1
-/* Default startup count for 3-20MHz main oscilator (startup time: 1.4ms ) */
+/* Default startup count for 3-20MHz main oscillator (startup time: 1.4ms ) */
 #define DEFAUTL_MAIN_OSC_COUNT   8
 /* Default startup count for PLLA (startup time: 200us ) */
 #define DEFAUTL_PLLA_COUNT       1
@@ -90,6 +90,8 @@ extern void PMC_ConfigureMckWithPlla(uint32_t mul, uint32_t div,
 extern void PMC_ConfigureMckWithPllb(uint32_t mul, uint32_t div, 
 		uint32_t prescaler);
 extern void PMC_EnableXT32KFME(void);
+extern void PMC_ConfigurePCK0(uint32_t MasterClk, uint32_t prescaler);
+extern void PMC_ConfigurePCK1(uint32_t MasterClk, uint32_t prescaler);
 extern void PMC_ConfigurePCK2(uint32_t MasterClk, uint32_t prescaler);
 
 #ifdef __cplusplus
@@ -97,4 +99,3 @@ extern void PMC_ConfigurePCK2(uint32_t MasterClk, uint32_t prescaler);
 #endif
 
 #endif /* #ifndef _PMC_ */
-

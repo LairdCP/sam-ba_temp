@@ -39,7 +39,17 @@ SUBMAKE_VARS=
 # Rules
 #-------------------------------------------------------------------------------
 
-all: $(SERIE)8 $(SERIE)16
+all: $(SERIE)4 $(SERIE)8 $(SERIE)16 $(SERIE)32
+
+$(SERIE)4: libchip_$(SERIE)4_gcc_dbg.a libchip_$(SERIE)4_gcc_rel.a
+
+libchip_$(SERIE)4_gcc_dbg.a:
+	@echo --- Making $@
+	@$(MAKE) CHIP=$(SERIE)4 DEBUG=1 $(SUBMAKE_OPTIONS) -f $(SERIE).mk
+
+libchip_$(SERIE)4_gcc_rel.a:
+	@echo --- Making $@
+	@$(MAKE) CHIP=$(SERIE)4 $(SUBMAKE_OPTIONS) -f $(SERIE).mk
 
 $(SERIE)8: libchip_$(SERIE)8_gcc_dbg.a libchip_$(SERIE)8_gcc_rel.a
 
@@ -61,8 +71,22 @@ libchip_$(SERIE)16_gcc_rel.a:
 	@echo --- Making $@
 	@$(MAKE) CHIP=$(SERIE)16 $(SUBMAKE_OPTIONS) -f $(SERIE).mk
 
+$(SERIE)32: libchip_$(SERIE)32_gcc_dbg.a libchip_$(SERIE)32_gcc_rel.a
+
+libchip_$(SERIE)32_gcc_dbg.a:
+	@echo --- Making $@
+	@$(MAKE) CHIP=$(SERIE)32 DEBUG=1 $(SUBMAKE_OPTIONS) -f $(SERIE).mk
+
+libchip_$(SERIE)32_gcc_rel.a:
+	@echo --- Making $@
+	@$(MAKE) CHIP=$(SERIE)32 $(SUBMAKE_OPTIONS) -f $(SERIE).mk
+
 .PHONY: clean
 clean:
+	@echo --- Cleaning $(SERIE)4
+	@$(MAKE) CHIP=$(SERIE)4 $(SUBMAKE_OPTIONS) -f $(SERIE).mk $@
+	@$(MAKE) CHIP=$(SERIE)4 DEBUG=1 $(SUBMAKE_OPTIONS) -f $(SERIE).mk $@
+
 	@echo --- Cleaning $(SERIE)8
 	@$(MAKE) CHIP=$(SERIE)8 $(SUBMAKE_OPTIONS) -f $(SERIE).mk $@
 	@$(MAKE) CHIP=$(SERIE)8 DEBUG=1 $(SUBMAKE_OPTIONS) -f $(SERIE).mk $@
@@ -71,3 +95,6 @@ clean:
 	@$(MAKE) CHIP=$(SERIE)16 $(SUBMAKE_OPTIONS) -f $(SERIE).mk $@
 	@$(MAKE) CHIP=$(SERIE)16 DEBUG=1 $(SUBMAKE_OPTIONS) -f $(SERIE).mk $@
 
+	@echo --- Cleaning $(SERIE)32
+	@$(MAKE) CHIP=$(SERIE)32 $(SUBMAKE_OPTIONS) -f $(SERIE).mk $@
+	@$(MAKE) CHIP=$(SERIE)32 DEBUG=1 $(SUBMAKE_OPTIONS) -f $(SERIE).mk $@

@@ -27,13 +27,13 @@
 /* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                           */
 /* ---------------------------------------------------------------------------- */
 
-#ifndef _SAM_TWIHS_COMPONENT_
-#define _SAM_TWIHS_COMPONENT_
+#ifndef _SAMV71_TWIHS_COMPONENT_
+#define _SAMV71_TWIHS_COMPONENT_
 
 /* ============================================================================= */
 /**  SOFTWARE API DEFINITION FOR Two-wire Interface High Speed */
 /* ============================================================================= */
-/** \addtogroup SAM_TWIHS Two-wire Interface High Speed */
+/** \addtogroup SAMV71_TWIHS Two-wire Interface High Speed */
 /*@{*/
 
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
@@ -52,42 +52,36 @@ typedef struct {
   __I  uint32_t TWIHS_RHR;     /**< \brief (Twihs Offset: 0x30) Receive Holding Register */
   __O  uint32_t TWIHS_THR;     /**< \brief (Twihs Offset: 0x34) Transmit Holding Register */
   __IO uint32_t TWIHS_SMBTR;   /**< \brief (Twihs Offset: 0x38) SMBus Timing Register */
-  __I  uint32_t Reserved2[1];
-  __IO uint32_t TWIHS_ACR;     /**< \brief (Twihs Offset: 0x40) Alternative Command Register */
+  __I  uint32_t Reserved2[2];
   __IO uint32_t TWIHS_FILTR;   /**< \brief (Twihs Offset: 0x44) Filter Register */
   __I  uint32_t Reserved3[1];
   __IO uint32_t TWIHS_SWMR;    /**< \brief (Twihs Offset: 0x4C) SleepWalking Matching Register */
-  __I  uint32_t Reserved4[32];
-  __I  uint32_t TWIHS_DR;      /**< \brief (Twihs Offset: 0xD0) Debug Register */
-  __I  uint32_t Reserved5[4];
-  __IO uint32_t TWIHS_WPMR;    /**< \brief (Twihs Offset: 0xE4) Protection Mode Register */
-  __I  uint32_t TWIHS_WPSR;    /**< \brief (Twihs Offset: 0xE8) Protection Status Register */
-  __I  uint32_t Reserved6[4];
-  __I  uint32_t TWIHS_VER;     /**< \brief (Twihs Offset: 0xFC) Version Register */
+  __I  uint32_t Reserved4[37];
+  __IO uint32_t TWIHS_WPMR;    /**< \brief (Twihs Offset: 0xE4) Write Protection Mode Register */
+  __I  uint32_t TWIHS_WPSR;    /**< \brief (Twihs Offset: 0xE8) Write Protection Status Register */
 } Twihs;
 #endif /* !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__)) */
 /* -------- TWIHS_CR : (TWIHS Offset: 0x00) Control Register -------- */
 #define TWIHS_CR_START (0x1u << 0) /**< \brief (TWIHS_CR) Send a START Condition */
 #define TWIHS_CR_STOP (0x1u << 1) /**< \brief (TWIHS_CR) Send a STOP Condition */
-#define TWIHS_CR_MSEN (0x1u << 2) /**< \brief (TWIHS_CR) TWI Master Mode Enabled */
-#define TWIHS_CR_MSDIS (0x1u << 3) /**< \brief (TWIHS_CR) TWI Master Mode Disabled */
-#define TWIHS_CR_SVEN (0x1u << 4) /**< \brief (TWIHS_CR) TWI Slave Mode Enabled */
-#define TWIHS_CR_SVDIS (0x1u << 5) /**< \brief (TWIHS_CR) TWI Slave Mode Disabled */
-#define TWIHS_CR_QUICK (0x1u << 6) /**< \brief (TWIHS_CR) SMBUS Quick Command */
+#define TWIHS_CR_MSEN (0x1u << 2) /**< \brief (TWIHS_CR) TWIHS Master Mode Enabled */
+#define TWIHS_CR_MSDIS (0x1u << 3) /**< \brief (TWIHS_CR) TWIHS Master Mode Disabled */
+#define TWIHS_CR_SVEN (0x1u << 4) /**< \brief (TWIHS_CR) TWIHS Slave Mode Enabled */
+#define TWIHS_CR_SVDIS (0x1u << 5) /**< \brief (TWIHS_CR) TWIHS Slave Mode Disabled */
+#define TWIHS_CR_QUICK (0x1u << 6) /**< \brief (TWIHS_CR) SMBus Quick Command */
 #define TWIHS_CR_SWRST (0x1u << 7) /**< \brief (TWIHS_CR) Software Reset */
-#define TWIHS_CR_HSEN (0x1u << 8) /**< \brief (TWIHS_CR) TWI High-Speed Mode Enabled */
-#define TWIHS_CR_HSDIS (0x1u << 9) /**< \brief (TWIHS_CR) TWI High-Speed Mode Disabled */
+#define TWIHS_CR_HSEN (0x1u << 8) /**< \brief (TWIHS_CR) TWIHS High-Speed Mode Enabled */
+#define TWIHS_CR_HSDIS (0x1u << 9) /**< \brief (TWIHS_CR) TWIHS High-Speed Mode Disabled */
 #define TWIHS_CR_SMBEN (0x1u << 10) /**< \brief (TWIHS_CR) SMBus Mode Enabled */
 #define TWIHS_CR_SMBDIS (0x1u << 11) /**< \brief (TWIHS_CR) SMBus Mode Disabled */
 #define TWIHS_CR_PECEN (0x1u << 12) /**< \brief (TWIHS_CR) Packet Error Checking Enable */
 #define TWIHS_CR_PECDIS (0x1u << 13) /**< \brief (TWIHS_CR) Packet Error Checking Disable */
 #define TWIHS_CR_PECRQ (0x1u << 14) /**< \brief (TWIHS_CR) PEC Request */
 #define TWIHS_CR_CLEAR (0x1u << 15) /**< \brief (TWIHS_CR) Bus CLEAR Command */
-#define TWIHS_CR_ACMEN (0x1u << 16) /**< \brief (TWIHS_CR) Alternative Command Mode Enable */
-#define TWIHS_CR_ACMDIS (0x1u << 17) /**< \brief (TWIHS_CR) Alternative Command Mode Disable */
 /* -------- TWIHS_MMR : (TWIHS Offset: 0x04) Master Mode Register -------- */
 #define TWIHS_MMR_IADRSZ_Pos 8
 #define TWIHS_MMR_IADRSZ_Msk (0x3u << TWIHS_MMR_IADRSZ_Pos) /**< \brief (TWIHS_MMR) Internal Device Address Size */
+#define TWIHS_MMR_IADRSZ(value) ((TWIHS_MMR_IADRSZ_Msk & ((value) << TWIHS_MMR_IADRSZ_Pos)))
 #define   TWIHS_MMR_IADRSZ_NONE (0x0u << 8) /**< \brief (TWIHS_MMR) No internal device address */
 #define   TWIHS_MMR_IADRSZ_1_BYTE (0x1u << 8) /**< \brief (TWIHS_MMR) One-byte internal device address */
 #define   TWIHS_MMR_IADRSZ_2_BYTE (0x2u << 8) /**< \brief (TWIHS_MMR) Two-byte internal device address */
@@ -129,27 +123,23 @@ typedef struct {
 #define TWIHS_CWGR_HOLD_Msk (0x1fu << TWIHS_CWGR_HOLD_Pos) /**< \brief (TWIHS_CWGR) TWD Hold Time Versus TWCK Falling */
 #define TWIHS_CWGR_HOLD(value) ((TWIHS_CWGR_HOLD_Msk & ((value) << TWIHS_CWGR_HOLD_Pos)))
 /* -------- TWIHS_SR : (TWIHS Offset: 0x20) Status Register -------- */
-#define TWIHS_SR_TXCOMP (0x1u << 0) /**< \brief (TWIHS_SR) Transmission Completed (automatically set / reset) */
-#define TWIHS_SR_RXRDY (0x1u << 1) /**< \brief (TWIHS_SR) Receive Holding Register Ready (automatically set / reset) */
-#define TWIHS_SR_TXRDY (0x1u << 2) /**< \brief (TWIHS_SR) Transmit Holding Register Ready (automatically set / reset) */
-#define TWIHS_SR_SVREAD (0x1u << 3) /**< \brief (TWIHS_SR) Slave Read (automatically set / reset) */
-#define TWIHS_SR_SVACC (0x1u << 4) /**< \brief (TWIHS_SR) Slave Access (automatically set / reset) */
-#define TWIHS_SR_GACC (0x1u << 5) /**< \brief (TWIHS_SR) General Call Access (clear on read) */
-#define TWIHS_SR_OVRE (0x1u << 6) /**< \brief (TWIHS_SR) Overrun Error (clear on read) */
-#define TWIHS_SR_UNRE (0x1u << 7) /**< \brief (TWIHS_SR) Underrun Error (clear on read) */
-#define TWIHS_SR_NACK (0x1u << 8) /**< \brief (TWIHS_SR) Not Acknowledged (clear on read) */
-#define TWIHS_SR_ARBLST (0x1u << 9) /**< \brief (TWIHS_SR) Arbitration Lost (clear on read) */
-#define TWIHS_SR_SCLWS (0x1u << 10) /**< \brief (TWIHS_SR) Clock Wait State (automatically set / reset) */
-#define TWIHS_SR_EOSACC (0x1u << 11) /**< \brief (TWIHS_SR) End Of Slave Access (clear on read) */
-#define TWIHS_SR_ENDRX (0x1u << 12) /**< \brief (TWIHS_SR) End of RX Buffer */
-#define TWIHS_SR_ENDTX (0x1u << 13) /**< \brief (TWIHS_SR) End of TX Buffer */
-#define TWIHS_SR_RXBUFF (0x1u << 14) /**< \brief (TWIHS_SR) RX Buffer Full */
-#define TWIHS_SR_TXBUFE (0x1u << 15) /**< \brief (TWIHS_SR) TX Buffer Empty */
-#define TWIHS_SR_MCACK (0x1u << 16) /**< \brief (TWIHS_SR) Master Code Acknowledge */
-#define TWIHS_SR_TOUT (0x1u << 18) /**< \brief (TWIHS_SR) Timeout Error */
-#define TWIHS_SR_PECERR (0x1u << 19) /**< \brief (TWIHS_SR) PEC Error */
-#define TWIHS_SR_SMBDAM (0x1u << 20) /**< \brief (TWIHS_SR) SMBus Default Address Match */
-#define TWIHS_SR_SMBHHM (0x1u << 21) /**< \brief (TWIHS_SR) SMBus Host Header Address Match */
+#define TWIHS_SR_TXCOMP (0x1u << 0) /**< \brief (TWIHS_SR) Transmission Completed (cleared by writing TWIHS_THR) */
+#define TWIHS_SR_RXRDY (0x1u << 1) /**< \brief (TWIHS_SR) Receive Holding Register Ready (cleared by reading TWIHS_RHR) */
+#define TWIHS_SR_TXRDY (0x1u << 2) /**< \brief (TWIHS_SR) Transmit Holding Register Ready (cleared by writing TWIHS_THR) */
+#define TWIHS_SR_SVREAD (0x1u << 3) /**< \brief (TWIHS_SR) Slave Read */
+#define TWIHS_SR_SVACC (0x1u << 4) /**< \brief (TWIHS_SR) Slave Access */
+#define TWIHS_SR_GACC (0x1u << 5) /**< \brief (TWIHS_SR) General Call Access (cleared on read) */
+#define TWIHS_SR_OVRE (0x1u << 6) /**< \brief (TWIHS_SR) Overrun Error (cleared on read) */
+#define TWIHS_SR_UNRE (0x1u << 7) /**< \brief (TWIHS_SR) Underrun Error (cleared on read) */
+#define TWIHS_SR_NACK (0x1u << 8) /**< \brief (TWIHS_SR) Not Acknowledged (cleared on read) */
+#define TWIHS_SR_ARBLST (0x1u << 9) /**< \brief (TWIHS_SR) Arbitration Lost (cleared on read) */
+#define TWIHS_SR_SCLWS (0x1u << 10) /**< \brief (TWIHS_SR) Clock Wait State */
+#define TWIHS_SR_EOSACC (0x1u << 11) /**< \brief (TWIHS_SR) End Of Slave Access (cleared on read) */
+#define TWIHS_SR_MCACK (0x1u << 16) /**< \brief (TWIHS_SR) Master Code Acknowledge (cleared on read) */
+#define TWIHS_SR_TOUT (0x1u << 18) /**< \brief (TWIHS_SR) Timeout Error (cleared on read) */
+#define TWIHS_SR_PECERR (0x1u << 19) /**< \brief (TWIHS_SR) PEC Error (cleared on read) */
+#define TWIHS_SR_SMBDAM (0x1u << 20) /**< \brief (TWIHS_SR) SMBus Default Address Match (cleared on read) */
+#define TWIHS_SR_SMBHHM (0x1u << 21) /**< \brief (TWIHS_SR) SMBus Host Header Address Match (cleared on read) */
 #define TWIHS_SR_SCL (0x1u << 24) /**< \brief (TWIHS_SR) SCL line value */
 #define TWIHS_SR_SDA (0x1u << 25) /**< \brief (TWIHS_SR) SDA line value */
 /* -------- TWIHS_IER : (TWIHS Offset: 0x24) Interrupt Enable Register -------- */
@@ -164,10 +154,6 @@ typedef struct {
 #define TWIHS_IER_ARBLST (0x1u << 9) /**< \brief (TWIHS_IER) Arbitration Lost Interrupt Enable */
 #define TWIHS_IER_SCL_WS (0x1u << 10) /**< \brief (TWIHS_IER) Clock Wait State Interrupt Enable */
 #define TWIHS_IER_EOSACC (0x1u << 11) /**< \brief (TWIHS_IER) End Of Slave Access Interrupt Enable */
-#define TWIHS_IER_ENDRX (0x1u << 12) /**< \brief (TWIHS_IER) End of Receive Buffer Interrupt Enable */
-#define TWIHS_IER_ENDTX (0x1u << 13) /**< \brief (TWIHS_IER) End of Transmit Buffer Interrupt Enable */
-#define TWIHS_IER_RXBUFF (0x1u << 14) /**< \brief (TWIHS_IER) Receive Buffer Full Interrupt Enable */
-#define TWIHS_IER_TXBUFE (0x1u << 15) /**< \brief (TWIHS_IER) Transmit Buffer Empty Interrupt Enable */
 #define TWIHS_IER_MCACK (0x1u << 16) /**< \brief (TWIHS_IER) Master Code Acknowledge Interrupt Enable */
 #define TWIHS_IER_TOUT (0x1u << 18) /**< \brief (TWIHS_IER) Timeout Error Interrupt Enable */
 #define TWIHS_IER_PECERR (0x1u << 19) /**< \brief (TWIHS_IER) PEC Error Interrupt Enable */
@@ -185,10 +171,6 @@ typedef struct {
 #define TWIHS_IDR_ARBLST (0x1u << 9) /**< \brief (TWIHS_IDR) Arbitration Lost Interrupt Disable */
 #define TWIHS_IDR_SCL_WS (0x1u << 10) /**< \brief (TWIHS_IDR) Clock Wait State Interrupt Disable */
 #define TWIHS_IDR_EOSACC (0x1u << 11) /**< \brief (TWIHS_IDR) End Of Slave Access Interrupt Disable */
-#define TWIHS_IDR_ENDRX (0x1u << 12) /**< \brief (TWIHS_IDR) End of Receive Buffer Interrupt Disable */
-#define TWIHS_IDR_ENDTX (0x1u << 13) /**< \brief (TWIHS_IDR) End of Transmit Buffer Interrupt Disable */
-#define TWIHS_IDR_RXBUFF (0x1u << 14) /**< \brief (TWIHS_IDR) Receive Buffer Full Interrupt Disable */
-#define TWIHS_IDR_TXBUFE (0x1u << 15) /**< \brief (TWIHS_IDR) Transmit Buffer Empty Interrupt Disable */
 #define TWIHS_IDR_MCACK (0x1u << 16) /**< \brief (TWIHS_IDR) Master Code Acknowledge Interrupt Disable */
 #define TWIHS_IDR_TOUT (0x1u << 18) /**< \brief (TWIHS_IDR) Timeout Error Interrupt Disable */
 #define TWIHS_IDR_PECERR (0x1u << 19) /**< \brief (TWIHS_IDR) PEC Error Interrupt Disable */
@@ -206,10 +188,6 @@ typedef struct {
 #define TWIHS_IMR_ARBLST (0x1u << 9) /**< \brief (TWIHS_IMR) Arbitration Lost Interrupt Mask */
 #define TWIHS_IMR_SCL_WS (0x1u << 10) /**< \brief (TWIHS_IMR) Clock Wait State Interrupt Mask */
 #define TWIHS_IMR_EOSACC (0x1u << 11) /**< \brief (TWIHS_IMR) End Of Slave Access Interrupt Mask */
-#define TWIHS_IMR_ENDRX (0x1u << 12) /**< \brief (TWIHS_IMR) End of Receive Buffer Interrupt Mask */
-#define TWIHS_IMR_ENDTX (0x1u << 13) /**< \brief (TWIHS_IMR) End of Transmit Buffer Interrupt Mask */
-#define TWIHS_IMR_RXBUFF (0x1u << 14) /**< \brief (TWIHS_IMR) Receive Buffer Full Interrupt Mask */
-#define TWIHS_IMR_TXBUFE (0x1u << 15) /**< \brief (TWIHS_IMR) Transmit Buffer Empty Interrupt Mask */
 #define TWIHS_IMR_MCACK (0x1u << 16) /**< \brief (TWIHS_IMR) Master Code Acknowledge Interrupt Mask */
 #define TWIHS_IMR_TOUT (0x1u << 18) /**< \brief (TWIHS_IMR) Timeout Error Interrupt Mask */
 #define TWIHS_IMR_PECERR (0x1u << 19) /**< \brief (TWIHS_IMR) PEC Error Interrupt Mask */
@@ -235,17 +213,6 @@ typedef struct {
 #define TWIHS_SMBTR_THMAX_Pos 24
 #define TWIHS_SMBTR_THMAX_Msk (0xffu << TWIHS_SMBTR_THMAX_Pos) /**< \brief (TWIHS_SMBTR) Clock High Maximum Cycles */
 #define TWIHS_SMBTR_THMAX(value) ((TWIHS_SMBTR_THMAX_Msk & ((value) << TWIHS_SMBTR_THMAX_Pos)))
-/* -------- TWIHS_ACR : (TWIHS Offset: 0x40) Alternative Command Register -------- */
-#define TWIHS_ACR_DATAL_Pos 0
-#define TWIHS_ACR_DATAL_Msk (0xffu << TWIHS_ACR_DATAL_Pos) /**< \brief (TWIHS_ACR) Data Length */
-#define TWIHS_ACR_DATAL(value) ((TWIHS_ACR_DATAL_Msk & ((value) << TWIHS_ACR_DATAL_Pos)))
-#define TWIHS_ACR_DIR (0x1u << 8) /**< \brief (TWIHS_ACR) Transfer Direction */
-#define TWIHS_ACR_PEC (0x1u << 9) /**< \brief (TWIHS_ACR) PEC Request (SMBus Mode only) */
-#define TWIHS_ACR_NDATAL_Pos 16
-#define TWIHS_ACR_NDATAL_Msk (0xffu << TWIHS_ACR_NDATAL_Pos) /**< \brief (TWIHS_ACR) Next Data Length */
-#define TWIHS_ACR_NDATAL(value) ((TWIHS_ACR_NDATAL_Msk & ((value) << TWIHS_ACR_NDATAL_Pos)))
-#define TWIHS_ACR_NDIR (0x1u << 24) /**< \brief (TWIHS_ACR) Next Transfer Direction */
-#define TWIHS_ACR_NPEC (0x1u << 25) /**< \brief (TWIHS_ACR) Next PEC Request (SMBus Mode only) */
 /* -------- TWIHS_FILTR : (TWIHS Offset: 0x44) Filter Register -------- */
 #define TWIHS_FILTR_FILT (0x1u << 0) /**< \brief (TWIHS_FILTR) RX Digital Filter */
 #define TWIHS_FILTR_PADFEN (0x1u << 1) /**< \brief (TWIHS_FILTR) PAD Filter Enable */
@@ -266,27 +233,18 @@ typedef struct {
 #define TWIHS_SWMR_DATAM_Pos 24
 #define TWIHS_SWMR_DATAM_Msk (0xffu << TWIHS_SWMR_DATAM_Pos) /**< \brief (TWIHS_SWMR) Data Match */
 #define TWIHS_SWMR_DATAM(value) ((TWIHS_SWMR_DATAM_Msk & ((value) << TWIHS_SWMR_DATAM_Pos)))
-/* -------- TWIHS_DR : (TWIHS Offset: 0xD0) Debug Register -------- */
-#define TWIHS_DR_SWEN (0x1u << 0) /**< \brief (TWIHS_DR) SleepWalking Enable */
-#define TWIHS_DR_CLKRQ (0x1u << 1) /**< \brief (TWIHS_DR) Clock Request */
-#define TWIHS_DR_SWMATCH (0x1u << 2) /**< \brief (TWIHS_DR) SleepWalking Match */
-#define TWIHS_DR_TRP (0x1u << 3) /**< \brief (TWIHS_DR) Transfer Pending */
-/* -------- TWIHS_WPMR : (TWIHS Offset: 0xE4) Protection Mode Register -------- */
+/* -------- TWIHS_WPMR : (TWIHS Offset: 0xE4) Write Protection Mode Register -------- */
 #define TWIHS_WPMR_WPEN (0x1u << 0) /**< \brief (TWIHS_WPMR) Write Protection Enable */
 #define TWIHS_WPMR_WPKEY_Pos 8
 #define TWIHS_WPMR_WPKEY_Msk (0xffffffu << TWIHS_WPMR_WPKEY_Pos) /**< \brief (TWIHS_WPMR) Write Protection Key */
+#define TWIHS_WPMR_WPKEY(value) ((TWIHS_WPMR_WPKEY_Msk & ((value) << TWIHS_WPMR_WPKEY_Pos)))
 #define   TWIHS_WPMR_WPKEY_PASSWD (0x545749u << 8) /**< \brief (TWIHS_WPMR) Writing any other value in this field aborts the write operation of the WPEN bit.Always reads as 0 */
-/* -------- TWIHS_WPSR : (TWIHS Offset: 0xE8) Protection Status Register -------- */
-#define TWIHS_WPSR_WPVS (0x1u << 0) /**< \brief (TWIHS_WPSR) Write Protect Violation Status */
+/* -------- TWIHS_WPSR : (TWIHS Offset: 0xE8) Write Protection Status Register -------- */
+#define TWIHS_WPSR_WPVS (0x1u << 0) /**< \brief (TWIHS_WPSR) Write Protection Violation Status */
 #define TWIHS_WPSR_WPVSRC_Pos 8
 #define TWIHS_WPSR_WPVSRC_Msk (0xffffffu << TWIHS_WPSR_WPVSRC_Pos) /**< \brief (TWIHS_WPSR) Write Protection Violation Source */
-/* -------- TWIHS_VER : (TWIHS Offset: 0xFC) Version Register -------- */
-#define TWIHS_VER_VERSION_Pos 0
-#define TWIHS_VER_VERSION_Msk (0xfffu << TWIHS_VER_VERSION_Pos) /**< \brief (TWIHS_VER) Version of the Hardware Module */
-#define TWIHS_VER_MFN_Pos 16
-#define TWIHS_VER_MFN_Msk (0x7u << TWIHS_VER_MFN_Pos) /**< \brief (TWIHS_VER) Metal Fix Number */
 
 /*@}*/
 
 
-#endif /* _SAM_TWIHS_COMPONENT_ */
+#endif /* _SAMV71_TWIHS_COMPONENT_ */

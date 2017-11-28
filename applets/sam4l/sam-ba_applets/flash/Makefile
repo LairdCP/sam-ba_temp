@@ -102,7 +102,7 @@ OBJCOPY = $(CROSS_COMPILE)objcopy
 OBJDUMP = $(CROSS_COMPILE)objdump
 
 # Flags
-ASF_BRANCH_PATH = D:\SvnRepos\dev_sam4l4_3
+ASF_BRANCH_PATH = ../../bootloader
 INCLUDES  = -I$(PATH_ATML_LIB_BOARD)
 INCLUDES += -I$(PATH_ATML_LIB_BOARD)/include
 INCLUDES += -I$(PATH_ATML_LIB_BOARD)/source

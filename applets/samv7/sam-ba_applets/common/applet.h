@@ -35,7 +35,7 @@
  *----------------------------------------------------------------------------*/
 
 /** Refers to the Version of SAM-BA */
-#define SAM_BA_APPLETS_VERSION  "2.12"
+#define SAM_BA_APPLETS_VERSION  "2.16"
 
 /** Applet initialization command code.*/
 #define APPLET_CMD_INIT              0x00
@@ -67,6 +67,8 @@
 #define APPLET_CMD_ERASE_BLOCKS      0x13
 /** Applet batch full erase command code. */
 #define APPLET_CMD_BATCH_ERASE       0x14
+/** Applet Execute QSPI command code. */
+#define APPLET_EXECUTE_QSPI          0x19
 
 /** Operation was successful.*/
 #define APPLET_SUCCESS          0x00

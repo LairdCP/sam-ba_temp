@@ -27,13 +27,13 @@
 /* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                           */
 /* ---------------------------------------------------------------------------- */
 
-#ifndef _SAM_AES_COMPONENT_
-#define _SAM_AES_COMPONENT_
+#ifndef _SAMV71_AES_COMPONENT_
+#define _SAMV71_AES_COMPONENT_
 
 /* ============================================================================= */
 /**  SOFTWARE API DEFINITION FOR Advanced Encryption Standard */
 /* ============================================================================= */
-/** \addtogroup SAM_AES Advanced Encryption Standard */
+/** \addtogroup SAMV71_AES Advanced Encryption Standard */
 /*@{*/
 
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
@@ -55,9 +55,7 @@ typedef struct {
   __IO uint32_t AES_GHASHR[4]; /**< \brief (Aes Offset: 0x78) GCM Intermediate Hash Word Register */
   __I  uint32_t AES_TAGR[4];   /**< \brief (Aes Offset: 0x88) GCM Authentication Tag Word Register */
   __I  uint32_t AES_CTRR;      /**< \brief (Aes Offset: 0x98) GCM Encryption Counter Value Register */
-  __IO uint32_t AES_GCMHR[4];  /**< \brief (Aes Offset: 0x9C) GCM H World Register */
-  __I  uint32_t Reserved2[20];
-  __I  uint32_t AES_VERSION;   /**< \brief (Aes Offset: 0xFC) Version Register */
+  __IO uint32_t AES_GCMHR[4];  /**< \brief (Aes Offset: 0x9C) GCM H Word Register */
 } Aes;
 #endif /* !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__)) */
 /* -------- AES_CR : (AES Offset: 0x00) Control Register -------- */
@@ -74,25 +72,29 @@ typedef struct {
 #define AES_MR_PROCDLY(value) ((AES_MR_PROCDLY_Msk & ((value) << AES_MR_PROCDLY_Pos)))
 #define AES_MR_SMOD_Pos 8
 #define AES_MR_SMOD_Msk (0x3u << AES_MR_SMOD_Pos) /**< \brief (AES_MR) Start Mode */
+#define AES_MR_SMOD(value) ((AES_MR_SMOD_Msk & ((value) << AES_MR_SMOD_Pos)))
 #define   AES_MR_SMOD_MANUAL_START (0x0u << 8) /**< \brief (AES_MR) Manual Mode */
 #define   AES_MR_SMOD_AUTO_START (0x1u << 8) /**< \brief (AES_MR) Auto Mode */
-#define   AES_MR_SMOD_IDATAR0_START (0x2u << 8) /**< \brief (AES_MR) AES_IDATAR0 access only Auto Mode */
+#define   AES_MR_SMOD_IDATAR0_START (0x2u << 8) /**< \brief (AES_MR) AES_IDATAR0 access only Auto Mode (DMA) */
 #define AES_MR_KEYSIZE_Pos 10
 #define AES_MR_KEYSIZE_Msk (0x3u << AES_MR_KEYSIZE_Pos) /**< \brief (AES_MR) Key Size */
+#define AES_MR_KEYSIZE(value) ((AES_MR_KEYSIZE_Msk & ((value) << AES_MR_KEYSIZE_Pos)))
 #define   AES_MR_KEYSIZE_AES128 (0x0u << 10) /**< \brief (AES_MR) AES Key Size is 128 bits */
 #define   AES_MR_KEYSIZE_AES192 (0x1u << 10) /**< \brief (AES_MR) AES Key Size is 192 bits */
 #define   AES_MR_KEYSIZE_AES256 (0x2u << 10) /**< \brief (AES_MR) AES Key Size is 256 bits */
 #define AES_MR_OPMOD_Pos 12
 #define AES_MR_OPMOD_Msk (0x7u << AES_MR_OPMOD_Pos) /**< \brief (AES_MR) Operation Mode */
+#define AES_MR_OPMOD(value) ((AES_MR_OPMOD_Msk & ((value) << AES_MR_OPMOD_Pos)))
 #define   AES_MR_OPMOD_ECB (0x0u << 12) /**< \brief (AES_MR) ECB: Electronic Code Book mode */
 #define   AES_MR_OPMOD_CBC (0x1u << 12) /**< \brief (AES_MR) CBC: Cipher Block Chaining mode */
 #define   AES_MR_OPMOD_OFB (0x2u << 12) /**< \brief (AES_MR) OFB: Output Feedback mode */
 #define   AES_MR_OPMOD_CFB (0x3u << 12) /**< \brief (AES_MR) CFB: Cipher Feedback mode */
 #define   AES_MR_OPMOD_CTR (0x4u << 12) /**< \brief (AES_MR) CTR: Counter mode (16-bit internal counter) */
-#define   AES_MR_OPMOD_GCM (0x5u << 12) /**< \brief (AES_MR) GCM: Galois Counter mode */
+#define   AES_MR_OPMOD_GCM (0x5u << 12) /**< \brief (AES_MR) GCM: Galois/Counter mode */
 #define AES_MR_LOD (0x1u << 15) /**< \brief (AES_MR) Last Output Data Mode */
 #define AES_MR_CFBS_Pos 16
 #define AES_MR_CFBS_Msk (0x7u << AES_MR_CFBS_Pos) /**< \brief (AES_MR) Cipher Feedback Data Size */
+#define AES_MR_CFBS(value) ((AES_MR_CFBS_Msk & ((value) << AES_MR_CFBS_Pos)))
 #define   AES_MR_CFBS_SIZE_128BIT (0x0u << 16) /**< \brief (AES_MR) 128-bit */
 #define   AES_MR_CFBS_SIZE_64BIT (0x1u << 16) /**< \brief (AES_MR) 64-bit */
 #define   AES_MR_CFBS_SIZE_32BIT (0x2u << 16) /**< \brief (AES_MR) 32-bit */
@@ -100,21 +102,25 @@ typedef struct {
 #define   AES_MR_CFBS_SIZE_8BIT (0x4u << 16) /**< \brief (AES_MR) 8-bit */
 #define AES_MR_CKEY_Pos 20
 #define AES_MR_CKEY_Msk (0xfu << AES_MR_CKEY_Pos) /**< \brief (AES_MR) Key */
+#define AES_MR_CKEY(value) ((AES_MR_CKEY_Msk & ((value) << AES_MR_CKEY_Pos)))
 #define   AES_MR_CKEY_PASSWD (0xEu << 20) /**< \brief (AES_MR) This field must be written with 0xE the first time that AES_MR is programmed. For subsequent programming of the AES_MR, any value can be written, including that of 0xE.Always reads as 0. */
 /* -------- AES_IER : (AES Offset: 0x10) Interrupt Enable Register -------- */
 #define AES_IER_DATRDY (0x1u << 0) /**< \brief (AES_IER) Data Ready Interrupt Enable */
 #define AES_IER_URAD (0x1u << 8) /**< \brief (AES_IER) Unspecified Register Access Detection Interrupt Enable */
+#define AES_IER_TAGRDY (0x1u << 16) /**< \brief (AES_IER) GCM Tag Ready Interrupt Enable */
 /* -------- AES_IDR : (AES Offset: 0x14) Interrupt Disable Register -------- */
 #define AES_IDR_DATRDY (0x1u << 0) /**< \brief (AES_IDR) Data Ready Interrupt Disable */
 #define AES_IDR_URAD (0x1u << 8) /**< \brief (AES_IDR) Unspecified Register Access Detection Interrupt Disable */
+#define AES_IDR_TAGRDY (0x1u << 16) /**< \brief (AES_IDR) GCM Tag Ready Interrupt Disable */
 /* -------- AES_IMR : (AES Offset: 0x18) Interrupt Mask Register -------- */
 #define AES_IMR_DATRDY (0x1u << 0) /**< \brief (AES_IMR) Data Ready Interrupt Mask */
 #define AES_IMR_URAD (0x1u << 8) /**< \brief (AES_IMR) Unspecified Register Access Detection Interrupt Mask */
+#define AES_IMR_TAGRDY (0x1u << 16) /**< \brief (AES_IMR) GCM Tag Ready Interrupt Mask */
 /* -------- AES_ISR : (AES Offset: 0x1C) Interrupt Status Register -------- */
-#define AES_ISR_DATRDY (0x1u << 0) /**< \brief (AES_ISR) Data Ready */
-#define AES_ISR_URAD (0x1u << 8) /**< \brief (AES_ISR) Unspecified Register Access Detection Status */
+#define AES_ISR_DATRDY (0x1u << 0) /**< \brief (AES_ISR) Data Ready (cleared by setting bit START or bit SWRST in AES_CR or by reading AES_ODATARx) */
+#define AES_ISR_URAD (0x1u << 8) /**< \brief (AES_ISR) Unspecified Register Access Detection Status (cleared by writing SWRST in AES_CR) */
 #define AES_ISR_URAT_Pos 12
-#define AES_ISR_URAT_Msk (0xfu << AES_ISR_URAT_Pos) /**< \brief (AES_ISR) Unspecified Register Access: */
+#define AES_ISR_URAT_Msk (0xfu << AES_ISR_URAT_Pos) /**< \brief (AES_ISR) Unspecified Register Access (cleared by writing SWRST in AES_CR) */
 #define   AES_ISR_URAT_IDR_WR_PROCESSING (0x0u << 12) /**< \brief (AES_ISR) Input Data Register written during the data processing when SMOD = 0x2 mode. */
 #define   AES_ISR_URAT_ODR_RD_PROCESSING (0x1u << 12) /**< \brief (AES_ISR) Output Data Register read during the data processing. */
 #define   AES_ISR_URAT_MR_WR_PROCESSING (0x2u << 12) /**< \brief (AES_ISR) Mode Register written during the data processing. */
@@ -139,7 +145,7 @@ typedef struct {
 #define AES_IVR_IV(value) ((AES_IVR_IV_Msk & ((value) << AES_IVR_IV_Pos)))
 /* -------- AES_AADLENR : (AES Offset: 0x70) Additional Authenticated Data Length Register -------- */
 #define AES_AADLENR_AADLEN_Pos 0
-#define AES_AADLENR_AADLEN_Msk (0xffffffffu << AES_AADLENR_AADLEN_Pos) /**< \brief (AES_AADLENR) AAD Length */
+#define AES_AADLENR_AADLEN_Msk (0xffffffffu << AES_AADLENR_AADLEN_Pos) /**< \brief (AES_AADLENR) Additional Authenticated Data Length */
 #define AES_AADLENR_AADLEN(value) ((AES_AADLENR_AADLEN_Msk & ((value) << AES_AADLENR_AADLEN_Pos)))
 /* -------- AES_CLENR : (AES Offset: 0x74) Plaintext/Ciphertext Length Register -------- */
 #define AES_CLENR_CLEN_Pos 0
@@ -155,17 +161,12 @@ typedef struct {
 /* -------- AES_CTRR : (AES Offset: 0x98) GCM Encryption Counter Value Register -------- */
 #define AES_CTRR_CTR_Pos 0
 #define AES_CTRR_CTR_Msk (0xffffffffu << AES_CTRR_CTR_Pos) /**< \brief (AES_CTRR) GCM Encryption Counter */
-/* -------- AES_GCMHR[4] : (AES Offset: 0x9C) GCM H World Register -------- */
+/* -------- AES_GCMHR[4] : (AES Offset: 0x9C) GCM H Word Register -------- */
 #define AES_GCMHR_H_Pos 0
-#define AES_GCMHR_H_Msk (0xffffffffu << AES_GCMHR_H_Pos) /**< \brief (AES_GCMHR[4]) GCM H word x */
+#define AES_GCMHR_H_Msk (0xffffffffu << AES_GCMHR_H_Pos) /**< \brief (AES_GCMHR[4]) GCM H Word x */
 #define AES_GCMHR_H(value) ((AES_GCMHR_H_Msk & ((value) << AES_GCMHR_H_Pos)))
-/* -------- AES_VERSION : (AES Offset: 0xFC) Version Register -------- */
-#define AES_VERSION_VERSION_Pos 0
-#define AES_VERSION_VERSION_Msk (0xfffu << AES_VERSION_VERSION_Pos) /**< \brief (AES_VERSION) Version of the Hardware Module */
-#define AES_VERSION_MFN_Pos 16
-#define AES_VERSION_MFN_Msk (0x7u << AES_VERSION_MFN_Pos) /**< \brief (AES_VERSION) Metal Fix Number */
 
 /*@}*/
 
 
-#endif /* _SAM_AES_COMPONENT_ */
+#endif /* _SAMV71_AES_COMPONENT_ */

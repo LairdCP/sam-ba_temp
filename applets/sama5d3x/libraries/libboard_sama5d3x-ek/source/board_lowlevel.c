@@ -92,25 +92,6 @@ extern WEAK void LowLevelInit( void )
     PMC_SetMckDivider(PMC_MCKR_MDIV_PCK_DIV3);
     PMC_SwitchMck2Pll();
 
-#if 0
-    /* Configure PCK1 to measure MCK */
-    PIOD->PIO_IDR = (1<<31);
-    abcdsr = PIOD->PIO_ABCDSR[0];
-    PIOD->PIO_ABCDSR[0] = ((1<<31) | abcdsr);
-    abcdsr = PIOD->PIO_ABCDSR[1];
-    PIOD->PIO_ABCDSR[1] &= (~(1<<31) & abcdsr);
-    PIOD->PIO_PDR = (1<<31);
-
-    /* Disable programmable clock 1 output */
-    REG_PMC_SCDR = PMC_SCER_PCK1;
-    /* Enable the DAC master clock */
-    PMC->PMC_PCK[1] = PMC_PCK_CSS_MCK_CLK | PMC_PCK_PRES_CLOCK;
-    /* Enable programmable clock 1 output */
-    REG_PMC_SCER = PMC_SCER_PCK1;
-    /* Wait for the PCKRDY1 bit to be set in the PMC_SR register*/
-    while ((REG_PMC_SR & PMC_SR_PCKRDY1) == 0);
-#endif
-
     /* select FIQ */
     AIC->AIC_SSR = 0;
     AIC->AIC_SVR = (unsigned int) defaultFiqHandler;

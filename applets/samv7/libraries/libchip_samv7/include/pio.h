@@ -171,16 +171,16 @@
  */
 typedef struct _Pin
 {
-    /*  Bitmask indicating which pin(s) to configure. */
-    uint32_t mask;
-    /*  Pointer to the PIO controller which has the pin(s). */
-    Pio    *pio;
-    /*  Peripheral ID of the PIO controller which has the pin(s). */
-    uint8_t id;
-    /*  Pin type. */
-    uint8_t type;
-    /*  Pin attribute. */
-    uint8_t attribute;
+	/*  Bitmask indicating which pin(s) to configure. */
+	uint32_t mask;
+	/*  Pointer to the PIO controller which has the pin(s). */
+	Pio    *pio;
+	/*  Peripheral ID of the PIO controller which has the pin(s). */
+	uint8_t id;
+	/*  Pin type. */
+	uint8_t type;
+	/*  Pin attribute. */
+	uint8_t attribute;
 } Pin ;
 
 /*

@@ -78,6 +78,7 @@
 
 #include "include/board_lowlevel.h"
 #include "include/board_memories.h"
+#include "include/s25fl1.h"
 #include "include/dbg_console.h"
 #include "include/led.h"
 /*----------------------------------------------------------------------------
@@ -112,7 +113,7 @@
 
 /** Master clock frequency (when using board_lowlevel.c) */
 
-#define BOARD_MCK               132000000 
+#define BOARD_MCK               150000000 
 
 
 

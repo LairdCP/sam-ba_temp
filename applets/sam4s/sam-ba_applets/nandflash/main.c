@@ -241,6 +241,8 @@ static uint8_t latestErasedPage ;
 #  define BufferSize           0xA000
 #elif defined(__SAM4S4A__) || defined(__SAM4S4B__) || defined(__SAM4S4C__)
 #  define BufferSize           0x2000
+#elif defined(__SAM4S2A__) || defined(__SAM4S2B__) || defined(__SAM4S2C__)
+#  define BufferSize           0x2000
 #else
 #  error The device is not supported.
 #endif

@@ -27,13 +27,13 @@
 /* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                           */
 /* ---------------------------------------------------------------------------- */
 
-#ifndef _SAM_PWM_COMPONENT_
-#define _SAM_PWM_COMPONENT_
+#ifndef _SAMV71_PWM_COMPONENT_
+#define _SAMV71_PWM_COMPONENT_
 
 /* ============================================================================= */
 /**  SOFTWARE API DEFINITION FOR Pulse Width Modulation Controller */
 /* ============================================================================= */
-/** \addtogroup SAM_PWM Pulse Width Modulation Controller */
+/** \addtogroup SAMV71_PWM Pulse Width Modulation Controller */
 /*@{*/
 
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
@@ -88,8 +88,8 @@ typedef struct {
   __IO uint32_t  PWM_FPV1;                     /**< \brief (Pwm Offset: 0x68) PWM Fault Protection Value Register 1 */
   __IO uint32_t  PWM_FPE;                      /**< \brief (Pwm Offset: 0x6C) PWM Fault Protection Enable Register */
   __I  uint32_t  Reserved1[3];
-  __IO uint32_t  PWM_ELMR[2];                  /**< \brief (Pwm Offset: 0x7C) PWM Event Line 0 Mode Register */
-  __I  uint32_t  Reserved2[7];
+  __IO uint32_t  PWM_ELMR[8];                  /**< \brief (Pwm Offset: 0x7C) PWM Event Line 0 Mode Register */
+  __I  uint32_t  Reserved2[1];
   __IO uint32_t  PWM_SSPR;                     /**< \brief (Pwm Offset: 0xA0) PWM Spread Spectrum Register */
   __O  uint32_t  PWM_SSPUP;                    /**< \brief (Pwm Offset: 0xA4) PWM Spread Spectrum Update Register */
   __I  uint32_t  Reserved3[2];
@@ -99,50 +99,71 @@ typedef struct {
   __I  uint32_t  Reserved5[8];
   __O  uint32_t  PWM_WPCR;                     /**< \brief (Pwm Offset: 0xE4) PWM Write Protection Control Register */
   __I  uint32_t  PWM_WPSR;                     /**< \brief (Pwm Offset: 0xE8) PWM Write Protection Status Register */
-  __I  uint32_t  Reserved6[4];
-  __I  uint32_t  PWM_VERSION;                  /**< \brief (Pwm Offset: 0xFC) Version Register */
-  __I  uint32_t  Reserved7[12];
+  __I  uint32_t  Reserved6[17];
        PwmCmp    PWM_CMP[PWMCMP_NUMBER];       /**< \brief (Pwm Offset: 0x130) 0 .. 7 */
-  __I  uint32_t  Reserved8[20];
+  __I  uint32_t  Reserved7[20];
        PwmCh_num PWM_CH_NUM[PWMCH_NUM_NUMBER]; /**< \brief (Pwm Offset: 0x200) ch_num = 0 .. 3 */
-  __I  uint32_t  Reserved9[96];
+  __I  uint32_t  Reserved8[96];
   __O  uint32_t  PWM_CMUPD0;                   /**< \brief (Pwm Offset: 0x400) PWM Channel Mode Update Register (ch_num = 0) */
-  __IO uint32_t  PWM_CAE0;                     /**< \brief (Pwm Offset: 0x404) PWM Channel Additional Edge Register (ch_num = 0) */
-  __O  uint32_t  PWM_CAEUPD0;                  /**< \brief (Pwm Offset: 0x408) PWM Channel Additional Edge Update Register (ch_num = 0) */
-  __I  uint32_t  Reserved10[5];
+  __I  uint32_t  Reserved9[7];
   __O  uint32_t  PWM_CMUPD1;                   /**< \brief (Pwm Offset: 0x420) PWM Channel Mode Update Register (ch_num = 1) */
-  __IO uint32_t  PWM_CAE1;                     /**< \brief (Pwm Offset: 0x424) PWM Channel Additional Edge Register (ch_num = 1) */
-  __O  uint32_t  PWM_CAEUPD1;                  /**< \brief (Pwm Offset: 0x428) PWM Channel Additional Edge Update Register (ch_num = 1) */
+  __I  uint32_t  Reserved10[2];
   __IO uint32_t  PWM_ETRG1;                    /**< \brief (Pwm Offset: 0x42C) PWM External Trigger Register (trg_num = 1) */
   __IO uint32_t  PWM_LEBR1;                    /**< \brief (Pwm Offset: 0x430) PWM Leading-Edge Blanking Register (trg_num = 1) */
   __I  uint32_t  Reserved11[3];
   __O  uint32_t  PWM_CMUPD2;                   /**< \brief (Pwm Offset: 0x440) PWM Channel Mode Update Register (ch_num = 2) */
-  __IO uint32_t  PWM_CAE2;                     /**< \brief (Pwm Offset: 0x444) PWM Channel Additional Edge Register (ch_num = 2) */
-  __O  uint32_t  PWM_CAEUPD2;                  /**< \brief (Pwm Offset: 0x448) PWM Channel Additional Edge Update Register (ch_num = 2) */
+  __I  uint32_t  Reserved12[2];
   __IO uint32_t  PWM_ETRG2;                    /**< \brief (Pwm Offset: 0x44C) PWM External Trigger Register (trg_num = 2) */
   __IO uint32_t  PWM_LEBR2;                    /**< \brief (Pwm Offset: 0x450) PWM Leading-Edge Blanking Register (trg_num = 2) */
-  __I  uint32_t  Reserved12[3];
+  __I  uint32_t  Reserved13[3];
   __O  uint32_t  PWM_CMUPD3;                   /**< \brief (Pwm Offset: 0x460) PWM Channel Mode Update Register (ch_num = 3) */
-  __IO uint32_t  PWM_CAE3;                     /**< \brief (Pwm Offset: 0x464) PWM Channel Additional Edge Register (ch_num = 3) */
-  __O  uint32_t  PWM_CAEUPD3;                  /**< \brief (Pwm Offset: 0x468) PWM Channel Additional Edge Update Register (ch_num = 3) */
+  __I  uint32_t  Reserved14[2];
   __IO uint32_t  PWM_ETRG3;                    /**< \brief (Pwm Offset: 0x46C) PWM External Trigger Register (trg_num = 3) */
   __IO uint32_t  PWM_LEBR3;                    /**< \brief (Pwm Offset: 0x470) PWM Leading-Edge Blanking Register (trg_num = 3) */
+  __I  uint32_t  Reserved15[6];
+  __IO uint32_t  PWM_ETRG4;                    /**< \brief (Pwm Offset: 0x48C) PWM External Trigger Register (trg_num = 4) */
+  __IO uint32_t  PWM_LEBR4;                    /**< \brief (Pwm Offset: 0x490) PWM Leading-Edge Blanking Register (trg_num = 4) */
 } Pwm;
 #endif /* !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__)) */
 /* -------- PWM_CLK : (PWM Offset: 0x00) PWM Clock Register -------- */
 #define PWM_CLK_DIVA_Pos 0
-#define PWM_CLK_DIVA_Msk (0xffu << PWM_CLK_DIVA_Pos) /**< \brief (PWM_CLK) CLKA, CLKB Divide Factor */
+#define PWM_CLK_DIVA_Msk (0xffu << PWM_CLK_DIVA_Pos) /**< \brief (PWM_CLK) CLKA Divide Factor */
 #define PWM_CLK_DIVA(value) ((PWM_CLK_DIVA_Msk & ((value) << PWM_CLK_DIVA_Pos)))
+#define   PWM_CLK_DIVA_CLKA_POFF (0x0u << 0) /**< \brief (PWM_CLK) CLKA clock is turned off */
+#define   PWM_CLK_DIVA_PREA (0x1u << 0) /**< \brief (PWM_CLK) CLKA clock is clock selected by PREA */
 #define PWM_CLK_PREA_Pos 8
-#define PWM_CLK_PREA_Msk (0xfu << PWM_CLK_PREA_Pos) /**< \brief (PWM_CLK) CLKA, CLKB Source Clock Selection */
+#define PWM_CLK_PREA_Msk (0xfu << PWM_CLK_PREA_Pos) /**< \brief (PWM_CLK) CLKA Source Clock Selection */
 #define PWM_CLK_PREA(value) ((PWM_CLK_PREA_Msk & ((value) << PWM_CLK_PREA_Pos)))
+#define   PWM_CLK_PREA_CLK (0x0u << 8) /**< \brief (PWM_CLK) Peripheral clock */
+#define   PWM_CLK_PREA_CLK_DIV2 (0x1u << 8) /**< \brief (PWM_CLK) Peripheral clock/2 */
+#define   PWM_CLK_PREA_CLK_DIV4 (0x2u << 8) /**< \brief (PWM_CLK) Peripheral clock/4 */
+#define   PWM_CLK_PREA_CLK_DIV8 (0x3u << 8) /**< \brief (PWM_CLK) Peripheral clock/8 */
+#define   PWM_CLK_PREA_CLK_DIV16 (0x4u << 8) /**< \brief (PWM_CLK) Peripheral clock/16 */
+#define   PWM_CLK_PREA_CLK_DIV32 (0x5u << 8) /**< \brief (PWM_CLK) Peripheral clock/32 */
+#define   PWM_CLK_PREA_CLK_DIV64 (0x6u << 8) /**< \brief (PWM_CLK) Peripheral clock/64 */
+#define   PWM_CLK_PREA_CLK_DIV128 (0x7u << 8) /**< \brief (PWM_CLK) Peripheral clock/128 */
+#define   PWM_CLK_PREA_CLK_DIV256 (0x8u << 8) /**< \brief (PWM_CLK) Peripheral clock/256 */
+#define   PWM_CLK_PREA_CLK_DIV512 (0x9u << 8) /**< \brief (PWM_CLK) Peripheral clock/512 */
+#define   PWM_CLK_PREA_CLK_DIV1024 (0xAu << 8) /**< \brief (PWM_CLK) Peripheral clock/1024 */
 #define PWM_CLK_DIVB_Pos 16
-#define PWM_CLK_DIVB_Msk (0xffu << PWM_CLK_DIVB_Pos) /**< \brief (PWM_CLK) CLKA, CLKB Divide Factor */
+#define PWM_CLK_DIVB_Msk (0xffu << PWM_CLK_DIVB_Pos) /**< \brief (PWM_CLK) CLKB Divide Factor */
 #define PWM_CLK_DIVB(value) ((PWM_CLK_DIVB_Msk & ((value) << PWM_CLK_DIVB_Pos)))
+#define   PWM_CLK_DIVB_CLKB_POFF (0x0u << 16) /**< \brief (PWM_CLK) CLKB clock is turned off */
+#define   PWM_CLK_DIVB_PREB (0x1u << 16) /**< \brief (PWM_CLK) CLKB clock is clock selected by PREB */
 #define PWM_CLK_PREB_Pos 24
-#define PWM_CLK_PREB_Msk (0xfu << PWM_CLK_PREB_Pos) /**< \brief (PWM_CLK) CLKA, CLKB Source Clock Selection */
+#define PWM_CLK_PREB_Msk (0xfu << PWM_CLK_PREB_Pos) /**< \brief (PWM_CLK) CLKB Source Clock Selection */
 #define PWM_CLK_PREB(value) ((PWM_CLK_PREB_Msk & ((value) << PWM_CLK_PREB_Pos)))
-#define PWM_CLK_CLKSEL (0x1u << 31) /**< \brief (PWM_CLK) CCK Source Clock Selection */
+#define   PWM_CLK_PREB_CLK (0x0u << 24) /**< \brief (PWM_CLK) Peripheral clock */
+#define   PWM_CLK_PREB_CLK_DIV2 (0x1u << 24) /**< \brief (PWM_CLK) Peripheral clock/2 */
+#define   PWM_CLK_PREB_CLK_DIV4 (0x2u << 24) /**< \brief (PWM_CLK) Peripheral clock/4 */
+#define   PWM_CLK_PREB_CLK_DIV8 (0x3u << 24) /**< \brief (PWM_CLK) Peripheral clock/8 */
+#define   PWM_CLK_PREB_CLK_DIV16 (0x4u << 24) /**< \brief (PWM_CLK) Peripheral clock/16 */
+#define   PWM_CLK_PREB_CLK_DIV32 (0x5u << 24) /**< \brief (PWM_CLK) Peripheral clock/32 */
+#define   PWM_CLK_PREB_CLK_DIV64 (0x6u << 24) /**< \brief (PWM_CLK) Peripheral clock/64 */
+#define   PWM_CLK_PREB_CLK_DIV128 (0x7u << 24) /**< \brief (PWM_CLK) Peripheral clock/128 */
+#define   PWM_CLK_PREB_CLK_DIV256 (0x8u << 24) /**< \brief (PWM_CLK) Peripheral clock/256 */
+#define   PWM_CLK_PREB_CLK_DIV512 (0x9u << 24) /**< \brief (PWM_CLK) Peripheral clock/512 */
+#define   PWM_CLK_PREB_CLK_DIV1024 (0xAu << 24) /**< \brief (PWM_CLK) Peripheral clock/1024 */
 /* -------- PWM_ENA : (PWM Offset: 0x04) PWM Enable Register -------- */
 #define PWM_ENA_CHID0 (0x1u << 0) /**< \brief (PWM_ENA) Channel ID */
 #define PWM_ENA_CHID1 (0x1u << 1) /**< \brief (PWM_ENA) Channel ID */
@@ -201,6 +222,7 @@ typedef struct {
 #define PWM_SCM_SYNC3 (0x1u << 3) /**< \brief (PWM_SCM) Synchronous Channel 3 */
 #define PWM_SCM_UPDM_Pos 16
 #define PWM_SCM_UPDM_Msk (0x3u << PWM_SCM_UPDM_Pos) /**< \brief (PWM_SCM) Synchronous Channels Update Mode */
+#define PWM_SCM_UPDM(value) ((PWM_SCM_UPDM_Msk & ((value) << PWM_SCM_UPDM_Pos)))
 #define   PWM_SCM_UPDM_MODE0 (0x0u << 16) /**< \brief (PWM_SCM) Manual write of double buffer registers and manual update of synchronous channels */
 #define   PWM_SCM_UPDM_MODE1 (0x1u << 16) /**< \brief (PWM_SCM) Manual write of double buffer registers and automatic update of synchronous channels */
 #define   PWM_SCM_UPDM_MODE2 (0x2u << 16) /**< \brief (PWM_SCM) Automatic write of duty-cycle update registers by the DMA and automatic update of synchronous channels */
@@ -396,15 +418,15 @@ typedef struct {
 #define PWM_FPE_FPE3_Pos 24
 #define PWM_FPE_FPE3_Msk (0xffu << PWM_FPE_FPE3_Pos) /**< \brief (PWM_FPE) Fault Protection Enable for channel 3 */
 #define PWM_FPE_FPE3(value) ((PWM_FPE_FPE3_Msk & ((value) << PWM_FPE_FPE3_Pos)))
-/* -------- PWM_ELMR[2] : (PWM Offset: 0x7C) PWM Event Line 0 Mode Register -------- */
-#define PWM_ELMR_CSEL0 (0x1u << 0) /**< \brief (PWM_ELMR[2]) Comparison 0 Selection */
-#define PWM_ELMR_CSEL1 (0x1u << 1) /**< \brief (PWM_ELMR[2]) Comparison 1 Selection */
-#define PWM_ELMR_CSEL2 (0x1u << 2) /**< \brief (PWM_ELMR[2]) Comparison 2 Selection */
-#define PWM_ELMR_CSEL3 (0x1u << 3) /**< \brief (PWM_ELMR[2]) Comparison 3 Selection */
-#define PWM_ELMR_CSEL4 (0x1u << 4) /**< \brief (PWM_ELMR[2]) Comparison 4 Selection */
-#define PWM_ELMR_CSEL5 (0x1u << 5) /**< \brief (PWM_ELMR[2]) Comparison 5 Selection */
-#define PWM_ELMR_CSEL6 (0x1u << 6) /**< \brief (PWM_ELMR[2]) Comparison 6 Selection */
-#define PWM_ELMR_CSEL7 (0x1u << 7) /**< \brief (PWM_ELMR[2]) Comparison 7 Selection */
+/* -------- PWM_ELMR[8] : (PWM Offset: 0x7C) PWM Event Line 0 Mode Register -------- */
+#define PWM_ELMR_CSEL0 (0x1u << 0) /**< \brief (PWM_ELMR[8]) Comparison 0 Selection */
+#define PWM_ELMR_CSEL1 (0x1u << 1) /**< \brief (PWM_ELMR[8]) Comparison 1 Selection */
+#define PWM_ELMR_CSEL2 (0x1u << 2) /**< \brief (PWM_ELMR[8]) Comparison 2 Selection */
+#define PWM_ELMR_CSEL3 (0x1u << 3) /**< \brief (PWM_ELMR[8]) Comparison 3 Selection */
+#define PWM_ELMR_CSEL4 (0x1u << 4) /**< \brief (PWM_ELMR[8]) Comparison 4 Selection */
+#define PWM_ELMR_CSEL5 (0x1u << 5) /**< \brief (PWM_ELMR[8]) Comparison 5 Selection */
+#define PWM_ELMR_CSEL6 (0x1u << 6) /**< \brief (PWM_ELMR[8]) Comparison 6 Selection */
+#define PWM_ELMR_CSEL7 (0x1u << 7) /**< \brief (PWM_ELMR[8]) Comparison 7 Selection */
 /* -------- PWM_SSPR : (PWM Offset: 0xA0) PWM Spread Spectrum Register -------- */
 #define PWM_SSPR_SPRD_Pos 0
 #define PWM_SSPR_SPRD_Msk (0xffffffu << PWM_SSPR_SPRD_Pos) /**< \brief (PWM_SSPR) Spread Spectrum Limit Value */
@@ -431,6 +453,7 @@ typedef struct {
 /* -------- PWM_WPCR : (PWM Offset: 0xE4) PWM Write Protection Control Register -------- */
 #define PWM_WPCR_WPCMD_Pos 0
 #define PWM_WPCR_WPCMD_Msk (0x3u << PWM_WPCR_WPCMD_Pos) /**< \brief (PWM_WPCR) Write Protection Command */
+#define PWM_WPCR_WPCMD(value) ((PWM_WPCR_WPCMD_Msk & ((value) << PWM_WPCR_WPCMD_Pos)))
 #define   PWM_WPCR_WPCMD_DISABLE_SW_PROT (0x0u << 0) /**< \brief (PWM_WPCR) Disables the software write protection of the register groups of which the bit WPRGx is at '1'. */
 #define   PWM_WPCR_WPCMD_ENABLE_SW_PROT (0x1u << 0) /**< \brief (PWM_WPCR) Enables the software write protection of the register groups of which the bit WPRGx is at '1'. */
 #define   PWM_WPCR_WPCMD_ENABLE_HW_PROT (0x2u << 0) /**< \brief (PWM_WPCR) Enables the hardware write protection of the register groups of which the bit WPRGx is at '1'. Only a hardware reset of the PWM controller can disable the hardware write protection. Moreover, to meet security requirements, the PIO lines associated with the PWM can not be configured through the PIO interface. */
@@ -442,6 +465,7 @@ typedef struct {
 #define PWM_WPCR_WPRG5 (0x1u << 7) /**< \brief (PWM_WPCR) Write Protection Register Group 5 */
 #define PWM_WPCR_WPKEY_Pos 8
 #define PWM_WPCR_WPKEY_Msk (0xffffffu << PWM_WPCR_WPKEY_Pos) /**< \brief (PWM_WPCR) Write Protection Key */
+#define PWM_WPCR_WPKEY(value) ((PWM_WPCR_WPKEY_Msk & ((value) << PWM_WPCR_WPKEY_Pos)))
 #define   PWM_WPCR_WPKEY_PASSWD (0x50574Du << 8) /**< \brief (PWM_WPCR) Writing any other value in this field aborts the write operation of the WPCMD field.Always reads as 0 */
 /* -------- PWM_WPSR : (PWM Offset: 0xE8) PWM Write Protection Status Register -------- */
 #define PWM_WPSR_WPSWS0 (0x1u << 0) /**< \brief (PWM_WPSR) Write Protect SW Status */
@@ -459,11 +483,6 @@ typedef struct {
 #define PWM_WPSR_WPHWS5 (0x1u << 13) /**< \brief (PWM_WPSR) Write Protect HW Status */
 #define PWM_WPSR_WPVSRC_Pos 16
 #define PWM_WPSR_WPVSRC_Msk (0xffffu << PWM_WPSR_WPVSRC_Pos) /**< \brief (PWM_WPSR) Write Protect Violation Source */
-/* -------- PWM_VERSION : (PWM Offset: 0xFC) Version Register -------- */
-#define PWM_VERSION_VERSION_Pos 0
-#define PWM_VERSION_VERSION_Msk (0xfffu << PWM_VERSION_VERSION_Pos) /**< \brief (PWM_VERSION) Version of the Hardware Module */
-#define PWM_VERSION_MFN_Pos 16
-#define PWM_VERSION_MFN_Msk (0x7u << PWM_VERSION_MFN_Pos) /**< \brief (PWM_VERSION) Metal Fix Number */
 /* -------- PWM_CMPV : (PWM Offset: N/A) PWM Comparison 0 Value Register -------- */
 #define PWM_CMPV_CV_Pos 0
 #define PWM_CMPV_CV_Msk (0xffffffu << PWM_CMPV_CV_Pos) /**< \brief (PWM_CMPV) Comparison x Value */
@@ -505,17 +524,18 @@ typedef struct {
 /* -------- PWM_CMR : (PWM Offset: N/A) PWM Channel Mode Register -------- */
 #define PWM_CMR_CPRE_Pos 0
 #define PWM_CMR_CPRE_Msk (0xfu << PWM_CMR_CPRE_Pos) /**< \brief (PWM_CMR) Channel Pre-scaler */
-#define   PWM_CMR_CPRE_CCK (0x0u << 0) /**< \brief (PWM_CMR) Internal clock */
-#define   PWM_CMR_CPRE_CCK_DIV_2 (0x1u << 0) /**< \brief (PWM_CMR) Internal clock/2 */
-#define   PWM_CMR_CPRE_CCK_DIV_4 (0x2u << 0) /**< \brief (PWM_CMR) Internal clock/4 */
-#define   PWM_CMR_CPRE_CCK_DIV_8 (0x3u << 0) /**< \brief (PWM_CMR) Internal clock/8 */
-#define   PWM_CMR_CPRE_CCK_DIV_16 (0x4u << 0) /**< \brief (PWM_CMR) Internal clock/16 */
-#define   PWM_CMR_CPRE_CCK_DIV_32 (0x5u << 0) /**< \brief (PWM_CMR) Internal clock/32 */
-#define   PWM_CMR_CPRE_CCK_DIV_64 (0x6u << 0) /**< \brief (PWM_CMR) Internal clock/64 */
-#define   PWM_CMR_CPRE_CCK_DIV_128 (0x7u << 0) /**< \brief (PWM_CMR) Internal clock/128 */
-#define   PWM_CMR_CPRE_CCK_DIV_256 (0x8u << 0) /**< \brief (PWM_CMR) Internal clock/256 */
-#define   PWM_CMR_CPRE_CCK_DIV_512 (0x9u << 0) /**< \brief (PWM_CMR) Internal clock/512 */
-#define   PWM_CMR_CPRE_CCK_DIV_1024 (0xAu << 0) /**< \brief (PWM_CMR) Internal clock/1024 */
+#define PWM_CMR_CPRE(value) ((PWM_CMR_CPRE_Msk & ((value) << PWM_CMR_CPRE_Pos)))
+#define   PWM_CMR_CPRE_MCK (0x0u << 0) /**< \brief (PWM_CMR) Peripheral clock */
+#define   PWM_CMR_CPRE_MCK_DIV_2 (0x1u << 0) /**< \brief (PWM_CMR) Peripheral clock/2 */
+#define   PWM_CMR_CPRE_MCK_DIV_4 (0x2u << 0) /**< \brief (PWM_CMR) Peripheral clock/4 */
+#define   PWM_CMR_CPRE_MCK_DIV_8 (0x3u << 0) /**< \brief (PWM_CMR) Peripheral clock/8 */
+#define   PWM_CMR_CPRE_MCK_DIV_16 (0x4u << 0) /**< \brief (PWM_CMR) Peripheral clock/16 */
+#define   PWM_CMR_CPRE_MCK_DIV_32 (0x5u << 0) /**< \brief (PWM_CMR) Peripheral clock/32 */
+#define   PWM_CMR_CPRE_MCK_DIV_64 (0x6u << 0) /**< \brief (PWM_CMR) Peripheral clock/64 */
+#define   PWM_CMR_CPRE_MCK_DIV_128 (0x7u << 0) /**< \brief (PWM_CMR) Peripheral clock/128 */
+#define   PWM_CMR_CPRE_MCK_DIV_256 (0x8u << 0) /**< \brief (PWM_CMR) Peripheral clock/256 */
+#define   PWM_CMR_CPRE_MCK_DIV_512 (0x9u << 0) /**< \brief (PWM_CMR) Peripheral clock/512 */
+#define   PWM_CMR_CPRE_MCK_DIV_1024 (0xAu << 0) /**< \brief (PWM_CMR) Peripheral clock/1024 */
 #define   PWM_CMR_CPRE_CLKA (0xBu << 0) /**< \brief (PWM_CMR) Clock A */
 #define   PWM_CMR_CPRE_CLKB (0xCu << 0) /**< \brief (PWM_CMR) Clock B */
 #define PWM_CMR_CALG (0x1u << 8) /**< \brief (PWM_CMR) Channel Alignment */
@@ -564,51 +584,16 @@ typedef struct {
 /* -------- PWM_CMUPD0 : (PWM Offset: 0x400) PWM Channel Mode Update Register (ch_num = 0) -------- */
 #define PWM_CMUPD0_CPOLUP (0x1u << 9) /**< \brief (PWM_CMUPD0) Channel Polarity Update */
 #define PWM_CMUPD0_CPOLINVUP (0x1u << 13) /**< \brief (PWM_CMUPD0) Channel Polarity Inversion Update */
-/* -------- PWM_CAE0 : (PWM Offset: 0x404) PWM Channel Additional Edge Register (ch_num = 0) -------- */
-#define PWM_CAE0_ADEDGV_Pos 0
-#define PWM_CAE0_ADEDGV_Msk (0xffffffu << PWM_CAE0_ADEDGV_Pos) /**< \brief (PWM_CAE0) Channel Additional Edge Value */
-#define PWM_CAE0_ADEDGV(value) ((PWM_CAE0_ADEDGV_Msk & ((value) << PWM_CAE0_ADEDGV_Pos)))
-#define PWM_CAE0_ADEDGM_Pos 24
-#define PWM_CAE0_ADEDGM_Msk (0x3u << PWM_CAE0_ADEDGM_Pos) /**< \brief (PWM_CAE0) Channel Additional Edge Mode */
-#define   PWM_CAE0_ADEDGM_INC (0x0u << 24) /**< \brief (PWM_CAE0) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGV and the counter of the channel x is incrementing. */
-#define   PWM_CAE0_ADEDGM_DEC (0x1u << 24) /**< \brief (PWM_CAE0) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGV and the counter of the channel x is incrementing. */
-#define   PWM_CAE0_ADEDGM_BOTH (0x2u << 24) /**< \brief (PWM_CAE0) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGV, whether the counter is incrementing or not. */
-/* -------- PWM_CAEUPD0 : (PWM Offset: 0x408) PWM Channel Additional Edge Update Register (ch_num = 0) -------- */
-#define PWM_CAEUPD0_ADEDGVUP_Pos 0
-#define PWM_CAEUPD0_ADEDGVUP_Msk (0xffffffu << PWM_CAEUPD0_ADEDGVUP_Pos) /**< \brief (PWM_CAEUPD0) Channel Additional Edge Value Update */
-#define PWM_CAEUPD0_ADEDGVUP(value) ((PWM_CAEUPD0_ADEDGVUP_Msk & ((value) << PWM_CAEUPD0_ADEDGVUP_Pos)))
-#define PWM_CAEUPD0_ADEDGMUP_Pos 24
-#define PWM_CAEUPD0_ADEDGMUP_Msk (0x3u << PWM_CAEUPD0_ADEDGMUP_Pos) /**< \brief (PWM_CAEUPD0) Channel Additional Edge Mode Update */
-#define   PWM_CAEUPD0_ADEDGMUP_INC (0x0u << 24) /**< \brief (PWM_CAEUPD0) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGVUP and the counter of the channel x is incrementing. */
-#define   PWM_CAEUPD0_ADEDGMUP_DEC (0x1u << 24) /**< \brief (PWM_CAEUPD0) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGVUP and the counter of the channel x is incrementing. */
-#define   PWM_CAEUPD0_ADEDGMUP_BOTH (0x2u << 24) /**< \brief (PWM_CAEUPD0) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGVUP, whether the counter is incrementing or not. */
 /* -------- PWM_CMUPD1 : (PWM Offset: 0x420) PWM Channel Mode Update Register (ch_num = 1) -------- */
 #define PWM_CMUPD1_CPOLUP (0x1u << 9) /**< \brief (PWM_CMUPD1) Channel Polarity Update */
 #define PWM_CMUPD1_CPOLINVUP (0x1u << 13) /**< \brief (PWM_CMUPD1) Channel Polarity Inversion Update */
-/* -------- PWM_CAE1 : (PWM Offset: 0x424) PWM Channel Additional Edge Register (ch_num = 1) -------- */
-#define PWM_CAE1_ADEDGV_Pos 0
-#define PWM_CAE1_ADEDGV_Msk (0xffffffu << PWM_CAE1_ADEDGV_Pos) /**< \brief (PWM_CAE1) Channel Additional Edge Value */
-#define PWM_CAE1_ADEDGV(value) ((PWM_CAE1_ADEDGV_Msk & ((value) << PWM_CAE1_ADEDGV_Pos)))
-#define PWM_CAE1_ADEDGM_Pos 24
-#define PWM_CAE1_ADEDGM_Msk (0x3u << PWM_CAE1_ADEDGM_Pos) /**< \brief (PWM_CAE1) Channel Additional Edge Mode */
-#define   PWM_CAE1_ADEDGM_INC (0x0u << 24) /**< \brief (PWM_CAE1) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGV and the counter of the channel x is incrementing. */
-#define   PWM_CAE1_ADEDGM_DEC (0x1u << 24) /**< \brief (PWM_CAE1) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGV and the counter of the channel x is incrementing. */
-#define   PWM_CAE1_ADEDGM_BOTH (0x2u << 24) /**< \brief (PWM_CAE1) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGV, whether the counter is incrementing or not. */
-/* -------- PWM_CAEUPD1 : (PWM Offset: 0x428) PWM Channel Additional Edge Update Register (ch_num = 1) -------- */
-#define PWM_CAEUPD1_ADEDGVUP_Pos 0
-#define PWM_CAEUPD1_ADEDGVUP_Msk (0xffffffu << PWM_CAEUPD1_ADEDGVUP_Pos) /**< \brief (PWM_CAEUPD1) Channel Additional Edge Value Update */
-#define PWM_CAEUPD1_ADEDGVUP(value) ((PWM_CAEUPD1_ADEDGVUP_Msk & ((value) << PWM_CAEUPD1_ADEDGVUP_Pos)))
-#define PWM_CAEUPD1_ADEDGMUP_Pos 24
-#define PWM_CAEUPD1_ADEDGMUP_Msk (0x3u << PWM_CAEUPD1_ADEDGMUP_Pos) /**< \brief (PWM_CAEUPD1) Channel Additional Edge Mode Update */
-#define   PWM_CAEUPD1_ADEDGMUP_INC (0x0u << 24) /**< \brief (PWM_CAEUPD1) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGVUP and the counter of the channel x is incrementing. */
-#define   PWM_CAEUPD1_ADEDGMUP_DEC (0x1u << 24) /**< \brief (PWM_CAEUPD1) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGVUP and the counter of the channel x is incrementing. */
-#define   PWM_CAEUPD1_ADEDGMUP_BOTH (0x2u << 24) /**< \brief (PWM_CAEUPD1) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGVUP, whether the counter is incrementing or not. */
 /* -------- PWM_ETRG1 : (PWM Offset: 0x42C) PWM External Trigger Register (trg_num = 1) -------- */
 #define PWM_ETRG1_MAXCNT_Pos 0
 #define PWM_ETRG1_MAXCNT_Msk (0xffffffu << PWM_ETRG1_MAXCNT_Pos) /**< \brief (PWM_ETRG1) Maximum Counter value */
 #define PWM_ETRG1_MAXCNT(value) ((PWM_ETRG1_MAXCNT_Msk & ((value) << PWM_ETRG1_MAXCNT_Pos)))
 #define PWM_ETRG1_TRGMODE_Pos 24
 #define PWM_ETRG1_TRGMODE_Msk (0x3u << PWM_ETRG1_TRGMODE_Pos) /**< \brief (PWM_ETRG1) External Trigger Mode */
+#define PWM_ETRG1_TRGMODE(value) ((PWM_ETRG1_TRGMODE_Msk & ((value) << PWM_ETRG1_TRGMODE_Pos)))
 #define   PWM_ETRG1_TRGMODE_OFF (0x0u << 24) /**< \brief (PWM_ETRG1) External trigger is not enabled. */
 #define   PWM_ETRG1_TRGMODE_MODE1 (0x1u << 24) /**< \brief (PWM_ETRG1) External PWM Reset Mode */
 #define   PWM_ETRG1_TRGMODE_MODE2 (0x2u << 24) /**< \brief (PWM_ETRG1) External PWM Start Mode */
@@ -630,30 +615,13 @@ typedef struct {
 /* -------- PWM_CMUPD2 : (PWM Offset: 0x440) PWM Channel Mode Update Register (ch_num = 2) -------- */
 #define PWM_CMUPD2_CPOLUP (0x1u << 9) /**< \brief (PWM_CMUPD2) Channel Polarity Update */
 #define PWM_CMUPD2_CPOLINVUP (0x1u << 13) /**< \brief (PWM_CMUPD2) Channel Polarity Inversion Update */
-/* -------- PWM_CAE2 : (PWM Offset: 0x444) PWM Channel Additional Edge Register (ch_num = 2) -------- */
-#define PWM_CAE2_ADEDGV_Pos 0
-#define PWM_CAE2_ADEDGV_Msk (0xffffffu << PWM_CAE2_ADEDGV_Pos) /**< \brief (PWM_CAE2) Channel Additional Edge Value */
-#define PWM_CAE2_ADEDGV(value) ((PWM_CAE2_ADEDGV_Msk & ((value) << PWM_CAE2_ADEDGV_Pos)))
-#define PWM_CAE2_ADEDGM_Pos 24
-#define PWM_CAE2_ADEDGM_Msk (0x3u << PWM_CAE2_ADEDGM_Pos) /**< \brief (PWM_CAE2) Channel Additional Edge Mode */
-#define   PWM_CAE2_ADEDGM_INC (0x0u << 24) /**< \brief (PWM_CAE2) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGV and the counter of the channel x is incrementing. */
-#define   PWM_CAE2_ADEDGM_DEC (0x1u << 24) /**< \brief (PWM_CAE2) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGV and the counter of the channel x is incrementing. */
-#define   PWM_CAE2_ADEDGM_BOTH (0x2u << 24) /**< \brief (PWM_CAE2) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGV, whether the counter is incrementing or not. */
-/* -------- PWM_CAEUPD2 : (PWM Offset: 0x448) PWM Channel Additional Edge Update Register (ch_num = 2) -------- */
-#define PWM_CAEUPD2_ADEDGVUP_Pos 0
-#define PWM_CAEUPD2_ADEDGVUP_Msk (0xffffffu << PWM_CAEUPD2_ADEDGVUP_Pos) /**< \brief (PWM_CAEUPD2) Channel Additional Edge Value Update */
-#define PWM_CAEUPD2_ADEDGVUP(value) ((PWM_CAEUPD2_ADEDGVUP_Msk & ((value) << PWM_CAEUPD2_ADEDGVUP_Pos)))
-#define PWM_CAEUPD2_ADEDGMUP_Pos 24
-#define PWM_CAEUPD2_ADEDGMUP_Msk (0x3u << PWM_CAEUPD2_ADEDGMUP_Pos) /**< \brief (PWM_CAEUPD2) Channel Additional Edge Mode Update */
-#define   PWM_CAEUPD2_ADEDGMUP_INC (0x0u << 24) /**< \brief (PWM_CAEUPD2) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGVUP and the counter of the channel x is incrementing. */
-#define   PWM_CAEUPD2_ADEDGMUP_DEC (0x1u << 24) /**< \brief (PWM_CAEUPD2) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGVUP and the counter of the channel x is incrementing. */
-#define   PWM_CAEUPD2_ADEDGMUP_BOTH (0x2u << 24) /**< \brief (PWM_CAEUPD2) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGVUP, whether the counter is incrementing or not. */
 /* -------- PWM_ETRG2 : (PWM Offset: 0x44C) PWM External Trigger Register (trg_num = 2) -------- */
 #define PWM_ETRG2_MAXCNT_Pos 0
 #define PWM_ETRG2_MAXCNT_Msk (0xffffffu << PWM_ETRG2_MAXCNT_Pos) /**< \brief (PWM_ETRG2) Maximum Counter value */
 #define PWM_ETRG2_MAXCNT(value) ((PWM_ETRG2_MAXCNT_Msk & ((value) << PWM_ETRG2_MAXCNT_Pos)))
 #define PWM_ETRG2_TRGMODE_Pos 24
 #define PWM_ETRG2_TRGMODE_Msk (0x3u << PWM_ETRG2_TRGMODE_Pos) /**< \brief (PWM_ETRG2) External Trigger Mode */
+#define PWM_ETRG2_TRGMODE(value) ((PWM_ETRG2_TRGMODE_Msk & ((value) << PWM_ETRG2_TRGMODE_Pos)))
 #define   PWM_ETRG2_TRGMODE_OFF (0x0u << 24) /**< \brief (PWM_ETRG2) External trigger is not enabled. */
 #define   PWM_ETRG2_TRGMODE_MODE1 (0x1u << 24) /**< \brief (PWM_ETRG2) External PWM Reset Mode */
 #define   PWM_ETRG2_TRGMODE_MODE2 (0x2u << 24) /**< \brief (PWM_ETRG2) External PWM Start Mode */
@@ -675,30 +643,13 @@ typedef struct {
 /* -------- PWM_CMUPD3 : (PWM Offset: 0x460) PWM Channel Mode Update Register (ch_num = 3) -------- */
 #define PWM_CMUPD3_CPOLUP (0x1u << 9) /**< \brief (PWM_CMUPD3) Channel Polarity Update */
 #define PWM_CMUPD3_CPOLINVUP (0x1u << 13) /**< \brief (PWM_CMUPD3) Channel Polarity Inversion Update */
-/* -------- PWM_CAE3 : (PWM Offset: 0x464) PWM Channel Additional Edge Register (ch_num = 3) -------- */
-#define PWM_CAE3_ADEDGV_Pos 0
-#define PWM_CAE3_ADEDGV_Msk (0xffffffu << PWM_CAE3_ADEDGV_Pos) /**< \brief (PWM_CAE3) Channel Additional Edge Value */
-#define PWM_CAE3_ADEDGV(value) ((PWM_CAE3_ADEDGV_Msk & ((value) << PWM_CAE3_ADEDGV_Pos)))
-#define PWM_CAE3_ADEDGM_Pos 24
-#define PWM_CAE3_ADEDGM_Msk (0x3u << PWM_CAE3_ADEDGM_Pos) /**< \brief (PWM_CAE3) Channel Additional Edge Mode */
-#define   PWM_CAE3_ADEDGM_INC (0x0u << 24) /**< \brief (PWM_CAE3) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGV and the counter of the channel x is incrementing. */
-#define   PWM_CAE3_ADEDGM_DEC (0x1u << 24) /**< \brief (PWM_CAE3) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGV and the counter of the channel x is incrementing. */
-#define   PWM_CAE3_ADEDGM_BOTH (0x2u << 24) /**< \brief (PWM_CAE3) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGV, whether the counter is incrementing or not. */
-/* -------- PWM_CAEUPD3 : (PWM Offset: 0x468) PWM Channel Additional Edge Update Register (ch_num = 3) -------- */
-#define PWM_CAEUPD3_ADEDGVUP_Pos 0
-#define PWM_CAEUPD3_ADEDGVUP_Msk (0xffffffu << PWM_CAEUPD3_ADEDGVUP_Pos) /**< \brief (PWM_CAEUPD3) Channel Additional Edge Value Update */
-#define PWM_CAEUPD3_ADEDGVUP(value) ((PWM_CAEUPD3_ADEDGVUP_Msk & ((value) << PWM_CAEUPD3_ADEDGVUP_Pos)))
-#define PWM_CAEUPD3_ADEDGMUP_Pos 24
-#define PWM_CAEUPD3_ADEDGMUP_Msk (0x3u << PWM_CAEUPD3_ADEDGMUP_Pos) /**< \brief (PWM_CAEUPD3) Channel Additional Edge Mode Update */
-#define   PWM_CAEUPD3_ADEDGMUP_INC (0x0u << 24) /**< \brief (PWM_CAEUPD3) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGVUP and the counter of the channel x is incrementing. */
-#define   PWM_CAEUPD3_ADEDGMUP_DEC (0x1u << 24) /**< \brief (PWM_CAEUPD3) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGVUP and the counter of the channel x is incrementing. */
-#define   PWM_CAEUPD3_ADEDGMUP_BOTH (0x2u << 24) /**< \brief (PWM_CAEUPD3) The additional edge of the channel x output waveform occurs when CCNTx reaches ADEDGVUP, whether the counter is incrementing or not. */
 /* -------- PWM_ETRG3 : (PWM Offset: 0x46C) PWM External Trigger Register (trg_num = 3) -------- */
 #define PWM_ETRG3_MAXCNT_Pos 0
 #define PWM_ETRG3_MAXCNT_Msk (0xffffffu << PWM_ETRG3_MAXCNT_Pos) /**< \brief (PWM_ETRG3) Maximum Counter value */
 #define PWM_ETRG3_MAXCNT(value) ((PWM_ETRG3_MAXCNT_Msk & ((value) << PWM_ETRG3_MAXCNT_Pos)))
 #define PWM_ETRG3_TRGMODE_Pos 24
 #define PWM_ETRG3_TRGMODE_Msk (0x3u << PWM_ETRG3_TRGMODE_Pos) /**< \brief (PWM_ETRG3) External Trigger Mode */
+#define PWM_ETRG3_TRGMODE(value) ((PWM_ETRG3_TRGMODE_Msk & ((value) << PWM_ETRG3_TRGMODE_Pos)))
 #define   PWM_ETRG3_TRGMODE_OFF (0x0u << 24) /**< \brief (PWM_ETRG3) External trigger is not enabled. */
 #define   PWM_ETRG3_TRGMODE_MODE1 (0x1u << 24) /**< \brief (PWM_ETRG3) External PWM Reset Mode */
 #define   PWM_ETRG3_TRGMODE_MODE2 (0x2u << 24) /**< \brief (PWM_ETRG3) External PWM Start Mode */
@@ -717,8 +668,33 @@ typedef struct {
 #define PWM_LEBR3_PWMLREN (0x1u << 17) /**< \brief (PWM_LEBR3) PWML Rising Edge Enable */
 #define PWM_LEBR3_PWMHFEN (0x1u << 18) /**< \brief (PWM_LEBR3) PWMH Falling Edge Enable */
 #define PWM_LEBR3_PWMHREN (0x1u << 19) /**< \brief (PWM_LEBR3) PWMH Rising Edge Enable */
+/* -------- PWM_ETRG4 : (PWM Offset: 0x48C) PWM External Trigger Register (trg_num = 4) -------- */
+#define PWM_ETRG4_MAXCNT_Pos 0
+#define PWM_ETRG4_MAXCNT_Msk (0xffffffu << PWM_ETRG4_MAXCNT_Pos) /**< \brief (PWM_ETRG4) Maximum Counter value */
+#define PWM_ETRG4_MAXCNT(value) ((PWM_ETRG4_MAXCNT_Msk & ((value) << PWM_ETRG4_MAXCNT_Pos)))
+#define PWM_ETRG4_TRGMODE_Pos 24
+#define PWM_ETRG4_TRGMODE_Msk (0x3u << PWM_ETRG4_TRGMODE_Pos) /**< \brief (PWM_ETRG4) External Trigger Mode */
+#define PWM_ETRG4_TRGMODE(value) ((PWM_ETRG4_TRGMODE_Msk & ((value) << PWM_ETRG4_TRGMODE_Pos)))
+#define   PWM_ETRG4_TRGMODE_OFF (0x0u << 24) /**< \brief (PWM_ETRG4) External trigger is not enabled. */
+#define   PWM_ETRG4_TRGMODE_MODE1 (0x1u << 24) /**< \brief (PWM_ETRG4) External PWM Reset Mode */
+#define   PWM_ETRG4_TRGMODE_MODE2 (0x2u << 24) /**< \brief (PWM_ETRG4) External PWM Start Mode */
+#define   PWM_ETRG4_TRGMODE_MODE3 (0x3u << 24) /**< \brief (PWM_ETRG4) Cycle-by-cycle Duty Mode */
+#define PWM_ETRG4_TRGEDGE (0x1u << 28) /**< \brief (PWM_ETRG4) Edge Selection */
+#define   PWM_ETRG4_TRGEDGE_FALLING_ZERO (0x0u << 28) /**< \brief (PWM_ETRG4) TRGMODE = 1: TRGINx event detection on falling edge.TRGMODE = 2, 3: TRGINx active level is 0 */
+#define   PWM_ETRG4_TRGEDGE_RISING_ONE (0x1u << 28) /**< \brief (PWM_ETRG4) TRGMODE = 1: TRGINx event detection on rising edge.TRGMODE = 2, 3: TRGINx active level is 1 */
+#define PWM_ETRG4_TRGFILT (0x1u << 29) /**< \brief (PWM_ETRG4) Filtered input */
+#define PWM_ETRG4_TRGSRC (0x1u << 30) /**< \brief (PWM_ETRG4) Trigger Source */
+#define PWM_ETRG4_RFEN (0x1u << 31) /**< \brief (PWM_ETRG4) Recoverable Fault Enable */
+/* -------- PWM_LEBR4 : (PWM Offset: 0x490) PWM Leading-Edge Blanking Register (trg_num = 4) -------- */
+#define PWM_LEBR4_LEBDELAY_Pos 0
+#define PWM_LEBR4_LEBDELAY_Msk (0x7fu << PWM_LEBR4_LEBDELAY_Pos) /**< \brief (PWM_LEBR4) Leading-Edge Blanking Delay for TRGINx */
+#define PWM_LEBR4_LEBDELAY(value) ((PWM_LEBR4_LEBDELAY_Msk & ((value) << PWM_LEBR4_LEBDELAY_Pos)))
+#define PWM_LEBR4_PWMLFEN (0x1u << 16) /**< \brief (PWM_LEBR4) PWML Falling Edge Enable */
+#define PWM_LEBR4_PWMLREN (0x1u << 17) /**< \brief (PWM_LEBR4) PWML Rising Edge Enable */
+#define PWM_LEBR4_PWMHFEN (0x1u << 18) /**< \brief (PWM_LEBR4) PWMH Falling Edge Enable */
+#define PWM_LEBR4_PWMHREN (0x1u << 19) /**< \brief (PWM_LEBR4) PWMH Rising Edge Enable */
 
 /*@}*/
 
 
-#endif /* _SAM_PWM_COMPONENT_ */
+#endif /* _SAMV71_PWM_COMPONENT_ */

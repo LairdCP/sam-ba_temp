@@ -59,6 +59,7 @@
 /*
  * Peripherals registers definitions
  */
+#include "compiler.h"
 #include "include/samv7/sam.h"
 
 /*
@@ -73,6 +74,11 @@
 #include "include/pmc.h"
 #include "include/uart.h"
 #include "include/wdt.h"
+#include "include/qspi.h"
+#include "include/xdmac.h"
+#include "include/xdmad.h"
+#include "include/qspi_dma.h"
+ 
 #include "include/trace.h"
 
 #define ENABLE_PERIPHERAL(dwId)         PMC_EnablePeripheral( dwId )

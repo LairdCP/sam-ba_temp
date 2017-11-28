@@ -59,7 +59,9 @@
 /*
  * Peripherals registers definitions
  */
-#if defined(sam4c8)
+#if defined(sam4c4)
+    #include "include/sam4c/sam4c8c-0.h"
+#elif defined sam4c8
     #include "include/sam4c/sam4c8c-0.h"
 #elif defined sam4c16
     #include "include/sam4c/sam4c16c-0.h"

@@ -27,13 +27,13 @@
 /* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                           */
 /* ---------------------------------------------------------------------------- */
 
-#ifndef _SAM_SPI_COMPONENT_
-#define _SAM_SPI_COMPONENT_
+#ifndef _SAMV71_SPI_COMPONENT_
+#define _SAMV71_SPI_COMPONENT_
 
 /* ============================================================================= */
 /**  SOFTWARE API DEFINITION FOR Serial Peripheral Interface */
 /* ============================================================================= */
-/** \addtogroup SAM_SPI Serial Peripheral Interface */
+/** \addtogroup SAMV71_SPI Serial Peripheral Interface */
 /*@{*/
 
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
@@ -50,10 +50,8 @@ typedef struct {
   __I  uint32_t Reserved1[4];
   __IO uint32_t SPI_CSR[4];    /**< \brief (Spi Offset: 0x30) Chip Select Register */
   __I  uint32_t Reserved2[41];
-  __IO uint32_t SPI_WPMR;      /**< \brief (Spi Offset: 0xE4) Write Protection Control Register */
+  __IO uint32_t SPI_WPMR;      /**< \brief (Spi Offset: 0xE4) Write Protection Mode Register */
   __I  uint32_t SPI_WPSR;      /**< \brief (Spi Offset: 0xE8) Write Protection Status Register */
-  __I  uint32_t Reserved3[4];
-  __I  uint32_t SPI_VERSION;   /**< \brief (Spi Offset: 0x00FC) Version Register */
 } Spi;
 #endif /* !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__)) */
 /* -------- SPI_CR : (SPI Offset: 0x00) Control Register -------- */
@@ -88,13 +86,13 @@ typedef struct {
 #define SPI_TDR_PCS(value) ((SPI_TDR_PCS_Msk & ((value) << SPI_TDR_PCS_Pos)))
 #define SPI_TDR_LASTXFER (0x1u << 24) /**< \brief (SPI_TDR) Last Transfer */
 /* -------- SPI_SR : (SPI Offset: 0x10) Status Register -------- */
-#define SPI_SR_RDRF (0x1u << 0) /**< \brief (SPI_SR) Receive Data Register Full */
-#define SPI_SR_TDRE (0x1u << 1) /**< \brief (SPI_SR) Transmit Data Register Empty */
-#define SPI_SR_MODF (0x1u << 2) /**< \brief (SPI_SR) Mode Fault Error */
-#define SPI_SR_OVRES (0x1u << 3) /**< \brief (SPI_SR) Overrun Error Status */
-#define SPI_SR_NSSR (0x1u << 8) /**< \brief (SPI_SR) NSS Rising */
-#define SPI_SR_TXEMPTY (0x1u << 9) /**< \brief (SPI_SR) Transmission Registers Empty */
-#define SPI_SR_UNDES (0x1u << 10) /**< \brief (SPI_SR) Underrun Error Status (Slave Mode Only) */
+#define SPI_SR_RDRF (0x1u << 0) /**< \brief (SPI_SR) Receive Data Register Full (cleared by reading SPI_RDR) */
+#define SPI_SR_TDRE (0x1u << 1) /**< \brief (SPI_SR) Transmit Data Register Empty (cleared by writing SPI_TDR) */
+#define SPI_SR_MODF (0x1u << 2) /**< \brief (SPI_SR) Mode Fault Error (cleared on read) */
+#define SPI_SR_OVRES (0x1u << 3) /**< \brief (SPI_SR) Overrun Error Status (cleared on read) */
+#define SPI_SR_NSSR (0x1u << 8) /**< \brief (SPI_SR) NSS Rising (cleared on read) */
+#define SPI_SR_TXEMPTY (0x1u << 9) /**< \brief (SPI_SR) Transmission Registers Empty (cleared by writing SPI_TDR) */
+#define SPI_SR_UNDES (0x1u << 10) /**< \brief (SPI_SR) Underrun Error Status (Slave mode only) (cleared on read) */
 #define SPI_SR_SPIENS (0x1u << 16) /**< \brief (SPI_SR) SPI Enable Status */
 /* -------- SPI_IER : (SPI Offset: 0x14) Interrupt Enable Register -------- */
 #define SPI_IER_RDRF (0x1u << 0) /**< \brief (SPI_IER) Receive Data Register Full Interrupt Enable */
@@ -127,6 +125,7 @@ typedef struct {
 #define SPI_CSR_CSAAT (0x1u << 3) /**< \brief (SPI_CSR[4]) Chip Select Active After Transfer */
 #define SPI_CSR_BITS_Pos 4
 #define SPI_CSR_BITS_Msk (0xfu << SPI_CSR_BITS_Pos) /**< \brief (SPI_CSR[4]) Bits Per Transfer */
+#define SPI_CSR_BITS(value) ((SPI_CSR_BITS_Msk & ((value) << SPI_CSR_BITS_Pos)))
 #define   SPI_CSR_BITS_8_BIT (0x0u << 4) /**< \brief (SPI_CSR[4]) 8 bits for transfer */
 #define   SPI_CSR_BITS_9_BIT (0x1u << 4) /**< \brief (SPI_CSR[4]) 9 bits for transfer */
 #define   SPI_CSR_BITS_10_BIT (0x2u << 4) /**< \brief (SPI_CSR[4]) 10 bits for transfer */
@@ -137,7 +136,7 @@ typedef struct {
 #define   SPI_CSR_BITS_15_BIT (0x7u << 4) /**< \brief (SPI_CSR[4]) 15 bits for transfer */
 #define   SPI_CSR_BITS_16_BIT (0x8u << 4) /**< \brief (SPI_CSR[4]) 16 bits for transfer */
 #define SPI_CSR_SCBR_Pos 8
-#define SPI_CSR_SCBR_Msk (0xffu << SPI_CSR_SCBR_Pos) /**< \brief (SPI_CSR[4]) Serial Clock Baud Rate */
+#define SPI_CSR_SCBR_Msk (0xffu << SPI_CSR_SCBR_Pos) /**< \brief (SPI_CSR[4]) Serial Clock Bit Rate */
 #define SPI_CSR_SCBR(value) ((SPI_CSR_SCBR_Msk & ((value) << SPI_CSR_SCBR_Pos)))
 #define SPI_CSR_DLYBS_Pos 16
 #define SPI_CSR_DLYBS_Msk (0xffu << SPI_CSR_DLYBS_Pos) /**< \brief (SPI_CSR[4]) Delay Before SPCK */
@@ -145,22 +144,18 @@ typedef struct {
 #define SPI_CSR_DLYBCT_Pos 24
 #define SPI_CSR_DLYBCT_Msk (0xffu << SPI_CSR_DLYBCT_Pos) /**< \brief (SPI_CSR[4]) Delay Between Consecutive Transfers */
 #define SPI_CSR_DLYBCT(value) ((SPI_CSR_DLYBCT_Msk & ((value) << SPI_CSR_DLYBCT_Pos)))
-/* -------- SPI_WPMR : (SPI Offset: 0xE4) Write Protection Control Register -------- */
-#define SPI_WPMR_WPEN (0x1u << 0) /**< \brief (SPI_WPMR) Write Protect Enable */
+/* -------- SPI_WPMR : (SPI Offset: 0xE4) Write Protection Mode Register -------- */
+#define SPI_WPMR_WPEN (0x1u << 0) /**< \brief (SPI_WPMR) Write Protection Enable */
 #define SPI_WPMR_WPKEY_Pos 8
-#define SPI_WPMR_WPKEY_Msk (0xffffffu << SPI_WPMR_WPKEY_Pos) /**< \brief (SPI_WPMR) Write Protect Key */
+#define SPI_WPMR_WPKEY_Msk (0xffffffu << SPI_WPMR_WPKEY_Pos) /**< \brief (SPI_WPMR) Write Protection Key */
+#define SPI_WPMR_WPKEY(value) ((SPI_WPMR_WPKEY_Msk & ((value) << SPI_WPMR_WPKEY_Pos)))
 #define   SPI_WPMR_WPKEY_PASSWD (0x535049u << 8) /**< \brief (SPI_WPMR) Writing any other value in this field aborts the write operation of the WPEN bit.Always reads as 0. */
 /* -------- SPI_WPSR : (SPI Offset: 0xE8) Write Protection Status Register -------- */
 #define SPI_WPSR_WPVS (0x1u << 0) /**< \brief (SPI_WPSR) Write Protection Violation Status */
 #define SPI_WPSR_WPVSRC_Pos 8
 #define SPI_WPSR_WPVSRC_Msk (0xffu << SPI_WPSR_WPVSRC_Pos) /**< \brief (SPI_WPSR) Write Protection Violation Source */
-/* -------- SPI_VERSION : (SPI Offset: 0x00FC) Version Register -------- */
-#define SPI_VERSION_VERSION_Pos 0
-#define SPI_VERSION_VERSION_Msk (0xfffu << SPI_VERSION_VERSION_Pos) /**< \brief (SPI_VERSION) Version of the Hardware Module */
-#define SPI_VERSION_MFN_Pos 16
-#define SPI_VERSION_MFN_Msk (0x7u << SPI_VERSION_MFN_Pos) /**< \brief (SPI_VERSION) Metal Fix Number */
 
 /*@}*/
 
 
-#endif /* _SAM_SPI_COMPONENT_ */
+#endif /* _SAMV71_SPI_COMPONENT_ */

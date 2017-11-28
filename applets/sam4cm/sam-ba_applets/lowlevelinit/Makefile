@@ -38,6 +38,11 @@ SERIE = sam4cm
 CHIP  = $(SERIE)16
 BOARD = $(SERIE)_db
 
+ifeq (sam4cm32,$(CHIP))
+BOARD_DIR = at91sam4cm32-db
+CHIP_NAME  = __SAM4C32C__
+endif
+
 ifeq (sam4cm16,$(CHIP))
 BOARD_DIR = at91sam4cm16-db
 CHIP_NAME  = __SAM4C16C__
@@ -46,6 +51,11 @@ endif
 ifeq (sam4cm8,$(CHIP))
 BOARD_DIR = at91sam4cm8-db
 CHIP_NAME  = __SAM4C8C__
+endif
+
+ifeq (sam4cm4,$(CHIP))
+BOARD_DIR = at91sam4cm4-db
+CHIP_NAME  = __SAM4C4C__
 endif
 
 MEMORIES = sram

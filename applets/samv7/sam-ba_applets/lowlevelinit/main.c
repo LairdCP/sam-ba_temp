@@ -176,7 +176,6 @@ int main(int argc, char **argv)
     }
 
     DBG_Configure(115200, BOARD_MCK);
-    printf("APPLET_CMD_INIT Done");
     /* Notify the host application of the end of the command processing */
     pMailbox->command = ~(pMailbox->command);
     if (comType == DBGU_COM_TYPE) {

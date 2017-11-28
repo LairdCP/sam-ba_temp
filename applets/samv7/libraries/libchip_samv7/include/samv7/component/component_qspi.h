@@ -27,13 +27,13 @@
 /* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                           */
 /* ---------------------------------------------------------------------------- */
 
-#ifndef _SAM_QSPI_COMPONENT_
-#define _SAM_QSPI_COMPONENT_
+#ifndef _SAMV71_QSPI_COMPONENT_
+#define _SAMV71_QSPI_COMPONENT_
 
 /* ============================================================================= */
 /**  SOFTWARE API DEFINITION FOR Quad Serial Peripheral Interface */
 /* ============================================================================= */
-/** \addtogroup SAM_QSPI Quad Serial Peripheral Interface */
+/** \addtogroup SAMV71_QSPI Quad Serial Peripheral Interface */
 /*@{*/
 
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
@@ -54,12 +54,10 @@ typedef struct {
   __IO uint32_t QSPI_IFR;      /**< \brief (Qspi Offset: 0x38) Instruction Frame Register */
   __I  uint32_t Reserved2[1];
   __IO uint32_t QSPI_SMR;      /**< \brief (Qspi Offset: 0x40) Scrambling Mode Register */
-  __IO uint32_t QSPI_SKR;      /**< \brief (Qspi Offset: 0x44) Scrambling Key Register */
+  __O  uint32_t QSPI_SKR;      /**< \brief (Qspi Offset: 0x44) Scrambling Key Register */
   __I  uint32_t Reserved3[39];
   __IO uint32_t QSPI_WPMR;     /**< \brief (Qspi Offset: 0xE4) Write Protection Mode Register */
   __I  uint32_t QSPI_WPSR;     /**< \brief (Qspi Offset: 0xE8) Write Protection Status Register */
-  __I  uint32_t Reserved4[4];
-  __I  uint32_t QSPI_VERSION;  /**< \brief (Qspi Offset: 0x00FC) Version Register */
 } Qspi;
 #endif /* !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__)) */
 /* -------- QSPI_CR : (QSPI Offset: 0x00) Control Register -------- */
@@ -69,21 +67,23 @@ typedef struct {
 #define QSPI_CR_LASTXFER (0x1u << 24) /**< \brief (QSPI_CR) Last Transfer */
 /* -------- QSPI_MR : (QSPI Offset: 0x04) Mode Register -------- */
 #define QSPI_MR_SMM (0x1u << 0) /**< \brief (QSPI_MR) Serial Memory Mode */
-#define   QSPI_MR_SMM_SPI (0x0u << 0) /**< \brief (QSPI_MR) The QSPI is in SPI Mode. */
-#define   QSPI_MR_SMM_MEMORY (0x1u << 0) /**< \brief (QSPI_MR) The QSPI is in Serial Memory Mode. */
+#define   QSPI_MR_SMM_SPI (0x0u << 0) /**< \brief (QSPI_MR) The QSPI is in SPI mode. */
+#define   QSPI_MR_SMM_MEMORY (0x1u << 0) /**< \brief (QSPI_MR) The QSPI is in Serial Memory mode. */
 #define QSPI_MR_LLB (0x1u << 1) /**< \brief (QSPI_MR) Local Loopback Enable */
 #define   QSPI_MR_LLB_DISABLED (0x0u << 1) /**< \brief (QSPI_MR) Local loopback path disabled. */
 #define   QSPI_MR_LLB_ENABLED (0x1u << 1) /**< \brief (QSPI_MR) Local loopback path enabled. */
 #define QSPI_MR_WDRBT (0x1u << 2) /**< \brief (QSPI_MR) Wait Data Read Before Transfer */
 #define   QSPI_MR_WDRBT_DISABLED (0x0u << 2) /**< \brief (QSPI_MR) No effect. In SPI mode, a transfer can be initiated whatever the state of the QSPI_RDR is. */
-#define   QSPI_MR_WDRBT_ENABLED (0x1u << 2) /**< \brief (QSPI_MR) In SPI Mode, a transfer can start only if the QSPI_RDR is empty, i.e., does not contain any unread data. This mode prevents overrun error in reception. */
+#define   QSPI_MR_WDRBT_ENABLED (0x1u << 2) /**< \brief (QSPI_MR) In SPI mode, a transfer can start only if the QSPI_RDR is empty, i.e., does not contain any unread data. This mode prevents overrun error in reception. */
 #define QSPI_MR_CSMODE_Pos 4
 #define QSPI_MR_CSMODE_Msk (0x3u << QSPI_MR_CSMODE_Pos) /**< \brief (QSPI_MR) Chip Select Mode */
+#define QSPI_MR_CSMODE(value) ((QSPI_MR_CSMODE_Msk & ((value) << QSPI_MR_CSMODE_Pos)))
 #define   QSPI_MR_CSMODE_NOT_RELOADED (0x0u << 4) /**< \brief (QSPI_MR) The chip select is deasserted if TD has not been reloaded before the end of the current transfer. */
 #define   QSPI_MR_CSMODE_LASTXFER (0x1u << 4) /**< \brief (QSPI_MR) The chip select is deasserted when the bit LASTXFER is written at 1 and the character written in TD has been transferred. */
 #define   QSPI_MR_CSMODE_SYSTEMATICALLY (0x2u << 4) /**< \brief (QSPI_MR) The chip select is deasserted systematically after each transfer. */
 #define QSPI_MR_NBBITS_Pos 8
 #define QSPI_MR_NBBITS_Msk (0xfu << QSPI_MR_NBBITS_Pos) /**< \brief (QSPI_MR) Number Of Bits Per Transfer */
+#define QSPI_MR_NBBITS(value) ((QSPI_MR_NBBITS_Msk & ((value) << QSPI_MR_NBBITS_Pos)))
 #define   QSPI_MR_NBBITS_8_BIT (0x0u << 8) /**< \brief (QSPI_MR) 8 bits for transfer */
 #define   QSPI_MR_NBBITS_9_BIT (0x1u << 8) /**< \brief (QSPI_MR) 9 bits for transfer */
 #define   QSPI_MR_NBBITS_10_BIT (0x2u << 8) /**< \brief (QSPI_MR) 10 bits for transfer */
@@ -97,7 +97,7 @@ typedef struct {
 #define QSPI_MR_DLYBCT_Msk (0xffu << QSPI_MR_DLYBCT_Pos) /**< \brief (QSPI_MR) Delay Between Consecutive Transfers */
 #define QSPI_MR_DLYBCT(value) ((QSPI_MR_DLYBCT_Msk & ((value) << QSPI_MR_DLYBCT_Pos)))
 #define QSPI_MR_DLYCS_Pos 24
-#define QSPI_MR_DLYCS_Msk (0xffu << QSPI_MR_DLYCS_Pos) /**< \brief (QSPI_MR) Minimum Inactive NPCS Delay */
+#define QSPI_MR_DLYCS_Msk (0xffu << QSPI_MR_DLYCS_Pos) /**< \brief (QSPI_MR) Minimum Inactive QCS Delay */
 #define QSPI_MR_DLYCS(value) ((QSPI_MR_DLYCS_Msk & ((value) << QSPI_MR_DLYCS_Pos)))
 /* -------- QSPI_RDR : (QSPI Offset: 0x08) Receive Data Register -------- */
 #define QSPI_RDR_RD_Pos 0
@@ -146,7 +146,7 @@ typedef struct {
 #define QSPI_SCR_SCBR_Msk (0xffu << QSPI_SCR_SCBR_Pos) /**< \brief (QSPI_SCR) Serial Clock Baud Rate */
 #define QSPI_SCR_SCBR(value) ((QSPI_SCR_SCBR_Msk & ((value) << QSPI_SCR_SCBR_Pos)))
 #define QSPI_SCR_DLYBS_Pos 16
-#define QSPI_SCR_DLYBS_Msk (0xffu << QSPI_SCR_DLYBS_Pos) /**< \brief (QSPI_SCR) Delay Before SPCK */
+#define QSPI_SCR_DLYBS_Msk (0xffu << QSPI_SCR_DLYBS_Pos) /**< \brief (QSPI_SCR) Delay Before QSCK */
 #define QSPI_SCR_DLYBS(value) ((QSPI_SCR_DLYBS_Msk & ((value) << QSPI_SCR_DLYBS_Pos)))
 /* -------- QSPI_IAR : (QSPI Offset: 0x30) Instruction Address Register -------- */
 #define QSPI_IAR_ADDR_Pos 0
@@ -162,6 +162,7 @@ typedef struct {
 /* -------- QSPI_IFR : (QSPI Offset: 0x38) Instruction Frame Register -------- */
 #define QSPI_IFR_WIDTH_Pos 0
 #define QSPI_IFR_WIDTH_Msk (0x7u << QSPI_IFR_WIDTH_Pos) /**< \brief (QSPI_IFR) Width of Instruction Code, Address, Option Code and Data */
+#define QSPI_IFR_WIDTH(value) ((QSPI_IFR_WIDTH_Msk & ((value) << QSPI_IFR_WIDTH_Pos)))
 #define   QSPI_IFR_WIDTH_SINGLE_BIT_SPI (0x0u << 0) /**< \brief (QSPI_IFR) Instruction: Single-bit SPI / Address-Option: Single-bit SPI / Data: Single-bit SPI */
 #define   QSPI_IFR_WIDTH_DUAL_OUTPUT (0x1u << 0) /**< \brief (QSPI_IFR) Instruction: Single-bit SPI / Address-Option: Single-bit SPI / Data: Dual SPI */
 #define   QSPI_IFR_WIDTH_QUAD_OUTPUT (0x2u << 0) /**< \brief (QSPI_IFR) Instruction: Single-bit SPI / Address-Option: Single-bit SPI / Data: Quad SPI */
@@ -175,6 +176,7 @@ typedef struct {
 #define QSPI_IFR_DATAEN (0x1u << 7) /**< \brief (QSPI_IFR) Data Enable */
 #define QSPI_IFR_OPTL_Pos 8
 #define QSPI_IFR_OPTL_Msk (0x3u << QSPI_IFR_OPTL_Pos) /**< \brief (QSPI_IFR) Option Code Length */
+#define QSPI_IFR_OPTL(value) ((QSPI_IFR_OPTL_Msk & ((value) << QSPI_IFR_OPTL_Pos)))
 #define   QSPI_IFR_OPTL_OPTION_1BIT (0x0u << 8) /**< \brief (QSPI_IFR) The option code is 1 bit long. */
 #define   QSPI_IFR_OPTL_OPTION_2BIT (0x1u << 8) /**< \brief (QSPI_IFR) The option code is 2 bits long. */
 #define   QSPI_IFR_OPTL_OPTION_4BIT (0x2u << 8) /**< \brief (QSPI_IFR) The option code is 4 bits long. */
@@ -184,13 +186,14 @@ typedef struct {
 #define   QSPI_IFR_ADDRL_32_BIT (0x1u << 10) /**< \brief (QSPI_IFR) The address is 32 bits long. */
 #define QSPI_IFR_TFRTYP_Pos 12
 #define QSPI_IFR_TFRTYP_Msk (0x3u << QSPI_IFR_TFRTYP_Pos) /**< \brief (QSPI_IFR) Data Transfer Type */
-#define   QSPI_IFR_TFRTYP_TRSFR_READ (0x0u << 12) /**< \brief (QSPI_IFR) Read transfer from the serial memory.Scrambling is not performed.Read at random location (fetch) in the serial flash memory is not possible. */
-#define   QSPI_IFR_TFRTYP_TRSFR_READ_MEMORY (0x1u << 12) /**< \brief (QSPI_IFR) Read data transfer from the serial memory.If enabled, scrambling is performed.Read at random location (fetch) in the serial flash memory is possible. */
+#define QSPI_IFR_TFRTYP(value) ((QSPI_IFR_TFRTYP_Msk & ((value) << QSPI_IFR_TFRTYP_Pos)))
+#define   QSPI_IFR_TFRTYP_TRSFR_READ (0x0u << 12) /**< \brief (QSPI_IFR) Read transfer from the serial memory.Scrambling is not performed.Read at random location (fetch) in the serial Flash memory is not possible. */
+#define   QSPI_IFR_TFRTYP_TRSFR_READ_MEMORY (0x1u << 12) /**< \brief (QSPI_IFR) Read data transfer from the serial memory.If enabled, scrambling is performed.Read at random location (fetch) in the serial Flash memory is possible. */
 #define   QSPI_IFR_TFRTYP_TRSFR_WRITE (0x2u << 12) /**< \brief (QSPI_IFR) Write transfer into the serial memory.Scrambling is not performed. */
 #define   QSPI_IFR_TFRTYP_TRSFR_WRITE_MEMORY (0x3u << 12) /**< \brief (QSPI_IFR) Write data transfer into the serial memory.If enabled, scrambling is performed. */
 #define QSPI_IFR_CRM (0x1u << 14) /**< \brief (QSPI_IFR) Continuous Read Mode */
-#define   QSPI_IFR_CRM_DISABLED (0x0u << 14) /**< \brief (QSPI_IFR) The Continuous Read Mode is disabled. */
-#define   QSPI_IFR_CRM_ENABLED (0x1u << 14) /**< \brief (QSPI_IFR) The Continuous Read Mode is enabled. */
+#define   QSPI_IFR_CRM_DISABLED (0x0u << 14) /**< \brief (QSPI_IFR) The Continuous Read mode is disabled. */
+#define   QSPI_IFR_CRM_ENABLED (0x1u << 14) /**< \brief (QSPI_IFR) The Continuous Read mode is enabled. */
 #define QSPI_IFR_NBDUM_Pos 16
 #define QSPI_IFR_NBDUM_Msk (0x1fu << QSPI_IFR_NBDUM_Pos) /**< \brief (QSPI_IFR) Number Of Dummy Cycles */
 #define QSPI_IFR_NBDUM(value) ((QSPI_IFR_NBDUM_Msk & ((value) << QSPI_IFR_NBDUM_Pos)))
@@ -207,18 +210,14 @@ typedef struct {
 #define QSPI_WPMR_WPEN (0x1u << 0) /**< \brief (QSPI_WPMR) Write Protection Enable */
 #define QSPI_WPMR_WPKEY_Pos 8
 #define QSPI_WPMR_WPKEY_Msk (0xffffffu << QSPI_WPMR_WPKEY_Pos) /**< \brief (QSPI_WPMR) Write Protection Key */
+#define QSPI_WPMR_WPKEY(value) ((QSPI_WPMR_WPKEY_Msk & ((value) << QSPI_WPMR_WPKEY_Pos)))
 #define   QSPI_WPMR_WPKEY_PASSWD (0x515350u << 8) /**< \brief (QSPI_WPMR) Writing any other value in this field aborts the write operation of the WPEN bit. Always reads as 0. */
 /* -------- QSPI_WPSR : (QSPI Offset: 0xE8) Write Protection Status Register -------- */
 #define QSPI_WPSR_WPVS (0x1u << 0) /**< \brief (QSPI_WPSR) Write Protection Violation Status */
 #define QSPI_WPSR_WPVSRC_Pos 8
 #define QSPI_WPSR_WPVSRC_Msk (0xffu << QSPI_WPSR_WPVSRC_Pos) /**< \brief (QSPI_WPSR) Write Protection Violation Source */
-/* -------- QSPI_VERSION : (QSPI Offset: 0x00FC) Version Register -------- */
-#define QSPI_VERSION_VERSION_Pos 0
-#define QSPI_VERSION_VERSION_Msk (0xfffu << QSPI_VERSION_VERSION_Pos) /**< \brief (QSPI_VERSION) Hardware Module Version */
-#define QSPI_VERSION_MFN_Pos 16
-#define QSPI_VERSION_MFN_Msk (0x7u << QSPI_VERSION_MFN_Pos) /**< \brief (QSPI_VERSION) Metal Fix Number */
 
 /*@}*/
 
 
-#endif /* _SAM_QSPI_COMPONENT_ */
+#endif /* _SAMV71_QSPI_COMPONENT_ */

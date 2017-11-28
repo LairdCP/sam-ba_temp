@@ -77,7 +77,7 @@ namespace eval BOARD {
 
 set xpld 0
 
-if { $target(board) == "sam4s-xpld"} {
+if { $target(board) == "at91sam4s-xpld"} {
     set xpld 1
     set target(board) at91sam4s16-ek
 }

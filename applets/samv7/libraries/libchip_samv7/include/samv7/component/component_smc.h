@@ -27,13 +27,13 @@
 /* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                           */
 /* ---------------------------------------------------------------------------- */
 
-#ifndef _SAM_SMC_COMPONENT_
-#define _SAM_SMC_COMPONENT_
+#ifndef _SAMV71_SMC_COMPONENT_
+#define _SAMV71_SMC_COMPONENT_
 
 /* ============================================================================= */
 /**  SOFTWARE API DEFINITION FOR Static Memory Controller */
 /* ============================================================================= */
-/** \addtogroup SAM_SMC Static Memory Controller */
+/** \addtogroup SAMV71_SMC Static Memory Controller */
 /*@{*/
 
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
@@ -42,7 +42,7 @@ typedef struct {
   __IO uint32_t SMC_SETUP; /**< \brief (SmcCs_number Offset: 0x0) SMC Setup Register */
   __IO uint32_t SMC_PULSE; /**< \brief (SmcCs_number Offset: 0x4) SMC Pulse Register */
   __IO uint32_t SMC_CYCLE; /**< \brief (SmcCs_number Offset: 0x8) SMC Cycle Register */
-  __IO uint32_t SMC_MODE;  /**< \brief (SmcCs_number Offset: 0xC) SMC Mode Register */
+  __IO uint32_t SMC_MODE;  /**< \brief (SmcCs_number Offset: 0xC) SMC MODE Register */
 } SmcCs_number;
 /** \brief Smc hardware registers */
 #define SMCCS_NUMBER_NUMBER 4
@@ -53,12 +53,8 @@ typedef struct {
   __O  uint32_t     SMC_KEY1;                           /**< \brief (Smc Offset: 0x84) SMC OCMS KEY1 Register */
   __O  uint32_t     SMC_KEY2;                           /**< \brief (Smc Offset: 0x88) SMC OCMS KEY2 Register */
   __I  uint32_t     Reserved2[22];
-  __IO uint32_t     SMC_WPMR;                           /**< \brief (Smc Offset: 0xE4) SMC Write Protect Mode Register */
-  __I  uint32_t     SMC_WPSR;                           /**< \brief (Smc Offset: 0xE8) SMC Write Protect Status Register */
-  __I  uint32_t     SMC_ADDRSIZE;                       /**< \brief (Smc Offset: 0xEC) SMC Address Size Register */
-  __I  uint32_t     SMC_IPNAME[2];                      /**< \brief (Smc Offset: 0xF0) SMC IP Name 1 Register */
-  __I  uint32_t     SMC_FEATURES;                       /**< \brief (Smc Offset: 0xF8) SMC Features Register */
-  __I  uint32_t     SMC_VERSION;                        /**< \brief (Smc Offset: 0xFC) SMC Version Register */
+  __IO uint32_t     SMC_WPMR;                           /**< \brief (Smc Offset: 0xE4) SMC Write Protection Mode Register */
+  __I  uint32_t     SMC_WPSR;                           /**< \brief (Smc Offset: 0xE8) SMC Write Protection Status Register */
 } Smc;
 #endif /* !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__)) */
 /* -------- SMC_SETUP : (SMC Offset: N/A) SMC Setup Register -------- */
@@ -94,14 +90,18 @@ typedef struct {
 #define SMC_CYCLE_NRD_CYCLE_Pos 16
 #define SMC_CYCLE_NRD_CYCLE_Msk (0x1ffu << SMC_CYCLE_NRD_CYCLE_Pos) /**< \brief (SMC_CYCLE) Total Read Cycle Length */
 #define SMC_CYCLE_NRD_CYCLE(value) ((SMC_CYCLE_NRD_CYCLE_Msk & ((value) << SMC_CYCLE_NRD_CYCLE_Pos)))
-/* -------- SMC_MODE : (SMC Offset: N/A) SMC Mode Register -------- */
-#define SMC_MODE_READ_MODE (0x1u << 0) /**< \brief (SMC_MODE)  */
-#define SMC_MODE_WRITE_MODE (0x1u << 1) /**< \brief (SMC_MODE)  */
+/* -------- SMC_MODE : (SMC Offset: N/A) SMC MODE Register -------- */
+#define SMC_MODE_READ_MODE (0x1u << 0) /**< \brief (SMC_MODE) Read Mode */
+#define SMC_MODE_WRITE_MODE (0x1u << 1) /**< \brief (SMC_MODE) Write Mode */
 #define SMC_MODE_EXNW_MODE_Pos 4
 #define SMC_MODE_EXNW_MODE_Msk (0x3u << SMC_MODE_EXNW_MODE_Pos) /**< \brief (SMC_MODE) NWAIT Mode */
+#define SMC_MODE_EXNW_MODE(value) ((SMC_MODE_EXNW_MODE_Msk & ((value) << SMC_MODE_EXNW_MODE_Pos)))
 #define   SMC_MODE_EXNW_MODE_DISABLED (0x0u << 4) /**< \brief (SMC_MODE) Disabled */
 #define   SMC_MODE_EXNW_MODE_FROZEN (0x2u << 4) /**< \brief (SMC_MODE) Frozen Mode */
 #define   SMC_MODE_EXNW_MODE_READY (0x3u << 4) /**< \brief (SMC_MODE) Ready Mode */
+#define SMC_MODE_BAT (0x1u << 8) /**< \brief (SMC_MODE) Byte Access Type */
+#define   SMC_MODE_BAT_BYTE_SELECT (0x0u << 8) /**< \brief (SMC_MODE) Byte select access type:- Write operation is controlled using NCS, NWE, NBS0, NBS1.- Read operation is controlled using NCS, NRD, NBS0, NBS1. */
+#define   SMC_MODE_BAT_BYTE_WRITE (0x1u << 8) /**< \brief (SMC_MODE) Byte write access type:- Write operation is controlled using NCS, NWR0, NWR1.- Read operation is controlled using NCS and NRD. */
 #define SMC_MODE_DBW (0x1u << 12) /**< \brief (SMC_MODE) Data Bus Width */
 #define   SMC_MODE_DBW_8_BIT (0x0u << 12) /**< \brief (SMC_MODE) 8-bit Data Bus */
 #define   SMC_MODE_DBW_16_BIT (0x1u << 12) /**< \brief (SMC_MODE) 16-bit Data Bus */
@@ -112,6 +112,7 @@ typedef struct {
 #define SMC_MODE_PMEN (0x1u << 24) /**< \brief (SMC_MODE) Page Mode Enabled */
 #define SMC_MODE_PS_Pos 28
 #define SMC_MODE_PS_Msk (0x3u << SMC_MODE_PS_Pos) /**< \brief (SMC_MODE) Page Size */
+#define SMC_MODE_PS(value) ((SMC_MODE_PS_Msk & ((value) << SMC_MODE_PS_Pos)))
 #define   SMC_MODE_PS_4_BYTE (0x0u << 28) /**< \brief (SMC_MODE) 4-byte page */
 #define   SMC_MODE_PS_8_BYTE (0x1u << 28) /**< \brief (SMC_MODE) 8-byte page */
 #define   SMC_MODE_PS_16_BYTE (0x2u << 28) /**< \brief (SMC_MODE) 16-byte page */
@@ -126,28 +127,18 @@ typedef struct {
 #define SMC_KEY2_KEY2_Pos 0
 #define SMC_KEY2_KEY2_Msk (0xffffffffu << SMC_KEY2_KEY2_Pos) /**< \brief (SMC_KEY2) Off Chip Memory Scrambling (OCMS) Key Part 2 */
 #define SMC_KEY2_KEY2(value) ((SMC_KEY2_KEY2_Msk & ((value) << SMC_KEY2_KEY2_Pos)))
-/* -------- SMC_WPMR : (SMC Offset: 0xE4) SMC Write Protect Mode Register -------- */
+/* -------- SMC_WPMR : (SMC Offset: 0xE4) SMC Write Protection Mode Register -------- */
 #define SMC_WPMR_WPEN (0x1u << 0) /**< \brief (SMC_WPMR) Write Protect Enable */
 #define SMC_WPMR_WPKEY_Pos 8
-#define SMC_WPMR_WPKEY_Msk (0xffffffu << SMC_WPMR_WPKEY_Pos) /**< \brief (SMC_WPMR) Write Protect KEY */
+#define SMC_WPMR_WPKEY_Msk (0xffffffu << SMC_WPMR_WPKEY_Pos) /**< \brief (SMC_WPMR) Write Protection Key */
 #define SMC_WPMR_WPKEY(value) ((SMC_WPMR_WPKEY_Msk & ((value) << SMC_WPMR_WPKEY_Pos)))
-/* -------- SMC_WPSR : (SMC Offset: 0xE8) SMC Write Protect Status Register -------- */
-#define SMC_WPSR_WPVS (0x1u << 0) /**< \brief (SMC_WPSR) Write Protect Enable */
+#define   SMC_WPMR_WPKEY_PASSWD (0x534D43u << 8) /**< \brief (SMC_WPMR) Writing any other value in this field aborts the write operation of the WPEN bit. Always reads as 0. */
+/* -------- SMC_WPSR : (SMC Offset: 0xE8) SMC Write Protection Status Register -------- */
+#define SMC_WPSR_WPVS (0x1u << 0) /**< \brief (SMC_WPSR) Write Protection Violation Status */
 #define SMC_WPSR_WPVSRC_Pos 8
-#define SMC_WPSR_WPVSRC_Msk (0xffffu << SMC_WPSR_WPVSRC_Pos) /**< \brief (SMC_WPSR) Write Protect Violation Source */
-/* -------- SMC_ADDRSIZE : (SMC Offset: 0xEC) SMC Address Size Register -------- */
-#define SMC_ADDRSIZE_ADDRSIZE_Pos 0
-#define SMC_ADDRSIZE_ADDRSIZE_Msk (0xffffu << SMC_ADDRSIZE_ADDRSIZE_Pos) /**< \brief (SMC_ADDRSIZE) User Interface Address Size */
-/* -------- SMC_IPNAME[2] : (SMC Offset: 0xF0) SMC IP Name 1 Register -------- */
-#define SMC_IPNAME_IPNAME_Pos 0
-#define SMC_IPNAME_IPNAME_Msk (0xffffffffu << SMC_IPNAME_IPNAME_Pos) /**< \brief (SMC_IPNAME[2]) ASCII Report of the IP Name */
-/* -------- SMC_VERSION : (SMC Offset: 0xFC) SMC Version Register -------- */
-#define SMC_VERSION_VERSION_Pos 0
-#define SMC_VERSION_VERSION_Msk (0xfffu << SMC_VERSION_VERSION_Pos) /**< \brief (SMC_VERSION) Hardware Module Version */
-#define SMC_VERSION_MFN_Pos 16
-#define SMC_VERSION_MFN_Msk (0x7u << SMC_VERSION_MFN_Pos) /**< \brief (SMC_VERSION) Metal Fix Number */
+#define SMC_WPSR_WPVSRC_Msk (0xffffu << SMC_WPSR_WPVSRC_Pos) /**< \brief (SMC_WPSR) Write Protection Violation Source */
 
 /*@}*/
 
 
-#endif /* _SAM_SMC_COMPONENT_ */
+#endif /* _SAMV71_SMC_COMPONENT_ */

@@ -59,10 +59,14 @@
 /*
  * Peripherals registers definitions
  */
-#if defined(sam4cm8)
+#if defined(sam4cm4)
+    #include "include/sam4c/sam4c8c-0.h"
+#elif defined sam4cm8
     #include "include/sam4c/sam4c8c-0.h"
 #elif defined sam4cm16
     #include "include/sam4c/sam4c16c-0.h"
+#elif defined sam4cm32
+    #include "include/sam4c/sam4c32c-0.h"    
 #else
     #warning Library does not support the specified chip, specifying sam4cm16.
     #define sam4cm16

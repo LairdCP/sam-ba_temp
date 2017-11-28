@@ -115,6 +115,8 @@ array set appletCmdSamd20 {
 }
 
 
+set target(board) "samd20_xplained_pro"
+
 ################################################################################
 ## PROCEDURES FOR COMPATIBILITY WITH OLDER SAM-BA VERSIONS AND USER DEFINED
 ################################################################################

@@ -47,6 +47,10 @@ ifeq (sam4cm16,$(CHIP))
 CHIP_NAME  = __SAM4C16C__
 endif
 
+ifeq (sam4cm32,$(CHIP))
+CHIP_NAME  = __SAM4C32C__
+endif
+
 #-------------------------------------------------------------------------------
 # we detect OS (Linux/Windows/Cygwin)
 # not defined for Cygwin

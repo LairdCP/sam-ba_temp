@@ -82,7 +82,11 @@
  *        Definitions
  *----------------------------------------------------------------------------*/
 
+#if defined (EFC1)
+#define GPNVM_NUM_MAX    3
+#else
 #define GPNVM_NUM_MAX    2
+#endif
 
 #if defined(EFC) && !defined(EFC0)
     #define EFC0     EFC

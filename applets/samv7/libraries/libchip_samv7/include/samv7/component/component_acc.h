@@ -27,13 +27,13 @@
 /* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                           */
 /* ---------------------------------------------------------------------------- */
 
-#ifndef _SAM_ACC_COMPONENT_
-#define _SAM_ACC_COMPONENT_
+#ifndef _SAMV71_ACC_COMPONENT_
+#define _SAMV71_ACC_COMPONENT_
 
 /* ============================================================================= */
 /**  SOFTWARE API DEFINITION FOR Analog Comparator Controller */
 /* ============================================================================= */
-/** \addtogroup SAM_ACC Analog Comparator Controller */
+/** \addtogroup SAMV71_ACC Analog Comparator Controller */
 /*@{*/
 
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
@@ -51,8 +51,6 @@ typedef struct {
   __I  uint32_t Reserved3[19];
   __IO uint32_t ACC_WPMR;      /**< \brief (Acc Offset: 0xE4) Write Protection Mode Register */
   __I  uint32_t ACC_WPSR;      /**< \brief (Acc Offset: 0xE8) Write Protection Status Register */
-  __I  uint32_t Reserved4[4];
-  __I  uint32_t ACC_VER;       /**< \brief (Acc Offset: 0xFC) Version Register */
 } Acc;
 #endif /* !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__)) */
 /* -------- ACC_CR : (ACC Offset: 0x00) Control Register -------- */
@@ -60,29 +58,32 @@ typedef struct {
 /* -------- ACC_MR : (ACC Offset: 0x04) Mode Register -------- */
 #define ACC_MR_SELMINUS_Pos 0
 #define ACC_MR_SELMINUS_Msk (0x7u << ACC_MR_SELMINUS_Pos) /**< \brief (ACC_MR) Selection for Minus Comparator Input */
+#define ACC_MR_SELMINUS(value) ((ACC_MR_SELMINUS_Msk & ((value) << ACC_MR_SELMINUS_Pos)))
 #define   ACC_MR_SELMINUS_TS (0x0u << 0) /**< \brief (ACC_MR) Select TS */
-#define   ACC_MR_SELMINUS_ADVREF (0x1u << 0) /**< \brief (ACC_MR) Select ADVREF */
+#define   ACC_MR_SELMINUS_ADVREFP (0x1u << 0) /**< \brief (ACC_MR) Select ADVREFP */
 #define   ACC_MR_SELMINUS_DAC0 (0x2u << 0) /**< \brief (ACC_MR) Select DAC0 */
 #define   ACC_MR_SELMINUS_DAC1 (0x3u << 0) /**< \brief (ACC_MR) Select DAC1 */
-#define   ACC_MR_SELMINUS_AD0 (0x4u << 0) /**< \brief (ACC_MR) Select AD0 */
-#define   ACC_MR_SELMINUS_AD1 (0x5u << 0) /**< \brief (ACC_MR) Select AD1 */
-#define   ACC_MR_SELMINUS_AD2 (0x6u << 0) /**< \brief (ACC_MR) Select AD2 */
-#define   ACC_MR_SELMINUS_AD3 (0x7u << 0) /**< \brief (ACC_MR) Select AD3 */
+#define   ACC_MR_SELMINUS_AFE0_AD0 (0x4u << 0) /**< \brief (ACC_MR) Select AFE0_AD0 */
+#define   ACC_MR_SELMINUS_AFE0_AD1 (0x5u << 0) /**< \brief (ACC_MR) Select AFE0_AD1 */
+#define   ACC_MR_SELMINUS_AFE0_AD2 (0x6u << 0) /**< \brief (ACC_MR) Select AFE0_AD2 */
+#define   ACC_MR_SELMINUS_AFE0_AD3 (0x7u << 0) /**< \brief (ACC_MR) Select AFE0_AD3 */
 #define ACC_MR_SELPLUS_Pos 4
 #define ACC_MR_SELPLUS_Msk (0x7u << ACC_MR_SELPLUS_Pos) /**< \brief (ACC_MR) Selection For Plus Comparator Input */
-#define   ACC_MR_SELPLUS_AD0 (0x0u << 4) /**< \brief (ACC_MR) Select AD0 */
-#define   ACC_MR_SELPLUS_AD1 (0x1u << 4) /**< \brief (ACC_MR) Select AD1 */
-#define   ACC_MR_SELPLUS_AD2 (0x2u << 4) /**< \brief (ACC_MR) Select AD2 */
-#define   ACC_MR_SELPLUS_AD3 (0x3u << 4) /**< \brief (ACC_MR) Select AD3 */
-#define   ACC_MR_SELPLUS_AD4 (0x4u << 4) /**< \brief (ACC_MR) Select AD4 */
-#define   ACC_MR_SELPLUS_AD5 (0x5u << 4) /**< \brief (ACC_MR) Select AD5 */
-#define   ACC_MR_SELPLUS_AD6 (0x6u << 4) /**< \brief (ACC_MR) Select AD6 */
-#define   ACC_MR_SELPLUS_AD7 (0x7u << 4) /**< \brief (ACC_MR) Select AD7 */
+#define ACC_MR_SELPLUS(value) ((ACC_MR_SELPLUS_Msk & ((value) << ACC_MR_SELPLUS_Pos)))
+#define   ACC_MR_SELPLUS_AFE0_AD0 (0x0u << 4) /**< \brief (ACC_MR) Select AFE0_AD0 */
+#define   ACC_MR_SELPLUS_AFE0_AD1 (0x1u << 4) /**< \brief (ACC_MR) Select AFE0_AD1 */
+#define   ACC_MR_SELPLUS_AFE0_AD2 (0x2u << 4) /**< \brief (ACC_MR) Select AFE0_AD2 */
+#define   ACC_MR_SELPLUS_AFE0_AD3 (0x3u << 4) /**< \brief (ACC_MR) Select AFE0_AD3 */
+#define   ACC_MR_SELPLUS_AFE0_AD4 (0x4u << 4) /**< \brief (ACC_MR) Select AFE0_AD4 */
+#define   ACC_MR_SELPLUS_AFE0_AD5 (0x5u << 4) /**< \brief (ACC_MR) Select AFE0_AD5 */
+#define   ACC_MR_SELPLUS_AFE1_AD0 (0x6u << 4) /**< \brief (ACC_MR) Select AFE1_AD0 */
+#define   ACC_MR_SELPLUS_AFE1_AD1 (0x7u << 4) /**< \brief (ACC_MR) Select AFE1_AD1 */
 #define ACC_MR_ACEN (0x1u << 8) /**< \brief (ACC_MR) Analog Comparator Enable */
 #define   ACC_MR_ACEN_DIS (0x0u << 8) /**< \brief (ACC_MR) Analog comparator disabled. */
 #define   ACC_MR_ACEN_EN (0x1u << 8) /**< \brief (ACC_MR) Analog comparator enabled. */
 #define ACC_MR_EDGETYP_Pos 9
 #define ACC_MR_EDGETYP_Msk (0x3u << ACC_MR_EDGETYP_Pos) /**< \brief (ACC_MR) Edge Type */
+#define ACC_MR_EDGETYP(value) ((ACC_MR_EDGETYP_Msk & ((value) << ACC_MR_EDGETYP_Pos)))
 #define   ACC_MR_EDGETYP_RISING (0x0u << 9) /**< \brief (ACC_MR) Only rising edge of comparator output */
 #define   ACC_MR_EDGETYP_FALLING (0x1u << 9) /**< \brief (ACC_MR) Falling edge of comparator output */
 #define   ACC_MR_EDGETYP_ANY (0x2u << 9) /**< \brief (ACC_MR) Any edge of comparator output */
@@ -90,7 +91,7 @@ typedef struct {
 #define   ACC_MR_INV_DIS (0x0u << 12) /**< \brief (ACC_MR) Analog comparator output is directly processed. */
 #define   ACC_MR_INV_EN (0x1u << 12) /**< \brief (ACC_MR) Analog comparator output is inverted prior to being processed. */
 #define ACC_MR_SELFS (0x1u << 13) /**< \brief (ACC_MR) Selection Of Fault Source */
-#define   ACC_MR_SELFS_CF (0x0u << 13) /**< \brief (ACC_MR) The CF flag is used to drive the FAULT output. */
+#define   ACC_MR_SELFS_CE (0x0u << 13) /**< \brief (ACC_MR) The CE flag is used to drive the FAULT output. */
 #define   ACC_MR_SELFS_OUTPUT (0x1u << 13) /**< \brief (ACC_MR) The output of the analog comparator flag is used to drive the FAULT output. */
 #define ACC_MR_FE (0x1u << 14) /**< \brief (ACC_MR) Fault Enable */
 #define   ACC_MR_FE_DIS (0x0u << 14) /**< \brief (ACC_MR) The FAULT output is tied to 0. */
@@ -102,7 +103,7 @@ typedef struct {
 /* -------- ACC_IMR : (ACC Offset: 0x2C) Interrupt Mask Register -------- */
 #define ACC_IMR_CE (0x1u << 0) /**< \brief (ACC_IMR) Comparison Edge */
 /* -------- ACC_ISR : (ACC Offset: 0x30) Interrupt Status Register -------- */
-#define ACC_ISR_CE (0x1u << 0) /**< \brief (ACC_ISR) Comparison Edge */
+#define ACC_ISR_CE (0x1u << 0) /**< \brief (ACC_ISR) Comparison Edge (cleared on read) */
 #define ACC_ISR_SCO (0x1u << 1) /**< \brief (ACC_ISR) Synchronized Comparator Output */
 #define ACC_ISR_MASK (0x1u << 31) /**< \brief (ACC_ISR) Flag Mask */
 /* -------- ACC_ACR : (ACC Offset: 0x94) Analog Control Register -------- */
@@ -116,16 +117,12 @@ typedef struct {
 #define ACC_WPMR_WPEN (0x1u << 0) /**< \brief (ACC_WPMR) Write Protection Enable */
 #define ACC_WPMR_WPKEY_Pos 8
 #define ACC_WPMR_WPKEY_Msk (0xffffffu << ACC_WPMR_WPKEY_Pos) /**< \brief (ACC_WPMR) Write Protection Key */
+#define ACC_WPMR_WPKEY(value) ((ACC_WPMR_WPKEY_Msk & ((value) << ACC_WPMR_WPKEY_Pos)))
 #define   ACC_WPMR_WPKEY_PASSWD (0x414343u << 8) /**< \brief (ACC_WPMR) Writing any other value in this field aborts the write operation of the WPEN bit.Always reads as 0. */
 /* -------- ACC_WPSR : (ACC Offset: 0xE8) Write Protection Status Register -------- */
 #define ACC_WPSR_WPVS (0x1u << 0) /**< \brief (ACC_WPSR) Write Protection Violation Status */
-/* -------- ACC_VER : (ACC Offset: 0xFC) Version Register -------- */
-#define ACC_VER_VERSION_Pos 0
-#define ACC_VER_VERSION_Msk (0xfffu << ACC_VER_VERSION_Pos) /**< \brief (ACC_VER) Version of the Hardware Module */
-#define ACC_VER_MFN_Pos 16
-#define ACC_VER_MFN_Msk (0x7u << ACC_VER_MFN_Pos) /**< \brief (ACC_VER) Metal Fix Number */
 
 /*@}*/
 
 
-#endif /* _SAM_ACC_COMPONENT_ */
+#endif /* _SAMV71_ACC_COMPONENT_ */

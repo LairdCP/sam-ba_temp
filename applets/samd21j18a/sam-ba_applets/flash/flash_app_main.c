@@ -85,7 +85,7 @@
 /** stack size for flash applet */
 #define STACK_SIZE (0x500)
 //Typical monitor size when compiled (rounded to 8kb upper bound)
-#define MONITOR_SIZE (0x2000)
+#define MONITOR_SIZE (0x6000)
 
 // Empty macro
 #define TRACE_DEBUG(...)      { }
@@ -419,8 +419,6 @@ int applet_main(int argc, char **argv)
 	struct _Mailbox *pMailbox = (struct _Mailbox *) argv;
 	struct nvm_config config;
 	enum status_code status;
-	uint32_t *monitor,i;
-	monitor = (uint32_t *)0x20000000;
 
 	uint32_t bytesToWrite, bufferAddr, memoryOffset;
 
@@ -464,7 +462,7 @@ int applet_main(int argc, char **argv)
 		pMailbox->argument.outputInit.memoryInfo.numbersLockBits = flashNbLockBits;
 		pMailbox->argument.outputInit.pageSize = flashPageSize;
 		pMailbox->argument.outputInit.nbPages = flashSize/flashPageSize;
-		pMailbox->argument.outputInit.appStartPage = MONITOR_SIZE /flashPageSize;
+		pMailbox->argument.outputInit.appStartPage = MONITOR_SIZE/flashPageSize;
 
 		TRACE_INFO("bufferSize : %d  bufferAddr: 0x%x \n\r",
 				(int)pMailbox->argument.outputInit.bufferSize,

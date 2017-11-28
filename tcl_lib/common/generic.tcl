@@ -70,6 +70,7 @@ namespace eval GENERIC {
         pmeccBoot       0x16
         switchEccMode   0x17
         trimffsMode     0x18
+        qspixip         0x19
     }
 
     #===============================================================================
@@ -944,6 +945,34 @@ proc SERIALFLASH::EraseAll {} {
         puts "-I- \t[format "0x%X" $sizeErased] bytes erased"
     }
     set softwareStatusLabelVariable ""
+}
+
+
+
+
+#===============================================================================
+#  proc SERIALFLASH::EraseAll
+#-------------------------------------------------------------------------------
+proc SERIALFLASH::Xip {} {
+    global target
+    variable appletMailboxAddr
+    variable appletCmd
+
+    # Mailbox is 32 word long (add variable here if you need read/write more data)
+    set appletAddrCmd       [expr $appletMailboxAddr]
+    set appletAddrStatus    [expr $appletMailboxAddr + 0x04]
+   
+
+    # Write the Cmd op code in the argument area
+    if {[catch {TCL_Write_Int $target(handle) $GENERIC::appletCmd(qspixip) $appletAddrCmd} dummy_err] } {
+        error "Error Writing Applet command ($dummy_err)"
+    }
+
+    puts "-I- Execute from QSPI flash, sam-ba will be halted..."
+
+    # Run the applet
+    GENERIC::Run  $GENERIC::appletCmd(qspixip)
+
 }
 
 ################################################################################

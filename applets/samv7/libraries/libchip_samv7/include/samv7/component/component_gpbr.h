@@ -27,13 +27,13 @@
 /* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                           */
 /* ---------------------------------------------------------------------------- */
 
-#ifndef _SAM_GPBR_COMPONENT_
-#define _SAM_GPBR_COMPONENT_
+#ifndef _SAMV71_GPBR_COMPONENT_
+#define _SAMV71_GPBR_COMPONENT_
 
 /* ============================================================================= */
 /**  SOFTWARE API DEFINITION FOR General Purpose Backup Registers */
 /* ============================================================================= */
-/** \addtogroup SAM_GPBR General Purpose Backup Registers */
+/** \addtogroup SAMV71_GPBR General Purpose Backup Registers */
 /*@{*/
 
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
@@ -50,4 +50,4 @@ typedef struct {
 /*@}*/
 
 
-#endif /* _SAM_GPBR_COMPONENT_ */
+#endif /* _SAMV71_GPBR_COMPONENT_ */
