@@ -469,7 +469,7 @@ void BOARD_ConfigureLpDdram1( uint8_t device )
     columns, rows, banks, CAS latency and output drive strength) (see Section 8.3 on
     page 35, Section 8.4 on page 39 and Section 80.5 on page 41). */
 	MPDDRC->MPDDRC_CR = MPDDRC_CR_NR_13 | 			// 13 row bits    (8K)
-						MPDDRC_CR_NC_9 | 			// 9 column bits (512)
+						MPDDRC_CR_NC_10 | 			// 10 column bits (1K)
 						MPDDRC_CR_CAS(3)| 			// CAS Latency 3
 						MPDDRC_CR_NB_4 |            // 4 bank
 						MPDDRC_CR_DLL_RESET_DISABLED |
