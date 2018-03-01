@@ -887,20 +887,20 @@ void BOARD_ConfigureNandFlash( uint8_t busWidth )
 	 */
 
     SMC->SMC_CS_NUMBER[3].SMC_SETUP = 0
-                    | SMC_SETUP_NWE_SETUP(1)
-                    | SMC_SETUP_NCS_WR_SETUP(0)
+                    | SMC_SETUP_NWE_SETUP(2)
+                    | SMC_SETUP_NCS_WR_SETUP(1)
                     | SMC_SETUP_NRD_SETUP(2)
-                    | SMC_SETUP_NCS_RD_SETUP(0);
+                    | SMC_SETUP_NCS_RD_SETUP(1);
 
     SMC->SMC_CS_NUMBER[3].SMC_PULSE = 0
                     | SMC_PULSE_NWE_PULSE(3)
                     | SMC_PULSE_NCS_WR_PULSE(5)
-                    | SMC_PULSE_NRD_PULSE(4)
-                    | SMC_PULSE_NCS_RD_PULSE(6);
+                    | SMC_PULSE_NRD_PULSE(3)
+                    | SMC_PULSE_NCS_RD_PULSE(5);
 
     SMC->SMC_CS_NUMBER[3].SMC_CYCLE = 0
-                    | SMC_CYCLE_NWE_CYCLE(5)
-                    | SMC_CYCLE_NRD_CYCLE(7);
+                    | SMC_CYCLE_NWE_CYCLE(8)
+                    | SMC_CYCLE_NRD_CYCLE(8);
 
     SMC->SMC_CS_NUMBER[3].SMC_TIMINGS = SMC_TIMINGS_TCLR(3)
                                        | SMC_TIMINGS_TADL(10)
@@ -912,7 +912,7 @@ void BOARD_ConfigureNandFlash( uint8_t busWidth )
     SMC->SMC_CS_NUMBER[3].SMC_MODE = SMC_MODE_READ_MODE |
                                      SMC_MODE_WRITE_MODE |
                                      SMC_MODE_DBW_BIT_8 |
-                                     SMC_MODE_TDF_CYCLES(1);
+                                     SMC_MODE_TDF_CYCLES(3);
 
 }
 
